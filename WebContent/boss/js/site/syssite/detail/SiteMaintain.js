@@ -1,5 +1,6 @@
-define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
+define(['common/BaseEditPage','bootstrapswitch','UE.I18N.' + window.top.language], function(BaseEditPage) {
     return BaseEditPage.extend({
+        ue:[],
 
         init: function () {
             this.formSelector = "#mainFrame form";
@@ -8,16 +9,21 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
 
         onPageLoad: function () {
             this._super();
+            this.bindEvent();
             var _this = this;
-            /*var $status = $("#status");
-            _this.unInitSwitch($status).bootstrapSwitch();*/
+
+            $(".contents_textarea", _this.formSelector).each(function (idx, item) {
+                _this.initUEditor(idx);
+            });
         },
+
         /**
          * 当前对象事件初始化函数
          */
         bindEvent: function () {
             this._super();
-            var _this=this;
+            var _this = this;
+
             //这里初始化所有的事件
             $('[data-toggle="popover"]',_this.formSelector).popover({
                 trigger: 'hover',
@@ -36,15 +42,14 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
              * 重写验证
              */
             $(this.formSelector).on("validate", "input,textarea", function (e,message) {
-                if(message && $(this).is(":hidden")){
+                if (message && $(this).is(":hidden")) {
                     var attr = $(this).attr("tt");
-                    if(attr){
-                        $(".a_"+attr).formtip(message);
-                        e.result=true;
+                    if (attr) {
+                        $(".a_" + attr).formtip(message);
+                        e.result = true;
                     }
-                }
-                else{
-                    e.result=false;
+                } else {
+                    e.result = false;
                 }
             });
 
@@ -78,6 +83,44 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
                 var local=$(this).attr("local");
                 $("#precurLanguage").val($(this).attr("tagIndex"));
             });
+
+            //切换语言
+            $(this.formSelector).on("click","a[name='tag']", function () {
+                var oldIdx=Number($(".current").attr("tagIndex"));
+                $("a[name='tag']").removeClass("current");
+                $(this).addClass("current");
+                var local=$(this).attr('local');
+                $(".ann").hide();
+                $(".content"+local).show();
+
+                var tagIndex = $(this).attr("tagIndex");
+                var langSize=Number($("[name='langSize']").val());
+                if(oldIdx<tagIndex){
+                    $(".previous_lang").removeClass("hide");
+                    if(tagIndex == langSize){
+                        $(".next_lang").addClass("hide");
+                        //$(".preview").removeClass("hide");
+                        _this.checkForNext();
+                    }else{
+                        $(".next_lang").removeClass("hide");
+                    }
+                }else if(oldIdx>tagIndex){
+                    $(".preview").addClass("hide");
+                    $(".next_lang").removeClass("hide");
+                    if(tagIndex==1){
+                        $(".previous_lang").addClass("hide");
+                    }
+                }
+            });
+
+            //复制语系
+            $(this.formSelector).on("click",".copy", function () {
+                var sourceLocal=$(this).attr("local");
+                var sourceId = $(".siteMaintain"+sourceLocal).attr("id");
+                var targetLocal=$(".current").attr("local");
+                var targetId = $(".siteMaintain"+targetLocal).attr("id");
+                UE.getEditor(targetId).setContent(UE.getEditor(sourceId).getContent());
+            });
         },
 
         /**
@@ -85,68 +128,39 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
          * @param e
          * @param option
          */
-        previewMaintain:function(e,option) {
-            var _this = this;
-            window.top.topPage.ajax({
-                url: root+'/sysSite/previewMaintain.html',
-                data:window.top.topPage.getCurrentFormData(e),
-                cache: false,
-                type: "POST",
-                success: function (data) {
-                    $("[name=editor]",_this.formSelector).hide();
-                    $("div.addFoot").hide();
-                    $("div.modal-body").append(data);
-                    $("div.preFoot").show();
-                    page.resizeDialog();
-                    e.page.onPageLoad();
-                }
-            });
-            $(e.currentTarget).unlock();
-        },
-
-        /**
-         * 取消预览
-         * @param e
-         * @param option
-         */
-        cancelPreview:function(e,option) {
-            $("[name=editor]",this.formSelector).show();
-            $("[name=preview]",this.formSelector).remove();
-            $("div.addFoot").show();
-            $("div.preFoot").hide();
-            page.resizeDialog();
-            $(e.currentTarget).unlock();
-        },
-
-        /**
-         * 提交
-         * @param e
-         * @param btnOption
-         */
-        submitMaintain:function(e,btnOption){//提交
-            this.cancelPreview(e,btnOption);
-            this.saveMaintain();
+        previewMaintain: function (e, option) {
+            var content = null;
+            var tips = $("textarea", "#siteMaintainTipsDiv");
+            var lan  = $("input[name='mainLanguage']", "#siteMaintainTipsDiv").val();
+            if (lan) {
+                var targetId = $(".siteMaintain" + lan).attr("id");
+                content = UE.getEditor(targetId).getContent();
+            } else {
+                content = UE.getEditor("editContent0").getContent();//默认读取第一个语言的内容显示
+            }
+            option.target = root + "/site/detail/siteMaintainTipPreview.html?content="+content;
+            window.top.topPage.doDialog(e, option);
         },
 
         /**
          * 提交信息
          */
-        saveMaintain:function(){
-            var url=root+"/sysSite/saveMaintain.html";
-            var _this=this;
+        saveMaintain: function (e, btnOption) {
+            var url = root + "/sysSite/saveMaintain.html";
+            var _this = this;
             window.top.topPage.ajax({
                 url: url,
-                data:$(this.formSelector).serialize(),
+                data: $(this.formSelector).serialize(),
                 cache: false,
                 type: "POST",
-                dataType:"json",
+                dataType: "json",
                 success: function (data) {
-                    if(data.state){
-                        _this.returnValue=true;
+                    if (data.state) {
+                        _this.returnValue = true;
                         _this.closePage();
-                        window.top.topPage.showSuccessMessage(data.msg,null);
-                    }else{
-                        window.top.topPage.showErrorMessage(data.msg,null);
+                        window.top.topPage.showSuccessMessage(data.msg, null);
+                    } else {
+                        window.top.topPage.showErrorMessage(data.msg, null);
                     }
                 }
             });
@@ -208,7 +222,29 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
             }finally{
                 $(e.currentTarget).unlock();
             }
-
         },
+
+        /**
+         * 初始化富文本框
+         */
+        initUEditor: function (idx) {
+            var that = this;
+            UE.delEditor('editContent' + idx);
+            var width = $("#editContent" + idx).width;
+            that.ue[idx] = UE.getEditor('editContent' + idx, {
+                enableAutoSave: false, /*是否自动保存*/
+                initialFrameWidth: width, /*初始化编辑器宽度($(window.document).width() *.8)*/
+                initialFrameHeight: 200, /*初始化编辑器宽度*/
+                autoHeightEnabled: false, /*是否自动长高*/
+                maximumWords: 2000,
+                toolbars: [[
+                    'fullscreen', 'source', '|', 'undo', 'redo', '|',
+                    'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+                    'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+                    'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|', 'link', 'unlink'
+
+                ]]
+            });
+        }
     });
 });

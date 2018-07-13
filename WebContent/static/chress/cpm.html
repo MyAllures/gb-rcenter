@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹窗</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../../chress/res/css/common.css" />
+    <style>
+        input[placeholder], [placeholder], *[placeholder] {
+            color:#fff ;
+        }
+        img{margin: 0 auto;padding: 0;}
+        .fl{float:left;}
+        .fr{float:right;}
+        .mr10{margin-right: 0.1rem;}
+        /*.cpm{width: 100%;height: 100%;position: fixed;left: 0;top: 0;z-index: 1000; color: #fff;   background-color: rgba(17, 16, 16, 0.4); overflow: hidden; }*/
+        .cpm_box{width: 3.17rem;height: 2.53rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .img_top{width: 3.17rem;  background: url("../../chress/res/image/cpm/cpm_top.png") no-repeat 0 0;background-size:100%;height: 0.51rem}
+        .cpm_content{width: 3.17rem;height: 2.02rem; border: 1px solid #929FD6;border-top:none !important; background-color: rgba(42, 53, 138, 0.9);padding: 0.1rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .cpm_content>.ctt{width: 100%;border: 1px solid #6F7AC1;     border-radius: 5px; background-color: rgba(66, 80, 174, 0.8);}
+        .dis-in{display: inline-block;}
+        .dis-no{display: none;}
+        .img_via{width: 0.8rem;  height: 0.8rem;  margin-left: 0.1rem;  background: url("../../chress/res/image/cpm/via.png") no-repeat 0 0;background-size:100%; border-radius: 0.1rem;overflow: hidden; }
+        .via_box{font-size: 0.14rem;width: 58%;margin-left: -0.3rem;padding: 0.1rem;}
+        .via_box h4{border: 1px solid #C68F37;  background-color: #263981;  border-radius: 10px; box-sizing: border-box; padding: 0 0.1rem;  width: 1.77rem;}
+        .via_box h4 span{color: #FFD800;font-size: 0.13rem;}
+        .via_box h4 small{color: #FFF32D;font-size: 0.14rem;float:right;}
+        .dis-in input{  background-color: #232B6A;border: none;color: #fff;width: 1.77rem;box-sizing: border-box;border-radius: 0.05rem;padding: 0.05rem 0.1rem;}
+        .btn-t{width: 1.4rem;  background: url("../../chress/res/image/cpm/button_t.png") no-repeat 0 0;background-size:100%;height: 0.46rem;display: inline-block;    margin-top: 0.08rem;  float: left;}
+        .btn-t:active{width: 1.4rem;  background: url("../../chress/res/image/cpm/button_t.png") no-repeat 0 0;background-size:100%;height: 0.46rem;display: inline-block;  background-color: #feca3b;  margin-top: 0.08rem;  float: left;}
+        .btn-s{width: 1.4rem;  background: url("../../chress/res/image/cpm/button_s.png") no-repeat 0 0;background-size:100%;height: 0.46rem;display: inline-block; margin-top: 0.08rem;  float: right;}
+        .btn-s:active{width: 1.4rem;  background: url("../../chress/res/image/cpm/button_s.png") no-repeat 0 0;background-size:100%;height: 0.46rem;display: inline-block;background-color: #feca3b; margin-top: 0.08rem;  float: right;}
+        .img-btn{width: 0.32rem;position: absolute;top: 0;right: -0.1rem; }
+        .img-btn1{width: 0.32rem;position: absolute;top: 0;right: -0.1rem; }
+        .img-btn2{width: 0.4rem;position: absolute;top: 0;right: -0.1rem; }
+        .img-btn3{width: 0.4rem;position: absolute;top: -0.1rem;right: -0.15rem; }
+        @keyframes cpm {
+            0%{transform:scale(1,1);}
+            50%{transform:scale(1.1,1.1);}
+            100%{transform:scale(0,0);opacity: 0;}
+        }
+
+
+        /*设置*/
+        /*.set{width: 100%;height: 100%;position: fixed;left: 0;top: 0;z-index: 1010; color: #fff;   background-color: rgba(17, 16, 16, 0.3); overflow: hidden;}*/
+        .set-cpm{width: 2.88rem;height: 1.8rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .set-top{width: 2.88rem;  background: url("../../chress/res/image/cpm/set_top.png") no-repeat 0 0;background-size:100%;height: 0.48rem}
+        .set_content{width: 2.88rem;height: 1.4rem;border: 1px solid #929FD6;border-top:none !important; margin-top: -0.03rem; background-color: rgba(42, 53, 138, 0.6);padding: 0.1rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .set_content>.ctt{width: 100%;border: 1px solid #6F7AC1;     border-radius: 5px; background-color: rgba(66, 80, 174, 0.6);}
+        .pmgressbar{font-size: 0.14rem;  padding: 0.32rem 0.24rem;position: relative;height: 1.14rem;box-sizing: border-box;}
+
+        .r-bar{width: 1.82rem;height: 0.14rem;border: 1px solid #0BB0A8;position: absolute;margin-right: 0.24rem;right: 0;bottom: .37rem;background: #116D6B;border-radius: 0.07rem;}
+        .r-bar1{width: 1.82rem;height: 0.14rem;border: 1px solid #0BB0A8;position: absolute;margin-right: 0.24rem;right: 0;bottom: .37rem;background: #116D6B;border-radius: 0.07rem;}
+        .r-bar-b{width: 60%;border-radius: 0.07rem;height: 100%;background: #89CE2E;overflow: visible;position: relative;transition: .1s linear}
+        .r-bar-b1{width: 60%;border-radius: 0.07rem;height: 100%;background: #89CE2E;overflow: visible;position: relative;transition: .1s linear}
+        .r-bar-img{background: url(../../chress/res/image/cpm/yuan.png) 0 0/100% 100% no-repeat;width: .3rem;height: .3rem;
+            position: absolute;right: -0.22rem;top: -.07rem;}
+        .r-bar-img1{background: url(../../chress/res/image/cpm/yuan.png) 0 0/100% 100% no-repeat;width: .3rem;height: .3rem;
+            position: absolute;right: -0.22rem;top: -.07rem;}
+        .r-bar-font{    position: absolute;  left: -0.42rem;  top: -0.06rem;color:#fff;  font-size: 0.17rem;}
+        .r-bar-font1{    position: absolute;  left: -0.42rem;  top: -0.06rem;color:#fff;  font-size: 0.17rem;}
+
+        /*提示*/
+        .exit-cpm{width: 2.88rem;height: 2.22rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .exit-top{width: 2.88rem;  background: url("../../chress/res/image/cpm/hint.png") no-repeat 0 0;background-size:100%;height: 0.48rem}
+        .exit_content{width: 2.88rem;height: 1.74rem;border: 1px solid #929FD6;border-top:none !important; margin-top: -0.03rem; background-color: rgba(42, 53, 138, 0.6);padding: 0.1rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .exit_content>.exit-box{border: 1px solid #6F7AC1; width: 2.69rem;height: 0.93rem; color: #fff;font-size: 0.17rem;text-align: center;line-height: 0.93rem;   border-radius: 5px; background-color: rgba(66, 80, 174, 0.6);}
+        .exit-img{  margin-top:0.1rem;}
+        .exit-img>img{width: 1.31rem;height: 0.47rem;display: inline-block;padding: 0;margin:0 auto;}
+
+        /*福利仓库*/
+        .entrepot-cpm{width: 4.65rem;height: 3.49rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .entrepot-top{width: 4.65rem;  background: url("../../chress/res/image/cpm/menu-top-bg.png") no-repeat 0 0;background-size:100%;height: 0.5rem;}
+        .entrepot_content{width: 4.65rem;height: 2.99rem;border: 1px solid #929FD6;border-top:none !important; margin-top: -0.03rem; background-color: rgba(42, 53, 138, 0.6);box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .entrepot_content>.exit-box{border: 1px solid #6F7AC1; width: 2.69rem;height: 0.93rem; color: #fff;font-size: 0.17rem;text-align: center;line-height: 0.93rem;   border-radius: 5px; background-color: rgba(66, 80, 174, 0.6);}
+        .entrepot-nav{width: 1.35rem;background: url("../../chress/res/image/cpm/menu-bg.png") no-repeat 0 0;background-size:100%;height: 100%;}
+        .entrepot-nav>div{width:1.21rem ;height:0.47rem;overflow: hidden;border-radius: 0.08rem;float: left;margin: 0.11rem 0.08rem 0 0.07rem;}
+        .btn-j{background: url("../../chress/res/image/cpm/menu-button-j.png") no-repeat 0 0;background-size:100%;}
+        .btn-j-active{background: url("../../chress/res/image/cpm/menu-button-j-a.png") no-repeat 0 0;background-size:100% !important;}
+        .btn-z{background: url("../../chress/res/image/cpm/menu-button-z.png") no-repeat 0 0;background-size:100%;}
+        .btn-z-active{background: url("../../chress/res/image/cpm/menu-button-z-a.png") no-repeat 0 0;background-size:100% !important;}
+        .entrepot-gold{width: 3.28rem;height: 0.9rem;     background: linear-gradient( #4C5BB0 90%, #364394 102% );  box-shadow: 0 10px 14px -8px #818BC7 inset; background-color:#4C5BB0 ;position: absolute;top:0.48rem;right: 0.01rem;   }
+        .entrepot-box{width: 3.28rem;  height: 2.07rem;  background: linear-gradient( #4C5BB0 90%, #364394 102% );  box-shadow: 0 10px 14px -8px #818BC7 inset; background-color:#4C5BB0;float: right;margin-top: 0.9rem;border-bottom-right-radius: 0.1rem;}
+        .jin-zi{width: 0.61rem;height: 0.14rem;    margin: 0.18rem 0.1rem 0 0.4rem;}
+        .jin{      width: 0.5rem;  height: 0.5rem;  position: absolute;  top: 0;  left: 1rem;}
+        .jine{border: 1px solid #C79038;border-radius: 0.13rem  ; background-color: #23357B;width: 1.8rem; color:#FFF32D; height: 0.25rem;  line-height: 0.25rem;  font-size: 0.14rem;  margin-top: 0.1rem;  padding: 0 0.1rem;  text-align: right;}
+        .yue-zi{    width: 0.78rem;  height: 0.16rem;  margin: 0.2rem 0.1rem 0 0.22rem;}
+        .yue{      width: 0.5rem;  height: 0.5rem;  position: absolute;  top: 0.4rem;  left: 1rem;}
+        .yue-nub{border: 1px solid #C79038;  background-color: #23357B;border-radius: 0.13rem  ; width: 1.8rem; color:#FFF32D; height: 0.25rem;  line-height: 0.25rem;  font-size: 0.14rem;  margin-top: 0.14rem;  padding: 0 0.1rem;  text-align: right;}
+        .box-input{width: 3.14rem;height: 0.98rem;  background: url("../../chress/res/image/cpm/save-input.png") no-repeat 0 0;background-size:100%;  margin-left: 8px;  margin-top: 2px;}
+        .box-input-q{width: 3.14rem;height: 0.98rem;  background: url("../../chress/res/image/cpm/qu-input.png") no-repeat 0 0;background-size:100%;  margin-left: 8px;  margin-top: 2px;}
+        .input-box{border: none;  background-color: #fff !important; color:#000 !important;   text-align: right;  border-radius: 0 !important;  width: 1.8rem !important;  padding: 0.05rem 0.1rem;  float: right;  margin-top: 47px;  margin-right: 17px;}
+        .list-btn{width: 0.86rem;height: 0.39rem;float: left;}
+        .cun30{ background: url("../../chress/res/image/cpm/cun30.png") no-repeat 0 0/100%;}
+        .cun30-a{ background: url("../../chress/res/image/cpm/cun30-a.png") no-repeat 0 0/100%!important;}
+        .qu30{ background: url("../../chress/res/image/cpm/qu30.png") no-repeat 0 0/100%;}
+        .qu30-a{ background: url("../../chress/res/image/cpm/qu30-a.png") no-repeat 0 0/100%!important;}
+        .cun50{ background: url("../../chress/res/image/cpm/cun50.png") no-repeat 0 0/100%;}
+        .cun50-a{ background: url("../../chress/res/image/cpm/cun50-a.png") no-repeat 0 0/100%!important;}
+        .qu50{ background: url("../../chress/res/image/cpm/qu50.png") no-repeat 0 0/100%;}
+        .qu50-a{ background: url("../../chress/res/image/cpm/qu50-a.png") no-repeat 0 0/100%!important;}
+        .cun100{ background: url("../../chress/res/image/cpm/quan.png") no-repeat 0 0/100%;}
+        .cun100-a{ background: url("../../chress/res/image/cpm/quan-a.png") no-repeat 0 0/100%!important;}
+        .qu100{ background: url("../../chress/res/image/cpm/quan.png") no-repeat 0 0/100%;}
+        .qu100-a{ background: url("../../chress/res/image/cpm/quan-a.png") no-repeat 0 0/100%!important;}
+        .menu-btn-j{background: url("../../chress/res/image/cpm/menu-button-qj.png") no-repeat 0 0/100%;width: 1.21rem;height: 0.47rem;    margin: 0.52rem 0 0 1rem;}
+        .menu-btn-j-a{background: url("../../chress/res/image/cpm/menu-button-qj-a.png") no-repeat 0 0/100%;width: 1.21rem;height: 0.47rem;    margin: 0.52rem 0 0 1rem;}
+        .menu-btn-z{background: url("../../chress/res/image/cpm/menu-button-q.png") no-repeat 0 0/100%;width: 1.21rem;height: 0.47rem;    margin: 0.52rem 0 0 1rem;}
+        .menu-btn-z-a{background: url("../../chress/res/image/cpm/menu-button-q-a.png") no-repeat 0 0/100% ;width: 1.21rem;height: 0.47rem;    margin: 0.52rem 0 0 1rem;}
+
+        /*收益*/
+        .yield-cpm{width: 4.65rem;height: 3.5rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .yield-top{width: 4.65rem;  background: url("../../chress/res/image/cpm/menu-top-bg.png") no-repeat 0 0;background-size:100%;height: 0.5rem;}
+        .yield_content{width: 4.65rem;height: 2.99rem;border: 1px solid #929FD6;border-top:none !important; margin-top: -0.03rem; background-color: rgba(42, 53, 138, 0.6);box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .weal{width: 4.65rem;height: 0.5rem;background: url("../../chress/res/image/cpm/top-bgc-yield.png") no-repeat 0 0/100%;}
+        .weal li{font-size: 0.14rem;width: 50%;float: left;position: relative;}
+        .gift{width: 0.4rem;height: 0.4rem;margin: 0.05rem 0 0 0;position: absolute;top:0;left:0.8rem;}
+        .welfare{width: 0.61rem;height: 0.14rem;    margin: 0.18rem 0 0 0.18rem;}
+        .gold1{width: 0.4rem;height: 0.4rem;position: absolute;top:0.05rem;left:0.53rem;}
+        .service{width: 0.46rem;height: 0.14rem;margin: 0.17rem 0 0 0.08rem;}
+        .weal li b{    border: 1px solid #F8F2B1;  background-color: #263981;  width: 1rem;  height: 0.25rem;  line-height: 0.25rem;  border-radius: 0.15rem;  padding: 0 0.1rem;  text-align: right;  display: inline-block;  margin: 0.1rem 0 0 0.1rem;  color: #FFF32D;}
+        .id-bgc{width: 4.48rem;height: 1.2rem;  background: url("../../chress/res/image/cpm/id-bgc.png") no-repeat 0 0/100%;margin: 0.05rem 0 0 0.09rem;padding: 0.09rem 0.11rem;box-sizing: border-box;}
+        .id-input{width: 4.25rem;height: 0.47rem;    padding: 0.15rem 0.08rem;     box-sizing: border-box;    position: relative; background: url("../../chress/res/image/cpm/input-bgc.png") no-repeat 0 0/100%;}
+        .id-input>span{width: 0.66rem;height: 0.17rem; display: block; background: url("../../chress/res/image/cpm/account.png") no-repeat 0 0/100%;}
+        .id-input>input{width: 1.77rem;height: 0.27rem;border: none; position: absolute;  top: 0.09rem;  left: 0.82rem; }
+        .id-input>.img-btn-a{width: 1.36rem;height: 0.39rem;     position: absolute;  top: 0.06rem;  left: 2.7rem; background: url("../../chress/res/image/cpm/bound-id.png") no-repeat 0 0/100%;}
+        .id-input>.img-btn-aa{width: 1.36rem;height: 0.39rem;   position: absolute;  top: 0.06rem;  left: 2.7rem; background: url("../../chress/res/image/cpm/bound-id-a.png") no-repeat 0 0/100%!important;}
+        .id-nub{width: 4.25rem;height: 0.47rem; padding: 0.15rem 0.08rem;  position: relative; box-sizing: border-box; background: url("../../chress/res/image/cpm/input-bgc.png") no-repeat 0 0/100%;margin-top: 0.07rem;}
+        .id-nub>span{width: 0.66rem;height: 0.17rem;display: block;  background: url("../../chress/res/image/cpm/number.png") no-repeat 0 0/100%;}
+        .id-nub>input{width: 1.77rem; height: 0.27rem;border: none; position: absolute;  top: 0.09rem;  left: 0.82rem;}
+        .id-nub>.img-btn-a{width: 0.71rem;height: 0.39rem; position: absolute;  top: 0.06rem;  left: 2.7rem; background: url("../../chress/res/image/cpm/jia50.png") no-repeat 0 0/100%;}
+        .id-nub>.img-btn-aa{width: 0.71rem;height: 0.39rem; position: absolute;  top: 0.06rem;  left: 2.7rem; background: url("../../chress/res/image/cpm/jia50-a.png") no-repeat 0 0/100%!important;}
+        .id-nub>.img-btn-a1{width: 0.71rem;height: 0.39rem;position: absolute;  top: 0.06rem;  left: 3.41rem;  background: url("../../chress/res/image/cpm/jia100.png") no-repeat 0 0/100%;}
+        .id-nub>.img-btn-a1a{width: 0.71rem;height: 0.39rem; position: absolute;  top: 0.06rem;  left: 3.41rem; background: url("../../chress/res/image/cpm/jia100-a.png") no-repeat 0 0/100%!important;}
+        .ensure{width:1.21rem;height:0.46rem;margin:0.08rem auto;background: url("../../chress/res/image/cpm/que-chu.png") no-repeat 0 0/100%;}
+        .ensure-a{width:1.21rem;height:0.46rem;margin:0.08rem auto;background: url("../../chress/res/image/cpm/que-chu-a.png") no-repeat 0 0/100%!important;}
+        .state{font-size: 0.11rem;color: #fff;padding: 5px 13px;  border-top: 1px solid #424BA1;}
+        /*收益提示*/
+        .yield-cpm-box{width: 2.88rem;height: 2.22rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .yield-top-img{width: 2.88rem;  background: url("../../chress/res/image/cpm/hint.png") no-repeat 0 0;background-size:100%;height: 0.48rem}
+        .yield_content1{width: 2.88rem;height: 1.74rem;border: 1px solid #929FD6;border-top:none !important; margin-top: -0.03rem; background-color: rgba(42, 53, 138, 0.6);padding: 0.1rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .yield_content1>.yield-box1{border: 1px solid #6F7AC1; width: 2.63rem;height: 0.93rem; color: #fff;font-size: 0.17rem;text-align: center;line-height: 0.93rem;   border-radius: 5px; background-color: rgba(66, 80, 174, 0.6);}
+        .yield-b{margin-top: 0.1rem;}
+        .yield-img1{ width: 1.31rem;height: 0.47rem;margin:0;background: url("../../chress/res/image/cpm/ensure.png") no-repeat 0 0/100%;}
+        .yield-img1-a{ width: 1.31rem;height: 0.47rem;margin:0;background: url("../../chress/res/image/cpm/ensure-a.png") no-repeat 0 0/100%!important;}
+        .yield-img2{ width: 1.31rem;height: 0.47rem;margin:0;background: url("../../chress/res/image/cpm/cancel1.png") no-repeat 0 0/100%;}
+        .yield-img2-a{ width: 1.31rem;height: 0.47rem;margin:0;background: url("../../chress/res/image/cpm/cancel1-a.png") no-repeat 0 0/100%!important;}
+
+        /*登录注册*/
+        .login-cpm{width: 4.86rem;height: 3.5rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .login-top{width: 4.86rem;  background: url("../../chress/res/image/cpm/login-top.png") no-repeat 0 0;background-size:100%;height: 0.5rem;}
+        .login_content{width: 4.86rem;height: 3rem;border: 1px solid #929FD6;border-top:none !important; margin-top: -0.03rem; background-color: rgba(42, 53, 138, 0.6);box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .login-nav{width: 1.35rem;background: url("../../chress/res/image/cpm/menu-bg.png") no-repeat 0 0;background-size:100%;height: 100%;}
+        .login-nav>div{width:1.21rem ;height:0.47rem;overflow: hidden;border-radius: 0.08rem;float: left;margin: 0.11rem 0.08rem 0 0.07rem;}
+        .login-btn{background: url("../../chress/res/image/cpm/login-btn.png") no-repeat 0 0;background-size:100%;}
+        .login-btn-a{background: url("../../chress/res/image/cpm/login-btn-a.png") no-repeat 0 0;background-size:100% !important;}
+        .register-btn{background: url("../../chress/res/image/cpm/register-btn.png") no-repeat 0 0;background-size:100%;}
+        .register-btn-a{background: url("../../chress/res/image/cpm/register-btn-a.png") no-repeat 0 0;background-size:100% !important;}
+        .login-gold{   }
+        .login-box{width:3.33rem ;height: 2.84rem;padding: 0.48rem 0.5rem 0 0;  box-sizing: border-box;text-align: right; color: #fff; font-size: 0.14rem; background-color: #4757C6;    position: absolute;  top: 0.54rem;  right: 0.1rem;}
+        .register-box{width:3.33rem ;  box-sizing: border-box;height: 2.84rem; text-align: center;  background-color: #fff;    position: absolute;  top: 0.54rem;  right: 0.1rem;}
+        .login-box input{font-size: 0.12rem;height: 0.33rem;text-align: center; background-color: #232B6A;border: none;border-radius: 0.05rem;}
+        .login-box .user{margin-bottom: 0.08rem;}
+        .login-box .user>input{width: 2.08rem; color: #fff;   margin-left: 8px; }
+        .login-box .password{margin-bottom: 0.08rem;}
+        .login-box .password>input{width: 2.08rem;  color: #fff;  margin-left: 8px;}
+        .login-box .code{margin-bottom: 0.08rem;}
+        .login-box .code>input{width: 1.25rem;color: #fff;margin: 0 0.06rem;}
+        .login-box .code>img{width: 0.78rem;height: 0.33rem;    margin-bottom: -0.12rem;}
+        .login-box .remember{margin-bottom: 0.08rem;position: relative;}
+        .login-box .remember a{margin-right: 0.36rem;  color: #fff;}
+        .login-xuan{background: url("../../chress/res/image/cpm/tick.png") no-repeat 0 0/100%;width: 0.13rem;height: 0.13rem;    position: absolute;  top: 0.04rem;  left: 0.75rem;}
+        .login-xuan-a{background: url("../../chress/res/image/cpm/tick.png") no-repeat 0 0/100%!important;width:0.13rem;height: 0.13rem;   position: absolute;  top: 0.04rem;  left: 0.75rem;}
+        .login-img{background: url("../../chress/res/image/cpm/login-immediately.png") no-repeat 0 0/100%;margin: 0.14rem 0 0 0.74rem;width: 1.45rem;height: 0.47rem;}
+        .login-img-a{background: url("../../chress/res/image/cpm/login-immediately-a.png") no-repeat 0 0/100%!important;margin: 0.14rem 0 0 0.74rem;width: 1.45rem;height: 0.47rem;}
+        /*登录注册提示*/
+        .login-cpm-box{width: 2.88rem;height: 2.22rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .login-top-img{width: 2.88rem;  background: url("../../chress/res/image/cpm/hint.png") no-repeat 0 0;background-size:100%;height: 0.48rem}
+        .login_content1{width: 2.88rem;height: 1.74rem;border: 1px solid #929FD6; margin-top: -0.03rem; background-color: rgba(42, 53, 138, 0.6);padding: 0.1rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .login_content1>.login-box1{border: 1px solid #6F7AC1; width: 2.69rem;height: 0.93rem; color: #fff;font-size: 0.17rem;text-align: center;line-height: 0.93rem;   border-radius: 5px; background-color: rgba(66, 80, 174, 0.6);}
+        .login-img1{ width: 1.31rem;height: 0.47rem;margin:0;background: url("../../chress/res/image/cpm/ensure.png") no-repeat 0 0/100%;}
+        .login-img1-a{ width: 1.31rem;height: 0.47rem;margin:0;background: url("../../chress/res/image/cpm/ensure-a.png") no-repeat 0 0/100%!important;}
+        .login-img2{ width: 1.31rem;height: 0.47rem;margin:0;background: url("../../chress/res/image/cpm/cancel1.png") no-repeat 0 0/100%;}
+        .login-img2-a{ width: 1.31rem;height: 0.47rem;margin:0;background: url("../../chress/res/image/cpm/cancel1-a.png") no-repeat 0 0/100%!important;}
+        .login-b{margin-top: 0.12rem;}
+
+        /*优惠活动*/
+        .activity-cpm{width: 4.65rem;height: 3.5rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .activity-top{width: 4.65rem;  background: url("../../chress/res/image/cpm/special-offer-top.png") no-repeat 0 0;background-size:100%;height: 0.5rem;}
+        .activity_content{width: 4.65rem;height: 3rem;border: 1px solid #929FD6; border-top:none !important; background-color: rgba(42, 53, 138, 0.6);box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .activity-nav{width: 1.35rem;background: url("../../chress/res/image/cpm/menu-bg.png") no-repeat 0 0;background-size:100%;height: 100%;}
+        .activity-nav>div{width:1.21rem ;height:0.47rem;overflow: hidden;border-radius: 0.08rem;float: left;margin: 0.11rem 0.08rem 0 0.07rem;}
+        .activity-btn{background: url("../../chress/res/image/cpm/special-offer.png") no-repeat 0 0;background-size:100%;}
+        .activity-btn-a{background: url("../../chress/res/image/cpm/special-offer-a.png") no-repeat 0 0;background-size:100% !important;}
+        .song-btn{background: url("../../chress/res/image/cpm/The-first-deposit.png") no-repeat 0 0;background-size:100%;}
+        .song-btn-a{background: url("../../chress/res/image/cpm/The-first-deposit-a.png") no-repeat 0 0;background-size:100% !important;}
+        .word-btn{background: url("../../chress/res/image/cpm/message-center.png") no-repeat 0 0;background-size:100%;}
+        .word-btn-a{background: url("../../chress/res/image/cpm/message-center-a.png") no-repeat 0 0;background-size:100% !important;}
+        .activity-box{width:3.17rem ;height: 2.84rem; overflow: hidden; box-sizing: border-box;text-align: right; color: #fff; font-size: 0.14rem;  position: absolute;  top: 0.54rem;  right: 0.1rem;}
+        .list{width: 3.17rem;height: 0.78rem;margin-bottom: 0.04rem;padding: 0.05rem 0.07rem;box-sizing: border-box;}
+        .deposit{background: url("../../chress/res/image/cpm/special-offer-bgc-1.png") no-repeat 0 0;background-size:100%;}
+        .deposit p{text-align: right;}
+        .deposit span{color: #CCDBFF;font-size: 0.13rem;}
+        .deposit small{color: #27317E;font-size: 0.12rem;}
+        .deposit img{width: 1.48rem;height:0.23rem ;position: absolute;  top: 0.38rem;  left:0.68rem;}
+        .detail-btn{background: url("../../chress/res/image/cpm/detail-btn.png") no-repeat 0 0;background-size:100%;display:inline-block;margin:0.1rem 0.05rem;width: 0.73rem;height: 0.36rem;}
+        .detail-btn-a{background: url("../../chress/res/image/cpm/detail-btn.png") no-repeat 0 0;background-size:100%!important;display:inline-block;margin:0.1rem 0.05rem;width: 0.73rem;height: 0.36rem;}
+        .everyday{background: url("../../chress/res/image/cpm/special-offer-bgc-2.png") no-repeat 0 0;background-size:100%;}
+        .everyday p{text-align: right;}
+        .everyday span{color: #CCDBFF;font-size: 0.13rem;}
+        .everyday small{color: #27317E;font-size: 0.12rem;}
+        .everyday img{width: 1.21rem;  height: 0.45rem;  position: absolute;  top: 1.03rem;  left: 0.84rem;}
+        .welfare-list{background: url("../../chress/res/image/cpm/special-offer-bgc-3.png") no-repeat 0 0;background-size:100%;}
+        .welfare-list p{text-align: right;}
+        .welfare-list span{color: #CCDBFF;font-size: 0.13rem;}
+        .welfare-list small{color: #27317E;font-size: 0.12rem;}
+        .welfare-list img{    width: 0.93rem;  height: 0.4rem;  position: absolute;  top: 1.89rem;  left: 0.91rem;}
+        .song-box{width:3.3rem ;height: 2.84rem; overflow: hidden; box-sizing: border-box;text-align: right; color: #fff; font-size: 0.14rem;  position: absolute;  top: 0.5rem;   right: 0;}
+        .biaoti{background: url("../../chress/res/image/cpm/biaoti.png") no-repeat 0 0;background-size:100%;    line-height: 0.41rem;  text-align: center;width: 3.3rem;height: 0.41rem;font-size: 0.18rem;display: block;}
+        .content-box{width:3.3rem; height:2.5rem; padding: 0.06rem 0.08rem 0 0.08rem;color: #fff;    box-sizing: border-box;  text-align: left; }
+        .content-box>h4{font-size: 0.15rem;}
+        .content-box>.ctent{font-size: 0.11rem;padding: 0.1rem 0.05rem 0.11rem 0.32rem ;}
+        .content-box>.dates{font-size: 0.11rem;text-align: right;    margin-bottom: 0.07rem;}
+        .content-box>.team{font-size: 0.11rem;text-align: right;}
+        .content-box>div{background: url("../../chress/res/image/cpm/btn-apply.png") no-repeat 0 0;background-size:100%;width: 0.88rem;height: 0.31rem;position: absolute;bottom:0;right: 0.1rem;}
+
+        .word-box{    width: 3.24rem;  height: 2.9rem;overflow: hidden; box-sizing: border-box;text-align: right; color: #fff; font-size: 0.14rem;  position: absolute;  top: 0.54rem;  right: 0.03rem;}
+        .notice{ text-align: center;padding-top: 0.05rem;}
+        .system-btn{background: url("../../chress/res/image/cpm/system.png") no-repeat 0 0;background-size:100%;width: 0.86rem;height: 0.37rem;display: inline-block;}
+        .system-btn-a{background: url("../../chress/res/image/cpm/system-a.png") no-repeat 0 0;background-size:100%!important;width: 0.86rem;height: 0.37rem;display: inline-block;}
+        .game-btn{background: url("../../chress/res/image/cpm/game.png") no-repeat 0 0;background-size:100%;width: 0.86rem;height: 0.37rem;display: inline-block;}
+        .game-btn-a{background: url("../../chress/res/image/cpm/game-a.png") no-repeat 0 0;background-size:100%!important;width: 0.86rem;height: 0.37rem;display: inline-block;}
+        .site-btn{background: url("../../chress/res/image/cpm/site.png") no-repeat 0 0;background-size:100%;width: 0.86rem;height: 0.37rem;display: inline-block;}
+        .site-btn-a{background: url("../../chress/res/image/cpm/site-a.png") no-repeat 0 0;background-size:100%!important;width: 0.86rem;height: 0.37rem;display: inline-block;}
+        .contt-box{width: 3.2rem;height:2.43rem ;  background-color: #fff;}
+
+        /*活动提示*/
+        .det-cpm-box{width: 3.17rem;height: 2.53rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .det-top-img{width: 3.17rem;  background: url("../../chress/res/image/cpm/hint.png") no-repeat 0 0;background-size:100%;height: 0.51rem}
+        .det_content1{width: 3.17rem;height: 2rem; border: 1px solid #929FD6;border-top:none !important; background-color: rgba(42, 53, 138, 0.6);padding: 0.15rem 0 0 0.07rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .det_content1>.det-box1{width: 3.04rem;height: 1.74rem;  background-color: #fff;}
+
+        /*活动详情*/
+        .detail-cpm-box{width: 4.65rem;height: 3.44rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .detail-top-img{width: 4.65rem; text-align: center;font-size: 0.17rem;line-height: 0.41rem;color: #BCC6EA; background: url("../../chress/res/image/cpm/upper-bg.png") no-repeat 0 0;background-size:100%;height: 0.41rem}
+        .detail_content1{width: 4.65rem;height: 3.03rem;border: 1px solid #929FD6; border-top:none !important; background-color: rgba(42, 53, 138, 0.6);padding: 0.08rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .detail_content1>.detail-box1{width: 4.49rem;height: 2.86rem;  background-color: #fff;}
+
+        /*分享*/
+        .share-cpm-box{width: 3.45rem;height: 2.85rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .share-top-img{width: 3.45rem;  background: url("../../chress/res/image/cpm/share-top.png") no-repeat 0 0;background-size:100%;height: 0.48rem}
+        .share_content1{width: 3.45rem;height: 2.35rem;border: 1px solid #929FD6;border-top:none !important; margin-top: -0.03rem; background-color: rgba(42, 53, 138, 0.9);padding: 0.1rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .share-box1{text-align: center;}
+        .share-box1 img{width: 1.25rem;height: 1.25rem;margin: 0.05rem auto;}
+        .share-box1 p{color: #CCDBFF;font-size: 0.13rem;margin-top: -0.22rem;}
+        .share-img1{ width: 1.21rem;height: 0.46rem;margin:0.11rem auto;background: url("../../chress/res/image/cpm/share-btn.png") no-repeat 0 0/100%;}
+        .share-img1-a{ width: 1.21rem;height: 0.46rem;margin:0.11rem auto;background: url("../../chress/res/image/cpm/share-btn-a.png") no-repeat 0 0/100%!important;}
+
+        /*福利记录*/
+        .weal-cpm-box{width: 4.65rem;height: 3.53rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .weal-top-img{width: 4.65rem;  background: url("../../chress/res/image/cpm/weal-top.png") no-repeat 0 0;background-size:100%;height: 0.5rem}
+        .weal_content1{width: 4.65rem;height: 3.05rem;border: 1px solid #929FD6;border-top:none !important;  background-color: rgba(42, 53, 138, 0.6);padding: 0.06rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .weal_content1>.weal-box1{width: 4.52rem;height: 2.91rem;  background-color: #fff;}
+
+    </style>
+</head>
+<body>
+    <!--个人信息-->
+    <div class="comm_shad cpm dis-no">
+        <div class="cpm_box">
+            <div class="img_top"></div>
+            <div class="cpm_content">
+                <div class="ctt">
+                    <div class="dis-in img_via"></div>
+                    <div class="dis-in via_box">
+                        <input type="text"value="9856656635" class="">
+                        <p style="font-size: 0.08rem;color:#fff;">上次登录时间 2018-06-16 15:30:20</p>
+                        <h4 style="margin-bottom: 0.02rem;"><span>随身福利</span><small>200,000</small></h4>
+                        <h4><span>仓库福利</span><small>1,000</small></h4>
+                    </div>
+                </div>
+                <div class="btn-t"></div>
+                <div class="btn-s"></div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn  img-age" alt="">
+            </div>
+        </div>
+    </div>
+    <!--设置-->
+    <div class="comm_shad set dis-no "style="z-index: 10001;">
+        <div class="set-cpm">
+            <div class="set-top"></div>
+            <div class="set_content">
+                <div class="ctt">
+                    <div  class="pmgressbar">
+                        <div class="r-bar"style="top:0.3rem;">
+                            <div class="r-bar-font">音乐</div>
+                            <div class="r-bar-b">
+                                <div class="r-bar-img" ></div>
+                            </div>
+                        </div>
+                        <div class="r-bar1"style="top:0.7rem;">
+                            <div class="r-bar-font1">音效</div>
+                            <div class="r-bar-b1">
+                                <div class="r-bar-img1" touchstart ="test(false)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn1 img-age" alt="">
+            </div>
+        </div>
+    </div>
+    <!--退出提示-->
+    <div class="comm_shad exit dis-no"style="z-index: 10001;">
+        <div class="exit-cpm">
+            <div class="exit-top"></div>
+            <div class="exit_content">
+                <div class="exit-box">
+                    确定退出吗？
+                </div>
+                <div class="exit-img">
+                    <img src="../../chress/res/image/cpm/cancel.png"class="" style="float: left;" alt="">
+                    <img src="../../chress/res/image/cpm/ensure.png"class="" style="float: right;"alt="">
+                </div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn1 img-age" alt="">
+            </div>
+        </div>
+    </div>
+    <!--福利仓库-->
+    <div class="comm_shad entrepot dis-no"style="z-index: 10001;">
+        <div class="entrepot-cpm">
+            <div class="entrepot-top"></div>
+            <div class="entrepot_content">
+                <div class="entrepot-nav dis-in">
+                    <div class="btn-j btn-j-active"></div>
+                    <div class="btn-z"></div>
+                    <!--<img src="../../chress/res/image/cpm/menu-button-j.png" alt="">-->
+                    <!--<img src="../../chress/res/image/cpm/menu-button-z.png" alt="">-->
+                </div>
+                <div class="entrepot-gold dis-in">
+                    <div class="jine-box">
+                        <img src="../../chress/res/image/cpm/gold-zi.png" class="fl jin-zi" alt="当前金币">
+                        <img src="../../chress/res/image/cpm/gold.png"class="fl jin" alt="金币">
+                        <b class="fl jine">200,000.00</b>
+                    </div>
+                    <div class="yue-box">
+                        <img src="../../chress/res/image/cpm/bao-yue.png" class="fl yue-zi" alt="保险箱余额">
+                        <img src="../../chress/res/image/cpm/bao-yue-box.png"class="fl yue" alt="余额">
+                        <b class="fl yue-nub">200,000.00</b>
+                    </div>
+                </div>
+                <div class="entrepot-box dis-in">
+                    <div class="box-input input-b">
+                        <input type="number" value="10000"class="input-box">
+                    </div>
+                    <ul style="margin: 0.07rem 0 0 0.34rem;">
+                        <li class="list-btn cun30 btn-nub30 active img-dian"data-dian="cun30-a"data-img="cun30"></li>
+                        <li class="list-btn cun50 btn-nub50 active img-dian"data-dian="cun50-a"data-img="cun50"></li>
+                        <li class="list-btn cun100 btn-nub100 active img-dian"data-dian="cun100-a"data-img="cun100"></li>
+                    </ul>
+                    <div class="menu-btn-j btn-qd"></div>
+                </div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn2 img-age"alt="">
+            </div>
+
+        </div>
+    </div>
+    <!--收益-->
+    <div class="comm_shad yield dis-no"style="z-index: 10000;">
+        <div class="yield-cpm">
+            <div class="yield-top"></div>
+            <div class="yield_content">
+                <ul class="weal">
+                    <li class="">
+                        <img src="../../chress/res/image/cpm/welfare.png" class="fl welfare" alt="">
+                        <img src="../../chress/res/image/cpm/gift-box.png" class="fl gift" alt="">
+                        <b>200,000</b>
+                    </li>
+                    <li>
+                        <img src="../../chress/res/image/cpm/service.png"class="fl service" alt="">
+                        <img src="../../chress/res/image/cpm/gold.png" class="fl gold1"alt="">
+                        <b>200,000</b>
+                    </li>
+                </ul>
+                <div class="id-bgc">
+                    <div class="id-input">
+                        <span></span>
+                        <input type="text">
+                        <a href="#"class="img-btn-a img-dian" data-dian="img-btn-aa"data-img="img-btn-a"></a>
+                    </div>
+                    <div class="id-nub">
+                        <span></span>
+                        <input type="text">
+                        <a href="#"class="img-btn-a img-dian " data-dian="img-btn-aa"data-img="img-btn-a"></a>
+                        <a href="#"class="img-btn-a1 img-dian" data-dian="img-btn-a1a"data-img="img-btn-a1"></a>
+                    </div>
+                </div>
+                <div class="ensure  img-dian"data-dian="ensure"data-img="ensure-a"></div>
+                <div class="state">
+                    <p>1.福利3-5分钟到账，如未到账的玩家请及时与客服联系。</p>
+                    <p>2.支取福利前请确认福利帐号的真实姓名准确无误。</p>
+                    <p>3.绑定福利帐号，即代表提取方式，提取收取2%的手续费，且只能是50的倍数。</p>
+                </div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn2 img-age"alt="">
+            </div>
+        </div>
+    </div>
+    <!--收益提示-->
+    <div class="comm_shad dis-no"style="z-index: 10001;">
+        <div class="yield-cpm-box">
+            <div class="yield-top-img"></div>
+            <div class="yield_content1">
+                <div class="yield-box1"style="font-size: 0.15rem;">
+                    请输入正确的金额
+                </div>
+                <div class="yield-b">
+                    <div class="yield-img1 fr img-dian"data-dian="yield-img1-a"data-img="yield-img1"></div>
+                    <div class="yield-img2 img-dian"data-dian="yield-img2-a"data-img="yield-img2"></div>
+                </div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn1 img-age" alt="">
+            </div>
+        </div>
+    </div>
+    <!--登录注册-->
+    <div class="comm_shad login dis-no"style="z-index: 10000;">
+        <div class="login-cpm">
+            <div class="login-top"></div>
+            <div class="login_content">
+                <div class="login-nav">
+                    <div class="login-btn login-btn-a" data-dian="login-btn-a" data-img="login-btn"></div>
+                    <div class="register-btn" data-dian="register-btn-a" data-img="register-btn"></div>
+                </div>
+                <div class="login-gold">
+                    <div class="login-box">
+                        <p class="user">账号<input type="text" placeholder="请输入账号"></p>
+                        <p class="password">密码<input type="password" placeholder="请输入密码"></p>
+                        <p class="code">验证码<input type="text" placeholder="请输入验证码"><img src="../../chress/res/image/cpm/Verification.png" alt=""></p>
+                        <p class="remember">
+                            <a href="#"><span class="login-xuan img-dian" data-dian="login-xuan-a"data-img="login-xuan"></span>记住密码</a>
+                            <a href="#">找回密码</a>
+                        </p>
+                        <div class="login-img img-dian" data-dian="login-img-a"data-img="login-img"></div>
+                    </div>
+                    <div class="register-box dis-no"></div>
+                </div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn2 img-age"alt="">
+            </div>
+        </div>
+    </div>
+    <!--登录提示-->
+    <div class="comm_shad dis-no "style="z-index: 10002;">
+        <div class="login-cpm-box">
+            <div class="login-top-img"></div>
+            <div class="login_content1">
+                <div class="login-box1"style="font-size: 0.15rem;">
+                    提示信息
+                </div>
+                <div class="login-b">
+                    <div class="login-img1 fr img-dian"data-dian="login-img1-a"data-img="login-img1"></div>
+                    <div class="login-img2 img-dian"data-dian="login-img2-a"data-img="login-img2"></div>
+                </div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn2 img-age"style="width: 0.3rem; " alt="">
+            </div>
+        </div>
+    </div>
+    <!--优惠活动-->
+    <div class="comm_shad activity dis-no"style="z-index: 10000;">
+        <div class="activity-cpm">
+            <div class="activity-top"></div>
+            <div class="activity_content">
+                <div class="activity-nav">
+                    <div class="activity-btn activity-btn-a" data-dian="activity-btn-a" data-img="activity-btn"></div>
+                    <div class="song-btn" data-dian="song-btn-a" data-img="song-btn"></div>
+                    <div class="word-btn" data-dian="word-btn-a" data-img="word-btn"></div>
+                </div>
+                <div class="activity-gold">
+                    <div class="activity-box ">
+                        <ul class="ul-box">
+                            <li class="list deposit">
+                                <p><span>【首存优惠】</span><small>2018/06/20</small></p>
+                                <img src="../../chress/res/image/cpm/special-offer-shou.png" alt="">
+                                <a href="#" class="detail-btn img-dian" data-dian="detail-btn-a" data-img="detail-btn"></a>
+                            </li>
+                            <li class="list everyday">
+                                <p><span>【优惠活动】</span><small>2018/06/19</small></p>
+                                <img src="../../chress/res/image/cpm/special-offer-mei.png" alt="">
+                                <a href="#" class="detail-btn img-dian" data-dian="detail-btn-a" data-img="detail-btn"></a>
+                            </li>
+                            <li class="list welfare-list">
+                                <p><span>【优惠活动】</span><small>2018/06/18</small></p>
+                                <img src="../../chress/res/image/cpm/special-offer-gong.png" alt="">
+                                <a href="#" class="detail-btn img-dian" data-dian="detail-btn-a" data-img="detail-btn"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="song-box dis-no">
+                        <b class="biaoti">首次充值送价值30元的福利</b>
+                        <div class="content-box">
+                            <h4>尊敬的玩家：</h4>
+                            <p class="ctent">Lorem ipsum dolor sit amet, consectetur adipis elit. Aenean</p>
+                            <p class="dates">2018/06/21</p>
+                            <p class="team">宏图棋牌运营团队</p>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="word-box dis-no">
+                        <ul class="notice">
+                            <li class="system-btn system-btn-a" data-dian="system-btn-a" data-img="system-btn"></li>
+                            <li class="game-btn" data-dian="game-btn-a" data-img="game-btn"></li>
+                            <li class="site-btn" data-dian="site-btn-a" data-img="site-btn"></li>
+                        </ul>
+                        <div class="contt-box">
+
+                        </div>
+                    </div>
+                </div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn2 img-age"alt="">
+            </div>
+        </div>
+    </div>
+    <!--优惠活动-提示-->
+    <div class="comm_shad dis-no "style="z-index: 10000;">
+        <div class="det-cpm-box">
+            <div class="det-top-img"></div>
+            <div class="det_content1">
+                <div class="det-box1"style=""></div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn2 img-age"alt="">
+            </div>
+        </div>
+    </div>
+    <!--优惠活动-活动详情-->
+    <div class="comm_shad  dis-no"style="z-index: 10000;">
+        <div class="detail-cpm-box">
+            <div class="detail-top-img"><b>第三次存款，最高送18888元</b></div>
+            <div class="detail_content1">
+                <div class="detail-box1"style=""></div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn3 img-age"alt="">
+            </div>
+        </div>
+    </div>
+    <!--分享-->
+    <div class="comm_shad  dis-no"style="z-index: 10001;">
+        <div class="share-cpm-box">
+            <div class="share-top-img"></div>
+            <div class="share_content1">
+                <div class="share-box1"style="">
+                    <img src="../../chress/res/image/cpm/share-default.png" alt="">
+                    <p>您的专属二维码，朋友充值可获得2%拥金</p>
+                </div>
+                <div class="share-img1 img-dian"data-dian="share-img1-a"data-img="share-img1"></div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn2 img-age"alt="">
+            </div>
+        </div>
+    </div>
+    <!--优惠活动-提示-->
+    <div class="comm_shad dis-no "style="z-index: 10001;">
+        <div class="weal-cpm-box">
+            <div class="weal-top-img"></div>
+            <div class="weal_content1">
+                <div class="weal-box1"style=""></div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn2 img-age"alt="">
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
+<script>
+//消息中心
+$('.notice').on("click","li",function () {
+    var dian = $(this).data("dian");
+    var img = $(this).data("img");
+    if($(this).hasClass("system-btn")){
+        $(this).siblings(".game-btn").removeClass("game-btn-a");
+        $(this).siblings(".site-btn").removeClass("site-btn-a");
+        $(this).addClass("system-btn-a");
+    }else if($(this).hasClass("game-btn")){
+        $(this).siblings(".system-btn").removeClass("system-btn-a");
+        $(this).siblings(".site-btn").removeClass("site-btn-a");
+        $(this).addClass("game-btn-a");
+    }else if($(this).hasClass("site-btn")){
+        $(this).siblings(".system-btn").removeClass("system-btn-a");
+        $(this).siblings(".game-btn").removeClass("game-btn-a");
+        $(this).addClass("site-btn-a");
+    }
+});
+</script>
+<script>
+//    关闭弹窗
+   $('body').on("click",".img-age",function heid() {
+//        console.log($(this));
+        $(this).css("animation","cpm 0.35s");
+        $(this).parent().parent().parent().fadeOut(400);
+    });
+
+
+//    仓库福利
+//    切换寄存和支取
+    $('.entrepot-nav').on("click","div",function () {
+        if($(this).hasClass("btn-j")){
+            $(this).siblings(".btn-z").removeClass("btn-z-active");
+            $(this).addClass("btn-j-active");
+            $('.btn-qd').removeClass("menu-btn-z").addClass("menu-btn-j");
+            $('.input-b').removeClass("box-input-q").addClass("box-input");
+            $('.btn-nub30').removeClass("qu30").addClass("cun30");
+            $('.btn-nub30').attr("data-dian", "cun30-a").attr("data-img", "cun30");
+            $('.btn-nub50').removeClass("qu50").addClass("cun50");
+            $('.btn-nub50').attr("data-dian", "cun50-a").attr("data-img", "cun50");
+            $('.btn-nub100').removeClass("qu100").addClass("cun100");
+            $('.btn-nub100').attr("data-dian", "cun100-a").attr("data-img", "cun100");
+        }else if($(this).hasClass("btn-z")){
+            $(this).siblings(".btn-j").removeClass("btn-j-active");
+            $(this).addClass("btn-z-active");
+            $('.btn-qd').removeClass("menu-btn-j").addClass("menu-btn-z");
+            $('.input-b').removeClass("box-input").addClass("box-input-q");
+            $('.btn-nub30').removeClass("cun30").addClass("qu30");
+            $('.btn-nub30').attr("data-dian", "qu30-a").attr("data-img", "qu30");
+            $('.btn-nub50').removeClass("cun50").addClass("qu50");
+            $('.btn-nub50').attr("data-dian", "qu50-a").attr("data-img", "qu50");
+            $('.btn-nub100').removeClass("cun100").addClass("qu100");
+            $('.btn-nub100').attr("data-dian", "qu100-a").attr("data-img", "qu100");
+        }
+    });
+//    切换按钮颜色
+    $('.btn-qd').click(function () {
+        if($(this).hasClass("menu-btn-j")&&!$(this).hasClass("menu-btn-j-a")){
+            $(this).removeClass("menu-btn-j").addClass("menu-btn-j-a");
+        }else if($(this).hasClass("menu-btn-j-a")&&!$(this).hasClass("menu-btn-j")){
+            $(this).removeClass("menu-btn-j-a").addClass("menu-btn-j");
+        }else if($(this).hasClass("menu-btn-z")&&!$(this).hasClass("menu-btn-z-a")){
+            $(this).removeClass("menu-btn-z").addClass("menu-btn-z-a");
+        }else if($(this).hasClass("menu-btn-z-a")&&!$(this).hasClass("menu-btn-z")){
+            $(this).removeClass("menu-btn-z-a").addClass("menu-btn-z");
+        }
+    })
+//   跟换
+    $('body').on("click",".img-dian",function () {
+        var dian = $(this).data("dian");
+        var img = $(this).data("img");
+        if($(this).hasClass(img)){
+            $(this).removeClass(img);
+            $(this).siblings().removeClass(dian)
+            $(this).addClass(dian);
+        }else {
+            $(this).removeClass(dian);
+            $(this).siblings().removeClass(img)
+            $(this).addClass(img);
+        }
+
+    })
+//    切换登录注册
+    $('.login-nav').on("click","div",function () {
+        if($(this).hasClass("login-btn")){
+            $(this).siblings(".register-btn").removeClass("register-btn-a");
+            $(this).addClass("login-btn-a");
+            $('.login-box').removeClass("dis-no");
+            $('.register-box').addClass("dis-no");
+        }else if($(this).hasClass("register-btn")){
+            $(this).siblings(".login-btn").removeClass("login-btn-a");
+            $(this).addClass("register-btn-a");
+            $('.register-box').removeClass("dis-no");
+            $('.login-box').addClass("dis-no");
+        }
+    });
+//    切换活动
+$('.activity-nav').on("click","div",function () {
+    var dian = $(this).data("dian");
+    var img = $(this).data("img");
+    if($(this).hasClass("activity-btn")){
+        $(this).siblings(".song-btn").removeClass("song-btn-a");
+        $(this).siblings(".word-btn").removeClass("word-btn-a");
+        $(this).addClass("activity-btn-a");
+        $(this).removeClass("dis-no");
+//        $(this).siblings().addClass("dis-no");
+        $('.activity-box').removeClass("dis-no");
+        $('.song-box').addClass("dis-no");
+        $('.word-box').addClass("dis-no");
+    }else if($(this).hasClass("song-btn")){
+        $(this).siblings(".activity-btn").removeClass("activity-btn-a");
+        $(this).siblings(".word-btn").removeClass("word-btn-a");
+        $(this).addClass("song-btn-a");
+        $(this).removeClass("dis-no");
+//        $(this).siblings().addClass("dis-no");
+        $('.song-box').removeClass("dis-no");
+        $('.activity-box').addClass("dis-no");
+        $('.word-box').addClass("dis-no");
+    }else if($(this).hasClass("word-btn")){
+        $(this).siblings(".activity-btn").removeClass("activity-btn-a");
+        $(this).siblings(".song-btn").removeClass("song-btn-a");
+        $(this).addClass("word-btn-a");
+        $(this).removeClass("dis-no");
+//        $('.login-box').addClass("dis-no");
+        $('.word-box').removeClass("dis-no");
+        $('.activity-box').addClass("dis-no");
+        $('.song-box').addClass("dis-no");
+    }
+});
+</script>
+<script>
+//    音量滑动
+    var aac=false;
+    var isscroll;
+    $('.r-bar-img').on('touchstart',function() {
+        aac = true;
+        isscroll = true;
+    })
+    $('.r-bar-img1').on('touchstart',function() {
+        aac = false;
+        isscroll = true;
+    })
+    $(window).on('touchend',function() {
+            isscroll = false;
+        })
+
+    var startPosition = {}, deltaY, endPosition = {};
+    document.addEventListener('touchstart', touch, false);
+    document.addEventListener('touchmove', touch, false);
+    document.addEventListener('touchend', touch, false);
+
+    function touch(event) {
+        var event = event || window.event;
+        switch (event.type) {
+            case "touchstart":
+                var touch = event.touches[0];
+                startPosition = {
+                    x: touch.pageX,
+                    y: touch.pageY
+                }
+                break;
+            case "touchend":
+                break;
+            case "touchmove":
+                var touch = event.touches[0];
+                endPosition = {
+                    x: touch.pageX,
+                    y: touch.pageY
+                }
+                deltaY = endPosition.y - startPosition.y;
+                break;
+        }
+        let boxLeft = $(".r-bar").offset().left;
+        let boxWidth = $(".r-bar").width();
+        let allWidth = boxLeft - boxWidth;
+        if(isscroll){
+        if(aac){
+            if (endPosition.x <= boxLeft) {
+                $('.r-bar-b').css('width', '0%');
+            } else if (endPosition.x >= boxLeft + boxWidth) {
+                $('.r-bar-b').css('width', '91%');
+            } else {
+                let a = endPosition.x - boxLeft;
+                let b = parseFloat(a/boxWidth,4)*100;
+                $('.r-bar-b').css('width', b + '%');
+            }
+        }else{
+            if (endPosition.x <= boxLeft) {
+                $('.r-bar-b1').css('width', '0%');
+            } else if (endPosition.x >= boxLeft + boxWidth) {
+                $('.r-bar-b1').css('width', '91%');
+            } else {
+                let a = endPosition.x - boxLeft;
+                let b = parseFloat(a/boxWidth,4)*100;
+                $('.r-bar-b1').css('width', b + '%');
+            }
+        }
+        }
+    }
+</script>
+</html>

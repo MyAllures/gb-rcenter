@@ -1,0 +1,52 @@
+<script id="user_table" type="text/html">
+    <ul>
+        <li>
+            姓名：<input type="text" name="userName" value="{{:userName}}"/>
+        </li>
+        <li>
+            所在地：
+            <select name="city">
+                <option value="">请选择</option>
+                <option value="Manila" {{if city==='Manila'}} selected {{/if}}>Manila</option>
+                <option value="BeiJing" {{if city==='BeiJing'}} selected {{/if}}>Beijing</option>
+                <option value="XiangGang" {{if city==='XiangGang'}} selected {{/if}}>Xianggang</option>
+            </select>
+        </li>
+        <li>
+            年龄：<input type="text" name="age" value="{{:age}}"/>
+        </li>
+        <li>
+            喜好：{{:favorite}}
+        </li>
+    </ul>
+</script>
+<script id="user_msg" type="text/html">
+    <table border="1" cellspacing="0">
+        <tr>
+            <th>姓名：</th>
+            <td>{{:userName}}</td>
+        </tr>
+        <tr>
+            <th>所在地：</th>
+            <td>{{:city}}</td>
+        </tr>
+        <tr>
+            <th>年龄：</th>
+            <td>{{:age}}</td>
+        </tr>
+        <tr>
+            <th>喜好：</th>
+            <td>{{:favorite}}</td>
+        </tr>
+    </table>
+</script>
+<script id="poll_msg" type="text/html">
+    <div class="swiper-wrapper">
+        {{for imgs}}
+        <div class="swiper-slide">
+            <img style="width: 380px;height: 380px;" src="{{:url}}">
+        </div>
+        {{/for}}
+    </div>
+    <div class="swiper-pagination"></div>
+</script>

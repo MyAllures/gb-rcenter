@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>宏图娱乐棋牌主页</title>
+    <link rel="stylesheet" href="../../chress/res/css/common.css" />
+    <link rel="stylesheet" href="../../chress/res/css/index.css">
+</head>
+
+<style>
+</style>
+
+
+
+<body>
+    <div class="pack">
+        <!-- 公告走马灯 -->
+        <div id="marquee" class="notice">
+            <ul>
+                <li>
+                    <span>恭喜玩家
+                        <span class="notice_name">宏图娱乐</span>在KY龙争虎斗游戏里获得
+                        <span class="notice_price">200福利</span>!!</span>
+                </li>
+                <li>
+                    <span>恭喜玩家
+                        <span class="notice_name">宏图娱乐</span>在KY龙争虎斗游戏里获得
+                        <span class="notice_price">200福利</span>!!</span>
+                </li>
+            </ul>
+        </div>
+        <!-- 头部、整体布局上中下 -->
+        <header>
+            <div class="header_via">
+            </div>
+            <div class="header_name">
+                大赢家desio
+            </div>
+            <div class="header_center">
+                <a class="header_center_leftBtn clicksound"></a>
+                <div class="header_center_ctop">
+                    <span>随身福利</span>
+                    <span>200,000</span>
+                </div>
+                <div class="header_center_cbottom">
+                    <span>仓库福利</span>
+                    <span>1,000</span>
+                </div>
+                <a class="header_center_rightBtn clicksound"></a>
+            </div>
+            <div class="header_right clicksound">
+                <a></a>
+                <a onclick="header_right_userBtn()"></a>
+            </div>
+        </header>
+
+        <iframe id="core_content" name="core_content" src="home.html"></iframe>
+
+        <footer>
+            <div class="footer_left">
+                <div class="footer_left_val"></div>
+                <div class="footer_left_bg"></div>
+            </div>
+            <div class="footer_right clicksound">
+                <div></div>
+                <div ></div>
+                <div onclick="t2()"></div>
+                <div id="footer_backBtn" onclick="footer_backBtn(this)"></div>
+            </div>
+        </footer>
+
+        <div class="comm_shad" id="right_pop_box" onclick="pop_backBtn()">
+            <div class="right_pop_box">
+                <div class="right_pop_box_top">
+                    <div class="right_pop_box_top_ing"></div>
+                    <span class="right_pop_box_top_id">ID : 921118501</span>
+                    <p class="right_pop_box_top_name">当前福利:
+                        <span>200,333,22 G</span>
+                    </p>
+                </div>
+                <div class="right_pop_box_bottom clicksound">
+                    <a></a>
+                    <a></a>
+                    <a></a>
+                    <a></a>
+                    <a></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 强制横屏遮罩 -->
+        <div class="shade-across"></div>
+    </div>
+    <audio src="../../chress/res/sounds/clicksound.mp3" preload="preload" id="clicksound"></audio>
+
+
+    <!--首页弹窗部分-->
+
+
+</body>
+
+<script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
+<script src="../../chress/res/js/thirds/swipe/js/jquery.kxbdmarquee.js"></script>
+<script>
+    /* 强制横屏 */
+    var width = document.documentElement.clientWidth;
+    var height = document.documentElement.clientHeight;
+    if (width < height) {
+        $(".shade-across").show();
+    }
+    var evt = "onorientationchange" in window ? "orientationchange" : "resize";
+    window.addEventListener(evt, function () {
+        var width = document.documentElement.clientWidth;
+        var height = document.documentElement.clientHeight;
+        if (width < height) {
+            $(".shade-across").show();
+        }
+        else {
+            $(".shade-across").hide();
+        }
+    }, false);
+    document.addEventListener('touchmove', function (event) {
+        event.preventDefault();
+    }, { passive: false });
+
+    function openGame() {
+        window.location.href = 'loading.html'
+    }
+
+    function pop_backBtn() {
+        $('.right_pop_box').css('right', "-2rem")
+        setTimeout(() => {
+            $('#right_pop_box').css('top', '-1000px');
+        }, 500)
+    }
+
+    function header_right_userBtn() {
+        $('#right_pop_box').css('top', '0px');
+        setTimeout(() => {
+            $('.right_pop_box').css('right', "0")
+        }, 101);
+
+    }
+
+    function footer_backBtn(that) {
+        $(that).css('right', '11rem');
+        window.history.go(-1);
+    }
+
+    function footer_backBtn_show() {
+        $('#footer_backBtn').css('right', '.05rem');
+    }
+
+
+
+    // function t1() {
+    //     window.location.href = 'login.html';
+    // }
+    function t2() {
+        window.location.href = 'loading.html';
+    }
+
+
+
+
+
+
+    $(function () {
+        $("#marquee").kxbdMarquee({ isEqual: false });//走马灯初始化
+        $('.right_pop_box_bottom a').click(pop_backBtn())
+
+        $('.right_pop_box_bottom a').click(function () {
+            $(this).addClass('clickhover');
+            setTimeout(() => {
+                $(this).removeClass('clickhover');
+            }, 100);
+        })
+
+        $('.clicksound').click(() => {
+            document.getElementById('clicksound').play();
+        })
+    })
+
+
+</script>
+
+</html>

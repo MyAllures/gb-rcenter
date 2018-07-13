@@ -1,15 +1,18 @@
-define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstrapswitch) {
-    var _this=this;
+define(['common/BaseListPage', 'jsrender', 'bootstrapswitch'], function(BaseListPage,Bootstrapswitch) {
+    var _this = this;
+
     return BaseListPage.extend({
         /**
          * 初始化及构造函数，在子类中采用
          * this._super();
          * 调用
          */
+        selectIds:null,
         noRecordMessage:window.top.message.common["find.norecord"],
         init: function (title) {
             this.formSelector = "#mainFrame form";
             this._super("formSelector");
+            _this = this;
             this.noRecordMessage = window.top.message.common["find.norecord"];
         },
         /**
@@ -26,88 +29,9 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
              */
             this._super();
             var _this = this;
-            $(".tab-pane").css("display","block");
-            var $bootstrapSwitch = $('input[type=checkbox][name=my-checkbox]');
-            this.unInitSwitch($bootstrapSwitch)
-                .bootstrapSwitch(
-                    {
-                        onText: window.top.message.content['floatPic.display.on'],
-                        offText: window.top.message.content['floatPic.display.off'],
-                        onSwitchChange: function (e, state) {
-                            var _target = e.currentTarget;
-                            var payRankId = $(_target).attr("payRankId");
-                            var type=$(_target).attr("mold");
-                            var msg="";
-                            if(type=="is_lottery_site"){
-                                msg="关闭后该站点将转为混合站,确认关闭吗？"
-                            }else if(type=="auto_pay"){
-                                msg="关闭后该网站将失去免转功能，确认关闭吗？"
-                            }else if(type=="is_bitcoin") {
-                                msg = "关闭后该网站将失去比特币取款功能，确认关闭吗？"
-                            // }else if(type=="is_enable"){
-                            //     msg="关闭后该网站将失去导入玩家功能，确认关闭吗？"
-                            }else {
-                                msg="关闭后该网站将失去现金取款功能，确认关闭吗？"
-                            }
-                            if (!$(_target).attr("isChanged")&&!state) {
-                                var okLabel = window.top.message.setting['common.ok'];
-                                var cancelLabel = window.top.message.setting['common.cancel'];
-                                window.top.topPage.showConfirmDynamic(window.top.message.common['msg'], msg, okLabel, cancelLabel, function (confirm) {
-                                    if (confirm && !$(_target).attr("isChanged")) {
-                                        window.top.topPage.ajax({
-                                            url: root + '/vSysSiteManage/fetchSiteId.html',
-                                            dataType: "json",
-                                            data: {"result.paramValue": state, "result.siteId": payRankId,"result.paramCode":type},
-                                            success: function (data) {
-                                                if(data){
-                                                    $(_target).attr("isChanged", true);
-                                                    // $(_target).bootstrapSwitch("state", !_target.checked);
-                                                    $("#status").removeClass("label-success");
-                                                    $("#status").addClass("label-danger");
-                                                    _this.query(e);
-                                                }else{
-                                                    page.showPopover(e,{"callback":function () {
-                                                        _this.query(e);
-                                                    }},"danger","操作失败",true);
-                                                }
+            selectIds = null;
 
-                                            }
-                                        });
-                                    }
-                                })
-                            }else if(!$(_target).attr("isChanged")&&state) {
-                                window.top.topPage.ajax({
-                                    url: root + '/vSysSiteManage/fetchSiteId.html',
-                                    dataType: "json",
-                                    data: {"result.paramValue": state, "result.siteId": payRankId,"result.paramCode":type},
-                                    success: function (data) {
-                                        if(data){
-                                            $(_target).attr("isChanged", true);
-                                            // $(_target).bootstrapSwitch("state", !_target.checked);
-                                            $("#status").removeClass("label-success");
-                                            $("#status").addClass("label-danger");
-                                            _this.query(e);
-                                        }else{
-                                            page.showPopover(e,{"callback":function () {
-                                                _this.query(e);
-                                            }},"danger","操作失败",true);
-                                        }
-                                    }
-                                });
-                                return true;
-                            }
-                            else if($(_target).attr("isChanged")){
-                                $(_target).removeAttr("isChanged");
-                                return true;
-                            }
-                            return false;
-                        }
-                    });
-            /*$("ul li a","div.panel").on("click",function(e){
-                var $href = $(this).data("href");
-                $("#mainFrame").load(root+$href);
-            });*/
-            var $bootstrapSwitchs = $('input[type=checkbox][name=my-checkboxstatus]');
+            var $bootstrapSwitchs = $('input[type=checkbox][name=my-checkbox]');
             this.unInitSwitch($bootstrapSwitchs)
                 .bootstrapSwitch({
                     onText: window.top.message.content['floatPic.dislpay.on'],
@@ -151,15 +75,15 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                                         }
                                     });
                                     $this.bootstrapSwitch('indeterminate', false);
-                                }else {
+                                } else {
                                     $this.bootstrapSwitch('indeterminate', false);
                                     $this.bootstrapSwitch('state', !state, true);
                                 }
                             })
                         }
-
                 })
         },
+
         /**
          * 当前对象事件初始化函数
          */
@@ -167,33 +91,19 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
             this._super();
         },
 
-        /*requery:function(event,option) {
-            $("#mainFrame").load(window.top.topPage.getCurrentFormAction(event));
-        },
-
-        reloadView:function(e,option){
-            if(e.returnValue){
-                var id = $("[name=id]").val();
-                $("#mainFrame").load(root+"/vSiteMasterManage/viewBasic.html?search.id="+id);
-            }
-        },*/
-
-        getSelectIdsArray:function(e,option)
-        {
-            var checkedItems = [],counter = 0;
-            $("table tbody input[type=checkbox]",this.getCurrentForm(e)).not("[name=my-checkbox]").each(function(node,obj) {
-                if(obj.checked) {
+        getSelectIdsArray: function (e, option) {
+            var checkedItems = [], counter = 0;
+            $("table tbody input[type=checkbox]", this.getCurrentForm(e)).not("[name=my-checkbox]").each(function (node, obj) {
+                if (obj.checked) {
                     checkedItems[counter] = obj.value;
                     counter++;
                 }
             });
-
             return checkedItems;
         },
 
-        getSelectIds:function(e,option)
-        {
-            return {ids:this.getSelectIdsArray(e,option).join(",")};
+        getSelectIds: function (e, option) {
+            return this.getSelectIdsArray(e, option).join(",");
         },
 
         /**
@@ -233,5 +143,16 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
             }
         },
 
+        batchAddSiteMaintain: function (e, option) {
+            var ids = this.getSelectIds(e, option);
+            option.target = root + "/sysSite/batchSiteMaintain.html?opType=add&siteIds="+ids;
+            window.top.topPage.doDialog(e, option);
+        },
+
+        batchCancelSiteMaintain: function (e, option) {
+            var ids = this.getSelectIds(e, option);
+            option.target = root + "/sysSite/batchSiteMaintain.html?opType=cancel&siteIds="+ids;
+            window.top.topPage.doDialog(e, option);
+        }
     });
 });

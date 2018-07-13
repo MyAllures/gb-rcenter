@@ -1,0 +1,56 @@
+body{background: black url(../image/login/login_bg.png) 0 0/100% 100% no-repeat;position: relative;font-size: .14rem;color: white;-webkit-tap-highlight-color:#460564dc!important}
+.logo{    width: 2.8rem;
+    height: 1.1rem;
+    overflow: visible;
+    position: absolute;
+    top: -0.15rem;
+    left: -.4rem;
+    background: url(../image/loading/loading_logo.png) 0 0/100% 100% no-repeat;}
+　
+　　:-moz-placeholder {color: white}
+　　::-moz-placeholder {color: white}
+　　:-ms-input-placeholder {color: white}
+::-webkit-input-placeholder{color: white}
+        
+
+.bord{width: 2.9rem;height: 2.5rem;background: url(../image/login/login_bor.png) 0 0/100% 100% no-repeat;position: absolute;margin: auto;left: 0;right: 0;top: 0;bottom: 0;
+}
+.inpname{margin-left: .1rem;}
+.inpname1{margin-left: -.04rem;}
+.inp{color:white;height: 100%;width: 2rem;border: 1px solid #9444ad;border-radius: 5px;background: none;text-align: center;margin-left: .08rem;font-size: .12rem;}
+.inp1{color:white;height: 100%;width: 1.25rem;border: 1px solid #9444ad;border-radius: 5px;background: none;text-align: center;margin-left: .08rem;font-size: .12rem;}
+.bord ul{width: 100%;height: 100%;padding: .17rem;}
+.bord li{margin-bottom: .08rem;height: .31rem;}
+.num{width: .71rem;height: 100%;vertical-align: top;}
+.remnum{display: inline-block;width: .12rem;height: .12rem;border: 1px solid white;margin-left: .5rem;margin-right: .05rem;background: url(../image/login/gou.png) 0 0/100% 100% no-repeat;}
+.remnum_sp{vertical-align: 0.025rem;font-size: .12rem}
+.remnum_sp:nth-of-type(2){margin-left: .5rem}
+.login_btn{height: .40rem;width: 1.7rem;margin: 0 auto;background:url(../image/login/login_btn.png) 0 0/100% 100% no-repeat;display: block}
+.login_btn:active{transform: scale(0.98)}
+.bot1{margin-left: .59rem;margin-right: .55rem}
+.bord li:nth-of-type(4){padding-top: .1rem;margin-bottom: 0;}
+.bord li:last-child{margin-top: .15rem}
+.pop_reg{display:none;width: 3.55rem;height: 3.35rem;background: url(../image/login/pop_bg.png) 0 0/100% 100% no-repeat;position: absolute;left: 0;right: 0;top: 0;bottom: 0;margin: auto;
+}
+#regifram{width: 3.4rem;height:2.76rem;position: absolute;margin: auto;left: 0;right: 0;top: .51rem;background: rgba(116, 10, 148, 0.8779);-webkit-overflow-scrolling: touch;overflow: auto }
+#regifram li{margin-top: .1rem;margin-left: .08rem;height: .31rem;}
+#regifram i{font-style: normal;color: #bb9860}
+#regifram input[type="text"]{color:white;height: 100%;width: 2rem;border: 1px solid #9444ad;border-radius: 5px;background: none;text-align: center;margin-left: .02rem;font-size: .12rem;}
+#regifram input[type="tel"]{color:white;height: 100%;width: 2rem;border: 1px solid #9444ad;border-radius: 5px;background: none;text-align: center;margin-left: .02rem;font-size: .12rem;}
+.spc1{margin-left: .28rem;}
+.spc2{margin-left: .33rem;}
+.inp_spc{width: 1.25rem!important;}
+#agree{    vertical-align: middle;display: inline-block;width: .12rem;height: .12rem;border: 1px solid white;margin-left: .55rem;margin-right: .05rem;background: url(../image/login/gou.png) 0 0/100% 100% no-repeat;}
+.agree_font{font-size: .11rem;}
+.ques{color:white;height: 100%;width: 2rem;border: 1px solid #9444ad;border-radius: 5px;background: none;margin-left: .02rem;font-size: .12rem;
+display: inline-block;vertical-align: middle;position: relative;line-height: .3rem;text-align: center;}
+.ques::after{content: '';position: absolute;right: .1rem;top: .12rem;border-top: .09rem solid white;border-left: .09rem solid transparent;border-right: .09rem solid transparent} 
+.chooques{display:none;width: 100%;height: 1rem;-webkit-overflow-scrolling: touch ;overflow: auto;position: absolute;left: 0;top: .31rem;background: #390255e7}
+.chooques li:active{background: #390255}
+.chooques li{border-bottom:1px solid #9444ad;margin:0!important;}
+.resgBtn{background: url(../image/login/resg.png) 0 0/100% 100% no-repeat;height: .40rem;width: 1.3rem;display: block;margin: auto;}
+.resgBtn:active{transform: scale(.98)}
+.xx{background: url(../image/login/xx.png) 0 0/100% 100% no-repeat;height: .3rem;width: .3rem;display: block;position: absolute;right: -.13rem;top: -.05rem}
+.xx:active{transform: scale(.98)}
+
+
