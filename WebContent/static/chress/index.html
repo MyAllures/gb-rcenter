@@ -33,7 +33,7 @@
         </div>
         <!-- 头部、整体布局上中下 -->
         <header>
-            <div class="header_via">
+            <div class="header_via man">
             </div>
             <div class="header_name">
                 大赢家desio
@@ -65,7 +65,7 @@
             </div>
             <div class="footer_right clicksound">
                 <div></div>
-                <div ></div>
+                <div></div>
                 <div onclick="t2()"></div>
                 <div id="footer_backBtn" onclick="footer_backBtn(this)"></div>
             </div>
@@ -74,17 +74,17 @@
         <div class="comm_shad" id="right_pop_box" onclick="pop_backBtn()">
             <div class="right_pop_box">
                 <div class="right_pop_box_top">
-                    <div class="right_pop_box_top_ing"></div>
+                    <div class="right_pop_box_top_ing man"></div>
                     <span class="right_pop_box_top_id">ID : 921118501</span>
                     <p class="right_pop_box_top_name">当前福利:
                         <span>200,333,22 G</span>
                     </p>
                 </div>
                 <div class="right_pop_box_bottom clicksound">
-                    <a></a>
-                    <a></a>
-                    <a></a>
-                    <a></a>
+                    <a>福利记录</a>
+                    <a>牌局记录</a>
+                    <a>安全中心</a>
+                    <a>联系客服</a>
                     <a></a>
                 </div>
             </div>
@@ -93,6 +93,7 @@
         <!-- 强制横屏遮罩 -->
         <div class="shade-across"></div>
     </div>
+    <audio src="../../chress/res/sounds/bgm.mp3" preload="preload" id="clicksound" loop="loop" autoplay="autoplay"></audio>
     <audio src="../../chress/res/sounds/clicksound.mp3" preload="preload" id="clicksound"></audio>
 
 
@@ -107,6 +108,7 @@
     /* 强制横屏 */
     var width = document.documentElement.clientWidth;
     var height = document.documentElement.clientHeight;
+    var gostatus = true;
     if (width < height) {
         $(".shade-across").show();
     }
@@ -141,15 +143,24 @@
         setTimeout(() => {
             $('.right_pop_box').css('right', "0")
         }, 101);
-
     }
 
+    
     function footer_backBtn(that) {
-        $(that).css('right', '11rem');
         window.history.go(-1);
+        if(gostatus){
+            $(that).css('right', '11rem');
+        }else{
+            gostatus = !gostatus;
+        }
     }
 
-    function footer_backBtn_show() {
+
+    function footer_backBtn_show(parms) {
+        if(parms == false)
+        gostatus = parms
+        else
+        gostatus = true;
         $('#footer_backBtn').css('right', '.05rem');
     }
 
