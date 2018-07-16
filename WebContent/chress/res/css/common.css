@@ -19,7 +19,10 @@ iframe{border: none}
   z-index: 1000;display: none;animation: swoperBtn1 2s infinite linear}
 .comm_loading{
     position: relative;
-    background: url(../image/home/gm1.png) 1000px 1000px/1.10rem .97rem no-repeat!important;
+    background-position:1000px 1000px!important;
+}
+.comm_loading1>.games_border{
+right: -1000px;
 }
 
 .comm_spinner{
