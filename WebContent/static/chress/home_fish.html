@@ -77,11 +77,11 @@
                 },
             },
         });
-        nextBtn = () => {//滚动到最右边
+        nextBtn = function(){//滚动到最右边
             console.log("assd")
             swiper.slideTo(150, 700, true);
         }
-        prevBtn = () => {//滚动到最左边
+        prevBtn = function(){//滚动到最左边
             swiper.slideTo(0, 700, true);
         }
 
@@ -102,7 +102,7 @@
                 window.top.openGame();//加载页效果
         })
 
-        $('.clicksound').click(() => {
+        $('.clicksound').click(function(){
             document.getElementById('clicksound').play();
         })
          
