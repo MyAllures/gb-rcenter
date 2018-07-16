@@ -33,7 +33,7 @@ img{margin: 0 auto;padding: 0;}
 .cpm_content{width: 3rem;height: 2.02rem; margin-top: -0.1rem; border: 1px solid #929FD6;border-top:none !important; background-color: rgba(42, 53, 138, 0.9);padding: 0.07rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
 .cpm_content>.ctt{width: 2.82rem;height:1.33rem;border: 1px solid #6F7AC1;    border-radius: 5px; background-color: rgba(66, 80, 174, 0.8);}
 .dis-in{display: inline-block;}
-.dis-no{display: none;}
+.dis-no{display: none !important;}
 .img_via{width: 0.8rem;  height: 0.8rem; margin-top: 0.28rem;  vertical-align: top; margin-left: 0.1rem;  background: url("../image/cpm/photo_male.png") no-repeat 0 0;background-size:100%; border-radius: 0.1rem;overflow: hidden; }
 .via_box{font-size: 0.14rem;width: 58%;margin-left: -0.3rem;    padding: 0.15rem 0.1rem;}
 .via_box h4{border: 1px solid #C68F37;  background-color: #263981;  border-radius: 10px; box-sizing: border-box; padding: 0 0.1rem;  width: 1.7rem;}
@@ -287,12 +287,20 @@ img{margin: 0 auto;padding: 0;}
 .btn-input{background: url("../image/cpm/btn_large.png") no-repeat 0 0/100%;background-color: #344abb ;margin-top:0.05rem;width:1.45rem;height:0.47rem;letter-spacing: 0.02rem;font-weight: bold;border-radius: 0.1rem;text-align:center;color: #fff;font-size: 0.2rem;line-height: 0.47rem;}
 .btn-input-a{background-color:#d19407 !important ;}
 .pwd-box{width:3.1rem ;height: 2.84rem;border:1px solid #7283D7;  background-color:#4557C7 ; overflow: hidden; box-sizing: border-box;text-align: right; color: #fff; font-size: 0.14rem;  position: absolute;  top: 0.54rem;  right: 0.1rem;}
-.pwd-size{width: 0.86rem;height: 100%;position: absolute;top: 0;left: 0;}
+.pwd-size{width: 0.86rem;height: 100%;position: absolute;top: 0;left: 0;margin-top: 0.2rem;}
 .pwd-size>p{margin: 20px 0;text-align: right;font-size: 0.14rem;color: #fff;}
-.pwd-size>input{width: 1.95rem;height: 0.33rem!important;  background-color: #232B6A;margin-bottom: 0.11rem;border: 1px solid #8994DB;border-radius: 0.05rem;padding: 0 5px;box-sizing: border-box;}
-.btn-input{background: url("../image/cpm/btn_large.png") no-repeat 0 0/100%;background-color: #344abb ;margin-top:0.05rem;width:1.45rem;height:0.47rem;letter-spacing: 0.02rem;font-weight: bold;border-radius: 0.1rem;text-align:center;color: #fff;font-size: 0.2rem;line-height: 0.47rem;}
-.btn-input-a{background-color:#d19407 !important ;}
+.pwd-size-input{width: 2.1rem;height: 100%;position: absolute;top: 0;left: 0.92rem;margin-top: 0.35rem;text-align: left;}
+.pwd-size-input>input{width: 1.95rem;height: 0.33rem!important;  background-color: #232B6A;margin-bottom: 0.06rem;border: 1px solid #8994DB;border-radius: 0.05rem;padding: 0 5px;box-sizing: border-box;}
 
 .card-box{    width: 3.1rem;  height: 2.84rem;border:1px solid #7283D7;  background-color:#4557C7 ;overflow: hidden; box-sizing: border-box;text-align: right; color: #fff; font-size: 0.14rem;  position: absolute;  top: 0.54rem;  right: 0.1rem;}
 .card-size{width: 0.86rem;height: 100%;position: absolute;top: 0;left: 0;}
 .card-size>p{margin: 20px 0;text-align: right;font-size: 0.14rem;color: #fff;}
+.card-input{width: 2.1rem;height: 100%;position: absolute;top: 0;left: 0.92rem;margin-top: 0.13rem;text-align: left;}
+.card-input>input{width: 1.95rem;height: 0.33rem!important;  background-color: #232B6A;margin-bottom: 0.06rem;border: 1px solid #8994DB;border-radius: 0.05rem;padding: 0 5px;box-sizing: border-box;}
+.card-input>.card-ka{width: 1.95rem;height: 0.33rem!important; position: relative;margin-bottom: 0.06rem; background-color: #232B6A;color:#fff;border: 1px solid #8994DB;border-radius: 0.05rem;padding: 0 5px;box-sizing: border-box;}
+.card-input>p{font-size: 0.09rem!important;  margin-bottom: 0.13rem;  margin-right: 0.15rem;line-height: 0.09rem;text-align: center;}
+.card-con{line-height: 0.3rem;}
+.card-yin{overflow:auto;-webkit-overflow-scrolling: touch ;position:absolute;top:0.31rem;left:-0.01rem;width: 1.95rem;height: 0.79rem;background-color: #232B6A;color:#fff;border: 1px solid #8994DB;padding: 0 5px;box-sizing: border-box;}
+
+
+
