@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <title>宏图娱乐捕鱼</title>
+    <title>宏图娱乐电子游艺</title>
     <link rel="stylesheet" href="../../chress/res/js/thirds/swipe/css/swiper.css" />
     <link rel="stylesheet" href="../../chress/res/css/common.css" />
     <link rel="stylesheet" href="../../chress/res/css/home_game.css" />
@@ -13,34 +13,34 @@
 
 
 
-<body>
+<body onload="load()">
     <!-- Swiper -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
 
             <div class="swiper-slide game-box">
-                <div class="game1 clicksound"></div>
-                <div class="game2 clicksound"></div>
+                <div class="game1 clicksound comm_loading"></div>
+                <div class="game2 clicksound comm_loading"></div>
             </div>
             <div class="swiper-slide game-box">
-                <div class="game3 clicksound"></div>
-                <div class="game4 clicksound"></div>
+                <div class="game3 clicksound comm_loading"></div>
+                <div class="game4 clicksound comm_loading"></div>
             </div>
             <div class="swiper-slide game-box">
-                <div class="game5 clicksound"></div>
-                <div class="game6 clicksound"></div>
+                <div class="game5 clicksound comm_loading"></div>
+                <div class="game6 clicksound comm_loading"></div>
             </div>
             <div class="swiper-slide game-box">
-                <div class="game7 clicksound"></div>
-                <div class="game8 clicksound"></div>
+                <div class="game7 clicksound comm_loading"></div>
+                <div class="game8 clicksound comm_loading"></div>
             </div>
             <div class="swiper-slide game-box">
-                <div class="game9 clicksound"></div>
-                <div class="game10 clicksound"></div>
+                <div class="game9 clicksound comm_loading"></div>
+                <div class="game10 clicksound comm_loading"></div>
             </div>
             <div class="swiper-slide game-box">
-                <div class="game11 clicksound"></div>
-                <div class="game12 clicksound"></div>
+                <div class="game11 clicksound comm_loading"></div>
+                <div class="game12 clicksound comm_loading"></div>
             </div>
         </div>
     </div>
@@ -54,7 +54,17 @@
 <script src="../../chress/res/js/thirds/swipe/js/swiper.min.js"></script>
 <script type="text/javascript" src="../../chress/res/js/thirds/swipe/js/jquery.let_it_snow.js"></script>
 <script>
+    function load() {
+        $(".comm_spinner").remove();
+        $(".comm_loading").removeClass("comm_loading");
+    }
     $(function () {
+        const gamBtn = $(".clicksound");
+        gamBtn.append(
+            `<div class="comm_spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>`)
         $('body,html').css('width', window.screen.height)//初始化品目宽度配合swiper插件
         var swiper = new Swiper('.swiper-container', {//Swiper实例化
             slidesPerView: "auto",
@@ -96,12 +106,15 @@
             event.preventDefault();
         }, { passive: false });
 
-        $('.game-box').click(function () {
-            window.top.openGame();//加载页效果
-        })
 
         $('.clicksound').click(() => {
             document.getElementById('clicksound').play();
+        })
+
+        gamBtn.click(function () {
+            let pageNum = $(this).attr("class")[4];
+            window.top.footer_backBtn_show(false);
+            window.location.href = `home_games.html?imgID=${pageNum}`
         })
 
     })

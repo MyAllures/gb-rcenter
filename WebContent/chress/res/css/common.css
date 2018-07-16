@@ -13,3 +13,65 @@ iframe{border: none}
 .comm_shad{position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: rgba(5, 5, 5, 0.675);z-index: 10000;}
 
 .comm_uodate::after{content: "";position: absolute;right: .05rem;top: .24rem;width: .32rem;height: .16rem;background: url(../image/index/update.png)0 0/100% 100% no-repeat;}
+.swiper-nextBtn{position: fixed;right: .1rem;top:0;bottom:0;margin:auto 0;width: .47rem;height: .55rem;background: url(../image/home/lar.png) 0 0/100% 100% no-repeat;
+  z-index: 1000;animation: swoperBtn 2s infinite linear}
+.swiper-prevBtn{position: fixed;left: .1rem;top:0;bottom:0;margin:auto 0;width: .47rem;height: .55rem;background: url(../image/home/lar.png) 0 0/100% 100% no-repeat;
+  z-index: 1000;display: none;animation: swoperBtn1 2s infinite linear}
+.comm_loading{
+    position: relative;
+    background-position:1000px 1000px!important;
+}
+.comm_loading1>.games_border{
+right: -1000px;
+}
+
+.comm_spinner{
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    text-align: center;
+    /* -webkit-animation: rotate 2.0s infinite linear; */
+    animation: rotate 2.0s infinite linear;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.dot1, .dot2 {
+    width: 40%;
+    height: 40%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.712);
+    border-radius: 100%;
+    -webkit-animation: bounce 2.0s infinite ease-in-out;
+    animation: bounce 2.0s infinite ease-in-out;
+}
+   
+  .dot2 {
+    top: auto;
+    bottom: 0px;
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
+   
+  @-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
+  @keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+   
+  @-webkit-keyframes bounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) }
+  }
+   
+  @keyframes bounce {
+    0%, 100% {
+      transform: scale(0.0);
+      -webkit-transform: scale(0.0);
+    } 50% {
+      transform: scale(1.0);
+      -webkit-transform: scale(1.0);
+    }
+  }
