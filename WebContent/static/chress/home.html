@@ -125,11 +125,11 @@
                 },
             },
         });
-        nextBtn = () => {//滚动到最右边
+        nextBtn = function(){//滚动到最右边
             console.log("assd")
             swiper.slideTo(150, 700, true);
         }
-        prevBtn = () => {//滚动到最左边
+        prevBtn = function(){//滚动到最左边
             swiper.slideTo(0, 700, true);
         }
 
@@ -166,26 +166,26 @@
             // $('.game-box').css('right','-700px');
             // $('.carousel-box').css('left','-500px')
 
-            // setTimeout(() => {
+            // setTimeout(function(){
             // window.top.openGame();//加载页效果
             // }, 1000);
 
         })
 
 
-        $('.game16').click(() => {
+        $('.game16').click(function(){
             window.top.footer_backBtn_show();
             window.location.href = 'home_people.html';
         })
-        $('.game15').click(() => {
+        $('.game15').click(function(){
             window.top.footer_backBtn_show();
             window.location.href = 'home_game.html';
         })
-        $('.game14').click(() => {
+        $('.game14').click(function(){
             window.top.footer_backBtn_show();
             window.location.href = 'home_fish.html';
         })
-        $('.clicksound').click(() => {
+        $('.clicksound').click(function(){
             document.getElementById('clicksound').play();
         })
     })

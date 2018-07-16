@@ -94,7 +94,7 @@
         <!-- 强制横屏遮罩 -->
         <div class="shade-across"></div>
     </div>
-    <audio src="../../chress/res/sounds/bgm.mp3" preload="preload" id="clicksound" loop="loop" autoplay="autoplay"></audio>
+    <audio src="../../chress/res/sounds/bgm.mp3" preload="preload"  loop="loop" autoplay="autoplay"></audio>
     <audio src="../../chress/res/sounds/clicksound.mp3" preload="preload" id="clicksound"></audio>
     <audio src="../../chress/res/sounds/wrong.mp3" preload="preload" id="clicksound_wrong"></audio>
     <audio src="../../chress/res/sounds/money.mp3" preload="preload" id="clicksound_money"></audio>
@@ -570,14 +570,14 @@
 
     function pop_backBtn() {
         $('.right_pop_box').css('right', "-2rem")
-        setTimeout(() => {
+        setTimeout(function(){
             $('#right_pop_box').css('top', '-1000px');
         }, 500)
     }
 
     function header_right_userBtn() {
         $('#right_pop_box').css('top', '0px');
-        setTimeout(() => {
+        setTimeout(function(){
             $('.right_pop_box').css('right', "0")
         }, 101);
     }
@@ -613,13 +613,19 @@
 
         $('.right_pop_box_bottom a').click(function () {
             $(this).addClass('clickhover');
-            setTimeout(() => {
+            setTimeout(function(){
                 $(this).removeClass('clickhover');
             }, 100);
         })
 
-        $('.clicksound').click(() => {
+        $('.clicksound').click(function(){
             document.getElementById('clicksound').play();
+        })
+        $('.clicksound_wrong').click(function(){
+            document.getElementById('clicksound_wrong').play();
+        })
+        $('.clicksound_money').click(function(){
+            document.getElementById('clicksound_money').play();
         })
     })
 
