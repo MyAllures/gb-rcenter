@@ -27,7 +27,7 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .nav { background: #151515 url(./images/nav-bg.png) 0 0/100% 60px repeat-x; border-top: 0; position: relative; }
 .nav:after { content: ''; position: absolute; height: 1px; background: transparent; bottom: 3px; left: 0; right: 0; }
 .nav .swiper-slide { color: #fff; position: relative; }
-.nav .swiper-slide.swiper-slide-active span { color: #7b340d; }
+.nav .swiper-slide.swiper-slide-active span { color: #f3ac61; }
 .nav .swiper-slide.swiper-slide-active:after { content: ''; position: absolute; top: 0; left: 50%; margin-left: -37px; z-index: 1; width: 74px; height: 70px; background: url(images/nav-item-active-bg.png) center top/74px 65px no-repeat; }
 
 /* api-grid */
@@ -41,9 +41,9 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.mui-active { border-bottom: 1px solid #168df6; }
 
 /* mui-bar-footer */
-.mui-bar-tab { background: #252525; border-top: 1px solid #393939; }
-.mui-bar-tab .mui-tab-label { color: #666; }
-.mui-bar-tab .mui-active .mui-tab-label { color: #7b340d; }
+.mui-bar-tab { background: #4e2109 !important; border-top: 1px solid #5d270b; }
+.mui-bar-tab .mui-tab-label { color: #96735f; }
+.mui-bar-tab .mui-active .mui-tab-label { color: #f3ac61; }
 
 /* mui-off-canvas-left */
 .mui-off-canvas-left { background: #444; }
