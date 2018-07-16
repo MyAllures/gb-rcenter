@@ -949,7 +949,7 @@
                 url = "https://im.ampinplayopt0matrix.com";
                 break;
             case '${data.apiProviders["SS"].code}':
-                url = "https://hyxu36.uv178.com/whb/view.php";
+                url = "https://hyxu36.uv178.com/whb/view.php?language=simplified";
                 break;
             case '${data.apiProviders["SB"].code}':
                 url = "https://mkt.ampinplayopt0matrix.com?lang=cs";
