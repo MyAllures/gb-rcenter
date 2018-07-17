@@ -206,6 +206,19 @@
         // console.log(1);
         $(".security").removeClass("dis-no").fadeIn();
     })
+    //选择银行
+    $(".card-ka").click(function () {
+        $(".card-yin").removeClass("dis-no");
+    })
+    $(".card-yin").on("click","li",function () {
+        $(this).parent().addClass("dis-no");
+        console.log($(this).parent());
+        var litext = $(this).text();
+        $(".card-con").text(litext);
+    })
+
+
+
 
 //    音量滑动
 var aac=false;
@@ -226,7 +239,7 @@ var startPosition = {}, deltaY, endPosition = {};
 document.addEventListener('touchstart', touch, false);
 document.addEventListener('touchmove', touch, false);
 document.addEventListener('touchend', touch, false);
-
+/**
 function touch(event) {
     var event = event || window.event;
     switch (event.type) {
@@ -274,4 +287,4 @@ function touch(event) {
             }
         }
     }
-}
+}**/
