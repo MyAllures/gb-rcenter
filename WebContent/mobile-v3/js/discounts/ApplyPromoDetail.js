@@ -149,6 +149,7 @@ function fetchActivityProcess() {
                 $('.btn_cust_serv').addClass('mui-hidden');
                 return;
             }
+            var deadLineTime = (new Date(data.deadLineTime)).Format("yyyy-MM-dd hh:mm:ss");
             if (code == 'deposit_send' && data.transactions) {//存就送
                 var transactions = data.transactions;
                 var text;
@@ -158,13 +159,15 @@ function fetchActivityProcess() {
                     } else {
                         text = window.top.message.common['recharge_type.' + transactions[j].rechargeType];
                     }
+                    var checkTime = (new Date(transactions[j].checkTime)).Format("yyyy-MM-dd hh:mm:ss");
+
 
                     var html = ['<div class="promo_item" data-rel=\'{"target":"applyDepositSend","opType":"function","code":"' + code + '","resultId":"' + resultId + '","trancNo":"' + transactions[j].transactionNo + '"}\'>',
                         '<div class="ite">',
                         '<span class="ti">存款订单号：</span>' + transactions[j].transactionNo,
                         '</div>',
                         '<div class="ite">',
-                        '<span class="ti">交易时间：</span> ' + transactions[j].checkTime,
+                        '<span class="ti">交易时间：</span> ' + checkTime,
                         '</div>',
                         '<div class="ite">',
                         '<span class="ti">存款金额：</span> ¥' + transactions[j].rechargeAmount,
@@ -194,8 +197,9 @@ function fetchActivityProcess() {
                     $('.promo_con_list .mui-table-view').append(html);
                     html = '';
                 }
+
                 $('.pro_mone .mui-pull-left').html('有效投注额：<span class="color-gray">¥ ' + data.effectivetransaction + '</span>');
-                $('#join .app_num').html('派奖时间：<span class="color-blue">' + data.deadLineTime + '</span>');
+                $('#join .app_num').html('派奖时间：<span class="color-blue">' + deadLineTime + '</span>');
                 $('#unCommit .app_num').html('已有 <span class="color-blue">' + data.ApplyNum + '</span>人，报名成功');
                 if (data.hasApply) {
                     $('#join').removeClass('mui-hidden');
@@ -237,7 +241,7 @@ function fetchActivityProcess() {
                     }
                 }
                 $('.pro_mone .mui-pull-left').html(proMoneText + '：<span class="color-gray">¥ ' + data.profitloss + '</span>');
-                $('#join .app_num').html('派奖时间：<span class="color-blue">' + data.deadLineTime + '</span>');
+                $('#join .app_num').html('派奖时间：<span class="color-blue">' + deadLineTime + '</span>');
                 $('#unCommit .app_num').html('已有 <span class="color-blue">' + data.ApplyNum + '</span>人，报名成功');
                 if (data.hasApply) {
                     $('#join').removeClass('mui-hidden');
@@ -287,7 +291,7 @@ function applyDepositSend(obj, options) {
                 $(obj).find('.promo_item_sta').html(successIsAudit);
                 $(obj).find('.promo_item_sta').addClass(successState);
             } else {
-                toast(window.top.message.apply_activity[data.msg]);
+                toast(window.top.message.apply_activity[data.msg]);//"apply_activitty_transaction_money_less_error"
             }
         }
     };
@@ -351,3 +355,20 @@ function defailShow(msg) {
         mask.close();//关闭遮罩
     }, 2000);
 }
+
+//时间格式化
+Date.prototype.Format = function (fmt) { //author: meizz
+    var o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+};
