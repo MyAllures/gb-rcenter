@@ -167,7 +167,7 @@
     }
 
     $(function () {
-        const gamBtn = $(".clicksound");
+        var gamBtn = $(".clicksound");
         gamBtn.append(
             `<div class="comm_spinner">
             <div class="dot1"></div>
@@ -195,10 +195,10 @@
             },
         });
 
-        nextBtn = () => {//滚动到最右边
+        nextBtn = function(){//滚动到最右边
             swiper.slideTo(150, 700, true);
         }
-        prevBtn = () => {//滚动到最左边
+        prevBtn = function(){//滚动到最左边
             swiper.slideTo(0, 700, true);
         }
 
@@ -215,7 +215,7 @@
         }, { passive: false });
 
 
-        $('.clicksound').click(() => {
+        $('.clicksound').click(function(){
             document.getElementById('clicksound').play();
         })
 

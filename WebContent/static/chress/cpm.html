@@ -357,7 +357,7 @@
     </div>
 
     <!--安全中心-->
-    <div class="comm_shad security "style="z-index: 10000;">
+    <div class="comm_shad security dis-no"style="z-index: 10000;">
         <div class="security-cpm">
             <div class="security-top">
                 <img src="../../chress/res/image/cpm/title12.png" class="activity-top-img" alt="">
@@ -369,8 +369,8 @@
                     <div class="card-btn security-btn-a" data-dian="security-btn-a" data-img="card-btn">银行卡</div>
                 </div>
                 <div class="security-gold">
-                    <div class="security-box ">
-                        <div class="secerity-size dis-no">
+                    <div class="security-box dis-no">
+                        <div class="secerity-size ">
                             <p>当前密码</p>
                             <p>新密码</p>
                             <p>确认密码</p>
@@ -382,23 +382,59 @@
                             <div class="btn-input  img-dian" data-dian="btn-input-a" data-img="btn-input">修改</div>
                         </div>
                     </div>
-                    <div class="pwd-box ">
-                        <div class="secerity-size">
+                    <div class="pwd-box dis-no">
+                        <div class="pwd-size">
                             <p>真实姓名</p>
                             <p>当前密码</p>
                             <p>新密码</p>
                             <p>确认密码</p>
                         </div>
-                        <div class="secerity-input">
-                            <input type="password"placeholder="请验证真实姓名">
+                        <div class="pwd-size-input">
+                            <input type="text"placeholder="请验证真实姓名">
                             <input type="password"placeholder="请输入当前密码">
                             <input type="password"placeholder="请输入新密码">
                             <input type="password"placeholder="请再次输入密码">
                             <div class="btn-input  img-dian" data-dian="btn-input-a" data-img="btn-input">修改</div>
                         </div>
                     </div>
-                    <div class="card-box dis-no">
-
+                    <div class="card-box ">
+                        <div class="card-size">
+                            <p style="margin-bottom: 0.39rem;">真实姓名</p>
+                            <p>银行</p>
+                            <p>卡号</p>
+                            <p>开户银行</p>
+                        </div>
+                        <div class="card-input ">
+                            <input type="text"style="margin-bottom: 0.04rem;" placeholder="请验证真实姓名" value="唐*昕">
+                            <p style="margin-bottom: 0.13rem;">银行卡户名和真实姓名一致才能取款</p>
+                            <div class="card-ka">
+                                <span class="card-con">请选择&nbsp;∨</span>
+                                <ul class="card-yin dis-no"style="">
+                                    <li>
+                                        你小时候是超哥吗
+                                    </li>
+                                    <li>
+                                       你长大了还是超哥吗
+                                    </li>
+                                    <li>
+                                        一直都是超哥吗
+                                    </li>
+                                    <li>
+                                        你小时候是超哥吗
+                                    </li>
+                                    <li>
+                                        你长大了还是超哥吗
+                                    </li>
+                                    <li>
+                                        一直都是超哥吗
+                                    </li>
+                                </ul>
+                            </div>
+                            <input type="number"placeholder="请输入卡号">
+                            <input type="text"placeholder="如:河北唐山建设银行">
+                            <p>选择“其他”银行必填</p>
+                            <div class="btn-input  img-dian" data-dian="btn-input-a" data-img="btn-input">确认提交</div>
+                        </div>
                     </div>
                 </div>
                 <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn2 img-age"alt="">
@@ -410,6 +446,23 @@
 <script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
 <script src="../../chress/res/js/cpm.js"></script>
 <script>
+    $('.chooques p').click(function(){
+        $('#quesShow').text($(this).text());
+        setTimeout(function () {
+            $('.chooques').hide();
+        }, 100);
+    })
 
+    $('.ques').click(function(){
+        $('.chooques').show();
+    })
+
+    $('.bot1').click(function () {
+        $('.pop_reg').show()
+    })
+
+    $('.xx').click(function () {
+        $('.pop_reg').hide()
+    })
 </script>
 </html>
