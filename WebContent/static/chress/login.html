@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>宏图娱乐登录</title>
+    <link rel="stylesheet" href="../../chress/res/css/common.css" />
+    <link rel="stylesheet" href="../../chress/res/css/login.css" />
+</head>
+
+
+<body>
+    <div class="logo">
+        <div class="shin"></div>
+    </div>
+
+    <div class="bord">
+        <ul>
+            <li>
+                <span class="inpname">账号</span>
+                <input class="inp" type="text" placeholder="请输入账号">
+            </li>
+            <li>
+                <span class="inpname">密码</span>
+                <input class="inp" type="text" placeholder="请输入密码">
+            </li>
+            <li>
+                <span class="inpname1">验证码</span>
+                <input class="inp1" type="text1" placeholder="请输入密码">
+                <img class="num" src="../../chress/res/image/login/login_num.png" alt="">
+            </li>
+            <li>
+                <div class="remnum"></div>
+                <span class="remnum_sp">记住密码</span>
+                <span class="remnum_sp">找回密码</span>
+            </li>
+            <li>
+                <a class="login_btn"></a>
+            </li>
+            <li>
+                <span class="bot1">立即注册</span>
+                <span class="bot2">游客登录</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pop_reg">
+            <a class="xx"></a>
+        <div id="regifram">
+            <ul>
+                <li>
+                    <span>请输入推荐码</span>
+                    <i>★</i>
+                    <input type="text" placeholder="请输入推荐码" oninput="value=value.replace(/[\W]/g,'')">
+                </li>
+                <li>
+                    <span>请输入用户名</span>
+                    <i>★</i>
+                    <input type="text" placeholder="请输入用户名">
+                </li>
+                <li>
+                    <span class="spc1">设置密码</span>
+                    <i>★</i>
+                    <input type="text" placeholder="请输入密码" oninput="value=value.replace(/[\W]/g,'')"> 
+                </li>
+                <li>
+                    <span>再次输入密码</span>
+                    <i>★</i>
+                    <input type="text" placeholder="请再次输入密码" oninput="value=value.replace(/[\W]/g,'')">
+                </li>
+                <li>
+                    <span class="spc1">真实姓名</span>
+                    <i>★</i>
+                    <input type="text" placeholder="请输入真实姓名">
+                </li>
+                <li>
+                    <span class="spc1">手机号码</span>
+                    <i>★</i>
+                    <input type="tel" placeholder="请输入手机号码">
+                </li>
+                <li>
+                    <span class="spc2">QQ号码</span>
+                    <i>★</i>
+                    <input type="tel" placeholder="请输入QQ号码">
+                </li>
+                <li>
+                    <span>选择安全问题</span>
+                    <i>★</i>
+                    <div class="ques">
+                        <span id="quesShow">您小时候最喜欢那一本书？</span>
+                        <ul class="chooques">
+                            <li>
+                                <p>你小时候是超哥吗</p>
+                            </li>
+                            <li>
+                                <p>你长大了还是超哥吗</p>
+                            </li>
+                            <li>
+                                <p>一直都是超哥吗</p>
+                            </li>
+                            <li>
+                                <p>你小时候是超哥吗</p>
+                            </li>
+                            <li>
+                                <p>你长大了还是超哥吗</p>
+                            </li>
+                            <li>
+                                <p>一直都是超哥吗</p>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+                <li>
+                    <span>回答安全问题</span>
+                    <i>★</i>
+                    <input type="text" placeholder="请输入答案">
+                </li>
+                <li>
+                    <span>填写微信号码</span>
+                    <i>★</i>
+                    <input type="text" placeholder="请输入微信号码">
+                </li>
+                <li>
+                    <span>请输入验证码</span>
+                    <i>★</i>
+                    <input class="inp_spc" type="text" oninput="value=value.replace(/[\W]/g,'')" placeholder="请输入验证码">
+                    <img class="num" src="../../chress/res/image/login/login_num.png" alt="">
+                </li>
+                <li>
+                    <div id="agree"></div>
+                    <span class="agree_font">我已满合法博彩年龄,同意各项开户条约</span>
+                </li>
+                <li>
+                    <a class="resgBtn"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+<script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
+<script>
+    // document.addEventListener('touchmove', function (event) {
+    //     event.preventDefault();
+    // }, { passive: false });
+    $(function () {
+        $('.remnum').click(function () {
+            let that = $(this);
+            if (that.css('background-position-x') == '100px')
+                that.css('background-position-x', '0px')
+            else
+                that.css('background-position-x', '100px')
+        });
+
+        $('.agree').click(function () {
+            let that = $(this);
+            if (that.css('background-position-x') == '100px')
+                that.css('background-position-x', '0px')
+            else
+                that.css('background-position-x', '100px')
+        });
+
+        $('.chooques p').click(function(){
+            $('#quesShow').text($(this).text());
+            setTimeout(function(){
+                $('.chooques').hide();
+            }, 100);
+        })
+
+        $('.ques').click(function(){
+            $('.chooques').show();
+        })
+
+        $('.bot1').click(function () {
+            $('.pop_reg').show()
+        })
+
+         $('.xx').click(function () {
+            $('.pop_reg').hide()
+        })
+
+
+    })
+</script>
+
+</html>

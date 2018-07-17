@@ -1,0 +1,42 @@
+.swiper-container {width: 100%;height: 2.4rem;margin-top: .45rem;padding-left:.25rem;position: fixed!important;}
+.swiper-slide {text-align: center;height: 100%;color: white;}
+body{background: url(../image/index/bg_center.png) 0 0/100% 100% no-repeat;font-size: .13rem;}
+.game-box{width: 1.2rem;display:flex;flex-direction:column;transition: 1s linear;right:0px}
+.game-box>div{height: 50%;width: 100%;user-select: none;}
+
+
+    @keyframes swoperBtn{
+        0%{transform: scale(1)}
+        50%{transform: scale(.8)}
+        100%{transform: scale(1)}
+    }
+    @keyframes swoperBtn1{
+        0%{transform: scale(1) rotate(180deg)}
+        50%{transform: scale(.8) rotate(180deg)}
+        100%{transform: scale(1) rotate(180deg)}
+    }
+    .snow{
+        position: fixed;
+        top: 0;
+        left: 0;
+        user-select: none;
+    }
+.swiper-pagination-bullet-active{background: #fdeb6e!important}
+.swiper-pagination-bullet{background: #3060dc;border: 1px solid #8390c3!important;opacity: 1!important;width: .05rem!important;height: .05rem!important;}
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
+    bottom: 5.07px!important;
+    width: 92%!important;
+}
+.clicksound{position: relative;}
+.clicksound:active{transform: scale(.96);}
+
+.games_border{background: url(../image/home_games/game_deco.png) 0 0/.93rem .93rem  no-repeat;position: relative;overflow: hidden;width: 100%;height: 100%;}
+.games_border>span{position: absolute;bottom: .29rem;left: 0;font-style: italic;display: block;width: .9rem;text-align: center;font-size: .1rem;
+    overflow: hidden;white-space: nowrap;text-overflow: ellipsis;letter-spacing: .01rem;font-weight: bold;text-shadow: black 0.1em 0.1em 0.2em;z-index: 100}
+.games_border>div{width: .93rem; height: .93rem;position: absolute;left: 0;z-index: -1111;border-radius: 18px;overflow: hidden;}
+.games_border img{width: 100%;height: 100%;}
+.log{position: absolute;top: .03rem;left: .23rem;background: url(../image/home_games/log1.png) 0 0/ 100% 100% no-repeat;width: 1.2rem;height: .4rem;}
+.query{width: 1.25rem;height: .22rem;border-radius: 15px;border:1px  solid #ABAFC5;position: absolute;right: .15rem;top: .085rem;background: #1B4396;z-index: 100;
+    user-select: none;outline: none;padding-left: .15rem;font-size: .12rem;color: rgba(255, 255, 255, 0.87);}
+.quBtn{user-select: none;outline: none;position: absolute;top: .07rem;right: .15rem;background: url(../image/home_games/icon_search.png) 0 0/100% 100% no-repeat;width: .27rem;height: .27rem;border: none;z-index: 110;}
+

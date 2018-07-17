@@ -39,6 +39,13 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 $("[name='result.bankcardNumber']").valid();
             });
 
+            //选择绑定银行卡改变
+            $("[name='result.bankName']").change(function() {
+                var selectBankCode = $("#bank_list").find(".bank.select").attr("bankcode");
+                selectBankCode = selectBankCode ? selectBankCode : $("input[name='result.bankName']").val();
+                $("input[name='result.bankName']").val(selectBankCode);
+            });
+
         },
         /**
          * 清楚所有空格

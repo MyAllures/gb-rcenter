@@ -4,7 +4,6 @@
 define([], function () {
 
     return Class.extend({
-
         /** 请求参数名：同步 */
         SYNCHRONIZE_KEY: "_S_COMET",
         /** 同步值：创建连接 */
@@ -58,15 +57,16 @@ define([], function () {
         /** 连接所需要传递的参数 **/
         userParam: {},
         /**连接成功后的回调函数**/
-        successCallBack: function () {
+        successCallBack: function (event) {
         },
         /**连接失败后的回调函数**/
-        failureCallBack: function () {
+        failureCallBack: function (event) {
         },
         /**实例化后是否立即执行连接操作**/
         isImmediatelyConnect: false,
         /**是否使用websocket**/
         isUseWebsocket: false,
+        websocket : null,
         /**
          * 构造器
          * @param props 参数对象
@@ -417,11 +417,10 @@ define([], function () {
                 }
             });
         },
-        onWebsocketOpen: function () {
-            // current postion "this" = websocket
+        onWebsocketOpen: function (event) {
             var outThis = this.outThis;
             if (outThis.successCallBack) {
-                outThis.successCallBack.call();
+                outThis.successCallBack.call(event);
             }
             outThis.isConnect = true;
 
@@ -429,7 +428,6 @@ define([], function () {
         onWebsocketMessage: function (event) {
             var outThis = this.outThis;
             var data = eval("(" + event.data + ")");
-
             // 订阅返回消息
             if (data[outThis.SYNCHRONIZE_KEY] == outThis.SUBSCRIBE_VALUE) {
                 if (data.result == "success") {
@@ -452,8 +450,12 @@ define([], function () {
                     outThis.connection();
                 }, 2000);
             }
+            if (outThis.failureCallBack) {
+                outThis.failureCallBack.call(event);
+            }
         },
         onWebsocketError: function (event) {
+            this.isConnect = false;
             console.log("socket error");
         },
         onWebsocketBeforeUnload: function (event) {

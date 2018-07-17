@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>宏图娱乐电子游艺</title>
+    <link rel="stylesheet" href="../../chress/res/js/thirds/swipe/css/swiper.css" />
+    <link rel="stylesheet" href="../../chress/res/css/common.css" />
+    <link rel="stylesheet" href="../../chress/res/css/home_games.css" />
+</head>
+
+
+
+
+<body onload="load()">
+    <div class="log"></div>
+    <input class="query" type="text" placeholder="搜寻游戏">
+    <input type="button" class="quBtn clicksound">
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide game-box">
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span>宙斯之子</span>
+                        <div>
+                            <img src="../../chress/res/image/home_games/Hercules.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span>冒险宫殿冒险宫殿</span>
+                        <div>
+                            <img src="../../chress/res/image/home_games/MGS_5ReelDrive.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide game-box">
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="clicksound comm_loading1">
+                    <div class="games_border">
+                        <span></span>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="swiper-nextBtn" onclick="nextBtn()"></div>
+    <div class="swiper-prevBtn" onclick="prevBtn()"></div>
+    <canvas width="100%" height="100%" class="snow"></canvas>
+    <audio src="../../chress/res/sounds/clicksound.mp3" preload="preload" id="clicksound"></audio>
+</body>
+
+<script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
+<script src="../../chress/res/js/thirds/swipe/js/swiper.min.js"></script>
+<script type="text/javascript" src="../../chress/res/js/thirds/swipe/js/jquery.let_it_snow.js"></script>
+<script>
+    function load() {
+        $(".comm_spinner").remove();
+        $(".comm_loading1").removeClass("comm_loading1");
+    }
+
+    $(function () {
+        var gamBtn = $(".clicksound");
+        gamBtn.append(
+            `<div class="comm_spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>`)
+        $('body,html').css('width', window.screen.height)//初始化品目宽度配合swiper插件
+        var swiper = new Swiper('.swiper-container', {//Swiper实例化
+            slidesPerView: "auto",
+            freeMode: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            on: {
+                transitionEnd: function (swiper) {
+                    if (this.isEnd) {//判断是否到最后的位置
+                        $('.swiper-nextBtn').hide();
+                        $('.swiper-prevBtn').show();
+                    }
+                    if (this.isBeginning) {
+                        $('.swiper-nextBtn').show();
+                        $('.swiper-prevBtn').hide();
+                    }
+                },
+            },
+        });
+
+        nextBtn = function(){//滚动到最右边
+            swiper.slideTo(150, 700, true);
+        }
+        prevBtn = function(){//滚动到最左边
+            swiper.slideTo(0, 700, true);
+        }
+
+        $("canvas.snow").let_it_snow({
+            windPower: 3,
+            speed: 1,
+            count: 250,
+            size: 0
+        });
+
+
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        }, { passive: false });
+
+
+        $('.clicksound').click(function(){
+            document.getElementById('clicksound').play();
+        })
+
+        let imgID = GetQueryString('imgID');
+        console.log(imgID)
+        $('.log').css('background-image', `url(../../chress/res/image/home_games/log${imgID}.png)`)
+
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+    })
+
+
+
+</script>
+
+</html>

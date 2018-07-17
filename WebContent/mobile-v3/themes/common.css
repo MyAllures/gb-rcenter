@@ -520,7 +520,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .pay_mone .tit:before { content: ''; width: 3px; height: 17px; background: #1766bb; position: absolute; left: 11px; top: 11px; }
 .deposit_2 .pay_mone .conv_mone { overflow: hidden; padding-bottom: 15px; }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i { width: 20%; float: left; }
-.deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone { width: 58px; height: 58px; display: block; margin: 0 auto; background-image: url(images/conv_mone1.png); background-repeat: no-repeat; background-size: 100%; background-position-x: center; }
+.deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone { width: 58px; height: 58px; display: block; margin: 0 auto; background-image: url(images/conv_mone.png); background-repeat: no-repeat; background-size: 100%; background-position-x: center; }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_100 { background-position-y: 0; }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_200 { background-position-y: -58px; }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_500 { background-position-y: -116px; }
@@ -732,6 +732,7 @@ body.no-backdrop .mui-backdrop { background-color: transparent !important; }
 .gb-radio { display: inline-block; width: 30px; height: 30px; background: url(../images/radio.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
 .gb-unread-radio { display: inline-block; width: 15px; height: 15px; background: url(../images/unread-radio.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
 .gb-unread-radio.on { display: inline-block; width: 30px; height: 30px; background: url(../images/radio-on.png); background-size: 100% 100%; vertical-align: text-top; top: -1px!important; left: 0px!important; }
+
 .gb-radio.on { background-image: url(../images/radio-on.png); }
 
 .notice-form { margin: 10px; border: 2px solid #e2e2e2; }

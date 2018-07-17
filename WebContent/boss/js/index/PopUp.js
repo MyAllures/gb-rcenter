@@ -1,4 +1,4 @@
-define(['gb/components/PopUp'], function (PopUp) {
+define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDialog) {
 
     return PopUp.extend({
         tones: null,
@@ -19,7 +19,6 @@ define(['gb/components/PopUp'], function (PopUp) {
                 $(e.currentTarget).parent().parent().parent().remove()
             });
         },
-
         /**
          * 转账监控提醒
          * @param data
@@ -149,7 +148,7 @@ define(['gb/components/PopUp'], function (PopUp) {
                 msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,已停止玩家转账！";
             } /*else if (rate >= warnRate) {
                 msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,需提醒站点在${date}之前充值，请及时关注！";
-            }*/else {
+            }*/ else {
                 msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,需提醒站点注意已使用额度，及时充值！";
             }
             if (msg) {

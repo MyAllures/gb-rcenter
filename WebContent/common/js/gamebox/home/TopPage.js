@@ -161,7 +161,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 this.pages[this.lastHash].refresh = (refresh || false);
                 window.location.hash = this.lastHash;
             } else {
-                window.location = root+"/";
+                window.location = root + "/";
             }
         },
         /**
@@ -707,6 +707,8 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
             var _this = this;
             var option = {
                 title: btnOption.text,
+                data: btnOption.data,
+                buttons: btnOption.buttons,
                 closable: btnOption.closable == "false" ? false : btnOption.closable,
                 message: function (dialog) {
                     if (dialog.options.closable == false) {
@@ -732,6 +734,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                     if (_this.taskManager && _this.taskManager.timingCountTask) {
                         taskManager.timingCountTask();
                     }
+                    btnOption.dialogRef = dialog;
                     _this._callbackDialog(e, btnOption)
                 }
             };

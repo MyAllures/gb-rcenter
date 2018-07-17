@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>宏图娱乐捕鱼</title>
+    <link rel="stylesheet" href="../../chress/res/js/thirds/swipe/css/swiper.css" />
+    <link rel="stylesheet" href="../../chress/res/css/common.css" />
+    <link rel="stylesheet" href="../../chress/res/css/home_fish.css" />
+</head>
+
+
+
+
+<body onload="load()">
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+           
+            <div class="swiper-slide game-box">
+                <div class="game1 clicksound comm_loading"></div>
+                <div class="game2 clicksound comm_loading"></div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="game3 clicksound comm_loading"></div>
+                <div class="game4 clicksound comm_loading"></div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="game5 clicksound comm_loading"></div>
+                <div class="game6 clicksound comm_loading"></div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="game7 clicksound comm_loading"></div>
+                <div class="game8 clicksound comm_loading"></div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="swiper-nextBtn" onclick="nextBtn()"></div>
+    <div class="swiper-prevBtn" onclick="prevBtn()"></div> -->
+    <canvas width="100%" height="100%" class="snow"></canvas>
+    <audio src="../../chress/res/sounds/clicksound.mp3" preload="preload" id="clicksound"></audio>
+</body>
+
+<script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
+<script src="../../chress/res/js/thirds/swipe/js/swiper.min.js"></script>
+<script type="text/javascript" src="../../chress/res/js/thirds/swipe/js/jquery.let_it_snow.js"></script>
+<script>
+    $(".clicksound").append(
+        `<div class="comm_spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>`)
+    function load() {
+        $(".comm_spinner").remove();
+        $(".comm_loading").removeClass("comm_loading");
+    }
+    $(function () {
+        $('body,html').css('width', window.screen.height)//初始化品目宽度配合swiper插件
+        var swiper = new Swiper('.swiper-container', {//Swiper实例化
+            slidesPerView: "auto",
+            freeMode: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            on: {
+                transitionEnd: function (swiper) {
+                    if (this.isEnd) {//判断是否到最后的位置
+                        $('.swiper-nextBtn').hide();
+                        $('.swiper-prevBtn').show();
+                    }
+                    if (this.isBeginning) {
+                        $('.swiper-nextBtn').show();
+                        $('.swiper-prevBtn').hide();
+                    }
+                },
+            },
+        });
+        nextBtn = function(){//滚动到最右边
+            console.log("assd")
+            swiper.slideTo(150, 700, true);
+        }
+        prevBtn = function(){//滚动到最左边
+            swiper.slideTo(0, 700, true);
+        }
+
+      
+        $("canvas.snow").let_it_snow({
+            windPower: 3,
+            speed: 1,
+            count: 250,
+            size: 0
+        });
+
+
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        }, { passive: false });
+
+        $('.game-box').click(function(){
+                window.top.openGame();//加载页效果
+        })
+
+        $('.clicksound').click(function(){
+            document.getElementById('clicksound').play();
+        })
+         
+    })
+
+
+
+</script>
+
+</html>
