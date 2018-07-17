@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* color and special images style */
 /* default themes */
-body {background-color: #fff;  font-size: 12px;padding: 0;margin: 0 auto; }
+body {background-color: #f2f2f2;  font-size: 12px;padding: 0;margin: 0 auto; }
 
 .part-r{position: relative;}
 .part-a{position: absolute;}
@@ -9,7 +9,7 @@ body {background-color: #fff;  font-size: 12px;padding: 0;margin: 0 auto; }
 .border-bottom{border-bottom:1px solid #ddd;}
 .dis-no{display: none}
 .pt5{padding-top: 5px}
-.pt10{padding-top: 10px}
+.pt10{padding-top: 15px}
 .pt15{padding-top: 15px}
 .pt20{padding-top: 20px}
 .pr5{padding-right: 5px}
@@ -48,11 +48,13 @@ header.mui-bar-nav a.mui-icon-contact { color: #fff; }
 header.mui-bar-nav .mui-title { color: #fff; }
 header.mui-bar-nav .mui-icon-gear { color: #fff; border:1px solid #fff; border-radius: 50%;  }
 
-.mui-content { background-color: #ddd; }
+.mui-content { background-color: #f2f2f2; }
 .mui-content>div.mui-scroll>div.part-r{position: relative;}
-.mui-content .head-portrait{border-radius: 50%;overflow: hidden;width: 35%; margin-left: 5%;margin-top: 10%;}
+.imgHight{height: 125px;}
+.mui-content .head-portrait{border-radius: 50%;overflow: hidden;width: 35%; margin-left: 10px;vertical-align:middle; }
+.leftStyle{vertical-align:middle; margin-left: 10px;}
 .mui-content .login-name span{color: #333333;font-size: 14px;}
-.mui-content .login-name p{color: #8d9194;font-size: 10px;line-height: 12px;    margin: 8px 0 4px 0;}
+.mui-content .login-name p{color: #8d9194;font-size: 10px;line-height: 12px;    margin: 8px 0 0 0;}
 .mui-content .login-name small{color: #8d9194;font-size: 10px;line-height: 12px;}
 .mui-content .login-name .part-a{top:50%;left: 46%;}
 .mui-content .bor-radius{
@@ -65,20 +67,19 @@ header.mui-bar-nav .mui-icon-gear { color: #fff; border:1px solid #fff; border-r
     right: 0;
     color: #000;
     /* border: 1px solid #ddd; */
-    margin-top: 11%;
     overflow: hidden;
 }
 .mui-content .bor-radius li{background-color: #fcfafc;line-height: 18px;}
 .mui-content .bor-radius span{display: block;font-size: 11px;}
 .mui-content .bor-radius small{font-size: 9px;}
-.mui-content .mui-text-center{padding: 10px 0 0 0;  background-color: #fff;}
+.mui-content .mui-text-center{padding-top:5px;  background-color: #fff;}
 .mui-content .mui-text-center a{display:block;color: #000;}
 .mui-content .mui-text-center img{width: 20%;margin-right: 3%;}
 .mui-content .mui-text-center div.dis-in{vertical-align:top;line-height: 16px;}
 .mui-content .mui-text-center div.dis-in div{font-size: 14px;}
 .mui-content .mui-text-center div.dis-in small{color: #adadad;font-size: 9px;}
 .mui-content .mui-text-left{  background-color: #fff;}
-.mui-content .mui-text-left a{display:block;color: #000;height: 60px;}
+.mui-content .mui-text-left a{display:block;color: #000;height: 66px;}
 .mui-content .mui-text-left img{width: 33px;margin-right: 4%;}
 .mui-content .mui-text-left div.dis-in{vertical-align:top;line-height: 18px;}
 .mui-content .mui-text-left div.dis-in div{font-size: 14px;}
