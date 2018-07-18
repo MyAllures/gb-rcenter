@@ -18,7 +18,9 @@
     <div class="loati">
         <p>正在匹配服务器 , 请稍后...</p>
         <div class="load_box">
-            <div class="load_body"></div>
+            <div class="load_body">
+                <span class="load_body_span">1</span>
+            </div>
         </div>
     </div>
 </body>
@@ -37,6 +39,8 @@
             }else{
                 x++;
                 $('.load_body').css('width',x+'%')
+                $('.load_body_span').html(x+'%')
+                
             }
         }, 200)
 
