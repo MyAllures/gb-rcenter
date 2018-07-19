@@ -548,8 +548,10 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                     }
                 });
                 if (!apiIdChecked) {
-                    var message = window.top.message.common['请指定游戏分类'];
-                    e.page.showPopover(e, opt, 'danger', message, true);
+                    var msg = window.top.message.common['请指定游戏分类'];
+                    var game_select_tips = $(".game_select_tips");
+                    var obj = {currentTarget:game_select_tips};
+                    page.showPopover(obj,{},'danger',msg,true);
                     return false;
                 }
             }
