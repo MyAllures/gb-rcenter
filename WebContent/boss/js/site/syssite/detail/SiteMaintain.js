@@ -164,7 +164,6 @@ define(['common/BaseEditPage','bootstrapswitch','UE.I18N.' + window.top.language
                     }
                 }
             });
-            $(e.currentTarget).unlock();
         },
 
         /**
