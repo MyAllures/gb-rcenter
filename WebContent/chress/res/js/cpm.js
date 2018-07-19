@@ -234,7 +234,7 @@ $('.r-bar-img1').on('touchstart',function() {
 $(window).on('touchend',function() {
     isscroll = false;
 })
-
+/**
 var startPosition = {}, deltaY, endPosition = {};
 document.addEventListener('touchstart', touch, false);
 document.addEventListener('touchmove', touch, false);
@@ -286,4 +286,4 @@ function touch(event) {
             }
         }
     }
-}
+}**/
