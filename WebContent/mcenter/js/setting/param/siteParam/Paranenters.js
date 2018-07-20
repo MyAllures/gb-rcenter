@@ -1019,8 +1019,21 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 data.append(file.name, file.files[0]);
             });
             return data;
+        },
+
+        reloadParamters:function (e,opt) {
+            $("#mainFrame").load(root + "/param/parameterSetting.html");
+        },
+        /**
+         * 预览图片
+         * @param e
+         * @param opt
+         */
+        viewImg:function (e,opt) {
+            var images = $('img', e.currentTarget);
+            var url = images.attr('data-src');
+            window.open(url) ;
+            $(e.currentTarget).unlock();
         }
-
-
     });
 });

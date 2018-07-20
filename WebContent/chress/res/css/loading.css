@@ -22,3 +22,4 @@ body{background: black url(../image/loading/loading_bg.png) 0 0/100% 100% no-rep
 position: absolute;right: -9px;top: -.07rem;}
 .load_body::before{content: '';background: url(../image/loading/loading_elbg.gif) 0 0/100% 100% no-repeat;width: .3rem;height: .3rem;
     position: absolute;right: -11px;top: -.11rem;}
+.load_body_span{position: absolute;right: -.14rem;top: -.2rem;font-size: .10rem}

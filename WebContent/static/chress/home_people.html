@@ -34,6 +34,10 @@
                 <div class="game7 clicksound comm_loading"></div>
                 <div class="game8 clicksound comm_loading"></div>
             </div>
+            <div class="swiper-slide game-box">
+                <div class="game9 clicksound comm_loading"></div>
+                <div class="game10 clicksound comm_loading"></div>
+            </div>
         </div>
     </div>
     <!-- <div class="swiper-nextBtn" onclick="nextBtn()"></div>
@@ -77,11 +81,11 @@
                 },
             },
         });
-        nextBtn = function(){//滚动到最右边
+        nextBtn = function () {//滚动到最右边
             console.log("assd")
             swiper.slideTo(150, 700, true);
         }
-        prevBtn = function(){//滚动到最左边
+        prevBtn = function () {//滚动到最左边
             swiper.slideTo(0, 700, true);
         }
 
@@ -102,7 +106,7 @@
             window.top.openGame();//加载页效果
         })
 
-        $('.clicksound').click(function(){
+        $('.clicksound').click(function () {
             document.getElementById('clicksound').play();
         })
 
