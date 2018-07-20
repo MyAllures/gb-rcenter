@@ -484,7 +484,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             } else {
                 window.top.topPage.ajax({
                     type: "Get",
-                    url: root + '/activityHall//activity/activityRule.html',
+                    url: root + '/activityHall/activity/activityRule.html',
                     data: {"result.code": code},
                     success: function (data) {
                         datas = eval('(' + data + ')');
@@ -538,6 +538,22 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             if(!this.validateForm(e)){
                 $(e.currentTarget).click();
                 return false;
+            }
+            if (opt.code == 'effective_transaction') {
+
+                var apiIdChecked = false;
+                $("input[name$=apiId][name^=activityRuleIncludeGames]").each(function (index, el) {
+                    if ($(this).is(':checked')) {
+                        apiIdChecked = true;
+                    }
+                });
+                if (!apiIdChecked) {
+                    var msg = window.top.message.common['请指定游戏分类'];
+                    var game_select_tips = $(".game_select_tips");
+                    var obj = {currentTarget:game_select_tips};
+                    page.showPopover(obj,{},'danger',msg,true);
+                    return false;
+                }
             }
             if (opt.code == 'profit_loss') {
                 var message = window.top.message.common['盈利和亏损不能同时为空'];

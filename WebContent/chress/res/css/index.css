@@ -166,6 +166,14 @@ marquee>span{
     top: .0145rem;
     left: .02rem;
 }
+.header_center_leftBtn:active{
+    animation: rota1 .5s linear;
+}
+@keyframes rota1{
+    0%{transform:rotate(0deg)}
+    50%{transform: rotate(360deg)}
+    100%{transform: rotate(0deg)}
+}
 
 .header_center_rightBtn {
     width: .37rem;
