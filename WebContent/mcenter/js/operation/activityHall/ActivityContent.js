@@ -318,7 +318,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var title_val = $("#title" + index).val();
             var img2 = $("[name='activityMessageI18ns[" + index + "].activityCover']").val();
             var activityDescription_val = UE.getEditor('editContent' + index).hasContents();
-            if (title_val.trim() && img2.trim() && activityDescription_val) {
+            if (title_val.trim() && typeof(img2)!="undefined"  &&  img2.trim() && activityDescription_val) {
                 $tab_span.text(window.top.message.operation_auto['已编辑']);
             } else {
                 $tab_span.text(window.top.message.operation_auto['未编辑']);
@@ -549,7 +549,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 });
                 if (!apiIdChecked) {
                     var msg = window.top.message.common['请指定游戏分类'];
-                    var game_select_tips = $(".game_select_tips");
+                    var game_select_tips = $(".btn.btn-filter.gameTypeButton").not(".btn-outline");
                     var obj = {currentTarget:game_select_tips};
                     page.showPopover(obj,{},'danger',msg,true);
                     return false;
