@@ -12,12 +12,12 @@ define(['common/BaseListPage', 'moment', 'jqplaceholder', 'jsrender'], function 
             this.noRecordMessage = window.top.message.common["find.norecord"];
             this._super(this.formSelector);
             this.doFormData();
-
         },
 
         onPageLoad: function () {
             this._super();
             var _this = this;
+            this.resizeDialog();
             $('[data-toggle="popover"]', _this.formSelector).popover({
                 trigger: 'hover',
                 placement: 'top'
@@ -88,6 +88,7 @@ define(['common/BaseListPage', 'moment', 'jqplaceholder', 'jsrender'], function 
             var $result = $("#editable tbody", _this.formSelector);
             var html = $("#VUserPlayerListVo").render({data: json.result});
             $result.html(html);
+            this.resizeDialog();
         },
 
         /**

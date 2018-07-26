@@ -119,6 +119,17 @@
             </c:if>
         </c:forEach>
     </c:if>
+    <c:if test="${empty porkerListSet &&! empty porkerList}">
+         <span style="vertical-align: 10px">
+        庄：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
+        </span>
+        <c:forEach items="${porkerList}" var="poker">
+            <gb:poker poker="${poker}"/>
+        </c:forEach>
+        <span style="vertical-align: 10px">
+        )
+        </span>
+    </c:if>
     <c:if test="${empty porkerList || empty porkerListSet}">
         --
     </c:if>

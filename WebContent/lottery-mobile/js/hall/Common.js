@@ -34,6 +34,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          * 页面加载
          */
         onPageLoad: function () {
+            var _this = this;
             this._super();
             /** 小彩种 */
             this.code = $(this.formSelector + ' input[name=code]').val();
@@ -41,15 +42,13 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
             //传统，官方切换
             this.isGfwf();
-
             //获取盘口数据
-            this.getHandicap();
-            var _this = this;
-            _this.changeList();
-            window.setInterval(function () {
+            this.getHandicap(function(){
                 _this.loadLeftTime();
-            }, 1000);
-            this.getOpenHistory();
+                _this.getOpenHistory();
+            });
+            _this.refreshView();
+            _this.changeList();
             this.muiInit();
             this.iosGoBack();
         },
@@ -205,6 +204,10 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          * 加载倒计时
          */
         loadLeftTime: function () {
+            var _this = this;
+            window.setTimeout(function(){
+                _this.loadLeftTime();
+            },1000);
             var $left = $("#leftTime");
             var time = $left.attr("data-time");
             //用来标志计时器是否是被冻结过
@@ -229,6 +232,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 var _this = this;
                 _this.getHandicap(function () {
                     _this.successTime = (new Date()).getTime();
+                    // 重新加载历史开奖结果前清除timeout任务
+                    clearTimeout(_this.isGetOpen);
                     _this.getOpenHistory();
                 });
                 return;
@@ -257,30 +262,22 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                                    _this.randomNumInterval = setInterval(function () {
                                        _this.randomNumber();
                                    }, 450);
-
-                                   _this.isGetOpen = setInterval(function () {
-                                       _this.getOpenHistory();
-                                   }, 30000);
                                }
-                               // 循环读取开奖数据，30秒
-                               if (!_this.isGetOpen){
-                                   _this.isGetOpen = setInterval(function () {
-                                       _this.getOpenHistory();
-                                   }, 30000);
-                               }
+                               // 循环读取开奖数据，20秒
+                               _this.isGetOpen = setTimeout(function () {
+                                   _this.getOpenHistory();
+                               }, 5000);
                            }else{
                                if (_this.randomNumInterval != null) {
                                    clearInterval(_this.randomNumInterval);
-                                   clearInterval(_this.isGetOpen);
+                                   clearTimeout(_this.isGetOpen);
                                    _this.randomNumInterval = null;
                                }
                                //展示上一期中奖号码
                                $(".mui-pull-left .style_blue").text(open.expect);
                                _this.showLastOpenCode(numArr);
+                               _this.refreshView();
                            }
-                        if(_this.type == "ssc" || _this.type=="pl3" || _this.code=="xyft" || _this.code=="jspk10"){
-                            _this.refreshView();
-                        }
                         _this.showRecentHistory(data);
                     }
 
@@ -510,7 +507,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             $("a.selected-btn.main").removeClass("mui-active");
             $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
             $("#betAmount").html(data);
-        },
+        }
 
     });
 });

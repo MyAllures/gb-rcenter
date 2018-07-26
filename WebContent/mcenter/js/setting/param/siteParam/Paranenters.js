@@ -69,6 +69,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this.playerStationmaster();
             this.appDownloadUrlSwitch();
             this.switchActivityHall();
+            this.appStartPageSwitch();
         },
         /**
          * 当前页面所有事件初始化函数
@@ -1019,8 +1020,60 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 data.append(file.name, file.files[0]);
             });
             return data;
+        },
+
+        reloadParamters:function (e,opt) {
+            $("#mainFrame").load(root + "/param/parameterSetting.html");
+        },
+        /**
+         * 预览图片
+         * @param e
+         * @param opt
+         */
+        viewImg:function (e,opt) {
+            var images = $('img', e.currentTarget);
+            var url = images.attr('data-src');
+            window.open(url);
+            $(e.currentTarget).unlock();
+        },
+
+        /**
+         * APP启动页开关
+         */
+        appStartPageSwitch: function () {
+            var _this = this;
+            var $bootstrapSwitch = $('input[type=checkbox][name=appStartPage]');
+            this.unInitSwitch($bootstrapSwitch)
+                .bootstrapSwitch({
+                    onSwitchChange: function (e, state) {
+                        var $this = $(this);
+                        var _target = e.currentTarget;
+                        if (!$(_target).attr("isChanged")) {
+                            _this.updateStartPage(state);
+                        } else {
+                            $(_target).removeAttr("isChanged");
+                            return false;
+                        }
+                    }
+                });
+        },
+
+        /**
+         * APP启动页开关
+         */
+        updateStartPage: function (state) {
+            var id = $("#startPage").attr("sysParamId");
+            window.top.topPage.ajax({
+                url: root + '/param/updateStartPage.html',
+                dataType: "json",
+                data: {
+                    "result.id": id,
+                    "result.paramValue": state
+                },
+                success: function (data) {
+
+                },error:function () {}
+            });
         }
-
-
     });
 });
