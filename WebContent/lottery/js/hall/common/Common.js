@@ -38,14 +38,13 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          */
         onPageLoad: function () {
             var _this = this;
-            this.getHandicap();
-            setInterval(function () {
+            this.getHandicap(function(){
                 _this.loadLeftTime();
-            }, 1000);
+                _this.getOpenHistory();
+            });
             // 开奖记录切换
             tabs_cg(".game_name .box2_stage p span i", ".game_name .box2_stage .number", "click", "acti", "", "", 0);
             // 最近开奖记录
-            this.getOpenHistory();
             this.getMyOrders();
             var navIndex = getQueryString("navIndex");    // 自定义导航子页面
             // 默认第一个玩法
@@ -178,6 +177,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          */
         loadLeftTime: function () {
             var _this = this;
+            setTimeout(function(){
+                _this.loadLeftTime();
+            },1000);
             var $left = $("div#leftTime");
             var time = $left.attr("data-time");
             if (isNaN(time) || time < 0) {
@@ -192,6 +194,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 }
                 this.getHandicap(function () {
                     _this.successTime = (new Date()).getTime();
+                    // 重新加载历史开奖结果前清除timeout任务
+                    clearTimeout(_this.isGetOpen);
                     _this.getOpenHistory();
                 });
                 $left.attr("data-time", --time);
@@ -381,20 +385,16 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                                 _this.isOpened = setInterval(function () {
                                     _this.randomNumber(nb);
                                 }, 100);
-                                _this.isGetOpen = setInterval(function () {
-                                    _this.getOpenHistory();
-                                }, 15000);
                             }
                             // 循环读取开奖数据，15秒
-                            if (!_this.isGetOpen){
-                                _this.isGetOpen = setInterval(function () {
+                                _this.isGetOpen = setTimeout(function () {
                                     _this.getOpenHistory();
                                 }, 15000);
-                            }
+                            // }
                         } else {
                             if (_this.isOpened != null) {
                                 clearInterval(_this.isOpened);
-                                clearInterval(_this.isGetOpen);
+                                clearTimeout(_this.isGetOpen);
                                 _this.isOpened = null;
                             }
                             $("#lastNumber").html($(".box1_name h2").html() + '第<var>' + open.expect + '</var>期');
