@@ -301,7 +301,7 @@ var startPosition = {}, deltaY, endPosition = {};
 document.addEventListener('touchstart', touch, false);
 document.addEventListener('touchmove', touch, false);
 document.addEventListener('touchend', touch, false);
-
+/**
 function touch(event) {
     var event = event || window.event;
     switch (event.type) {
@@ -349,4 +349,4 @@ function touch(event) {
             }
         }
     }
-}
+}**/
