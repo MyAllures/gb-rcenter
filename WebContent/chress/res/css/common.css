@@ -75,3 +75,5 @@ right: -1000px;
       -webkit-transform: scale(1.0);
     }
   }
+
+.comm_touch:active{transform: scale(.96)}
