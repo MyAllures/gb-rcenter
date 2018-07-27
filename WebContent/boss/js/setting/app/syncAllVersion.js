@@ -43,10 +43,8 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         changeKey: function (e) {
             var the = this;
             var type = e.key;
-            if ('ios' == type) {
-                the.initVersionOption("hidenIosVersion");
-            } else if ('android' == type) {
-                the.initVersionOption("hidenAndroidVersion");
+            if (type) {
+                the.initVersionOption();
             } else {
                 var span = $("#selVersionDiv").find("button").find("span")[0];
                 $(span).html("请选择版本号");
@@ -56,20 +54,41 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             }
             //设置可选的内容
         },
-        initVersionOption:function (divid) {
+
+        initVersionOption: function () {
             var the = this;
             var span = $("#selVersionDiv").find("button").find("span")[0];
             $(span).html("请选择版本号");
             $("[name='search.versionCode']").val("");
             var options = $("#selVersionDiv").find("ul")[0];
             $(options).html("");
-            var optStr = $("#"+divid).html();
-            var opts =eval("("+optStr+")");
-            for(var i=0;i<opts.length;i++){
-                var opt = opts[i];
-                var option = $('<li role="presentation"><a role="menuitem" tabindex="-1" opt="'+opt+'" href="javascript:void(0)" key="'+opt.value+'">'+opt.text+'</a></li>');
-                $(options).append(option);
-            }
+
+            var appType = $("[name='search.appType']").val();
+            var boxType = $("[name='search.boxType']").val();
+            var ajaxOption = {
+                "search.appType" : appType,
+                "search.boxType" : boxType
+            };
+            window.top.topPage.ajax({
+                url: root + '/siteAppUpdate/getVersionByTypoe.html',
+                type: 'POST',
+                dataType: 'json',
+                data:ajaxOption,
+                success: function (data) {
+                    if(data){
+                        var opts =eval("("+data.versions+")");
+                        for(var i=0;i<opts.length;i++){
+                            var opt = opts[i];
+                            var option = $('<li role="presentation"><a role="menuitem" tabindex="-1" opt="'+opt+'" href="javascript:void(0)" key="'+opt.value+'">'+opt.text+'</a></li>');
+                            $(options).append(option);
+                        }
+                    }
+                },
+                error: function (data) {
+
+                }
+            });
+
         }
     });
 });
