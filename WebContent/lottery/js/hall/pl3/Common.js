@@ -220,8 +220,11 @@ define(['site/hall/common/Common','site/plugin/template'], function (Common,Temp
         },/**
          * 加载计算倒计时
          */
-            loadLeftTime: function () {
+        loadLeftTime: function () {
             var _this = this;
+            setTimeout(function(){
+                _this.loadLeftTime();
+            },1000);
             var $left = $("div#leftTime");
             var time = $left.attr("data-time");
             if (isNaN(time) || time < 0) {

@@ -1,7 +1,5 @@
 define(['site/hall/common/Common', 'site/plugin/template'], function (Common, Template) {
     return Common.extend({
-        //最新已开奖的期数
-        lastOpenedExpect : null,
         init: function () {
             this._super();
         },
@@ -10,29 +8,6 @@ define(['site/hall/common/Common', 'site/plugin/template'], function (Common, Te
         },
         onPageLoad: function () {
             this._super();
-        },
-        refreshView: function () {
-            var _this = this;
-            ajaxRequest({
-                url: root + "/commonLottery/getLastOpenedExpect.html",
-                data: {code: _this.code},
-                success: function (data) {
-                    var expect = _this.lastOpenedExpect;
-                    if(data && data != _this.lastOpenedExpect){
-                        expect = data;
-                        _this.lastOpenedExpect = data;
-                    }
-                    ajaxRequest({
-                        url: root + "/commonLottery/getRank.html",
-                        data: {expect: expect,code: _this.code},
-                        success: function (data) {
-                            if (data && data.length > 0) {
-                                _this.renderViewRight(data);
-                            }
-                        }
-                    });
-                }
-            });
         },
         // 随机号码
         randomNumber: function (len) {
@@ -132,191 +107,141 @@ define(['site/hall/common/Common', 'site/plugin/template'], function (Common, Te
             });
             $("#lastOpenCode").html(tmpStr);
         },
+
+        refreshView: function () {
+            var _this = this;
+            ajaxRequest({
+                url: _this.baseUrl + '/getRecent30Records.html',
+                data: {code: _this.code},
+                success: function (data) {
+                    if (data && data.length > 0) {
+                        data.reverse();
+                        _this.renderViewRight(data);
+                    }
+                }
+            });
+        },
         /**
          * 组装两面长龙排行数据
          * @param json
          */
-        renderViewRight: function (list) {
-            // var result = this.getResult();
-            // for (var i = 0; i < json.length; ++i) {
-            //     this.setRenderAllValue(result,json[i].openCode.split(","));
-            // }
-            // var list = this.getListByRenderGroup(result);
-            var html = Template('template_rank_list', {expect: this.lastOpenedExpect,list:list});
-            $(".main-right").html(html);
+        renderViewRight:function(json) {
+            var result = {
+                da: {name: '和值-大', num: 0},
+                xiao: {name: '和值-小', num: 0},
+                dan: {name: '和值-单', num: 0},
+                shuang: {name: '和值-双', num: 0},
+                dadan: {name: '和值-大单', num: 0},
+                xiaodan: {name: '和值-小单', num: 0},
+                dashuang: {name: '和值-大双', num: 0},
+                xiaoshuang: {name: '和值-小双', num: 0},
+                jida: {name: '和值-极大', num: 0},
+                jixiao: {name: '和值-极小', num: 0},
+                hongbo: {name: '和值-红波', num: 0},
+                lvbo: {name: '和值-绿波', num: 0},
+                lanbo: {name: '和值-蓝波', num: 0},
+                baozi: {name: '和值-豹子', num: 0}
+            };
+
+            for (var i = 0; i < json.length; ++i) {
+                var value = json[i];
+                var openCode = value.openCode.split(",");
+                var num1 = Tools.parseInt(openCode[0]);
+                var num2 = Tools.parseInt(openCode[1]);
+                var num3 = Tools.parseInt(openCode[2]);
+
+                var totalnum = num1 + num2 + num3;
+
+                if (totalnum >= 24 || totalnum <= 27) {
+                    result.da.num++;
+                } else {
+                    result.xiao.num++;
+                }
+
+                if (totalnum % 2 == 0) {
+                    result.shuang.num++;
+                } else {
+                    result.dan.num++;
+                }
+
+                if ($.inArray(totalnum, [1, 3, 5, 7, 9, 11, 13]) >= 0) {
+                    result.xiaodan.num++;
+                } else if ($.inArray(totalnum, [15, 17, 19, 21, 23, 25, 27]) >= 0) {
+                    result.dadan.num++;
+                } else if ($.inArray(totalnum, [0, 2, 4, 6, 8, 10, 12]) >= 0) {
+                    result.xiaoshuang.num++;
+                } else if ($.inArray(totalnum, [14, 16, 18, 20, 22, 24, 26]) >= 0) {
+                    result.dashuang.num++;
+                }
+
+                if ($.inArray(totalnum, [22, 23, 24, 25, 26, 27]) >= 0) {
+                    result.jida.num++;
+                } else if ($.inArray(totalnum, [0, 1, 2, 3, 4, 5]) >= 0) {
+                    result.jixiao.num++;
+                }
+
+                if ($.inArray(totalnum, [1, 4, 7, 10, 16, 19, 22, 25]) >= 0) {
+                    result.lvbo.num++;
+                } else if ($.inArray(totalnum, [2, 5, 8, 11, 17, 20, 23, 26]) >= 0) {
+                    result.lanbo.num++;
+                } else if ($.inArray(totalnum, [3, 6, 9, 12, 15, 18, 21, 24]) >= 0) {
+                    result.hongbo.num++;
+                }
+
+                if (num1 == num2 && num3 == num2 && num1 == num3) {
+                    result.baozi.num++;
+                }
+
+            }
+
+            var arr = [];
+            arr.push(result.da);
+            arr.push(result.xiao);
+            arr.push(result.dan);
+            arr.push(result.shuang);
+            arr.push(result.dadan);
+            arr.push(result.xiaodan);
+            arr.push(result.dashuang);
+            arr.push(result.xiaoshuang);
+            arr.push(result.jida);
+            arr.push(result.jixiao);
+            arr.push(result.lvbo);
+            arr.push(result.hongbo);
+            arr.push(result.lanbo);
+
+            arr.sort(function (a, b) {
+                var val1 = a.num;
+                var val2 = b.num;
+                if (val1 < val2) {
+                    return -1;
+                } else if (val1 > val2) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            arr = arr.reverse();
+
+            var str = '';
+            str += '<div class="table-common table-border-color">';
+            str += '<table width="100%" border="1">';
+            str += '<tbody>';
+            str += '<tr>';
+            str += '<td colspan="2">长龙排行</td>';
+            str += '</tr>';
+            str += '<tr>';
+            str += '<td colspan="2">统计至第' + json[json.length - 1].expect + '期</td>';
+            str += '</tr>';
+            for (var i = 0; i < 10 && i < arr.length; ++i) {
+                str += '<tr>';
+                str += '<td width="142">' + arr[i].name + '</td>';
+                str += '<td>' + arr[i].num + '</td>';
+                str += '</tr>';
+            }
+            str += '</tbody>';
+            str += '</table>';
+            str += '</div>';
+            $(".main-right").html(str);
         }
-        // getResult:function(){
-        //     return {
-        //             da: {name: '和值-大', num: 0},
-        //             xiao: {name: '和值-小', num: 0},
-        //             dan: {name: '和值-单', num: 0},
-        //             shuang: {name: '和值-双', num: 0},
-        //             dadan: {name: '和值-大单', num: 0},
-        //             xiaodan: {name: '和值-小单', num: 0},
-        //             dashuang: {name: '和值-大双', num: 0},
-        //             xiaoshuang: {name: '和值-小双', num: 0},
-        //             jida: {name: '和值-极大', num: 0},
-        //             jixiao: {name: '和值-极小', num: 0},
-        //             baozi: {name: '豹子', num: 0},
-        //             hong: {name: '和值-红波', num: 0},
-        //             lan: {name: '和值-蓝波', num: 0},
-        //             lv: {name: '和值-绿波', num: 0}
-        //         };
-        // },
-        // getListByRenderGroup:function(result){
-        //     var list = [];
-        //     $.each(result,function(key,value){
-        //         list.push(value);
-        //     });
-        //     list.sort(function (a, b) {
-        //         return a.num >= b.num?1:-1;
-        //     });
-        //     return list.reverse();
-        // },
-        // setRenderAllValue : function(result,openCode){
-        //     this.setRenderValue(result,Tools.parseInt(openCode[0]),Tools.parseInt(openCode[1]),Tools.parseInt(openCode[2]))
-        // },
-        // setRenderValue:function(obj,num1,num2,num3){
-        //     var sum = num1+num2+num3;
-        //     this.setBigSmall(obj,sum);
-        //     //极大小
-        //     this.setBestBigSmall(obj,sum);
-        //     this.setSingleDouble(obj,sum);
-        //     //大小单双
-        //     this.setBigSmallSingleDouble(obj,sum);
-        //     //红蓝绿波
-        //     this.setColorWave(obj,sum);
-        //     //豹子
-        //     this.setLeopard(obj,num1,num2,num3);
-        // },
-        // setBigSmall:function(obj,num){
-        //     if (num >= 14) {
-        //         obj.da.num++;
-        //     } else {
-        //         obj.xiao.num++;
-        //     }
-        // },
-        // setBestBigSmall:function(obj,num){
-        //     if (num >= 22) {
-        //         obj.jida.num++;
-        //     } else if(num <= 5){
-        //         obj.jixiao.num++;
-        //     }
-        // },
-        // setSingleDouble:function(obj,num){
-        //     if (num % 2 == 0) {
-        //         obj.shuang.num++;
-        //     } else {
-        //         obj.dan.num++;
-        //     }
-        // },
-        // setBigSmallSingleDouble:function(obj,num){
-        //     if (num % 2 != 0 && num >= 14) {
-        //         obj.dadan.num++;
-        //     } else if (num % 2 != 0 && num < 14) {
-        //         obj.xiaodan.num++;
-        //     } else if (num % 2 == 0 && num >= 14) {
-        //         obj.dashuang.num++;
-        //     } else if (num % 2 == 0 && num < 14) {
-        //         obj.xiaoshuang.num++;
-        //     }
-        // },
-        // setColorWave:function(obj,num){
-        //     if(num != 0 && num != 13 && num != 14 && num != 27){
-        //         if(num%3 == 0){
-        //             obj.hong.num++;
-        //         }else if(num%3 == 1){
-        //             obj.lv.num++;
-        //         }else{
-        //             obj.lan.num++;
-        //         }
-        //     }
-        // },
-        // setLeopard:function(obj,num1,num2,num3){
-        //     if(num1 == num2 && num1 == num3 && num2 == num3){
-        //         obj.jida.num++;
-        //     }
-        // }
-        // renderView: function (json) {
-        //     var headList = [],sortList = [];
-        //     $("#bottom_zs_table_head .game_result").each(function(i){
-        //         headList.push($(this).data("position"));
-        //         sortList[i] = {ds: [], dx: []};
-        //     });
-        //     for (var i = 0; i < json.length; ++i) {
-        //         var openCodes = json[i].openCode.split(",");
-        //         var sum = 0;
-        //         for(var j = 0; j < openCodes.length; j++){
-        //             var openCode = Tools.parseInt(openCodes[j]);
-        //             this.setOpenCodeSortList(sortList[j], openCode);
-        //             sum += openCode;
-        //         }
-        //         this.setOpenCodeSortList(sortList[sortList.length-1], sum,14);
-        //     }
-        //     var maxMap = this.getAllMaxMap(headList,sortList);
-        //     var html = Template('template_result_list', {maxMap:maxMap,headList: headList});
-        //     $("#bottom_zs_table_content").html(html);
-        //     for (var i = 0; i < headList.length; ++i) {
-        //         var value = sortList[i];
-        //         var pre = headList[i];
-        //         $.each(value.ds, function (index, value) {
-        //             $('#bottom_zs_table_' + pre + '_ds').find("tr").eq(value.y).find("td").eq(value.x).html(value.name);
-        //         });
-        //         $.each(value.dx, function (index, value) {
-        //             $('#bottom_zs_table_' + pre + '_dx').find("tr").eq(value.y).find("td").eq(value.x).html(value.name);
-        //         });
-        //     }
-        // },
-        // setOpenCode:function (list,name) {
-        //     var x = 0, y = 0;
-        //     if(list.length != 0) {
-        //         var preObj = list[list.length - 1];
-        //         if (preObj.name == name) {
-        //             x = preObj.x;
-        //             y = preObj.y + 1;
-        //         } else {
-        //             x = preObj.x + 1;
-        //             y = 0;
-        //         }
-        //     }
-        //     list.push({
-        //         name: name,
-        //         x: x,
-        //         y: y
-        //     });
-        // },
-        // setOpenCodeSortList:function (obj,openCode,bigValue) {
-        //     bigValue = (bigValue == undefined || bigValue == '')?5:bigValue;
-        //     var name = openCode >= bigValue ? "<font style=\"color:#e70f0f;\">大</font>":"<font style=\"color:#58adff;\">小</font>";
-        //     this.setOpenCode(obj.dx,name);
-        //     name = openCode % 2 == 0 ? "<font style=\"color:#e70f0f;\">双</font>":"<font style=\"color:#58adff;\">单</font>";
-        //     this.setOpenCode(obj.ds,name);
-        // },
-        // getMaxMap:function(list){
-        //     var map = {};
-        //     var maxX = 30,maxY = 0;
-        //     for(var i = 0; i < list.length; i++){
-        //         var obj = list[i];
-        //         if (obj.x > maxX) {
-        //             maxX = obj.x;
-        //         }
-        //         if (obj.y > maxY) {
-        //             maxY = obj.y;
-        //         }
-        //     }
-        //     map.maxX = new Array(maxX+1);
-        //     map.maxY = new Array(maxY+1);
-        //     return map;
-        // },
-        // getAllMaxMap:function(headList,sortList){
-        //     var maxMap = {};
-        //     for(var i = 0; i < headList.length; i++){
-        //         var head = headList[i];
-        //         var sortObj = sortList[i];
-        //         maxMap[head+"_dx"] = this.getMaxMap(sortObj.dx);
-        //         maxMap[head+"_ds"] = this.getMaxMap(sortObj.ds);
-        //     }
-        //     return maxMap;
-        // }
     })
 })

@@ -76,6 +76,14 @@
             $(".login-xuan").addClass("iconfont").addClass("icon-gou5");
         }
     })
+    //注册选中
+    $('.xuan1').click(function () {
+        if($(".register-xuan").hasClass("iconfont")){
+            $(".register-xuan").removeClass("iconfont").removeClass("icon-gou5");
+        }else {
+            $(".register-xuan").addClass("iconfont").addClass("icon-gou5");
+        }
+    })
 
     //    切换活动
     $('.activity-nav').on("click","div",function () {
@@ -108,30 +116,73 @@
         if($(this).hasClass("security-btn")){
             $(this).siblings(".pwd-btn").removeClass("security-btn-a");
             $(this).siblings(".card-btn").removeClass("security-btn-a");
+            $(this).siblings(".conversion-btn").removeClass("security-btn-a");
+            $(this).siblings(".SFZ-btn").removeClass("security-btn-a");
             $(this).addClass("security-btn-a");
             $(this).removeClass("dis-no");
+            // console.log(11);
     //        $(this).siblings().addClass("dis-no");
             $('.security-box').removeClass("dis-no");
             $('.pwd-box').addClass("dis-no");
             $('.card-box').addClass("dis-no");
+            $('.conversion-box').addClass("dis-no");
+            $('.SFZ-box').addClass("dis-no");
         }else  if($(this).hasClass("card-btn")){
             $(this).siblings(".security-btn").removeClass("security-btn-a");
             $(this).siblings(".pwd-btn").removeClass("security-btn-a");
+            $(this).siblings(".conversion-btn").removeClass("security-btn-a");
+            $(this).siblings(".SFZ-btn").removeClass("security-btn-a");
             $(this).addClass("security-btn-a");
             $(this).removeClass("dis-no");
+            // console.log(22);
     //        $('.login-box').addClass("dis-no");
             $('.card-box').removeClass("dis-no");
             $('.security-box').addClass("dis-no");
             $('.pwd-box').addClass("dis-no");
+            $('.conversion-box').addClass("dis-no");
+            $('.SFZ-box').addClass("dis-no");
         }else  if($(this).hasClass("pwd-btn")){
             $(this).siblings(".security-btn").removeClass("security-btn-a");
             $(this).siblings(".card-btn").removeClass("security-btn-a");
+            $(this).siblings(".conversion-box").removeClass("security-btn-a");
+            $(this).siblings(".SFZ-btn").removeClass("security-btn-a");
             $(this).addClass("security-btn-a");
             $(this).removeClass("dis-no");
-    //        $('.login-box').addClass("dis-no");
+            //        $('.login-box').addClass("dis-no");
+            // console.log(1);
             $('.pwd-box').removeClass("dis-no");
             $('.security-box').addClass("dis-no");
             $('.card-box').addClass("dis-no");
+            $('.conversion-box').addClass("dis-no");
+            $('.SFZ-box').addClass("dis-no");
+        }else  if($(this).hasClass("conversion-btn")){
+            $(this).siblings(".pwd-btn").removeClass("security-btn-a");
+            $(this).siblings(".security-btn").removeClass("security-btn-a");
+            $(this).siblings(".card-btn").removeClass("security-btn-a");
+            $(this).siblings(".SFZ-btn").removeClass("security-btn-a");
+            $(this).addClass("security-btn-a");
+            $(this).removeClass("dis-no");
+            // console.log(2);
+            //        $('.login-box').addClass("dis-no");
+            $('.conversion-box').removeClass("dis-no");
+            $('.security-box').addClass("dis-no");
+            $('.card-box').addClass("dis-no");
+            $('.pwd-box').addClass("dis-no");
+            $('.SFZ-box').addClass("dis-no");
+        }else  if($(this).hasClass("SFZ-btn")){
+            $(this).siblings(".pwd-btn").removeClass("security-btn-a");
+            $(this).siblings(".security-btn").removeClass("security-btn-a");
+            $(this).siblings(".card-btn").removeClass("security-btn-a");
+            $(this).siblings(".conversion-btn").removeClass("security-btn-a");
+            $(this).addClass("security-btn-a");
+            $(this).removeClass("dis-no");
+            // console.log(3);
+            //        $('.login-box').addClass("dis-no");
+            $('.SFZ-box').removeClass("dis-no");
+            $('.security-box').addClass("dis-no");
+            $('.card-box').addClass("dis-no");
+            $('.conversion-box').addClass("dis-no");
+            $('.pwd-box').addClass("dis-no");
         }
     })
 
@@ -208,13 +259,24 @@
     })
     //选择银行
     $(".card-ka").click(function () {
-        $(".card-yin").removeClass("dis-no");
+        $(".card-yin").show();
     })
     $(".card-yin").on("click","li",function () {
-        $(this).parent().addClass("dis-no");
-        console.log($(this).parent());
-        var litext = $(this).text();
-        $(".card-con").text(litext);
+        $(".card-con").text($(this).text());
+        setTimeout(function(){
+            $(".card-yin").hide();
+        }, 100);
+    })
+    //选择问题
+    $(".wen-ti").click(function () {
+//        $(".xuan-wt").removeClass("dis-no");
+        $(".xuan-wt").show();
+    })
+    $(".xuan-wt li").click(function () {
+        $(".con-rong").text($(this).text());
+        setTimeout(function(){
+            $(".xuan-wt").hide();
+        }, 100);
     })
 
 
@@ -239,6 +301,7 @@ var startPosition = {}, deltaY, endPosition = {};
 document.addEventListener('touchstart', touch, false);
 document.addEventListener('touchmove', touch, false);
 document.addEventListener('touchend', touch, false);
+/**
 function touch(event) {
     var event = event || window.event;
     switch (event.type) {
@@ -286,4 +349,4 @@ function touch(event) {
             }
         }
     }
-}
+}**/

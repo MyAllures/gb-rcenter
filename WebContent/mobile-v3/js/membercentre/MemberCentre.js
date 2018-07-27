@@ -75,7 +75,7 @@ function userInfo() {
                 if (data.transferAmount != null && data.transferAmount != 0) {
                     $("#transferAmount").html(window.top.message.my_auto['处理中'] + currency + data.transferAmount);
                 } else {
-                    $("#transferAmount").html(window.top.message.my_auto['进行资金回收和转入']);
+                    $("#transferAmount").html(window.top.message.my_auto['查看所参与的游戏记录']);
                 }
             }
         }

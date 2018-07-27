@@ -61,7 +61,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
 
             $(this.formSelector).on("change", ".game", function (e){
                 var target = e.target;
-                var num = $(target).parents(".game_div").find("input.game:checked").length;
+                var num = $(target).parents(".game_div").find("input.game:checked").not(":disabled").length;
                 var mark = $(target).attr("aaa");
                 $("."+mark).text(num);
             });
@@ -318,7 +318,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var title_val = $("#title" + index).val();
             var img2 = $("[name='activityMessageI18ns[" + index + "].activityCover']").val();
             var activityDescription_val = UE.getEditor('editContent' + index).hasContents();
-            if (title_val.trim() && img2.trim() && activityDescription_val) {
+            if (title_val.trim() && typeof(img2)!="undefined"  &&  img2.trim() && activityDescription_val) {
                 $tab_span.text(window.top.message.operation_auto['已编辑']);
             } else {
                 $tab_span.text(window.top.message.operation_auto['未编辑']);
@@ -484,7 +484,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             } else {
                 window.top.topPage.ajax({
                     type: "Get",
-                    url: root + '/activityHall//activity/activityRule.html',
+                    url: root + '/activityHall/activity/activityRule.html',
                     data: {"result.code": code},
                     success: function (data) {
                         datas = eval('(' + data + ')');
@@ -538,6 +538,22 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             if(!this.validateForm(e)){
                 $(e.currentTarget).click();
                 return false;
+            }
+            if (opt.code == 'effective_transaction') {
+
+                var apiIdChecked = false;
+                $("input[name$=apiId][name^=activityRuleIncludeGames]").each(function (index, el) {
+                    if ($(this).is(':checked') && $(this).prop("disabled")!=true) {
+                        apiIdChecked = true;
+                    }
+                });
+                if (!apiIdChecked) {
+                    var msg = window.top.message.common['请指定游戏分类'];
+                    var game_select_tips = $(".btn.btn-filter.gameTypeButton").not(".btn-outline");
+                    var obj = {currentTarget:game_select_tips};
+                    page.showPopover(obj,{},'danger',msg,true);
+                    return false;
+                }
             }
             if (opt.code == 'profit_loss') {
                 var message = window.top.message.common['盈利和亏损不能同时为空'];
@@ -1344,7 +1360,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var size = gameTypeList.length;
             for (var i=0; i<size; i++) {
                 var target = gameTypeList[i];
-                var num = $(target).find("input.game:checked").length;
+                var num = $(target).find("input.game:checked").not(":disabled").length;
                 var mark = $(target).attr("aaa");
                 $("."+mark).text(num);
             }

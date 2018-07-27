@@ -10,7 +10,7 @@
 
 <body>
 <#include "top.ftl">
-<#include "../../commonPage/zh_CN/topLottery.ftl">
+<#include "../../commonPage/zh_CN/topLottery_new.ftl">
 <main class="main-lottery">
     <div style="height: 406px;background: url(${data.configInfo.sitePath}/images/lottery-banner.jpg) no-repeat center bottom;"></div>
     <!-- notice -->

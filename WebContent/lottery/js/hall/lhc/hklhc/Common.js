@@ -50,6 +50,9 @@ define(['site/hall/common/Common','site/plugin/template'], function (Common,Temp
          */
         loadLeftTime: function () {
             var _this = this;
+            setTimeout(function(){
+                _this.loadLeftTime();
+            },1000);
             var $left = $("div#leftTime");
             var time = $left.attr("data-time");
             if (isNaN(time) || time < 0) {
