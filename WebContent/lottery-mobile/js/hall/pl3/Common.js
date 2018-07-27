@@ -184,7 +184,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
 
 
 
-        getHandicap:function ( ) {
+        getHandicap:function (callback) {
             if (this.isRunning) {
                 return;
             }
