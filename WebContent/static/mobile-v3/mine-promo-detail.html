@@ -103,7 +103,10 @@
     $(function () {
        $('.table-scroll').css({
            height:$('.table-scroll .mui-scroll>table').css('height')
-       })
+       });
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        }, { passive: false });
     });
 </script>
 </html>
