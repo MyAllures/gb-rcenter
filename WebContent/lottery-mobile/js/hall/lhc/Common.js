@@ -188,7 +188,7 @@ define(['site/hall/Common'], function (Common) {
             }
             return o;
         },
-        getHandicap:function ( ) {
+        getHandicap:function (callback) {
             if (this.isRunning) {
                 return;
             }

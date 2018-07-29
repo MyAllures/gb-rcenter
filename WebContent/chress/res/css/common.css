@@ -75,3 +75,14 @@ right: -1000px;
       -webkit-transform: scale(1.0);
     }
   }
+
+.comm_touch:active{transform: scale(.96)}
+
+
+
+
+@media screen and (min-width:1020px){html{font-size: 204px}}
+@media screen and (max-width:740px){html{font-size: 110px}}
+@media screen and (max-width:680px){html{font-size: 100px}}
+@media screen and (max-width:570px){html{font-size: 85px}}
+

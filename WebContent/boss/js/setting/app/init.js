@@ -44,10 +44,9 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         changeKey: function (e) {
             var the = this;
             var type = e.key;
-            if ('ios' == type) {
-                the.initVersionOption("hidenIosVersion");
-            } else if ('android' == type) {
-                the.initVersionOption("hidenAndroidVersion");
+            //android ios GB CB
+            if (type){
+                the.initVersionOption();
             } else {
                 the.clearVersionMsg();
             }
@@ -62,19 +61,39 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $("[name='search.appUrl']").val(selObj.appUrl);
             $("[name='search.memo']").val(selObj.versionMemo);
         },
-        initVersionOption: function (divid) {
+        initVersionOption: function () {
             var the = this;
             the.selOptMap = {};
             the.clearVersionMsg();
             var options = $("#selVersionDiv").find("ul")[0];
-            var optStr = $("#" + divid).html();
-            var opts = eval("(" + optStr + ")");
-            for (var i = 0; i < opts.length; i++) {
-                var opt = opts[i];
-                var option = $('<li role="presentation"><a role="menuitem" tabindex="-1" opt="' + opt + '" href="javascript:void(0)" key="' + opt.value + '">' + opt.text + '</a></li>');
-                $(options).append(option);
-                the.selOptMap[opt.value] = opt;
-            }
+            var appType = $("[name='search.appType']").val();
+            var boxType = $("[name='search.boxType']").val();
+            var ajaxOption = {
+                "search.appType" : appType,
+                "search.boxType" : boxType
+            };
+
+            window.top.topPage.ajax({
+                url: root + '/siteAppUpdate/getVersionByTypoe.html',
+                type: 'POST',
+                dataType: 'json',
+                data:ajaxOption,
+                success: function (data) {
+                    if(data){
+                        var opts =eval("("+data.versions+")");
+                        for(var i=0;i<opts.length;i++){
+                            var opt = opts[i];
+                            var option = $('<li role="presentation"><a role="menuitem" tabindex="-1" opt="' + opt + '" href="javascript:void(0)" key="' + opt.value + '">' + opt.text + '</a></li>');
+                            $(options).append(option);
+                            the.selOptMap[opt.value] = opt;
+                        }
+                    }
+                },
+                error: function (data) {
+
+                }
+            });
+
         },
         clearVersionMsg: function () {
             var span = $("#selVersionDiv").find("button").find("span")[0];
@@ -87,6 +106,5 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $("[name='search.appUrl']").val("");
             $("[name='search.memo']").val("");
         }
-    })
-        ;
+    });
 });
