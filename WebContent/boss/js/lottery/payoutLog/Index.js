@@ -6,7 +6,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
          * 调用
          */
         init: function () {
-            this._super();
+            this.formSelector = "form[name=payoutLogForm]";
+            this._super(this.formSelector);
         },
         /**
          * 当前对象事件初始化函数
@@ -18,15 +19,11 @@ define(['common/BaseListPage'], function (BaseListPage) {
             this._super();
         },
         checkSiteId:function (e, opt) {
-            var siteId = $("#search.siteId").val();
-            var code = opt.code;
+            var siteId = $("#siteId").val();
             if(!siteId){
-                if(!code){
-                    opt.placement="left";
-                }
                 opt.callback=function () {
-                    $("#search.siteId").focus();
-                }
+                    $("#siteId").focus();
+                };
                 page.showPopover(e,opt,"danger","站点ID不能为空",true);
                 return false;
             }
