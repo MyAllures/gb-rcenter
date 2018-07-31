@@ -490,8 +490,11 @@ img{margin: 0 auto;padding: 0;}
 .huod-cpm-box{width: 2.88rem;height: 2.22rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
 .huod-top-img{width: 2.88rem;  background: url("../image/cpm/title_bg.png") no-repeat 0 0;background-size:100%;height: 0.48rem}
 .huod-top-img1{width: 0.6rem;  position: absolute;top: 0.08rem;  left: 1.14rem;}
-.huod_content1{width: 2.88rem;height: 1.74rem;border: 1px solid #929FD6; margin-top: -0.03rem; background-color: rgba(42, 53, 138, 0.6);padding: 0.1rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
-.huod_content1>.huod-box1{border: 1px solid #6F7AC1; width: 2.65rem;height: 0.93rem; color: #fff;font-size: 0.17rem;text-align: center;line-height: 0.93rem;   border-radius: 5px; background-color: rgba(66, 80, 174, 0.6);}
+.huod_content1{width: 2.88rem;height: 2.25rem; border: 1px solid #929FD6; border-top: none; margin-top: -0.08rem; background-color: rgba(42, 53, 138, 0.9);padding: 0.1rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+.huod_content1>.huod-box1{border: 1px solid #6F7AC1;overflow: auto; width: 2.65rem;padding:0.1rem; box-sizing: border-box; height: 1.5rem; color: #fff;font-size: 0.17rem;  border-radius: 5px; background-color: rgba(66, 80, 174, 0.6);}
+.huod-box1>h3{font-size: 0.15rem;line-height: 0.2rem;margin: 0.1rem 0;}
+.huod-box1>ul{padding-left: 0.15rem;}
+.huod-box1>ul>li>img{width: 0.12rem;margin-bottom: 0.1rem;vertical-align: -webkit-baseline-middle;}
 .huod-img1{ width: 1.31rem;height: 0.4rem;margin:0;background: url("../image/cpm/btn_large.png") no-repeat 0 0/100%;background-color: #344abb ;letter-spacing: 0.02rem;font-weight: bold;border-radius: 0.1rem;text-align:center;color: #fff;font-size: 0.2rem;line-height: 0.4rem;}
 .huod-img1-a{  background-color: #d19407 !important ;}
 .huod-img2{ width: 1.31rem;height: 0.4rem;margin:0;background: url("../image/cpm/btn_large.png") no-repeat 0 0/100%;background-color: #344abb ;letter-spacing: 0.02rem;font-weight: bold;border-radius: 0.1rem;text-align:center;color: #fff;font-size: 0.2rem;line-height: 0.4rem;}
