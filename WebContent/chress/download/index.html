@@ -16,18 +16,19 @@
                 <div class="down-adr click-scare"><i class="log-adr"></i>&nbsp;&nbsp;&nbsp;点击下载安卓版</div>
             </div>
             <div class="showdown">
-                <div class="loadEffect" id="loading">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                </div>
+                
                 <div onclick="downANZ()" class="down-anz click-scare">
-                    <span>点击安装</span>                
+                    <span class="spcname">点击安装</span>    
+                    <div class="loadEffect" id="loading">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                         </div>            
                 </div>
                 <div class="wleco">
                     <p>欢迎下载本APP</p>
@@ -146,7 +147,7 @@
     }
 
     function downANZ(){
-        document.getElementsByClassName('down-anz')[0].innerHTML ="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在桌面上查看安装"
+        document.getElementsByClassName('spcname')[0].innerHTML ="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在桌面上查看安装"
         console.log(document.getElementById('loading'))
         document.getElementById('loading').style.display ="block"
     }
@@ -291,12 +292,17 @@ box-shadow:0 0 28px rgba(216, 215, 215, 0.8)}
 
 .demonstration{width: 100%;height: 100%;position: absolute;transition: all .3s linear;}
 .lb{width:100%;height:100%;position:relative;overflow: hidden;}
-.lb .lb_img{width:2240px;height:100%;position:absolute;left:-320px;}
+.lb .lb_img{width:2240px;height:100%;position:absolute;left:-320px;transition: all .2s linear}
 .lb .lb_img img{width:320px;height:100%;float:left;display:block;}
 .lb ul{width:.6rem;height:.05rem;position:absolute;bottom:.2rem;left:0;right:0;margin:auto;}
 .lb ul li{width:.07rem;height:.07rem;border-radius:100%;;margin-left:.03rem;background:#666;float:left;cursor:pointer;}
 .lb ul .active{background:#fff;}
 .lb ul li:hover{background:#fff;}
+
+@media screen and (min-height:1020px){html{font-size: 204px}}
+@media screen and (max-height:740px){html{font-size: 110px}}
+@media screen and (max-height:670px){html{font-size: 100px}}
+@media screen and (max-height:570px){html{font-size: 85px}}
 
 
 
@@ -322,17 +328,16 @@ box-shadow:0 0 28px rgba(216, 215, 215, 0.8)}
 
 
 .loadEffect{
-    width: 50px;
-    height: 50px;
+    width: .5rem;
+    height: .5rem;
     position: absolute;
-    top:2.9rem;
-    margin: auto;
-    left: 1.07rem;
+    top:.01rem;
+    left: .1rem;
 }
 .loadEffect span{
     display: inline-block;
-    width: 7px;
-    height: 2px;
+    width: .07rem;
+    height: .02rem;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background: white;
@@ -350,51 +355,51 @@ box-shadow:0 0 28px rgba(216, 215, 215, 0.8)}
 .loadEffect span:nth-child(1){
     left: 0;
     top: 50%;
-    margin-top:-5px;
+    margin-top:-.05rem;
     -webkit-animation-delay:0.13s;
 }
 .loadEffect span:nth-child(2){
-    left: 2px;
-    top: 13px;
+    left: .02rem;
+    top: .13rem;
     -webkit-transform: rotate(45deg);
     -webkit-animation-delay:0.26s;
 }
 .loadEffect span:nth-child(3){
     left: 50%;
-    top: 10px;
-    margin-left: -15px;
+    top: .1rem;
+    margin-left: -.15rem;
     -webkit-transform: rotate(90deg);
     -webkit-animation-delay:0.39s;
 }
 .loadEffect span:nth-child(4){
-    top: 12px;
-    right:25px;
+    top: .12rem;
+    right:.25rem;
     -webkit-transform: rotate(135deg);
     -webkit-animation-delay:0.52s;
 }
 .loadEffect span:nth-child(5){
-    right: 23px;
+    right: .23rem;
     top: 50%;
-    margin-top:-5px;
+    margin-top:-.05rem;
     -webkit-transform: rotate(180deg);
     -webkit-animation-delay:0.65s;
 }
 .loadEffect span:nth-child(6){
-    right: 26px;
-    bottom:21px;
+    right: .26rem;
+    bottom:.21rem;
     -webkit-transform: rotate(225deg);
     -webkit-animation-delay:0.78s;
 }
 .loadEffect span:nth-child(7){
-    bottom: 19px;
+    bottom: .19rem;
     left: 50%;
-    margin-left: -15px;
+    margin-left: -.15rem;
     -webkit-transform: rotate(270deg);
     -webkit-animation-delay:0.91s;
 }
 .loadEffect span:nth-child(8){
-    bottom: 21px;
-    left: 3px;
+    bottom: .21rem;
+    left: .03rem;
     -webkit-transform: rotate(315deg);
     -webkit-animation-delay:1.04s;
 }
