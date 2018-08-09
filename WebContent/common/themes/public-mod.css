@@ -46,6 +46,8 @@
 .pay-bank.fjnx{background-position:0 -780px;}/* 25 福建农商银行 */
 .pay-bank.hangseng{background-position:0 -810px;}/* 26 恒生银行 */
 .pay-bank.tzb{background-position:0 -840px;}/* 27 台州银行 */
+.pay-bank.jlbank{background-position:0 -873px;}/* 28 吉林银行 */
+.pay-bank.qdbank{background-position:0 -906px;}/* 29 青岛银行 */
 
 .sm.ceb,.sm.spdb,.sm.spabank,.sm.cib,.sm.bohaib{width: 50px;}
 /* 第三方支付 */
