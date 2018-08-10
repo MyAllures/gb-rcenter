@@ -69,6 +69,7 @@ define(['common/BaseEditPage','bootstrapswitch'], function (BaseEditPage) {
                 dataType: "json",
                 data: {"channelCode": channel_code},
                 success: function (data) {
+                    //
                     for (var index = data.payApiParams.length - 1; index >= 0; index--) {
                         var name = "channelJson";
                         var domainClass = '';
@@ -102,7 +103,7 @@ define(['common/BaseEditPage','bootstrapswitch'], function (BaseEditPage) {
                         }
                         val = !val ? "" : val;
                         var a ;
-                        if ($("#withdrawChannel").val() == "fengyunjuhe"){
+                        if ($("#withdrawChannel").val() == "fengyunjuhe"  || $("#withdrawChannel").val() == "wanbi_wy"){
 
                              a = $("#withdrawChannel").val();
                         }
@@ -112,6 +113,11 @@ define(['common/BaseEditPage','bootstrapswitch'], function (BaseEditPage) {
                         if ($("#withdrawChannel").val() != b.val()){
                             val = "";
                         }
+
+                        if ($("#withdrawChannel").val() != $("#lastSavedChannel").val()){
+                            val = "";
+                        }
+
                         var newVar = data.payApiParams[index].paramDesc || window.top.message.content['pay_channel.' + channel_code + "." + data.payApiParams[index].paramMean]
                             || window.top.message.content['pay_channel.' + data.payApiParams[index].paramMean];
                         var CloneHtml = "<div class='form-group clearfix line-hi34 column " + hide + "'>\
