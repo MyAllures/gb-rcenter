@@ -45,9 +45,10 @@ define(['common/BaseEditPage'], function(BaseListPage) {
                 console.debug(bankCardArr[i]);
                 var regexp = /^[0-9]{10,25}$/;
                 if (!regexp.test(bankCard)) {
-                    e.page.showPopover(e, {}, "warning", "银行卡号 " + bankCard + " 应是10-25位数字", true);
+                    e.page.showPopover(e, {}, "danger", "银行卡号 " + bankCard + " 长度应在10-25范围内数字", true);
                     return false;
                 }
+
             }
             return true;
         },
