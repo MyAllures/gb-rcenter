@@ -247,6 +247,32 @@
         </span>
             <br/>
         </c:forEach>
+    </c:if>
+</c:if>
 
+<%--斗地主--%>
+<c:if test="${betType eq 'DDZ'}">
+    <c:if test="${ !empty porkerList && !empty porkerListSet}">
+        <span style="vertical-align: 10px">
+            地主：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
+        </span>
+        <c:forEach items="${porkerList}" var="poker">
+            <gb:poker poker="${poker}"/>
+        </c:forEach>
+        <span style="vertical-align: 10px">
+            )
+        </span>
+        <br/>
+        <c:forEach items="${porkerListSet}" var="pokerList">
+            <span style="vertical-align: 10px">
+                农民：&nbsp;&nbsp;&nbsp;(
+            </span>
+            <c:forEach items="${pokerList}" var="poker">
+                <gb:poker poker="${poker}"/>
+            </c:forEach>
+            <span style="vertical-align: 10px">
+            )<br/>
+            </span>
+        </c:forEach>
     </c:if>
 </c:if>
