@@ -44,12 +44,29 @@
 </c:if>
 <%--二八杠--%>
 <c:if test="${betType eq 'MAHJONG_TILES'}">
+    <c:if test="${ !empty porkerList}">
+        <span style="vertical-align: 10px">
+        庄：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
+        </span>
+        <c:forEach items="${porkerList}" var="poker">
+            <gb:mahjong mahjong="${poker}"/>
+        </c:forEach>
+        <span style="vertical-align: 10px">
+        )
+        </span>
+        <br/>
+    </c:if>
     <c:if test="${!empty porkerListSet}">
         <c:forEach items="${porkerListSet}" var="pokerList" varStatus="pokerIndex">
-            座位${pokerIndex.index+1}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="vertical-align: 10px">
+            闲${pokerIndex.index+1}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
+            </span>
             <c:forEach items="${pokerList}" var="poker">
                 <gb:mahjong mahjong="${poker}"/>
             </c:forEach>
+            <span style="vertical-align: 10px">
+            )
+            </span>
             <br/>
         </c:forEach>
     </c:if>
@@ -252,7 +269,7 @@
 
 <%--斗地主--%>
 <c:if test="${betType eq 'DDZ'}">
-    <c:if test="${ !empty porkerList && !empty porkerListSet}">
+    <c:if test="${ !empty porkerList }">
         <span style="vertical-align: 10px">
             地主：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
         </span>
