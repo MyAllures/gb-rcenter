@@ -15,6 +15,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         onPageLoad: function () {
             this._super();
+            this.changeSmsInterface();
         },
         /**
          * 当前页面所有事件初始化函数
@@ -61,6 +62,61 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 }
             }
             return true;
+        },
+        /**
+         * 选择不同的短信接口，显示不同的输入框
+         * @param e
+         * @param opt
+         * @returns {boolean}
+         */
+        changeSmsInterface: function () {
+            //清空旧数据
+            $("input[name^='sms']").not("input[name$='id']").val('');
+            $("textarea[name='sms.dataKey']").val('');
+
+            //数据库中的值
+            var existedSmsInterfaceMapJsonStr = $('#existedSmsInterfaceMap').html();
+            var json = $.parseJSON( existedSmsInterfaceMapJsonStr );
+
+            //罗斯猫
+            if (this.selectedSmsInterface() == '1'){
+                // $("input").val("");
+                $("input[name='sms.appId']").parent().parent().addClass("hide");
+                $("input[name='sms.username']").parent().parent().removeClass("hide");
+                $("input[name='sms.password']").parent().parent().removeClass("hide");
+
+                //默认值
+                $("input[name='sms.username']").val(json['1']['username']);
+                $("input[name='sms.password']").val(json['1']['password']);
+                $("textarea[name='sms.dataKey']").val(json['1']['dataKey']);
+                $("input[name='sms.signature']").val(json['1']['signature']);
+            }else if (this.selectedSmsInterface() == '2'){
+                // $("input").val("");
+                $("input[name='sms.appId']").parent().parent().removeClass("hide");
+                $("input[name='sms.username']").parent().parent().addClass("hide");
+                $("input[name='sms.password']").parent().parent().addClass("hide");
+
+                //默认值
+                $("input[name='sms.appId']").val(json['2']['appId']);
+                $("textarea[name='sms.dataKey']").val(json['2']['dataKey']);
+                $("input[name='sms.signature']").val(json['2']['signature']);
+            }
+            this.resizeDialog();
+
+        },
+        /**
+         * 接口名称
+         * @param e
+         * @param opt
+         * @returns {boolean}
+         */
+        selectedSmsInterface: function () {
+            return $("input[name='sms.id']").val();
         }
+
+
+
+
+
     });
 });
