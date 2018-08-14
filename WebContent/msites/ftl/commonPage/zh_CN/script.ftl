@@ -27,8 +27,14 @@
         liveAccordion();//通用真人手风琴脚本
         transWebUrlSlide();//轮播图占位符替换
         floatPics();//浮窗判断脚本添加Float效果
+        delateTip () //去除谷歌自带提示历史记录
     });
-
+    // 去除谷歌自带提示历史记录
+    function delateTip () {
+        $('input[name="username"]').attr('autocomplete','off');
+        $('input[name="password"]').attr('autocomplete','off');
+        $('input[name="captcha"]').attr('autocomplete','off');
+    }
     var current_language = getCookie(PAGE_LANGUAGE);
     if(current_language=="zh_CN"){
         $(".current_language").addClass("zh-CN");
@@ -508,7 +514,7 @@
                             if($(this).hasClass("game-demo")){
                                 $(this).attr("onclick","apiLoginDemo("+apiId+",'',"+$(this).data("apitype")+")");
                             }else{
-                                if($(this).data("api")=="22"){
+                                if($(this).data("api")=="22" || $(this).data("api")=="41"){
                                     //添加this，彩票站要根据单个彩种进入相应的投注页面
                                     $(this).attr("onclick","apiLogin("+apiId+",'',"+$(this).data("apitype")+",this)");
                                 }else{
@@ -901,7 +907,7 @@
             }
         }
         //根据thiz判断是否可以直接进入对应彩票
-        if(apiId == "22" && $(thiz).attr("data-lottery-code")!=undefined){
+        if((apiId == "22" || apiId == "41") && $(thiz).attr("data-lottery-code")!=undefined){
             gameCode = $(thiz).attr("data-lottery-code");
         }
 
@@ -1001,7 +1007,7 @@
                 url = getBcPage(apiId);
                 break;
         }
-        if(url!=undefined && url!=""){
+        if(url!=undefined && url!="" && apiId!="40"){
             document.getElementById('sportFrame').contentWindow.location.replace(url);
         }
     }
@@ -1016,7 +1022,7 @@
                 if (data.isSuccess == true) {
                     var result = data.gameApiResult;
                     if (result.defaultLink) {
-                        return result.defaultLink;
+                        document.getElementById('sportFrame').contentWindow.location.replace(result.defaultLink);
                     }
                 }else{}
             },
@@ -1464,6 +1470,7 @@
     /**
      * @param data 登录成功后的参数
      * @param $form jquery 对象
+     * $this,
      * */
     function afterLogin(data,$form,callback,obj,loginText){
         if(data.success){
@@ -1483,7 +1490,16 @@
             if(msg == null){
                 msg = data.propMessages.captcha;
             }
-            alert(msg);
+            var btnLogin ;
+            if($form.find('.dialog_login').length){
+                btnLogin = $form.find('.dialog_login');
+            }else{
+                btnLogin = $form.find('._vr_login')
+            }
+            layer.tips(msg,btnLogin,{
+                time:1500,
+                tips:3
+            });
             if(data.isOpenCaptcha){
                 $("._vr_login",$form).removeAttr("style");//判断个别情况永利登陆按钮取消样式
                 var captchaObj =  $("._vr_captcha_code",$form);
@@ -1504,13 +1520,19 @@
         var url = "/passport/login.html?t="+ new Date().getTime().toString(36);
         var password = $('[name=password]',$form).val().trim();
         if(password.length<6){
-            alert("密码长度不能小于6位!");
+            layer.tips("密码长度不能小于6位!",$form.find('[name=password]'),{
+                time:1500,
+                tips:3
+            });
             cancelVerify();
             return;
         }
         if($('[name=username]',$form).val().trim() && password){
             if(isOpenCaptcha && !$("[name=captcha]",$form).val()){
-                alert("请输入验证码！");
+                layer.tips("请输入验证码！",$form.find('[name=captcha]'),{
+                    time:1500,
+                    tips:3
+                });
                 $this.find("span").removeClass("loading gui gui-spinner gui-pulse");
                 $this.parent().children("a").removeClass("not-active");
                 $this.text(loginText).css("pointer-events","auto");
@@ -1540,7 +1562,17 @@
                 })
             }
         }else{
-            alert("用户名密码不能为空!");
+            if(password){
+                layer.tips("用户名不能为空!",$form.find('[name=username]'),{
+                    time:1500,
+                    tips:3
+                });
+            }else{
+                layer.tips("密码不能为空!",$form.find('[name=password]'),{
+                    time:1500,
+                    tips:3
+                });
+            }
             $this.find("span").removeClass("loading gui gui-spinner gui-pulse");
             $this.parent().children("a").removeClass("not-active");
             $this.text(loginText).css("pointer-events","auto");
@@ -2655,7 +2687,7 @@
     </div>
 </div>
 <div id="download-pc" style="display: none;">
-    <div style="padding: 60px;font-size: 24px;">敬请期待！</div>
+    <div style="padding:165px 60px;font-size: 24px;">敬请期待！</div>
     <div style="display: none;">
         <div class="tit"><span>API名称</span><span>下载</span></div>
         <ul class="api-list">

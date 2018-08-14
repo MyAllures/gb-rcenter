@@ -33,14 +33,14 @@
 <!--game-list-header-->
 <div class="game-list-header">
     <div class="pull-left">
-        <div class="jackpot">
-            <div class="j_txt pull-left">
-                <#if apiType?has_content && data.gameSearch.apiId?has_content>
-                    <div class="t_rmb" style="visibility: hidden;<#if data.gameSearch.apiId=="3" || data.gameSearch.apiId=="6">visibility: visible;</#if>">RMB</div>
-                    <div class="t_g_name"><span>${data.siteApiTypeRelationI18n[apiType+data.gameSearch.apiId?default('')].name}</span><#if data.gameSearch.apiId=="3" || data.gameSearch.apiId=="6">总彩池</#if></div>
-                </#if>
-            </div>
-            <#if data.gameSearch.apiId=="3" || data.gameSearch.apiId=="6">
+        <#if data.gameSearch.apiId=="3" || data.gameSearch.apiId=="6">
+            <div class="jackpot">
+                <div class="j_txt pull-left">
+                    <#if apiType?has_content && data.gameSearch.apiId?has_content>
+                        <div class="t_rmb">RMB</div>
+                        <div class="t_g_name"><span>${data.siteApiTypeRelationI18n[apiType+data.gameSearch.apiId?default('')].name}</span>总彩池</div>
+                    </#if>
+                </div>
                 <#if data.siteApiTypeRelationMap??>
                     <#list data.siteApiTypeRelationMap["2"] as relationMap>
                         <div class="pull-left hide" id="jackpot_${relationMap.apiId?string.computer}" data-jackpot="25682425" data-api-id="${relationMap.apiId?string.computer}">
@@ -48,12 +48,25 @@
                     </#list>
                 </#if>
                 <div class="pull-left hide" id="jackpot_34" data-jackpot="25682425" data-api-id="34"></div>
-            </#if>
-        </div>
+            </div>
+        <#elseif data.gameSearch.apiType?? && data.gameSearch.apiType=="5">
+            <ul class="_vr_chessApi list-inline">
+                <#if data.siteApiTypeRelationMap["5"]??>
+                    <#list data.siteApiTypeRelationMap["5"] as chessMap>
+                        <#assign apiId = chessMap.apiId?string.computer>
+                        <li class="<#if chessMap_index == 0>active</#if> _vr_${apiId}">
+                            <a href="javascript:" class="_vr_getGames" data-apitype="5" data-api="${apiId}" data-href="casino_partial.html?apiType=5&apiId=${apiId}">
+                            ${data.siteApiTypeRelationI18n["5"+apiId].name}
+                            </a>
+                        </li>
+                    </#list>
+                </#if>
+            </ul>
+        </#if>
     </div>
     <div class="pull-right">
         <div class="all_g_txt pull-left">总共<span>${data.gameCount}</span>个电子游戏</div>
-        <ul class="sort2 list-inline pull-left ">
+        <ul class="sort2 list-inline pull-left _vr_gameTag ">
             <li <#if data.gameSearch.maxTag?default('')=="maxView">class="active"</#if>><a href="javascript:" data-href="casino_partial.html?apiType=2&apiId=${data.gameSearch.apiId}&maxTag=maxView" onclick="maxGameTag(this);">最受欢迎</a></li>
         <#--<li <#if data.gameSearch.maxTag?default('')=="maxLine">class="active"</#if>><a href="javascript:" data-href="casino_partial.html?apiType=2&apiId=${data.gameSearch.apiId}&maxTag=maxLine" onclick="maxGameTag(this);">最多游戏线</a></li>-->
             <li <#if data.gameSearch.maxTag?default('')=="maxCollect">class="active"</#if>><a href="javascript:" data-href="casino_partial.html?apiType=2&apiId=${data.gameSearch.apiId}&maxTag=maxCollect" onclick="maxGameTag(this);">最多收藏</a></li>

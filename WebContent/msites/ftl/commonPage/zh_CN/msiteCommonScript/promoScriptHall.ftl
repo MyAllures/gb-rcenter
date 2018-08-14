@@ -22,6 +22,11 @@
             $(this).parents(".promo-item").find(".promo-detail").stop().slideToggle();
         });
 
+        //判断优惠活动是否显示历史优惠按钮
+        if($("._vr_promo_check.historyActivitys").length>0){
+            $(".hisActivityButton").removeClass("hide");
+        }
+
         //九宫格点击图片展示详情
         $(".list-type1 .shadow").on("click",function(){
             var $detail  = $(this).parents('.promo-item').find('.promo-detail');
@@ -33,7 +38,7 @@
             }else {
                 content = '<img class="promo-img" src=' + img + '>' + '<div class="promo-content" id="promo-content">' + cont + '<i class="icon-goUp"></i></div>';
             }
-            dialogPromoDetail(content,'活动详细','layui-layer-info',['640px','530px'],false,true)
+            dialogPromoDetail(content,'活动详细','layui-layer-info',['1000px','600px'],false,true)
         });
 
         //切换主题/
@@ -80,6 +85,7 @@
         //登录后改变按钮展现和状态
         if (sessionStorage.is_login == "true") {
             changeApplyStatus();
+            changeOneTimeActStatus();
         }
     });
 
@@ -127,7 +133,9 @@
                 $this.find(".noyet").hide();
                 $this.find(".processing").show();
                 $this.find(".over").hide();
-                $this.find(".shadow").html('<div class="btn-apply _vr_promo_join" onclick="joinPromo(this, event)">' + '我要申请' + '</div>');
+                if (sessionStorage.is_login == "true") {
+                    $this.find(".shadow").html('<div class="btn-apply _vr_promo_join" onclick="joinPromo(this, event)">' + '我要申请' + '</div>');
+                }
                 if (code == 'back_water' || code == 'content') {//根据活动类型处理申请按钮
                     $this.find('.shadow').html('<div class="btn-txt">该活动无需申请</div>');
                 } else if (code == 'money') {
@@ -152,6 +160,33 @@
                 filterActyByPlayer(data);
             }
         });
+    }
+
+    //获取一次性活动的状态
+    function changeOneTimeActStatus() {
+        $.ajax({
+            url: "/ntl/activityHall/getOneTimeActivityStatus.html",
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                filterOneTimeAct(data);
+            }
+        });
+    }
+
+    function filterOneTimeAct(data) {
+        if (data.firstDeposit) {
+            $("[data-code='first_deposit']").parents("._vr_all").html('');
+            $("[data-code='first_deposit']").parents("._vr_process").html('');
+        }
+        if (data.secondDeposit) {
+            $("[data-code='second_deposit']").parents("._vr_all").html('');
+            $("[data-code='second_deposit']").parents("._vr_process").html('');
+        }
+        if (data.thirdDeposit) {
+            $("[data-code='third_deposit']").parents("._vr_all").html('');
+            $("[data-code='third_deposit']").parents("._vr_process").html('');
+        }
     }
 
     //根据该层级不能参加的活动移除onclick和改变按钮提示
@@ -311,17 +346,17 @@
             for (var j = 0; j< preferentialRelations.length; j++) {
                 var width = (data.effectivetransaction/preferentialRelations[j].preferentialValue)*100;
                 if (data.effectivetransaction >= preferentialRelations[j].preferentialValue){
-                    item = '<div class="item-success-with-bar process">'+ '<i class="icon-pass"></i>' + '<div class="txt"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' +
+                    item = '<div class="item-success-with-bar process">'+ '<i class="icon-pass"></i>' + '<div class="txt"><span>条件' + preferentialRelations[j].orderColumn + '  (有效投注额)' + '</span><div class="pull-right"><span class="color-green">' +
                             data.effectivetransaction + '</span>/' + preferentialRelations[j].preferentialValueString + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
                 } else {
-                    item = '<div class="item-failure-with-bar process">'+ '<i class="icon-fail"></i>' + '<div class="txt"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' +
+                    item = '<div class="item-failure-with-bar process">'+ '<i class="icon-fail"></i>' + '<div class="txt"><span>条件' + preferentialRelations[j].orderColumn + '  (有效投注额)' + '</span><div class="pull-right"><span class="color-green">' +
                             data.effectivetransaction + '</span>/' + preferentialRelations[j].preferentialValueString + '</div></div>' + '<div class="bar"><div class="bar-inner" style="' + 'width:'+ width + '%' + '"></div></div></div>';
                 }
                 $(".effective_transaction").append(item);
             }
             if (data.hasApply) {
                 item = '<div class="item-success-without-bar process">'+
-                        '<div class="txt"><span class="color-red">派奖时间：' + data.deadLineTime + '</span></div>'+
+                        '<div class="txt"><span class="color-red">活动派奖时间：' + data.deadLineTime + '</span></div>'+
                         '</div>';
                 btn = ["联系客服"];
                 $(".activityProcess .subs-txt").text('以下是您当前有效投注额,统计周期请查看活动细则,加油吧!');
@@ -379,7 +414,7 @@
             }
             if (data.hasApply) {
                 item = '<div class="item-success-without-bar process">'+
-                        '<div class="txt"><span class="color-red">派奖时间：' + data.deadLineTime + '</span></div>'+
+                        '<div class="txt"><span class="color-red">活动派奖时间：' + data.deadLineTime + '</span></div>'+
                         '</div>';
                 btn = ["联系客服"];
                 $(".activityProcess .subs-txt").text('以下是您当前盈亏,统计周期请查看活动细则,加油吧!');
