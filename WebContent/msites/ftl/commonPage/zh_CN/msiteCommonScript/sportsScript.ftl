@@ -68,7 +68,7 @@
                 url = getBcPage(apiId);
                 break;
         }
-        if(url!=undefined && url!=""){
+        if(url!=undefined && url!="" && apiId!="40"){
             document.getElementById('sportFrame').contentWindow.location.replace(url);
         }
     }
@@ -83,7 +83,7 @@
                 if (data.isSuccess == true) {
                     var result = data.gameApiResult;
                     if (result.defaultLink) {
-                        return result.defaultLink;
+                        document.getElementById('sportFrame').contentWindow.location.replace(result.defaultLink);
                     }
                 }else{}
             },
@@ -96,7 +96,7 @@
     function getApiUrl(apiId,gameCode,apiTypeId,bool){
         var demoModel = sessionStorage.demoModel;
         if(demoModel){
-            if(demoModel == "MODEL_4_PLATFORM"&&apiId!=21){
+            if(demoModel == "MODEL_4_PLATFORM"){
                 alert("请使用正式账号登录");
                 return;
             }else if(demoModel == "MODEL_4_MOCK_ACCOUNT"){

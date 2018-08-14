@@ -82,7 +82,7 @@
         autoplay:2500,
         autoplayDisableOnInteraction : false,
         onSlideClick: function(swiper){
-           // console.log('事件触发了;'+apiSwiper.clickedSlideIndex);
+            // console.log('事件触发了;'+apiSwiper.clickedSlideIndex);
         }
     });
     $('.swiper-contro.next').on('click',function(e){

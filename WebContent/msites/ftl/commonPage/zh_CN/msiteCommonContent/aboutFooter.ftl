@@ -2,25 +2,25 @@
 <#--关于我们（内置）-->
     <#if parent['parent']?exists && parent['code']?exists>
         <#if parent["code"]=="aboutUs">
-        <li><a href="about.html#?id=${parent["id"]}">关于我们</a></li>
+        <li><a href="about.html#?id=${parent["id"]}" class="parentLi_${parent["id"]} parentLi">关于我们</a></li>
         </#if>
     </#if>
 <#--博彩责任（内置）-->
     <#if parent['parent']?exists && parent['code']?exists>
         <#if parent["code"]=="Responsible gambling">
-        <li><a href="about.html#?id=${parent["id"]}">责任博彩</a></li>
+        <li><a href="about.html#?id=${parent["id"]}" class="parentLi_${parent["id"]} parentLi">责任博彩</a></li>
         </#if>
     </#if>
 <#--免责声明（内置）-->
     <#if parent['parent']?exists && parent['code']?exists>
         <#if parent["code"]=="disclaimer">
-        <li><a href="about.html#?id=${parent["id"]}">免责声明</a></li>
+        <li><a href="about.html#?id=${parent["id"]}" class="parentLi_${parent["id"]} parentLi">免责声明</a></li>
         </#if>
     </#if>
 <#--隐私政策（内置）-->
     <#if parent['parent']?exists && parent['code']?exists>
         <#if parent["code"]=="Privacy policy">
-        <li><a href="about.html#?id=${parent["id"]}">隐私政策</a></li>
+        <li><a href="about.html#?id=${parent["id"]}" class="parentLi_${parent["id"]} parentLi">隐私政策</a></li>
         </#if>
     </#if>
 <#--代理合作（内置）-->
