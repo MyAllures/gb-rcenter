@@ -73,37 +73,39 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             //清空旧数据
             $("input[name^='sms']").not("input[name$='id']").val('');
             $("textarea[name='sms.dataKey']").val('');
+            //选将所有短信接口字段隐藏
+            $(".sms-column").hide();
 
             //数据库中的值
-            var existedSmsInterfaceMapJsonStr = $('#existedSmsInterfaceMap').html();
-            var json = $.parseJSON( existedSmsInterfaceMapJsonStr );
+            var bossSmsInterfaceStr = $('#bossSmsInterfaceMap').html();
+            var json = $.parseJSON(bossSmsInterfaceStr);
+            var smsId = this.selectedSmsInterface();
 
-            //罗斯猫
-            if (this.selectedSmsInterface() == '1'){
-                // $("input").val("");
-                $("input[name='sms.appId']").parent().parent().addClass("hide");
-                $("input[name='sms.username']").parent().parent().removeClass("hide");
-                $("input[name='sms.password']").parent().parent().removeClass("hide");
-
-                //默认值
-                $("input[name='sms.username']").val(json['1']['username']);
-                $("input[name='sms.password']").val(json['1']['password']);
-                $("textarea[name='sms.dataKey']").val(json['1']['dataKey']);
-                $("input[name='sms.signature']").val(json['1']['signature']);
-            }else if (this.selectedSmsInterface() == '2'){
-                // $("input").val("");
-                $("input[name='sms.appId']").parent().parent().removeClass("hide");
-                $("input[name='sms.username']").parent().parent().addClass("hide");
-                $("input[name='sms.password']").parent().parent().addClass("hide");
-
-                //默认值
-                $("input[name='sms.appId']").val(json['2']['appId']);
-                $("textarea[name='sms.dataKey']").val(json['2']['dataKey']);
-                $("input[name='sms.signature']").val(json['2']['signature']);
+            var columnStr = json[smsId]['extJson'];
+            var columnMap = $.parseJSON(columnStr);
+            if (columnMap['sms.appId'] != null) {
+                $(".sms-appId").show();
+                $("input[name='sms.appId']").val(json[smsId]['appId']);
+            }
+            if (columnMap['sms.username'] != null) {
+                $(".sms-username").show();
+                $("input[name='sms.username']").val(json[smsId]['username']);
+            }
+            if (columnMap['sms.password'] != null) {
+                $(".sms-password").show();
+                $("input[name='sms.password']").val(json[smsId]['password']);
+            }
+            if (columnMap['sms.dataKey'] != null) {
+                $(".sms-dataKey").show();
+                $("textarea[name='sms.dataKey']").val(json[smsId]['dataKey']);
+            }
+            if (columnMap['sms.signature'] != null) {
+                $(".sms-signature").show();
+                $("input[name='sms.signature']").val(json[smsId]['signature']);
             }
             this.resizeDialog();
-
         },
+
         /**
          * 接口名称
          * @param e
@@ -113,10 +115,5 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         selectedSmsInterface: function () {
             return $("input[name='sms.id']").val();
         }
-
-
-
-
-
     });
 });
