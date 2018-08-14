@@ -112,7 +112,7 @@ MSiteComet.prototype = {
 
         _this.url_websocket = wsProtocol + document.domain + wsPort + wsRoot + "?localeType=" + props.localeType;
 
-        if (!'WebSocket' in window) {
+        if (!('WebSocket' in window)) {
             return;
         }
 
@@ -147,10 +147,9 @@ MSiteComet.prototype = {
 
         //增加守护线程,防止异常终止
         window.setInterval(function () {
-            var intervalTime = 120000;
-            if (sessionStorage.is_login == "false" || _this.websocket == null) {
-                return;
-            }
+            var intervalTime = 80000;
+            if (sessionStorage.is_login == "false" || _this.websocket == null)
+                intervalTime = 8000;
 
             if (new Date().getTime() - _this.last_active_time > intervalTime) {
                 if (this.cid != undefined && this.cid != null) {
@@ -464,7 +463,7 @@ MSiteComet.prototype = {
             }
         });
     },
-    onWebsocketOpen: function (event) {
+    onWebsocketOpen: function () {
         // current postion "this" = websocket
         var outThis = this.outThis;
         if (outThis.successCallBack) {
@@ -499,19 +498,17 @@ MSiteComet.prototype = {
 
 
     },
-    onWebsocketClose: function (event) {
+    onWebsocketClose: function () {
         console.log("socket close");
         var outThis = this.outThis;
-        if (event.code != 1006) {
-            setTimeout(function () {
-                outThis.connection();
-            }, 2000);
-        }
+        setTimeout(function () {
+            outThis.connection();
+        }, 2000);
     },
-    onWebsocketError: function (event) {
+    onWebsocketError: function () {
         console.log("socket error");
     },
-    onWebsocketBeforeUnload: function (event) {
+    onWebsocketBeforeUnload: function () {
         console.log("socket before unload");
     }
 

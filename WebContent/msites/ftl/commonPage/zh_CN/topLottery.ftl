@@ -42,3 +42,4 @@
 </#if>
 <#--各个版本的传奇彩票图片-->
 <#assign lotteryApiMap01 = {"2":game_kg_img_2,"10":game_bb_img_10,"22":game_lt_img_22}>
+

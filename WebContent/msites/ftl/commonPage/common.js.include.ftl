@@ -9,11 +9,11 @@
 <script src="${data.configInfo.ftlRootPath}commonPage/js/websocket/PopUp.js"></script>
 <#--特定模板下需要特别处理的在该模板下覆盖同名脚本-->
 <script>
-    var fltRootPath = '${data.configInfo.ftlRootPath}';
-    var message = ${data.message};
     var resRoot = '${resRoot}';
     var wsRoot = '${wsRoot}';
     var mdRoot = '${mdRoot}';
+    var fltRootPath = '${data.configInfo.ftlRootPath}';
+    var message = ${data.message};
     //处理iframe引用的问题
     try{window.top.language='zh-CN';}catch(ex){window.language='zh-CN';}
     /* 检查轮播图,不在展示时间内的移除掉,由于初始化顺序，位置不可移动 By Faker */
@@ -31,12 +31,6 @@
             })
         }
     });
-
-    $(function() {
-        var comet = new MSiteComet();
-        comet.init();
-    });
-
 </script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/gui-base.js"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/bootstrap-dialog.min.js"></script>
