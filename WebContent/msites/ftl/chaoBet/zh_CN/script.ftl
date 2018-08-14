@@ -39,6 +39,16 @@
             },
             direction: 'left'
         });
+        // 二级下拉菜单-左右滚动
+        $('.api-games-lottery').Marquee({
+            distance: 282, // 移动距离
+            time: 2,
+            btnGo: {
+                left: '.api-prev',
+                right: '.api-next'
+            },
+            direction: 'left'
+        });
         //鼠标滑入切换文字
         var orgi;
         $(".api-item").mouseenter(function() {
