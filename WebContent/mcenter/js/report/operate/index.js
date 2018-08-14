@@ -242,6 +242,10 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
             $("[selectdiv='roleName']").attr("value","search.topagentName");
             $('[name="search.topagentId"]').val($(e.currentTarget).parent().parent().find('input[name="topAgentId"]').val());
             $('[name=subSysCode]').val($('[name="role.agent"]').val());
+            //初使化分页值
+            $("[name='paging.pageNumber']").val("1");
+            $("[name='paging.nextPage']").val("2");
+            $("[name='paging.pageNumberText']").val("1");
             return true;
         },
         /** 代理详情 */
@@ -250,6 +254,10 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
             $("[selectdiv='roleName']").attr("value","search.agentName");
             $('[name="search.agentId"]').val($(e.currentTarget).parent().parent().find('input[name="agentId"]').val());
             $('[name=subSysCode]').val($('[name="role.player"]').val());
+            //初使化分页值
+            $("[name='paging.pageNumber']").val("1");
+            $("[name='paging.nextPage']").val("2");
+            $("[name='paging.pageNumberText']").val("1");
             return true;
         },
 
