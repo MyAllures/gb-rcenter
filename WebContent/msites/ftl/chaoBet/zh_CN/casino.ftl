@@ -18,11 +18,11 @@
 <#include "notice.ftl">
     <div class="clearfix"></div>
     <!-- Casino -->
-    <section class="casino theme-black _vr_casinoSearch"> <#--主题配置{theme-black:黑色主题，theme-white：白色主题}-->
+    <section class="casino theme-black _vr_casinoSearch" id="myCsinno"> <#--主题配置{theme-black:黑色主题，theme-white：白色主题}-->
         <div class="container gutter-20"><!--排水沟大小-->
         <#include "../../commonPage/commonContent/casinoV2ApiTabs.ftl"> <#--新版电子apitab切换-->
             <div class="game-list _vr_itemCasino">
-            <#include "casino_partial.ftl">
+            <#include "../../commonPage/zh_CN/msiteCommonContent/casino_partial.ftl">
             </div>
         </div>
     </section>

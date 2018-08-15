@@ -31,7 +31,7 @@
                         </li>
                     </#list>
                 </#if>
-                </li>
+                <li class="hisActivityButton hide"><a href="javascript:void(0)" data-item="historyActivitys">历史优惠</a></li>
             </ul>
             <div class="search-bar">
                 <form>
@@ -43,8 +43,8 @@
         <!--列表区域-->
         <div class="list-type1"> <!--列表类型一-->
             <div class="row">
-            <#if data.activityMessage??>
-                <#list data.activityMessage as am>
+            <#if data.processActivityMessage??>
+                <#list data.processActivityMessage as am>
                     <div class="col-3-1 _vr_all">
                         <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain promo-item"
                              data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}" data-activityName="${am.activityName}"
@@ -57,9 +57,7 @@
                             <input class="_vr_promo_ostart" type="hidden" value="${am.startTime?long?string.computer}">
                             <input class="_vr_promo_oend" type="hidden" value="${am.endTime?long?string.computer}">
                             <div class="shadow">
-                                <div class="btn-apply _vr_promo_join" onclick="joinPromo(this, event)">
-                                    我要申请
-                                </div>
+
                             </div>
                             <a href="javascript:void(0);" class="btn-detail">
                                 ${am.activityName}
@@ -89,9 +87,7 @@
                             <input class="_vr_promo_ostart" type="hidden" value="${am.startTime?long?string.computer}">
                             <input class="_vr_promo_oend" type="hidden" value="${am.endTime?long?string.computer}">
                             <div class="shadow">
-                                <div class="btn-apply _vr_promo_join" onclick="joinPromo(this,event)">
-                                    我要申请
-                                </div>
+
                             </div>
                             <div class="promo-detail">
                                 <div class="tit">${am.activityName}</div>
@@ -101,6 +97,34 @@
                             </div>
                         </div>
                     </div>
+                </#list>
+            </#if>
+
+            <#if data.historyActivityMessage??>
+                <#list data.historyActivityMessage as his>
+                    <#if his.states="finished">
+                        <div class="col-3-1 _vr_process hide">
+                            <div id="cos_${his.id}" class="_vr_promo_check _vr_actContain actContain promo-item historyActivitys"
+                                 data-type="processing" data-code="${his.code}" data-searchid="${his.searchId}">
+                                <img src="${imgPath(data.configInfo.domain,his.activityAffiliated)}"/>
+                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,his.activityCover)}"/>
+                                <div class="promo-status processing" style="display: none"><i class="icon-clock"></i>进行中</div>
+                                <div class="promo-status noyet" style="display: none"><i class="icon-clock"></i>未开始</div>
+                                <div class="promo-status over" style="display: none"><i class="icon-clock"></i>已结束</div>
+                                <input class="_vr_promo_ostart" type="hidden" value="${his.startTime?long?string.computer}">
+                                <input class="_vr_promo_oend" type="hidden" value="${his.endTime?long?string.computer}">
+                                <div class="shadow">
+
+                                </div>
+                                <div class="promo-detail">
+                                    <div class="tit">${his.activityName}</div>
+                                    <div class="content">
+                                        ${his.activityDescription}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </#if>
                 </#list>
             </#if>
             </div>
@@ -114,11 +138,10 @@
 <#include "../../commonPage/zh_CN/msiteCommonContent/promoTip.ftl">
 </main>
 <#include "footer.ftl">
-<#include "../../commonPage/commonFloat/gameAds.ftl">
+<#include "../../commonPage/zh_CN/ads/promoAds.ftl">
 <#include "script.ftl">
 <#include "../../commonPage/zh_CN/msiteCommonScript/promoScriptHall.ftl">
 
 </body>
 
 </html>
-

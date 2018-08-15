@@ -21,7 +21,6 @@
             <div class="container">
                 <!-- Api-tabs -->
                 <div id="api-tabs" class="carousel">
-                    <#assign apiNumPerSlide=3>
                     <#include "../../commonPage/zh_CN/msiteCommonContent/commonLotteryApiTabs.ftl">
                 </div>
             </div>
@@ -33,23 +32,26 @@
                 <div class="game-list">
                     <div class="row row-match">
                         <#if data.siteApiTypeRelationMap[apiTypeLottery]?exists>
-                        <#list data.siteApiTypeRelationMap[apiTypeLottery] as relationMap>
-                            <#if lotteryApiMap01["${relationMap.apiId?string.computer}"]??>
-                                <#list lotteryApiMap01["${relationMap.apiId?string.computer}"]?keys as gameImgs>
-                                    <div data-api="${relationMap.apiId?string.computer}" class="lottery_list col-4-1 _vr_mt_lottery_${relationMap.apiId?string.computer} <#if relationMap_index != 0>hide</#if>">
-                                        <figure class="game-item" data_id="${relationMap_index+1+.now}">
-                                            <a href="javascript:" class="_vr_mt_check item" data-api="${relationMap.apiId?string.computer}" data-apitype="4" <#if relationMap.apiId?string.computer=="22">data-lottery-code="${lotteryApiMap01["${relationMap.apiId?string.computer}"][gameImgs].code}"</#if>>
-                                                <div class="game-img"><img src="${data.configInfo.ftlRootPath}commonPage/images/lottery/${gameImgs}"></div>
-                                            </a>
-                                            <figcaption class="title">
-                                                <a class="_vr_mt_check _vr_mt_slogan btn-play" href="javascript:void(0)" data-api="${relationMap.apiId?string.computer}" data-apitype="4" <#if relationMap.apiId?string.computer=="22">data-lottery-code="${lotteryApiMap01["${relationMap.apiId?string.computer}"][gameImgs].code}"</#if>><#if relationMap.apiId?string.computer=="22">${lotteryApiMap01["${relationMap.apiId?string.computer}"][gameImgs].name}<#else >${lotteryApiMap01["${relationMap.apiId?string.computer}"][gameImgs]}</#if></a>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                </#list>
-                            </#if>
-                        </#list>
-                    </#if>
+                            <#list data.siteApiTypeRelationMap[apiTypeLottery] as relationMap>
+                                <#assign apiId = relationMap.apiId?string.computer>
+                                <#if lotteryApiMap01[apiId]??>
+                                    <#list lotteryApiMap01[apiId]?values as lotteryObj>
+                                        <div data-api="${apiId}" class="lottery_list col-4-1 _vr_mt_lottery_${apiId} <#if relationMap_index != 0>hide</#if>">
+                                            <figure class="game-item" data_id="${relationMap_index+1+.now}">
+                                                <a href="javascript:" class="_vr_mt_check item" data-api="${apiId}" data-apitype="${apiTypeLottery}" data-lottery-code="${lotteryObj.code}">
+                                                    <div class="game-img"><#if lotteryObj??><img src="${imgPath(data.configInfo.domain,lotteryObj.gameCover)}"></#if></div>
+                                                </a>
+                                                                            <#--<img src="${imgPath(data.configInfo.domain,lotteryObj.gameCover)}">
+                                                                                <img src="${data.configInfo.ftlRootPath}commonPage/images/lottery/${lotteryObj.gameCover}">-->
+                                                <figcaption class="title">
+                                                    <a class="_vr_mt_check _vr_mt_slogan btn-play" href="javascript:void(0)" data-api="${apiId}" data-apitype="${apiTypeLottery}" data-lottery-code="${lotteryObj.code}">${lotteryObj.name}</a>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                    </#list>
+                                </#if>
+                            </#list>
+                        </#if>
                     </div>
                 </div>
             </div>

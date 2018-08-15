@@ -18,10 +18,10 @@
             $(".loading-area").removeClass("hide");
         }
         //判断电子游戏是否试玩
+        var isAutoPay = getCookie("isAutoPay");
         if ($(_this).hasClass("game-demo")) {
             demoPayLogin(apiId, gameCode, apiTypeId);
         } else {
-            var isAutoPay = getCookie("isAutoPay");
             if (isAutoPay == 'true') {
                 fetchAllBalance(apiId, gameCode, apiTypeId);
             } else {
@@ -233,9 +233,30 @@
             $(this).parents('html').removeClass('game-detail-open');
             $('.game-info').removeClass('hide_G');
             document.getElementById('box_playGameDemo_iframe').setAttribute('src', "");
-            exitFullscreen();
+            exitFullscreen();// 退出全屏
+            if(isAutoPay){
+                recovery(apiId);
+            }
         });
     });
+
+    //关闭弹窗后回收资金到钱包
+    function recovery(apiId) {
+        var url = "/transfer/auto/recovery.html";
+        if (apiId) {
+            url = url + "?search.apiId=" + apiId
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data) {
+                    console.log(data);
+                }
+            }
+        })
+    }
 
     /**
      * 试玩登录
@@ -428,7 +449,7 @@
             }
         })
     }
-    /*var dialog;*/
+
     function showTransferWin(data, apiId, gameCode, apiTypeId) {
         //快速转账弹窗，待处理：转账成功后续请求
         var apiName = data.apiName;
@@ -448,9 +469,13 @@
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
                 $("#token").val(data.token);
+            },
+            yes: function () {
+                apiLoginReal(apiId, gameCode, apiTypeId);
             }
         });
     }
+
     function showRecharge(data, apiId, gameCode, apiTypeId) {
         var dialog = layer.open({
             content: '<div style="width: 400px;margin: 0 auto 10px;"><span style="background: #466488;color: #fff;width: 90px;display:  inline-block;text-align:  center;height:  33px;line-height: 33px;">您的余额</span><span id="walletBalance-value" style="background: #ddd;color: #00b7a4;display:  inline-block;width: 280px;text-align:  center;height: 33px;line-height: 33px;">' + data.allBalance + '</span><a href="javascript:refreshWalletBalance(' + apiId + ')"><span class="gui gui-refresh pull-right" style="color: #337ab7;" id="wallet-refresh-span"></span></a></div>' +
@@ -461,7 +486,7 @@
             skin: 'layui-layer-brand',
             success: function (layer) {
                 // 重写关闭按钮
-                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                $(layer).find('.layui-layer-setwin').html('');
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
             },
@@ -623,11 +648,8 @@
         });
     }
     function enterToGame(apiId, gameCode, apiTypeId) {
-        /*if(dialog!=null){
-            layer.close(dialog);
-        } else{*/
+        layer.closeAll();
         apiLoginReal(apiId, gameCode, apiTypeId);
-//        }
     }
     function setButtonStatus() {
         $("#confirm-btn").attr("disabled", false);

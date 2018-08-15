@@ -177,6 +177,7 @@ ul,ol{margin:0;}
 .api-list{margin-left:-15px;}
 .api-list>li{padding:0 5px;background:no-repeat right center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAxCAYAAAAbb8MkAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAD5JREFUeNp0jcEKADAIQq3+/5OXYzs4inV5qIiCJByAHUCwmj3rQrOhLKbK74hSKdxsVZWfSrOso5yOsAUYAM4tFV4kV9qGAAAAAElFTkSuQmCC);}
 .api-list>li:nth-child(4n+0),.api-list>li:last-child{background:none;}
+.partner.opus {display: none;}
 .partner, .partner span{width:100px;height:52px;background-image:url(../images/api-logo.png);background-repeat:no-repeat;background-position: -900px 0;}
 .partner{position:relative;display:inline-block;cursor:pointer;}
 .partner span{display:block;opacity:0;background-position: -900px -50px;filter:alpha(opacity=0);}

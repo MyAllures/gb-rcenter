@@ -54,14 +54,6 @@
                 <ul class="nav navbar-nav _vr_nav">
                     <li class="nav-item active"><a href="/">网站首页</a></li>
                     <#list data.siteApiTypeI18n?keys as apiTypeId>
-                        <#if apiTypeId == '2' && data.siteApiMap['3']?default('')!=''>
-                            <li class="nav-item subnav hot" rel="sub-hot">
-                                <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=3&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>" data-api="3" href="javascript:void(0)"
-                                   <#if data.siteApiMap['3'].maintainEndTime?has_content>startTime="${data.siteApiMap['3'].maintainStartTime?long?string.computer}"</#if>
-                                   <#if data.siteApiMap['3'].maintainEndTime?has_content>endTime="${data.siteApiMap['3'].maintainEndTime?long?string.computer}"</#if>>
-                                    热门电子</a>
-                            </li>
-                        </#if>
                         <li class="nav-item" rel="sub-<#if apiRelByType[apiTypeId]??>${apiRelByType[apiTypeId]}</#if>">
                             <#if apiTypeId == '2'>
                                 <a data-page="casino.html" href="casino.html?apiType=2&apiId=<#list data.siteApiTypeRelationMap['2'] as relationMap><#if relationMap_index==0>${relationMap.apiId?string}</#if></#list>">${data.siteApiTypeI18n[apiTypeId].name}<i class="triangle"></i></a>
@@ -69,7 +61,6 @@
                                 <a data-page="sports.html" href="sports.html?apiId=<#list data.siteApiTypeRelationMap['${apiTypeId}'] as relationMap><#if relationMap_index==0>${relationMap.apiId?string.computer}</#if></#list>">${data.siteApiTypeI18n[apiTypeId].name}<i class="triangle"></i></a>
                             <#elseif apiTypeId == '5'>
                                 <a data-page="casino.html" href=" casino.html?apiType=2&apiId=5&gameTag=hot_game">${data.siteApiTypeI18n[apiTypeId].name}<i class="triangle"></i></a>
-
                             <#else >
                                 <a data-page="${apiRelByType[apiTypeId]}.html" href="${apiRelByType[apiTypeId]}.html">${data.siteApiTypeI18n[apiTypeId].name}<i class="triangle"></i></a>
                             </#if>
@@ -83,75 +74,7 @@
         </div>
         <!-- navbar-sub -->
         <div class="navbar-sub">
-        <#assign MgGames=[{'id':'30601'},{'id':'30631'}]>
             <#list data.siteApiTypeI18n?keys as apiTypeId>
-                <#if apiTypeId=='2'>
-                    <div class="sub-content" id="sub-hot" rel="sub-hot" style="display:none;">
-                        <div class="container">
-                            <div class="row row-gutter-0">
-                                <div class="col-5-1">
-                                    <dl class="sub-box rebate">
-                                        <dt><span class="num-single" num="1"></span><i class="num-dot"></i><span class="num-decimal" num="2"></span><i class="num-pre"></i></dt>
-                                        <dd>
-                                            <p>每日返水无上限</p>
-                                        </dd>
-                                    </dl>
-                                </div>
-                                <div class="col-5-4">
-                                    <div class="api-games-wrap">
-                                        <div class="api-games api-games-<#if apiRelByType[apiTypeId]??>${apiRelByType[apiTypeId]}</#if>">
-                                            <ul class="list-unstyled">
-                                                <#list MgGames as mgGame>
-                                                    <#if data.siteGameI18ns[mgGame.id]?? && mgGame_index < 2 >
-                                                        <li>
-                                                            <dl class="sub-box api-item">
-                                                                <dt>
-                                                                    <a class="_game_open shake shake-little"  href="javascript:void(0)"
-                                                                       <#if data.gameMapById[mgGame.id].gameLine?c?number &gt; 0>data-game-line="${data.gameMapById[mgGame.id].gameLine?string.computer}"</#if> data-game-score="${data.gameMapById[mgGame.id].gameScore?string.computer}"
-                                                                       data-api="3" data-game-name="${data.siteGameI18ns[mgGame.id].name}"
-                                                                        <#if data.siteGameI18ns[mgGame.id].introduceStatus?has_content && data.siteGameI18ns[mgGame.id].introduceStatus=="normal" && data.siteGameI18ns[mgGame.id].gameIntroduce?has_content>
-                                                                       data-game-introduce="${data.siteGameI18ns[mgGame.id].gameIntroduce}"
-                                                                        </#if>
-                                                                       data-game-code="<#if data.gameMapById[mgGame.id]?has_content>${data.gameMapById[mgGame.id].code}</#if>"
-                                                                       data-game-id="${mgGame.id}" data-apitype="2"
-                                                                       data-game-img="<#if data.siteGameI18ns[mgGame.id]?has_content>${imgPath(data.configInfo.domain,data.siteGameI18ns[mgGame.id].cover)}</#if>"
-                                                                       data-api-name="${data.siteApiTypeRelationI18n["2"+"3"].name}"
-                                                                       data-api-name-abb="<#list apiMapKeys as key><#if key == "3">${apiMap[key]}</#if></#list>"
-                                                                       startTime="<#if data.gameMapById[mgGame.id].maintainStartTime?has_content>${data.gameMapById[mgGame.id].maintainStartTime?long?string.computer}</#if>"
-                                                                       endTime="<#if data.gameMapById[mgGame.id].maintainEndTime?has_content>${data.gameMapById[mgGame.id].maintainEndTime?long?string.computer}</#if>">
-                                                                        <img style="width: 125px;border-radius: 10px;margin-top: 20px;" src="<#if data.siteGameI18ns[mgGame.id]?has_content>${imgPath(data.configInfo.domain,data.siteGameI18ns[mgGame.id].cover)}</#if>">
-                                                                        <i>${data.siteGameI18ns[mgGame.id].name}</i></a>
-                                                                </dt>
-                                                                <dd>
-                                                                    <p>
-                                                                        <a class="_game_open shake shake-little"  href="javascript:void(0)"
-                                                                           <#if data.gameMapById[mgGame.id].gameLine?c?number &gt; 0>data-game-line="${data.gameMapById[mgGame.id].gameLine?string.computer}"</#if> data-game-score="${data.gameMapById[mgGame.id].gameScore?string.computer}"
-                                                                           data-api="3" data-game-name="${data.siteGameI18ns[mgGame.id].name}"
-                                                                            <#if data.siteGameI18ns[mgGame.id].introduceStatus?has_content && data.siteGameI18ns[mgGame.id].introduceStatus=="normal" && data.siteGameI18ns[mgGame.id].gameIntroduce?has_content>
-                                                                           data-game-introduce="${data.siteGameI18ns[mgGame.id].gameIntroduce}"
-                                                                            </#if>
-                                                                           data-game-code="<#if data.gameMapById[mgGame.id]?has_content>${data.gameMapById[mgGame.id].code}</#if>"
-                                                                           data-game-id="${mgGame.id}" data-apitype="2"
-                                                                           data-game-img="<#if data.siteGameI18ns[mgGame.id]?has_content>${imgPath(data.configInfo.domain,data.siteGameI18ns[mgGame.id].cover)}</#if>"
-                                                                           data-api-name="${data.siteApiTypeRelationI18n["2"+"3"].name}"
-                                                                           data-api-name-abb="<#list apiMapKeys as key><#if key == "3">${apiMap[key]}</#if></#list>"
-                                                                           startTime="<#if data.gameMapById[mgGame.id].maintainStartTime?has_content>${data.gameMapById[mgGame.id].maintainStartTime?long?string.computer}</#if>"
-                                                                           endTime="<#if data.gameMapById[mgGame.id].maintainEndTime?has_content>${data.gameMapById[mgGame.id].maintainEndTime?long?string.computer}</#if>">
-                                                                            立即游戏</a>
-                                                                    </p>
-                                                                </dd>
-                                                            </dl>
-                                                        </li>
-                                                    </#if>
-                                                </#list>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </#if>
                 <div class="sub-content" id="sub-<#if apiRelByType[apiTypeId]??>${apiRelByType[apiTypeId]}</#if>" rel="sub-<#if apiRelByType[apiTypeId]??>${apiRelByType[apiTypeId]}</#if>" style="display:none;">
                     <div class="container">
                         <div class="row row-gutter-0">
@@ -196,7 +119,12 @@
                                                                     </#if>
                                                                    <#if data.siteApiMap[relationMap.apiId?string.computer]?? && data.siteApiMap[relationMap.apiId?string.computer].maintainEndTime?has_content>startTime="${data.siteApiMap[relationMap.apiId?string.computer].maintainStartTime?long?string.computer}"</#if>
                                                                    <#if data.siteApiMap[relationMap.apiId?string.computer]?? && data.siteApiMap[relationMap.apiId?string.computer].maintainEndTime?has_content>endTime="${data.siteApiMap[relationMap.apiId?string.computer].maintainEndTime?long?string.computer}"</#if>>
+                                                                  <#if apiTypeId!='5'>
                                                                     <span class="apiicon <#if apiPrefix[apiTypeId]??>${apiPrefix[apiTypeId]}</#if>-<#if apiMap[relationMap.apiId?string]??>${apiMap[relationMap.apiId?string]}</#if> shake shake-little"></span>
+                                                                  </#if>
+                                                                    <#if apiTypeId=='5'>
+                                                                        <span class="apiicon <#if apiPrefix[apiTypeId]??>${apiPrefix[apiTypeId]}</#if>-<#if apiMap[relationMap.apiId?string]??>${apiMap[relationMap.apiId?string]}</#if> shake shake-little"></span>
+                                                                    </#if>
                                                                 <#--<#if apiTypeId =='1'><i>${data.siteApiTypeRelationI18n['${apiTypeId}'+relationMap.apiId?string.computer].name}</i></#if>-->
                                                                 </a>
                                                             </dt>
@@ -273,18 +201,18 @@
                     <form class="form-inline">
                         <input type="hidden" name="type" value="top">
                         <div class="form-group account">
-                            <input type="text" name="username" maxlength="15" class="form-control" placeholder="会员账号">
+                            <input type="text" name="username"  tabindex="1"   maxlength="15" class="form-control" placeholder="会员账号">
                             <a href="javascript:" onclick="forgetUsername()" class="forget">忘记?</a>
                         </div>
                         <div class="form-group password">
-                            <input type="password" name="password" maxlength="20" class="form-control" placeholder="密码">
+                            <input type="password" name="password"  tabindex="2"   maxlength="20" class="form-control" placeholder="密码">
                             <a href="javascript:void(0);" class="forget openNewWindow" data-url="commonPage/msiteCommonContent/forgetPwd.html">忘记?</a>
                         </div>
                         <div class="form-group code _vr_captcha_box" style="display: none">
-                            <input type="text" class="form-control" name="captcha" maxlength="4" placeholder="验证码">
+                            <input type="text" class="form-control" name="captcha" tabindex="3" maxlength="4" placeholder="验证码">
                             <img class="_vr_captcha_code" data-code="loginTop">
                         </div>
-                        <a href="javascript:" type="button" class="btn-login _vr_login">立即登录</a>
+                        <a href="javascript:" type="button" class="btn-login _vr_login" tabindex="4">立即登录</a>
                         <a href="register.html" class="btn-register">免费注册</a>
                         <a href="javascript:" onclick="createFreeAccount();" class="btn-register">免费试玩</a>
                     </form>

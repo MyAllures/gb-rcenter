@@ -497,7 +497,10 @@ $color-danger:#f44236;
         }
         .layui-layer-content{height: 432px !important;padding: 5px;
             .promo-img{width: 100%;height: 130px;margin-bottom: 10px;}
-            .promo-content{    height: 282px;padding: 0 15px;
+            .promo-content{    height: 422px;padding: 0 15px;
+                table{width: 100% !important;
+                    td,td{border: 1px solid #000;}
+                }
                 .tit{font-size: 18px;color: #666;margin-bottom: 30px;}
                 .content{font-size: 14px;color: #666;
                     p{margin-bottom: 20px;text-indent: 2em;
