@@ -156,18 +156,18 @@
                     <form class="form-inline">
                         <input type="hidden" name="type" value="top">
                         <div class="form-group account">
-                            <input type="text" name="username" maxlength="15" class="form-control" placeholder="会员账号">
+                            <input type="text" name="username"  tabindex="1"   maxlength="15" class="form-control" placeholder="会员账号">
                             <a href="javascript:" onclick="forgetUsername()" class="forget">忘记?</a>
                         </div>
                         <div class="form-group password">
-                            <input type="password" name="password" maxlength="20" class="form-control" placeholder="密码">
+                            <input type="password" name="password"  tabindex="2"   maxlength="20" class="form-control" placeholder="密码">
                             <a href="javascript:void(0);" class="forget openNewWindow" data-url="commonPage/msiteCommonContent/forgetPwd.html">忘记?</a>
                         </div>
                         <div class="form-group code _vr_captcha_box" style="display: none">
-                            <input type="text" class="form-control" name="captcha" maxlength="4" placeholder="验证码">
+                            <input type="text" class="form-control" name="captcha" tabindex="3" maxlength="4" placeholder="验证码">
                             <img class="_vr_captcha_code" data-code="loginTop">
                         </div>
-                        <a href="javascript:" type="button" class="btn-login _vr_login">立即登录</a>
+                        <a href="javascript:" type="button" class="btn-login _vr_login" tabindex="4">立即登录</a>
                         <a href="register.html" class="btn-register">免费注册</a>
                     </form>
                 </div>

@@ -995,7 +995,7 @@
                 url = getBcPage(apiId);
                 break;
         }
-        if(url!=undefined && url!=""){
+        if(url!=undefined && url!="" && apiId!="40"){
             document.getElementById('sportFrame').contentWindow.location.replace(url);
         }
     }
@@ -1010,7 +1010,7 @@
                 if (data.isSuccess == true) {
                     var result = data.gameApiResult;
                     if (result.defaultLink) {
-                        return result.defaultLink;
+                        document.getElementById('sportFrame').contentWindow.location.replace(result.defaultLink);
                     }
                 }else{}
             },
@@ -1446,7 +1446,16 @@
             if(msg == null){
                 msg = data.propMessages.captcha;
             }
-            alert(msg);
+            var btnLogin ;
+            if($form.find('.dialog_login').length){
+                btnLogin = $form.find('.dialog_login');
+            }else{
+                btnLogin = $form.find('._vr_login')
+            }
+            layer.tips(msg,btnLogin,{
+                time:1500,
+                tips:3
+            });
             if(data.isOpenCaptcha){
                 $("._vr_login",$form).removeAttr("style");//判断个别情况永利登陆按钮取消样式
                 var captchaObj =  $("._vr_captcha_code",$form);
@@ -1467,13 +1476,19 @@
         var url = "/passport/login.html?t="+ new Date().getTime().toString(36);
         var password = $('[name=password]',$form).val().trim();
         if(password.length<6){
-            alert("密码长度不能小于6位");
+            layer.tips("密碼长度不能小于6位！",$form.find('[name=password]'),{
+                time:1500,
+                tips:3
+            });
             cancelVerify();
             return;
         }
         if($('[name=username]',$form).val().trim() && password){
             if(isOpenCaptcha && !$("[name=captcha]",$form).val()){
-                alert("請輸入驗證碼！");
+                layer.tips("請輸入驗證碼！",$form.find('[name=captcha]'),{
+                    time:1500,
+                    tips:3
+                });
                 $this.find("span").removeClass("loading gui gui-spinner gui-pulse");
                 $this.parent().children("a").removeClass("not-active");
                 $this.text(loginText).css("pointer-events","auto");
@@ -1503,7 +1518,17 @@
                 })
             }
         }else{
-            alert("使用者名稱密碼不能為空!");
+            if(password){
+                layer.tips("使用者名稱不能為空!",$form.find('[name=username]'),{
+                    time:1500,
+                    tips:3
+                });
+            }else{
+                layer.tips("密碼不能為空!",$form.find('[name=password]'),{
+                    time:1500,
+                    tips:3
+                });
+            }
             $this.find("span").removeClass("loading gui gui-spinner gui-pulse");
             $this.parent().children("a").removeClass("not-active");
             $this.text(loginText).css("pointer-events","auto");
@@ -2516,7 +2541,7 @@
     </div>
 </div>
 <div id="download-pc" style="display: none;">
-    <div style="padding: 60px;font-size: 24px;">敬請期待！</div>
+    <div style="padding:165px 60px;font-size: 24px;">敬請期待！</div>
     <div style="display: none;">
         <div class="tit"><span>API名稱</span><span>下載</span></div>
         <ul class="api-list">

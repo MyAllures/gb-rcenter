@@ -157,19 +157,19 @@
                     <form class="form-inline">
                         <input type="hidden" name="type" value="top">
                         <div class="form-group account">
-                            <input type="text" name="username" maxlength="15" class="form-control" placeholder="Account">
+                            <input type="text" name="username"  tabindex="1"   maxlength="15" class="form-control" placeholder="Account">
                             <a href="javascript:" onclick="forgetUsername()" class="forget">Forget?</a>
                         </div>
                         <div class="form-group password">
-                            <input type="password" name="password" maxlength="20" class="form-control" placeholder="Password">
+                            <input type="password" name="password"  tabindex="2"   maxlength="20" class="form-control" placeholder="Password">
                             <a href="javascript:void(0);" class="forget openNewWindow" data-url="commonPage/msiteCommonContent/forgetPwd.html">Forget?</a>
                         </div>
                         <div class="form-group code _vr_captcha_box" style="display: none">
-                            <input type="text" class="form-control" name="captcha" maxlength="4" placeholder="verification code">
+                            <input type="text" class="form-control" name="captcha" tabindex="3" maxlength="4" placeholder="verification code">
                             <img class="_vr_captcha_code" data-code="loginTop">
                         </div>
                             <a href="javascript:" type="button" class="btn-login _vr_login">SIGN IN</a>
-                        <a href="register.html" class="btn-register">SIGN UP</a>
+                        <a href="register.html" class="btn-register" tabindex="4">SIGN UP</a>
                     </form>
                 </div>
                 <!--panel-->

@@ -985,7 +985,7 @@
                 url = getBcPage(apiId);
                 break;
         }
-        if(url!=undefined && url!=""){
+        if(url!=undefined && url!="" && apiId!="40"){
             document.getElementById('sportFrame').contentWindow.location.replace(url);
         }
     }
@@ -1000,7 +1000,7 @@
                 if (data.isSuccess == true) {
                     var result = data.gameApiResult;
                     if (result.defaultLink) {
-                        return result.defaultLink;
+                        document.getElementById('sportFrame').contentWindow.location.replace(result.defaultLink);
                     }
                 }else{}
             },
@@ -1436,7 +1436,16 @@
             if(msg == null){
                 msg = data.propMessages.captcha;
             }
-            alert(msg);
+            var btnLogin ;
+            if($form.find('.dialog_login').length){
+                btnLogin = $form.find('.dialog_login');
+            }else{
+                btnLogin = $form.find('._vr_login')
+            }
+            layer.tips(msg,btnLogin,{
+                time:1500,
+                tips:3
+            });
             if(data.isOpenCaptcha){
                 $("._vr_login",$form).removeAttr("style");//判断个别情况永利登陆按钮取消样式
                 var captchaObj =  $("._vr_captcha_code",$form);
@@ -1457,13 +1466,19 @@
         var url = "/passport/login.html?t="+ new Date().getTime().toString(36);
         var password = $('[name=password]',$form).val().trim();
         if(password.length<6){
-            alert("The length of the password should not be less than 6 bits!");
+            layer.tips("The length of the password should not be less than 6 bits!",$form.find('[name=password]'),{
+                time:1500,
+                tips:3
+            });
             cancelVerify();
             return;
         }
         if($('[name=username]',$form).val().trim() && password){
             if(isOpenCaptcha && !$("[name=captcha]",$form).val()){
-                alert("Please enter verification code！");
+                layer.tips("Please enter verification code！",$form.find('[name=captcha]'),{
+                    time:1500,
+                    tips:3
+                });
                 $this.find("span").removeClass("loading gui gui-spinner gui-pulse");
                 $this.parent().children("a").removeClass("not-active");
                 $this.text(loginText).css("pointer-events","auto");
@@ -1493,7 +1508,17 @@
                 })
             }
         }else{
-            alert("Username password can not be empty!");
+            if(password){
+                layer.tips("Username can not be empty!",$form.find('[name=username]'),{
+                    time:1500,
+                    tips:3
+                });
+            }else{
+                layer.tips("Password can not be empty!",$form.find('[name=password]'),{
+                    time:1500,
+                    tips:3
+                });
+            }
             $this.find("span").removeClass("loading gui gui-spinner gui-pulse");
             $this.parent().children("a").removeClass("not-active");
             $this.text(loginText).css("pointer-events","auto");
@@ -2506,7 +2531,7 @@
     </div>
 </div>
 <div id="download-pc" style="display: none;">
-    <div style="padding: 60px;font-size: 24px;">Comming soon！</div>
+    <div style="padding:165px 60px;font-size: 24px;">Comming soon！</div>
     <div style="display: none;">
         <div class="tit"><span>API Name</span><span>Download</span></div>
         <ul class="api-list">

@@ -68,7 +68,7 @@
                 url = getBcPage(apiId);
                 break;
         }
-        if(url!=undefined && url!=""){
+        if(url!=undefined && url!="" && apiId!="40"){
             document.getElementById('sportFrame').contentWindow.location.replace(url);
         }
     }
@@ -83,7 +83,7 @@
                 if (data.isSuccess == true) {
                     var result = data.gameApiResult;
                     if (result.defaultLink) {
-                        return result.defaultLink;
+                        document.getElementById('sportFrame').contentWindow.location.replace(result.defaultLink);
                     }
                 }else{}
             },

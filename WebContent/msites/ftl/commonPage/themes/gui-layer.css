@@ -1,3 +1,4 @@
+
 .layui-layer { color: #333; font-size: 14px; background-color: transparent !important; }
 .layui-layer .layui-layer-btn { padding: 0 15px 20px; background: #fff; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; }
 .layui-layer .layui-layer-content { background-color: #fff; }
@@ -42,9 +43,9 @@
 .layui-layer.index-modal .layui-layer-title { border-bottom: 0; }
 .layui-layer.index-modal-transparent { background-color: transparent; box-shadow: none; }
 .layui-layer.index-modal-transparent .layui-layer-content { background: transparent; }
-.layui-layer.index-modal-transparent .layui-layer-setwin .layui-layer-close { width: 45px; height: 45px; font-size: 44px; background: #0000; border: 3px solid #fff; line-height: 28px; color: #fff; }
+.layui-layer.index-modal-transparent .layui-layer-setwin .layui-layer-close { width: 45px; height: 45px; font-size: 44px; background: #000000; border: 3px solid #fff; line-height: 28px; color: #fff; }
 .layui-layer.index-modal-transparent .layui-layer-btn { border-color: transparent; background: transparent; }
-.layui-layer.index-modal-transparent .layui-layer-btn0 { width: 150px; height: 45px; line-height: 41px; font-size: 18px; border-color: #f4c22b !important; background-color: #0000 !important; color: #f4c22b; border-radius: 24px; border-width: 2px; }
+.layui-layer.index-modal-transparent .layui-layer-btn0 { width: 150px; height: 45px; line-height: 41px; font-size: 18px; border-color: #f4c22b !important; background-color: #000000 !important; color: #f4c22b; border-radius: 24px; border-width: 2px; }
 .layui-layer.index-modal-transparent .layui-layer-btn0:hover { background-color: #f4c22b !important; color: #fff; }
 .layui-layer.download-dialog .layui-layer-title { height: 100px; line-height: 1; background: #1e9fff; color: #fff; padding: 0; border-bottom: 1px solid #d9d9d9; }
 .layui-layer.download-dialog .layui-layer-title .layui-this { background-color: transparent; border: 0; }
@@ -166,8 +167,8 @@
 .layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar { padding-left: 30px; position: relative; width: 390px; margin-bottom: 10px; }
 .layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar .txt { color: #f44236; }
 .layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar .icon-fail { bottom: 3px; }
-.layui-layer.promo_failure .layui-layer-content .failure-reason .icon-pass { background: url(images/promo/icon-pass.png); width: 18px; height: 18px; position: absolute; left: 0; bottom: -4px; }
-.layui-layer.promo_failure .layui-layer-content .failure-reason .icon-fail { background: url(images/promo/icon-fail.png); width: 18px; height: 18px; position: absolute; left: 0; bottom: -4px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .icon-pass { background: url(images/promo/icon-pass.png); width: 18px; height: 18px; position: absolute; left: 0; top: 4px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .icon-fail { background: url(images/promo/icon-fail.png); width: 18px; height: 18px; position: absolute; left: 0; top: 4px; }
 .layui-layer.promo_may_apply { background-color: #fff !important; }
 .layui-layer.promo_may_apply .color-green { color: #1ac07e; }
 .layui-layer.promo_may_apply .color-red { color: #f44236; }
@@ -203,8 +204,10 @@
 .layui-layer.promo_detail { background-color: #fff !important; }
 .layui-layer.promo_detail .layui-layer-btn { padding: 6px 15px 10px; position: absolute; left: 0; bottom: 0; right: 0; border-top: 1px solid #dfdfdf; }
 .layui-layer.promo_detail .layui-layer-content { height: 432px !important; padding: 5px; }
-.layui-layer.promo_detail .layui-layer-content .promo-img { width: 100%; height: 130px; margin-bottom: 10px; }
-.layui-layer.promo_detail .layui-layer-content .promo-content { height: 282px; padding: 0 15px; }
+.layui-layer.promo_detail .layui-layer-content .promo-img { width: 100%;  margin-bottom: 10px; }
+.layui-layer.promo_detail .layui-layer-content .promo-content { height: 422px; padding: 0 15px; }
+.layui-layer.promo_detail .layui-layer-content .promo-content table { width: 100% !important; }
+.layui-layer.promo_detail .layui-layer-content .promo-content table td, .layui-layer.promo_detail .layui-layer-content .promo-content table td { border: 1px solid #000; }
 .layui-layer.promo_detail .layui-layer-content .promo-content .tit { font-size: 18px; color: #666; margin-bottom: 30px; }
 .layui-layer.promo_detail .layui-layer-content .promo-content .content { font-size: 14px; color: #666; }
 .layui-layer.promo_detail .layui-layer-content .promo-content .content p { margin-bottom: 20px; text-indent: 2em; }
@@ -292,5 +295,7 @@
 .layui-layer.forget-password-dialog .forget-password-wrap .step_status4 .suce_txt { margin: 60px auto 0; font-size: 16px; font-weight: bold; color: #000; text-align: center; }
 
 .game-detail-open .casino-detail-iframe .layui-layer-close2 { display: block !important; }
+.tip_noTransaction {position: relative; left: 115px; padding-left: 25px;}
+.tip_noTransaction .icon-fail { background: url(images/promo/icon-fail.png); width: 18px; height: 18px; position: absolute; left: 0; top: 3px; }
 
-/*# sourceMappingURL=gui-layer.css.map */
+

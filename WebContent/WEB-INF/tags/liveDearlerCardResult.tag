@@ -181,6 +181,22 @@
             </c:if>
         </c:forEach>
     </c:if>
+    <c:if test="${!empty porkerListSet}">
+        <c:forEach items="${porkerListSet}" var="pokerList" varStatus="pokerIndex">
+            <span style="vertical-align: 10px">
+            闲${pokerIndex.index+1}：&nbsp;&nbsp;&nbsp;(
+            </span>
+            <c:forEach items="${pokerList}" var="poker">
+                <gb:poker poker="${poker}"/>
+            </c:forEach>
+            <span style="vertical-align: 10px">
+            )
+            </span>
+            <c:if test="${pokerIndex.index!=fn:length(porkerListSet)-1}">
+                <br/>
+            </c:if>
+        </c:forEach>
+    </c:if>
     <c:if test="${empty porkerList || empty porkerListSet}">
         --
     </c:if>

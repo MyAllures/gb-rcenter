@@ -460,6 +460,9 @@
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
                 $("#token").val(data.token);
+            },
+            yes: function () {
+                apiLoginReal(apiId, gameCode, apiTypeId);
             }
         });
     }
@@ -473,7 +476,7 @@
             skin:'layui-layer-brand',
             success: function(layer){
                 // 重写关闭按钮
-                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                $(layer).find('.layui-layer-setwin').html('');
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
             },
@@ -634,11 +637,8 @@
         });
     }
     function enterToGame(apiId,gameCode,apiTypeId){
-        /*if(dialog!=null){
-            layer.close(dialog);
-        } else{*/
-            apiLoginReal(apiId,gameCode,apiTypeId);
-//        }
+        layer.closeAll();
+        apiLoginReal(apiId, gameCode, apiTypeId);
     }
     function setButtonStatus() {
         $("#confirm-btn").attr("disabled", false);

@@ -43,7 +43,7 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                             window.top.topPage.showConfirmDynamic(window.top.message.common['msg'], msg, okLabel, cancelLabel, function (confirm) {
                                 if (confirm && !$(_target).attr("isChanged")) {
                                     window.top.topPage.ajax({
-                                        url: root + '/sysSiteSwitch/sysSiteSwitchToggle',
+                                        url: root + '/sysSiteSwitch/sysSiteSwitchToggle.html',
                                         dataType: "json",
                                         data: {
                                             "result.switchValue": state,
