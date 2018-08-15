@@ -1,11 +1,23 @@
 /*界面初始化*/
-$(function () {
+function initPage(){
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
         containerScroll: '.mui-content.mui-scroll-wrapper'
     };
     muiInit(options);
-});
+    if ($("#is_weixin").val()==='1') {
+        $("#weixin-tip").show();
+        $("#mui_scroll").find("a").attr("data-rel","");
+        var tip = document.getElementById('weixin-tip');
+        // var close = document.getElementById('close');
+        // close.onclick = function () {
+        //     tip.style.display = 'none';
+        // }
+    } else {
+        $("#weixin-tip").hide();
+    }
+}
+
 function download(obj, options) {
     var url = options.url;
     if (!url) {
@@ -24,7 +36,8 @@ function download(obj, options) {
         window.location.href = url;
     }
 }
-function complete(obj){
+
+function complete(obj) {
     $(obj).addClass("loading");
     $(obj).html('<i class="spinner"></i>请到桌面查看进度');
 }
