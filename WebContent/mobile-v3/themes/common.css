@@ -1430,12 +1430,12 @@ body.change-loginpassword .gb-stressed p i.active { background-color: #1766bb; }
 .mine-bet-detail .mine-form p { font-size: 12px; margin-bottom: 0; color: #333; }
 .mine-bet-detail .mine-form p.text-gray { color: #aeaeae; }
 .mine-bet-detail .mine-form .mui-input-row { height: auto; }
-.mine-bet-detail .mine-form .panel { margin: 0 32px; border: 1px solid #e2e2e2; background-color: #f2f2f2; padding: 10px; border-radius: 3px; }
+.mine-bet-detail .mine-form .panel { margin: 0 32px; border: 1px solid #e2e2e2; font-size: 12px; background-color: #f2f2f2; padding: 10px; border-radius: 3px; }
 .mine-bet-detail .mine-form .panel p { line-height: 20px; color: #333333; font-size: 12px; }
-.mine-bet-detail .mine-form .panel p .text { color: #999999; }
-.mine-bet-detail .mine-form .panel1 { margin: 0 32px; border: 1px solid #e2e2e2; background-color: #f2f2f2; padding: 10px; border-radius: 3px; }
+.mine-bet-detail .mine-form .panel p .text { color: #999999;  font-size: 12px;}
+.mine-bet-detail .mine-form .panel1 { margin: 0 32px; border: 1px solid #e2e2e2; font-size: 12px; background-color: #f2f2f2; padding: 10px; border-radius: 3px; }
 .mine-bet-detail .mine-form .panel1 p { line-height: 20px; color: #333333; font-size: 12px; }
-.mine-bet-detail .mine-form .panel1 p .text { color: #999999; }
+.mine-bet-detail .mine-form .panel1 p .text { color: #999999;  font-size: 12px; }
 .dis-no{display: none;}
 /* cash-detail */
 body.cash-detail { color: #000; }
