@@ -293,3 +293,60 @@
         </c:forEach>
     </c:if>
 </c:if>
+
+<%--乐游棋牌通比牛牛--%>
+<c:if test="${betType eq 'LEG_TB_BULL'}">
+    <c:if test="${ !empty porkerListSet}">
+        <c:forEach items="${porkerListSet}" var="pokerList" varStatus="pokerIndex">
+            <span style="vertical-align: 10px">
+            座位${pokerIndex.index+1}：&nbsp;&nbsp;&nbsp;(
+            </span>
+            <c:forEach items="${pokerList}" var="poker">
+                <c:if test="${poker==0}">--</c:if>
+                <c:if test="${poker!=0}">
+                    <gb:poker poker="${poker}"/>
+                </c:if>
+            </c:forEach>
+            <span style="vertical-align: 10px">
+              )
+            </span>
+            <c:if test="${pokerIndex.index!=fn:length(porkerListSet)-1}">
+                <br/>
+            </c:if>
+        </c:forEach>
+    </c:if>
+</c:if>
+
+<%--乐游棋牌三公--%>
+<c:if test="${betType eq 'LEG_THREE_FACE'}">
+    <c:if test="${ !empty porkerList}">
+        <span style="vertical-align: 10px">
+        庄：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
+        </span>
+        <c:forEach items="${porkerList}" var="poker">
+            <gb:poker poker="${poker}"/>
+        </c:forEach>
+        <span style="vertical-align: 10px">
+        )
+        </span>
+        <br/>
+    </c:if>
+
+    <c:if test="${!empty porkerListSet}">
+        <c:forEach items="${porkerListSet}" var="pokerList" varStatus="pokerIndex">
+            <span style="vertical-align: 10px">
+            闲${pokerIndex.index+1}：&nbsp;&nbsp;&nbsp;(
+            </span>
+            <c:forEach items="${pokerList}" var="poker">
+                <c:if test="${poker==0}">--</c:if>
+                <c:if test="${poker!=0}">
+                    <gb:poker poker="${poker}"/>
+                </c:if>
+            </c:forEach>
+            <span style="vertical-align: 10px">
+            )
+            </span>
+            <br/>
+        </c:forEach>
+    </c:if>
+</c:if>
