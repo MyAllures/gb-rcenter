@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="index">
+        <div class="home-header"><i class="iconfont icon-fanhui" onclick="back()"></i> <span class="top-name">iOS APP下载</span></div>
+        <div class="home1">
+            <div class="log"></div>
+            <div class="showindex">
+                <div onclick="downIOS()" class="down-ios click-scare"><i class="log-ios"></i>&nbsp;&nbsp;&nbsp;点击下载iOS版</div>
+                <div class="down-adr click-scare"><i class="log-adr"></i>&nbsp;&nbsp;&nbsp;点击下载安卓版</div>
+            </div>
+            <div class="showdown">
+                
+                <div onclick="downANZ()" class="down-anz click-scare">
+                    <span class="spcname">点击安装</span>    
+                    <div class="loadEffect" id="loading">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                         </div>            
+                </div>
+                <div class="wleco">
+                    <p>欢迎下载本APP</p>
+                    <p class="spcp">请依步骤依序操作</p>
+                </div>
+                <div class="bzbg">
+                    <div class="hands"></div>
+                </div>
+            </div>
+        </div>
+        <div class="demonstration">
+            <div class="lb">
+                <div class="lb_img">
+                    <img src="images/step05_bg.jpg">
+                    <img src="images/step02_bg.jpg">
+                    <img src="images/step03_bg.jpg">
+                    <img src="images/step04_bg.jpg">
+                    <img src="images/step05_bg.jpg">
+                    <img src="images/step02_bg.jpg">
+                </div>
+                <ul>
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    var showJc =false;
+    var spcback = false;
+     document.addEventListener('touchmove',function(e){
+       event.preventDefault();
+    }, { passive: false });
+
+    document.getElementsByClassName('demonstration')[0].style.bottom = -window.screen.availHeight+'px'
+    var homeEle = document.getElementsByClassName('home1')[0]
+　　 var startPoint = null;
+    homeEle.addEventListener("touchstart",function(e){
+    	var e = e||window.event;
+    	startPoint = e.touches[0];
+    })
+    homeEle.addEventListener("touchend",function(e){
+        if(!showJc)
+        return
+        var e=e||window.event;
+        //e.changedTouches能找到离开手机的手指，返回的是一个数组
+        var endPoint = e.changedTouches[0];
+        //计算终点与起点的差值
+        var x = endPoint.clientX - startPoint.clientX;
+        var y = endPoint.clientY - startPoint.clientY;
+        //设置滑动距离的参考值
+        var d = 150;
+        if(Math.abs(y)>d){
+            if(y<0){
+                spcback=true;
+                document.getElementsByClassName('demonstration')[0].style.bottom=0+'px'
+                document.getElementsByClassName('top-name')[0].innerHTML ="iOS APP教学"
+                document.getElementsByClassName('home-header')[0].style.backgroundColor ="#9f9fa1";
+            }
+        }
+    })
+
+    var demonstrationEle = document.getElementsByClassName('demonstration')[0]
+    var startPoint1 = null;
+    demonstrationEle.addEventListener("touchstart",function(e){
+    	var e = e||window.event;
+    	startPoint1 = e.touches[0];
+    })
+    demonstrationEle.addEventListener("touchend",function(e){
+        var e=e||window.event;
+        //e.changedTouches能找到离开手机的手指，返回的是一个数组
+        var endPoint = e.changedTouches[0];
+        //计算终点与起点的差值
+        var x = endPoint.clientX - startPoint1.clientX;
+        var y = endPoint.clientY - startPoint1.clientY;
+        //设置滑动距离的参考值
+        var d = 150;
+        if(Math.abs(y)>d){
+            if(y>0){
+                document.getElementsByClassName('demonstration')[0].style.bottom = -window.screen.availHeight+'px'
+                document.getElementsByClassName('top-name')[0].innerHTML ="iOS APP安装";
+                document.getElementsByClassName('home-header')[0].style.backgroundColor ="rgba(150, 149, 149, 0.205)";
+                
+            }
+        }
+    })
+
+    function back(){
+        if(spcback){
+            spcback=false;
+            document.getElementsByClassName('demonstration')[0].style.bottom = -window.screen.availHeight+'px'
+            document.getElementsByClassName('top-name')[0].innerHTML ="iOS APP安装";
+            document.getElementsByClassName('home-header')[0].style.backgroundColor ="rgba(150, 149, 149, 0.205)";
+        }else{
+            showJc=false;      
+            document.getElementsByClassName('icon-fanhui')[0].style.display ="none";
+            document.getElementsByClassName('showindex')[0].style.display ="block";
+            document.getElementsByClassName('showdown')[0].style.display ="none"
+            document.getElementsByClassName('top-name')[0].innerHTML ="iOS APP下载"
+            document.getElementsByClassName('home1')[0].style.backgroundImage = "url(images/index_bg.jpg)";
+        }
+    }
+
+    function downIOS(){
+        showJc=true;
+        document.getElementsByClassName('icon-fanhui')[0].style.display ="block";
+        document.getElementsByClassName('showindex')[0].style.display ="none";
+        document.getElementsByClassName('showdown')[0].style.display ="block"
+        document.getElementsByClassName('top-name')[0].innerHTML ="iOS APP安装"
+        document.getElementsByClassName('home1')[0].style.backgroundImage = "url(images/step01_bg.jpg)";
+    }
+
+    function downANZ(){
+        document.getElementsByClassName('spcname')[0].innerHTML ="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在桌面上查看安装"
+        console.log(document.getElementById('loading'))
+        document.getElementById('loading').style.display ="block"
+    }
+
+
+    
+</script>
+
+<script>
+    
+        var lb = document.querySelector(".lb");
+        var lb_img = document.querySelector(".lb .lb_img");
+        var img = document.querySelectorAll(".lb .lb_img img")
+        var lis = document.querySelectorAll(".lb ul li");
+        var leftWidth = window.screen.availWidth;
+        lb_img.style.left=-window.screen.availWidth+'px';
+        lb_img.style.width=window.screen.availWidth*6+'px';
+        for(var i=0;i<img.length;i++){
+            img[i].style.width=window.screen.availWidth+'px'
+        }
+        
+        
+        var i = 2;
+        // 初始化手指坐标点
+        var startPoint = 0;
+        var startEle = 0;
+        //手指按下
+        lb.addEventListener("touchstart", function (e) {
+            startPoint = e.changedTouches[0].pageX;
+            startEle = lb_img.offsetLeft;
+            // clearInterval(Time)
+        });
+
+        //手指滑动
+        lb.addEventListener("touchmove", function (e) {
+            var currPoint = e.changedTouches[0].pageX;
+            var disX = currPoint - startPoint;
+            var left = startEle + disX;
+            lb_img.style.left = left + "px";
+        });
+        //当手指抬起的时候，
+        lb.addEventListener("touchend", function (e) {
+            var currPoint = e.changedTouches[0].pageX;
+            var disX = - (currPoint - startPoint);
+            var left = startEle + disX;
+            if (disX > 150) {
+                i++;
+                for (var q = 0; q < lis.length; q++) {
+                    lis[q].className = '';
+                }
+                if (i == 6) {
+                    i = 2;
+                }
+                lis[i - 2].className = "active";
+                lb_img.style.left = -leftWidth * (Math.round(disX / leftWidth) + i + 1) + 'px';
+            } else {
+                lb_img.style.left = -leftWidth * (i - 1) + "px";
+            }
+            if (disX < -150) {
+                i--;
+                for (var q = 0; q < lis.length; q++) {
+                    lis[q].className = '';
+                }
+                if (i == 1) {
+                    i = 5;
+                }
+                lis[i - 2].className = "active";
+                lb_img.style.left = -leftWidth * (Math.round(-disX / leftWidth) + i - 2) + 'px';
+
+            } else {
+                lb_img.style.left = -leftWidth * (i - 1) + "px";
+            }
+            // Time = setInterval(autoplay, 2000);
+        })
+        //设置定时器
+        // Time = setInterval(autoplay, 2000);
+        function autoplay() {
+            i++;
+            for (var q = 0; q < lis.length; q++) {
+                lis[q].className = '';
+            }
+            if (i == 7) {
+                i = 2;
+            }
+            lis[i - 2].className = "active";
+            for (var a = 0; a < leftWidth; a++) {
+                setTimeout(function () {
+                    var left = lb_img.style.left ? lb_img.style.left : "-"+leftWidth+"px";
+                    left = parseInt(left) - 1;
+                    if (left < -1920) {
+                        left = -321;
+                    }
+                    lb_img.style.left = left + "px";
+                }, a);
+            }
+        }
+    </script>
+
+<style>
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0;user-select: none;}    
+html,body{background: black;font-size: 100px;;width: 100%;height: 100%;overflow: hidden;width: 100%;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}    
+html,body{ font-family:"Microsoft YaHei \5FAE\8F6F\96C5\9ED1",Georgia,Serif;}    
+a{text-decoration:none}    
+em{font-style:normal}    
+li{list-style:none}    
+img{border:0;}    
+table{border-collapse:collapse;border-spacing:0}    
+p{word-wrap:break-word}   
+iframe{border: none}
+.index{width: 100%;height: 100%;font-size:.14rem;}
+.home-header{z-index: 1000;height: .17rem;background: rgba(150, 149, 149, 0.205);width: 100%;position: fixed;top: 0;left: 0;text-align: center;padding:.15rem 0;color: white}
+.home1{transition: all .3s linear;position: absolute;;background: url(images/index_bg.jpg) 0 0/100% 100% no-repeat; width: 100%;height: 100%;}
+/* .home1{background: url(images/step01_bg.jpg) 0 0/100% 100% no-repeat; width: 100%;height: 100%;} */
+.icon-fanhui{float: left;margin-left: .05rem;margin-right: -.1rem;display: none;}
+.log{width: 1rem;height: 1rem;border-radius: 10px;background: url(images/icon.jpg) 0 0/100% 100% no-repeat;position: absolute;left: 0;right: 0;top: 1.1rem;margin: auto;
+box-shadow:0 0 28px rgba(216, 215, 215, 0.8)}
+.down-ios,.down-adr,.down-anz{line-height: .4rem;color: white;border: 1px solid #f6f6f6b6;width: 2.4rem;height: .4rem;background: rgba(0, 0, 0, 0.301);text-align: center;position: absolute;border-radius: 5px;left: 0;right: 0;margin: auto}
+.down-ios{top: 3.25rem;}
+.down-adr{top: 3.87rem;}
+.down-anz{top: 2.9rem;width: 1.85rem;height: .42rem;}
+.log-ios,.log-adr{position: absolute;left: .5rem;top: .09rem;display: block;width: .18rem;height: .21rem;}
+.log-ios{background: url(images/ios.png) 0 0/100% 100% no-repeat;}
+.log-adr{background: url(images/android.png) 0 0/100% 100% no-repeat;}
+.click-scare{transition: all .3s linear;}
+.click-scare:active{transform: scale(.9)}
+.wleco{position: absolute;top: 3.55rem;width: 1.85rem;height: .75rem;background: rgba(0, 0, 0, 0.226);text-align: center;color: rgba(255, 255, 255, 0.74);left: 0;right: 0;margin: auto ;border-radius: 5px}
+.wleco>p{margin: auto;padding: .15rem 0 0 0}
+.spcp{padding-top: .07rem!important}
+.wleco::after{content: '部分浏览器可能无法安装,建议使用Safari 浏览器操作';position: absolute;width: 1.85rem;left: 0;font-size: .12rem;bottom: -.4rem;color: rgba(255, 255, 255, 0.74);}
+.bzbg{background: url(images/up.png) 0 0/100% 100% no-repeat;width: .1rem;height: 1rem;position: absolute;bottom: .1rem;left: 0;right: 0;margin: auto  }
+.hands{background: url(images/hand.png) 0 0/100% 100% no-repeat;width: .55rem;height: .6rem;position: absolute;left: -.05rem;top: -.067rem;transition: all .3s linear;animation: handsmo 1.3s linear infinite}
+
+
+@keyframes handsmo{
+    from{top: .7rem}
+    to{top: -.067rem}
+}
+
+.showdown{display: none;}
+.loadEffect{display: none;}
+
+
+.demonstration{width: 100%;height: 100%;position: absolute;transition: all .3s linear;}
+.lb{width:100%;height:100%;position:relative;overflow: hidden;}
+.lb .lb_img{width:2240px;height:100%;position:absolute;left:-320px;transition: all .2s linear}
+.lb .lb_img img{width:320px;float:left;display:block;}
+.lb ul{width:.6rem;height:.05rem;position:absolute;bottom:.2rem;left:0;right:0;margin:auto;}
+.lb ul li{width:.07rem;height:.07rem;border-radius:100%;;margin-left:.03rem;background:#666;float:left;cursor:pointer;}
+.lb ul .active{background:#fff;}
+.lb ul li:hover{background:#fff;}
+
+@media screen and (min-height:1020px){html{font-size: 204px}}
+@media screen and (max-height:740px){html{font-size: 110px}}
+@media screen and (max-height:670px){html{font-size: 100px}}
+@media screen and (max-height:570px){html{font-size: 85px}}
+
+
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1533609082306'); /* IE9*/
+  src: url('iconfont.eot?t=1533609082306#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAT4AAsAAAAAB1AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFZW70hCY21hcAAAAYAAAABdAAABhpqUBr5nbHlmAAAB4AAAASoAAAE8TRnaOGhlYWQAAAMMAAAALwAAADYSPY7xaGhlYQAAAzwAAAAcAAAAJAfeA4RobXR4AAADWAAAAAwAAAAMC+kAAGxvY2EAAANkAAAACAAAAAgAdgCebWF4cAAAA2wAAAAfAAAAIAESAF1uYW1lAAADjAAAAUUAAAJtPlT+fXBvc3QAAATUAAAAIwAAADTc3eh0eJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2Bk/sE4gYGVgYOpk+kMAwNDP4RmfM1gxMjBwMDEwMrMgBUEpLmmMDgwVDwLZ27438AQw9zI0AgUZgTJAQAp5QzFeJzFkMENgDAMAy9t6QMxCA/2KS/m6MRdo5hQHkxQS44Vx1KiAAsQxUNMYBfGg1OuuR9Z3U+eyVIjUFvpXf2nimiWXYNKZhps3uo/Nq/76PQV6qBObOUl4QYudgzrAAAAeJwNjztOw0AYhPffxa+ssybrtx3Hr8QLCgRhTBpE0tCAKJCoUlBwAGjTIBEKJAoKzoCQqBFtjkKD4ByGHY3mmykHKQj9fZM1CZCNttA+OkEXCIE6hoLhBHLRTPAY3FxxfYcRUYpcK4sJOQa/UB2vnjaVr2qqBQwGcJDXUzHBAg6bGT6C2ksAwji65KM+Jy/QCcTgsT3Dr+CmZd+a7banO3Onzmx9aXIecv6sq4qiY7xhMbjxPUMxOmr7pliRu063cQpmKKLzRTeL+fVTc5uMfANgtQI7ztj7vBf1pO8iz+ahttnVg6hbDh1Y/tLANpPqB0mB/HpPYvKAHIQMmDZ7UBUaqI4PXj2XW8AVfFLKzJS2Q0rhi6Ymk1zBB82obG0lKUP2jP4DxjwvWgAAeJxjYGRgYADin71VE+L5bb4ycLMwgMD1ftUqBP2/noWBuRHI5WBgAokCADgxClsAeJxjYGRgYG7438AQw8IAAkCSkQEVMAMARwkCbAQAAAAD6QAABAAAAAAAAAAAdgCeeJxjYGRgYGBmCGRgZQABJiDmAkIGhv9gPgMAEPcBcAB4nGWPTU7DMBCFX/oHpBKqqGCH5AViASj9EatuWFRq911036ZOmyqJI8et1ANwHo7ACTgC3IA78EgnmzaWx9+8eWNPANzgBx6O3y33kT1cMjtyDRe4F65TfxBukF+Em2jjVbhF/U3YxzOmwm10YXmD17hi9oR3YQ8dfAjXcI1P4Tr1L+EG+Vu4iTv8CrfQ8erCPuZeV7iNRy/2x1YvnF6p5UHFockikzm/gple75KFrdLqnGtbxCZTg6BfSVOdaVvdU+zXQ+ciFVmTqgmrOkmMyq3Z6tAFG+fyUa8XiR6EJuVYY/62xgKOcQWFJQ6MMUIYZIjK6Og7VWb0r7FDwl57Vj3N53RbFNT/c4UBAvTPXFO6stJ5Ok+BPV8bUnV0K27LnpQ0kV7NSRKyQl7WtlRC6gE2ZVeOEXpc0Yk/KGdI/wAJWm7IAAAAeJxjYGKAAC4G7ICZkYmRmZGFgbGCLS0xL6M0k4EBABWnAxYA') format('woff'),
+  url('iconfont.ttf?t=1533609082306') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1533609082306#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:.17rem;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fanhui:before { content: "\e657"; }
+
+
+
+
+.loadEffect{
+    width: .5rem;
+    height: .5rem;
+    position: absolute;
+    top:.01rem;
+    left: .1rem;
+}
+.loadEffect span{
+    display: inline-block;
+    width: .07rem;
+    height: .02rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: white;
+    position: absolute;
+    -webkit-animation: load 1.04s ease infinite;
+}
+@-webkit-keyframes load{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.2;
+    }
+}
+.loadEffect span:nth-child(1){
+    left: 0;
+    top: 50%;
+    margin-top:-.05rem;
+    -webkit-animation-delay:0.13s;
+}
+.loadEffect span:nth-child(2){
+    left: .02rem;
+    top: .13rem;
+    -webkit-transform: rotate(45deg);
+    -webkit-animation-delay:0.26s;
+}
+.loadEffect span:nth-child(3){
+    left: 50%;
+    top: .1rem;
+    margin-left: -.15rem;
+    -webkit-transform: rotate(90deg);
+    -webkit-animation-delay:0.39s;
+}
+.loadEffect span:nth-child(4){
+    top: .12rem;
+    right:.25rem;
+    -webkit-transform: rotate(135deg);
+    -webkit-animation-delay:0.52s;
+}
+.loadEffect span:nth-child(5){
+    right: .23rem;
+    top: 50%;
+    margin-top:-.05rem;
+    -webkit-transform: rotate(180deg);
+    -webkit-animation-delay:0.65s;
+}
+.loadEffect span:nth-child(6){
+    right: .26rem;
+    bottom:.21rem;
+    -webkit-transform: rotate(225deg);
+    -webkit-animation-delay:0.78s;
+}
+.loadEffect span:nth-child(7){
+    bottom: .19rem;
+    left: 50%;
+    margin-left: -.15rem;
+    -webkit-transform: rotate(270deg);
+    -webkit-animation-delay:0.91s;
+}
+.loadEffect span:nth-child(8){
+    bottom: .21rem;
+    left: .03rem;
+    -webkit-transform: rotate(315deg);
+    -webkit-animation-delay:1.04s;
+}
+
+</style>
+
+
+
+</html>

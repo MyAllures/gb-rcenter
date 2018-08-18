@@ -15,7 +15,7 @@
         </#list>
     </#if>
         <#if data.gameSearch.gameType?default('')=="Fish">
-            <li class="<#if !data.gameSearch.gameTag?has_content>active</#if>"><a href="casino.html?apiType=2&gameType=Fish"  data-api="${data.gameSearch.apiId?default('')}">全部游戏</a></li>
+            <li class="<#if !data.gameSearch.gameTag?has_content>active</#if>"><a href="casino.html?apiType=2&gameType=Fish" data-href="casino.html?apiType=2&gameType=Fish" data-api="${data.gameSearch.apiId?default('')}">全部游戏</a></li>
         <#else>
             <li class="<#if !data.gameSearch.gameTag?has_content>active</#if>"><a class="_vr_getGames"  data-api="${data.gameSearch.apiId?default('')}" href="javascript:void(0)" data-href="casino_partial.html?apiType=${apiType}&apiId=${data.gameSearch.apiId?default('')}">全部游戏</a></li>
         </#if>
@@ -32,8 +32,8 @@
 </div>
 <!--game-list-header-->
 <div class="game-list-header">
-    <#if data.gameSearch.apiId=="3" || data.gameSearch.apiId=="6">
-        <div class="pull-left">
+    <div class="pull-left">
+        <#if data.gameSearch.apiId=="3" || data.gameSearch.apiId=="6">
             <div class="jackpot">
                 <div class="j_txt pull-left">
                     <#if apiType?has_content && data.gameSearch.apiId?has_content>
@@ -49,8 +49,21 @@
                 </#if>
                 <div class="pull-left hide" id="jackpot_34" data-jackpot="25682425" data-api-id="34"></div>
             </div>
-        </div>
-    </#if>
+        <#elseif data.gameSearch.apiType?? && data.gameSearch.apiType=="5">
+            <ul class="_vr_chessApi list-inline">
+                <#if data.siteApiTypeRelationMap["5"]??>
+                    <#list data.siteApiTypeRelationMap["5"] as chessMap>
+                        <#assign apiId = chessMap.apiId?string.computer>
+                        <li class="<#if chessMap_index == 0>active</#if> _vr_${apiId}">
+                            <a href="javascript:" class="_vr_getGames" data-apitype="5" data-api="${apiId}" data-href="casino_partial.html?apiType=5&apiId=${apiId}">
+                            ${data.siteApiTypeRelationI18n["5"+apiId].name}
+                            </a>
+                        </li>
+                    </#list>
+                </#if>
+            </ul>
+        </#if>
+    </div>
 
     <div class="pull-right">
         <div class="all_g_txt pull-left">总共<span>${data.gameCount}</span>个电子游戏</div>
@@ -91,7 +104,7 @@
                             <#if data.siteGameI18ns[game.gameId?string.computer].introduceStatus?has_content && data.siteGameI18ns[game.gameId?string.computer].introduceStatus?string=="normal" && data.siteGameI18ns[game.gameId?string.computer].gameIntroduce?has_content>
                                 <a href="<#if data.siteGameI18ns[game.gameId?string.computer].gameIntroduce?has_content>${data.siteGameI18ns[game.gameId?string.computer].gameIntroduce}<#else>javascript:</#if>" class="tag-info"></a>
                             </#if>
-                            <#if data.gameSearch.apiId=="3" || data.gameSearch.apiId=="6">
+                            <#if (game.jackpot?? && game.jackpot?string("true","false")=="true" && data.gameSearch.apiId=="3") || (game.jackpot?? && game.jackpot?string("true","false")=="true" && data.gameSearch.apiId=="6")>
                                 <span class="jiangchi">￥<span class="jianchi_num" data-speed="1" data-game-id="${game.gameId?string.computer}"></span></span>
                             </#if>
                             <img src="<#if data.siteGameI18ns[game.gameId?string.computer]?has_content>${imgPath(data.configInfo.domain,data.siteGameI18ns[game.gameId?string.computer].cover)}</#if>">
@@ -105,7 +118,7 @@
                                            data-game-introduce="${data.siteGameI18ns[game.gameId?string.computer].gameIntroduce}"
                                             </#if>
                                            data-game-code="<#if data.gameMapById[game.gameId?string.computer]?has_content>${data.gameMapById[game.gameId?string.computer].code}</#if>"
-                                           data-game-id="${game.gameId?string.computer}" data-apitype="${apiType}"
+                                           data-game-id="${game.gameId?string.computer}" data-apitype="${game.apiTypeId?string.computer}"
                                            startTime="<#if data.gameMapById[game.gameId?string.computer].maintainStartTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainStartTime?long?string.computer}</#if>"
                                            endTime="<#if data.gameMapById[game.gameId?string.computer].maintainEndTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainEndTime?long?string.computer}</#if>">开始游戏</a>
 
@@ -117,7 +130,7 @@
                                                data-game-introduce="${data.siteGameI18ns[game.gameId?string.computer].gameIntroduce}"
                                                 </#if>
                                                data-game-code="<#if data.gameMapById[game.gameId?string.computer]?has_content>${data.gameMapById[game.gameId?string.computer].code}</#if>"
-                                               data-game-id="${game.gameId?string.computer}" data-apitype="${apiType}"
+                                               data-game-id="${game.gameId?string.computer}" data-apitype="${game.apiTypeId?string.computer}"
                                                startTime="<#if data.gameMapById[game.gameId?string.computer].maintainStartTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainStartTime?long?string.computer}</#if>"
                                                endTime="<#if data.gameMapById[game.gameId?string.computer].maintainEndTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainEndTime?long?string.computer}</#if>">试玩</a>
                                         </#if>
