@@ -614,6 +614,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             if (!playerId || playerId == null || playerId == "" || playerId == undefined) {
                 return;
             }
+            $("#loading_agent_data").show();
             window.top.topPage.ajax({
                 url: root + "/player/queryUserPlayerById.html?search.id=" + playerId,
                 dataType: "JSON",
@@ -623,6 +624,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                         _this.setSelectedValue("search.agentRanks",data.agentRank);
                         _this.setSelectedValue("result.agentId",data.agentId);
                     }
+                    $("#loading_agent_data").hide();
                 }
             });
         },
