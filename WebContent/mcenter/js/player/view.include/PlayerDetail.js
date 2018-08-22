@@ -617,6 +617,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             window.top.topPage.ajax({
                 url: root + "/player/queryUserPlayerById.html?search.id=" + playerId,
                 dataType: "JSON",
+                async: true,
                 success: function (data) {
                     if(data){
                         _this.setSelectedValue("search.agentRanks",data.agentRank);
