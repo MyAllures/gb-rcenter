@@ -906,6 +906,13 @@ body.no-backdrop .mui-backdrop { background-color: transparent !important; }
 .pay-bank.tzb { background-position: 0 -840px; }
 
 /* 27 台州银行 */
+
+
+.pay-bank.jlbank{background-position:0 -873px;}
+/* 28 吉林银行 */
+.pay-bank.qdbank{background-position:0 -906px;}
+/* 29 青岛银行 */
+
 .pay-bank.s .icbc { width: 107px; }
 
 /* 01 中国工商银行 */
@@ -984,6 +991,7 @@ body.no-backdrop .mui-backdrop { background-color: transparent !important; }
 .pay-bank.s .tzb { width: 100px; }
 
 /* 27 台州银行 */
+
 /*第三方支付*/
 /* 银行 & 第三方支付 Steven 2016-9-4 */
 .pay-third { width: 125px; display: inline-block; height: 30px; vertical-align: middle; background: url(./images/pay-third.png) right top no-repeat; zoom: .8; margin-left: -3px; }
@@ -1430,12 +1438,12 @@ body.change-loginpassword .gb-stressed p i.active { background-color: #1766bb; }
 .mine-bet-detail .mine-form p { font-size: 12px; margin-bottom: 0; color: #333; }
 .mine-bet-detail .mine-form p.text-gray { color: #aeaeae; }
 .mine-bet-detail .mine-form .mui-input-row { height: auto; }
-.mine-bet-detail .mine-form .panel { margin: 0 32px; border: 1px solid #e2e2e2; background-color: #f2f2f2; padding: 10px; border-radius: 3px; }
+.mine-bet-detail .mine-form .panel { margin: 0 32px; border: 1px solid #e2e2e2; font-size: 12px; background-color: #f2f2f2; padding: 10px; border-radius: 3px; }
 .mine-bet-detail .mine-form .panel p { line-height: 20px; color: #333333; font-size: 12px; }
-.mine-bet-detail .mine-form .panel p .text { color: #999999; }
-.mine-bet-detail .mine-form .panel1 { margin: 0 32px; border: 1px solid #e2e2e2; background-color: #f2f2f2; padding: 10px; border-radius: 3px; }
+.mine-bet-detail .mine-form .panel p .text { color: #999999;  font-size: 12px;}
+.mine-bet-detail .mine-form .panel1 { margin: 0 32px; border: 1px solid #e2e2e2; font-size: 12px; background-color: #f2f2f2; padding: 10px; border-radius: 3px; }
 .mine-bet-detail .mine-form .panel1 p { line-height: 20px; color: #333333; font-size: 12px; }
-.mine-bet-detail .mine-form .panel1 p .text { color: #999999; }
+.mine-bet-detail .mine-form .panel1 p .text { color: #999999;  font-size: 12px; }
 .dis-no{display: none;}
 /* cash-detail */
 body.cash-detail { color: #000; }
@@ -1720,3 +1728,173 @@ body.mine-user .gb-select > a { color: #999; }
 .home-collect-dialog .collect-list .item .img-wrap img { width: 45px; height: 45px; vertical-align: middle; }
 
 /*# sourceMappingURL=common.css.map */
+
+
+/*===============================================
+ * Part-02
+ * 注单详细游戏项图标
+ * Author: Steven
+ * Update by 2017-02-12
+================================================*/
+@font-face {
+font-family: 'game-result';
+src:url('../fonts/game-result/game-result.eot');
+src:url('../fonts/game-result/game-result.eot#iefix') format('embedded-opentype'),
+  url('../fonts/game-result/game-result.ttf') format('truetype'),
+  url('../fonts/game-result/game-result.woff') format('woff'),
+  url('../fonts/game-result/game-result.svg#game-result') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+.gr,.gr-2x,.gr-3x,.gr-4x,.gr-5x{color:#333;font-family:'game-result'!important;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.gr-2x{font-size: 2em;}
+.gr-3x{font-size: 3em;}
+.gr-4x{font-size: 4em;}
+.gr-5x{font-size: 5em;}
+
+.gr-ft-w:before{content:"\e900";}
+.gr-ft-b:before{content:"\e901";color:#fa1e1e;}
+
+.gr-dice-1:before,.gr-di-1:before{content:"\e902";color:#fa1e1e;}
+.gr-dice-2:before,.gr-di-2:before{content:"\e903";}
+.gr-dice-3:before,.gr-di-3:before{content:"\e904";}
+.gr-dice-4:before,.gr-di-4:before{content:"\e905";color:#fa1e1e;}
+.gr-dice-5:before,.gr-di-5:before{content:"\e906";}
+.gr-dice-6:before,.gr-di-6:before{content:"\e907";}
+
+.gr-mj-c1:before{content:"\e908";}
+.gr-mj-c2:before{content:"\e909";}
+.gr-mj-c3:before{content:"\e90a";}
+.gr-mj-c4:before{content:"\e90b";}
+.gr-mj-c5:before{content:"\e90c";}
+.gr-mj-c6:before{content:"\e90d";}
+.gr-mj-c7:before{content:"\e90e";}
+.gr-mj-c8:before{content:"\e90f";}
+.gr-mj-c9:before{content:"\e910";}
+.gr-mj-wd:before{content:"\e911";}
+
+.gr-club-a:before,.gr-club-1:before,.gr-c-1:before{content:"\e912";}
+.gr-club-2:before,.gr-c-2:before{content:"\e913";}
+.gr-club-3:before,.gr-c-3:before{content:"\e914";}
+.gr-club-4:before,.gr-c-4:before{content:"\e915";}
+.gr-club-5:before,.gr-c-5:before{content:"\e916";}
+.gr-club-6:before,.gr-c-6:before{content:"\e917";}
+.gr-club-7:before,.gr-c-7:before{content:"\e918";}
+.gr-club-8:before,.gr-c-8:before{content:"\e919";}
+.gr-club-9:before,.gr-c-9:before{content:"\e91a";}
+.gr-club-10:before,.gr-c-10:before{content:"\e91b";}
+.gr-club-j:before,.gr-club-11:before,.gr-c-11:before{content:"\e91c";}
+.gr-club-q:before,.gr-club-12:before,.gr-c-12:before{content:"\e91d";}
+.gr-club-k:before,.gr-club-13:before,.gr-c-13:before{content:"\e91e";}
+
+.gr-diamond-a:before,.gr-diamond-1:before,.gr-d-1:before{content:"\e91f";color:#fa1e1e;}
+.gr-diamond-2:before,.gr-d-2:before{content:"\e920";color:#fa1e1e;}
+.gr-diamond-3:before,.gr-d-3:before{content:"\e921";color:#fa1e1e;}
+.gr-diamond-4:before,.gr-d-4:before{content:"\e922";color:#fa1e1e;}
+.gr-diamond-5:before,.gr-d-5:before{content:"\e923";color:#fa1e1e;}
+.gr-diamond-6:before,.gr-d-6:before{content:"\e924";color:#fa1e1e;}
+.gr-diamond-7:before,.gr-d-7:before{content:"\e925";color:#fa1e1e;}
+.gr-diamond-8:before,.gr-d-8:before{content:"\e926";color:#fa1e1e;}
+.gr-diamond-9:before,.gr-d-9:before{content:"\e927";color:#fa1e1e;}
+.gr-diamond-10:before,.gr-d-10:before{content:"\e928";color:#fa1e1e;}
+.gr-diamond-j:before,.gr-diamond-11:before,.gr-d-11:before{content:"\e929";color:#fa1e1e;}
+.gr-diamond-q:before,.gr-diamond-12:before,.gr-d-12:before{content:"\e92a";color:#fa1e1e;}
+.gr-diamond-k:before,.gr-diamond-13:before,.gr-d-13:before{content:"\e92b";color:#fa1e1e;}
+
+.gr-heart-a:before,.gr-heart-1:before,.gr-h-1:before{content:"\e92c";color:#fa1e1e;}
+.gr-heart-2:before,.gr-h-2:before{content:"\e92d";color:#fa1e1e;}
+.gr-heart-3:before,.gr-h-3:before{content:"\e92e";color:#fa1e1e;}
+.gr-heart-4:before,.gr-h-4:before{content:"\e92f";color:#fa1e1e;}
+.gr-heart-5:before,.gr-h-5:before{content:"\e930";color:#fa1e1e;}
+.gr-heart-6:before,.gr-h-6:before{content:"\e931";color:#fa1e1e;}
+.gr-heart-7:before,.gr-h-7:before{content:"\e932";color:#fa1e1e;}
+.gr-heart-8:before,.gr-h-8:before{content:"\e933";color:#fa1e1e;}
+.gr-heart-9:before,.gr-h-9:before{content:"\e934";color:#fa1e1e;}
+.gr-heart-10:before,.gr-h-10:before{content:"\e935";color:#fa1e1e;}
+.gr-heart-j:before,.gr-heart-11:before,.gr-h-11:before{content:"\e936";color:#fa1e1e;}
+.gr-heart-q:before,.gr-heart-12:before,.gr-h-12:before{content:"\e937";color:#fa1e1e;}
+.gr-heart-k:before,.gr-heart-13:before,.gr-h-13:before{content:"\e938";color:#fa1e1e;}
+
+.gr-spade-a:before,.gr-spade-1:before,.gr-s-1:before{content:"\e939";}
+.gr-spade-2:before,.gr-s-2:before{content:"\e93a";}
+.gr-spade-3:before,.gr-s-3:before{content:"\e93b";}
+.gr-spade-4:before,.gr-s-4:before{content:"\e93c";}
+.gr-spade-5:before,.gr-s-5:before{content:"\e93d";}
+.gr-spade-6:before,.gr-s-6:before{content:"\e93e";}
+.gr-spade-7:before,.gr-s-7:before{content:"\e93f";}
+.gr-spade-8:before,.gr-s-8:before{content:"\e940";}
+.gr-spade-9:before,.gr-s-9:before{content:"\e941";}
+.gr-spade-10:before,.gr-s-10:before{content:"\e942";}
+.gr-spade-j:before,.gr-spade-11:before,.gr-s-11:before{content:"\e943";}
+.gr-spade-q:before,.gr-spade-12:before,.gr-s-12:before{content:"\e944";}
+.gr-spade-k:before,.gr-spade-13:before,.gr-s-13:before{content:"\e945";}
+
+.gr-black-joker:before,.gr-bj:before{content:"\e96b";}
+.gr-red-joker:before,.gr-rj:before{content:"\e96b";color:#fa1e1e;}
+
+.gr-roulette-0:before{content:"\e946";color:#28963c;}
+.gr-roulette-1:before{content:"\e947";color:#fa1e1e;}
+.gr-roulette-2:before{content:"\e948";}
+.gr-roulette-3:before{content:"\e949";color:#fa1e1e;}
+.gr-roulette-4:before{content:"\e94a";}
+.gr-roulette-5:before{content:"\e94b";color:#fa1e1e;}
+.gr-roulette-6:before{content:"\e94c";}
+.gr-roulette-7:before{content:"\e94d";color:#fa1e1e;}
+.gr-roulette-8:before{content:"\e94e";}
+.gr-roulette-9:before{content:"\e94f";color:#fa1e1e;}
+.gr-roulette-10:before{content:"\e950";}
+.gr-roulette-11:before{content:"\e951";}
+.gr-roulette-12:before{content:"\e952";color:#fa1e1e;}
+.gr-roulette-13:before{content:"\e953";}
+.gr-roulette-14:before{content:"\e954";color:#fa1e1e;}
+.gr-roulette-15:before{content:"\e955";}
+.gr-roulette-16:before{content:"\e956";color:#fa1e1e;}
+.gr-roulette-17:before{content:"\e957";}
+.gr-roulette-18:before{content:"\e958";color:#fa1e1e;}
+.gr-roulette-19:before{content:"\e959";color:#fa1e1e;}
+.gr-roulette-20:before{content:"\e95a";}
+.gr-roulette-21:before{content:"\e95b";color:#fa1e1e;}
+.gr-roulette-22:before{content:"\e95c";}
+.gr-roulette-23:before{content:"\e95d";color:#fa1e1e;}
+.gr-roulette-24:before{content:"\e95e";}
+.gr-roulette-25:before{content:"\e95f";color:#fa1e1e;}
+.gr-roulette-26:before{content:"\e960";}
+.gr-roulette-27:before{content:"\e961";color:#fa1e1e;}
+.gr-roulette-28:before{content:"\e962";}
+.gr-roulette-29:before{content:"\e963";}
+.gr-roulette-30:before{content:"\e964";color:#fa1e1e;}
+.gr-roulette-31:before{content:"\e965";}
+.gr-roulette-32:before{content:"\e966";color:#fa1e1e;}
+.gr-roulette-33:before{content:"\e967";}
+.gr-roulette-34:before{content:"\e968";color:#fa1e1e;}
+.gr-roulette-35:before{content:"\e969";}
+.gr-roulette-36:before{content:"\e96a";color:#fa1e1e;}
+
+
+/*===============================================
+ * 注单详细游戏项牌九图标
+ * Author: Peter
+ * Update by 2018-08-17
+================================================*/
+.pj-icon{background-image: url(images/paijiu-ico.png);display:inline-block;width: 20px;height: 50px;border-radius: 3px;margin: 0 2px 2px 0;}
+.pj-icon-tian{background-position-x: 0;}
+.pj-icon-di{background-position-x: -30px;}
+.pj-icon-ren{background-position-x: -60px;}
+.pj-icon-he{background-position-x: -90px;}
+.pj-icon-changsan{background-position-x: -120px;}
+.pj-icon-mei{background-position-x: -150px;}
+.pj-icon-bandeng{background-position-x: -180px;}
+.pj-icon-hongtou{background-position-x: -210px;}
+.pj-icon-futou{background-position-x: -240px;}
+.pj-icon-gaojiao{background-position-x: -270px;}
+.pj-icon-tongchui{background-position-x: -300px;}
+.pj-icon-baijiu{background-position-x: -330px;}
+.pj-icon-hongjiu{background-position-x: -360px;}
+.pj-icon-wanba{background-position-x: -390px;}
+.pj-icon-pingba{background-position-x: -420px;}
+.pj-icon-hongqi{background-position-x: -450px;}
+.pj-icon-baiqi{background-position-x: -480px;}
+.pj-icon-baiwu{background-position-x: -510px;}
+.pj-icon-hongwu{background-position-x: -540px;}
+.pj-icon-liu{background-position-x: -570px;}
