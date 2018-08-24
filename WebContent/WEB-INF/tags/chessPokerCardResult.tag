@@ -350,3 +350,36 @@
         </c:forEach>
     </c:if>
 </c:if>
+<%--乐游棋牌 抢庄牌九--%>
+<c:if test="${betType eq 'LEG_PAIJIU'}">
+    <c:if test="${ !empty porkerList}">
+        <span style="vertical-align: 10px">
+        庄：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
+        </span>
+        <c:forEach items="${porkerList}" var="poker">
+            <gb:paijiu paijiu="${poker}"/>
+        </c:forEach>
+        <span style="vertical-align: 10px">
+        )
+        </span>
+        <br/>
+    </c:if>
+
+    <c:if test="${!empty porkerListSet}">
+        <c:forEach items="${porkerListSet}" var="pokerList" varStatus="pokerIndex">
+            <span style="vertical-align: 10px">
+            闲${pokerIndex.index+1}：&nbsp;&nbsp;&nbsp;(
+            </span>
+            <c:forEach items="${pokerList}" var="poker">
+                <c:if test="${poker==0}">--</c:if>
+                <c:if test="${poker!=0}">
+                    <gb:paijiu paijiu="${poker}"/>
+                </c:if>
+            </c:forEach>
+            <span style="vertical-align: 10px">
+            )
+            </span>
+            <br/>
+        </c:forEach>
+    </c:if>
+</c:if>

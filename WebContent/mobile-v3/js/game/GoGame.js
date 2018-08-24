@@ -100,7 +100,7 @@ function goApiGame(obj, options) {
                 goToUrl(root + "/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
             }
         } else {
-            var postData = getApiLoginPostData(apiId, apiTypeId, gameCode);
+            var postData = getApiLoginPostData(apiTypeId, apiId, gameCode);
             signIn(postData);
         }
     }
@@ -202,7 +202,7 @@ function gameLogin(data, apiId) {
             gotoGameUrl(result.links[apiTypeId], apiId)
         }
     } else {
-        if (!data.loginSuccess && ( data.errMsg == '' || data.errMsg == null)) {
+        if (!data.loginSuccess && (data.errMsg == '' || data.errMsg == null)) {
             if (data.maintain) {
                 showWarningMsg(window.top.message.game_auto['提示'], window.top.message.game_auto['游戏维护中']);
             } else {
@@ -290,6 +290,7 @@ function signIn(data) {
 }
 
 /** 是否支持本地存储（Safari非无痕模式） */
+
 /*function isLocalStorageSupport() {
  var testKey = 'test';
  var storage = window.sessionStorage;

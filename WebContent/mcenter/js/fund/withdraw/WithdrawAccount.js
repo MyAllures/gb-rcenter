@@ -253,6 +253,23 @@ define(['common/BaseEditPage','bootstrapswitch'], function (BaseEditPage) {
                 this.returnValue=true;
                 window.top.topPage.closeDialog();
             }
+        },
+        /**
+         * 检查是否选择
+         * @param e             事件对象
+         * @param option        Button标签的参数
+         */
+        checkSelectOption: function (e,opt) {
+            var account = $("[name='withdrawAccount.id']").val();
+            var withdrawChannel = $("[name='withdrawChannel']").val();
+            if ((account=='undefinded' &&  withdrawChannel=='undefinded')
+                || (account!='undefinded' &&  account=='')
+                || (withdrawChannel!='undefinded' &&  withdrawChannel=='')
+            ){
+                page.showPopover(e,opt,"danger","请选择出款账户或者出款渠道",true);
+                return false;
+            }
+            return true;
         }
 
     });

@@ -6,6 +6,12 @@
 
 <c:set var="round" value="${poker%13==0?13:poker%13}"/>
 <c:choose>
+    <c:when test="${poker == 53}">
+        <em class="gr gr-black-joker fs1"></em>
+    </c:when>
+    <c:when test="${poker == 54}">
+        <em class="gr gr-red-joker fs1"></em>
+    </c:when>
     <c:when test="${(poker/13).intValue()==0||poker==13}">
         <em class="gr gr-spade-${round} fs1"></em>
     </c:when>
