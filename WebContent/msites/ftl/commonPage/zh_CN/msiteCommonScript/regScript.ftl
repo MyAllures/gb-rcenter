@@ -127,10 +127,10 @@
                 sendPhoneIntervalSec = --sendPhoneIntervalSec;
                 if(!sendPhoneIntervalSec || sendPhoneIntervalSec<0){
                     clearInterval(phoneCheckCountBackTimer);
-                    $this.prop("disabled",false);
+                    $this.removeClass('disabled');
                     $this.text("重新发送")
                 }else{
-                    $this.prop("disabled",true);
+                    $this.addClass('disabled');
                     $this.text(sendPhoneIntervalSec+"秒后重新发送")
                 }
                 setCookie(REGSTER_SEND_PHONE_TIME,sendPhoneIntervalSec);
