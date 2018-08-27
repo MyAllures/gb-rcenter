@@ -35,7 +35,6 @@ define(['common/BaseEditPage','mailAutoComplete'], function(BaseEditPage,MailAut
             if(that.delayTime==1) {
                 that.timer='';
                 that.delayTime = 90;
-                that.getPhoneVerificationCodeToken(e);//获取手机验证码请求时的token
                 $(e.currentTarget).text(window.top.message.personInfo_auto['免费获取验证码']);
                 $(e.currentTarget).removeClass("disable-gray");
                 $(e.currentTarget).unlock();
@@ -97,7 +96,7 @@ define(['common/BaseEditPage','mailAutoComplete'], function(BaseEditPage,MailAut
                 type:"POST",
                 dataType:"json",
                 url:root+'/personInfo/getPhoneVerificationCode.html',
-                data:{"phone":phone,"t":Math.random(),"verificationCodeToken":$('input[name="phone.verificationCodeToken"]').val()},
+                data:{"phone":phone,"t":Math.random()},
                 loading:true,
                 success: function (data) {
                     if(!data.state) {
@@ -124,28 +123,6 @@ define(['common/BaseEditPage','mailAutoComplete'], function(BaseEditPage,MailAut
                     $(e.currentTarget).unlock();
                 }
             });
-        },
-
-
-        /**
-         * 获取手机验证码请求时的token
-         */
-        getPhoneVerificationCodeToken: function (e) {
-            $.ajax({
-                url: "/verificationCode/getPhoneVerificationCodeToken.html",
-                type: "POST",
-                dataType: 'json',
-                data: {},
-                success: function (data) {
-                    if (data.state) {
-                        var verificationCodeToken = $('input[name="phone.verificationCodeToken"]');
-                        verificationCodeToken.val(data.token)
-                    }else{
-                        //操作错误请刷新页面稍后再试
-                        $(e.currentTarget).text("操作错误请刷新页面稍后再试");
-                    }
-                }
-            })
         },
 
         /**
