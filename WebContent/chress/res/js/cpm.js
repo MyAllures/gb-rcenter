@@ -35,7 +35,21 @@
         $(".list-btn").removeClass("cun-a");
         $(this).addClass("cun-a");
     })
-    //   跟换
+
+    //   优惠活动切换
+    $('.list-top').on("click","li",function () {
+        var dian = $(this).data("dian");
+        var qie = $(this).data("img");
+        var no = $(this).data("no");
+        $(this).siblings().removeClass(dian);
+        $(this).addClass(dian);
+        $("."+qie).removeClass("dis-no");
+        $("."+no).addClass("dis-no");
+
+    })
+
+
+    //   更换
     $('body').on("click",".img-dian",function () {
         var dian = $(this).data("dian");
     //        console.log(dian);

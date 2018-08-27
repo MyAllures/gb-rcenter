@@ -10,7 +10,7 @@
 header {
     width: 100%;
     height: .5rem;
-    background: url(../image/index/bg_top.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/top_bg.png) 0 0/100% 100% no-repeat;
     position: fixed;
     top: 0;
     left: 0;
@@ -21,7 +21,7 @@ header {
 footer {
     width: 100%;
     height: .36rem;
-    background: url(../image/index/bg_bottom.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/footer.png) 0 0/100% 100% no-repeat;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -111,10 +111,10 @@ marquee>span{
    
 }
 .man{
-    background: url(../image/index/header_left_icon_man.png) 0 0/108% 108% no-repeat
+    background: url(../image/index/photo_male.png) 0 0/108% 108% no-repeat
 }
 .woman{
-    background: url(../image/index/header_left_icon_woman.png) 0 0/108% 108% no-repeat
+    background: url(../image/index/photo_female.png) 0 0/108% 108% no-repeat
 }
 
 .header_via img{
@@ -161,7 +161,7 @@ marquee>span{
     width: .37rem;
     height: .37rem;
     border-radius: 100%;
-    background: url(../image/index/header_center_left.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/btn_refresh.png) 0 0/100% 100% no-repeat;
     position: absolute;
     top: .0145rem;
     left: .02rem;
@@ -179,7 +179,7 @@ marquee>span{
     width: .37rem;
     height: .37rem;
     border-radius: 100%;
-    background: url(../image/index/heider_center_right.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/btn_top_recharge.png) 0 0/100% 100% no-repeat;
     position: absolute;
     top: .0145rem;
     right: .02rem;
@@ -253,11 +253,11 @@ marquee>span{
 }
 
 .header_right a:nth-of-type(1) {
-    background: url(../image/index/header_right_offe.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/btn_Player.png) 0 0/100% 100% no-repeat;
 }
 
 .header_right a:nth-of-type(2) {
-    background: url(../image/index/header_right_gamer.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/btn_promotions.png) 0 0/100% 100% no-repeat;
 }
 
 .footer_left{
@@ -271,7 +271,7 @@ marquee>span{
 .footer_left_val{
     width: 100%;
     height: 100%;
-    background: url(../image/index/footer_left_val.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/btn_recharge.png) 0 0/100% 100% no-repeat;
 }
 .footer_left_val:active{
     transform: scale(.96)
@@ -279,7 +279,7 @@ marquee>span{
 .footer_left_bg{
     width: 100%;
     height: 100%;
-    background: url(../image/index/footer_left_bg.png) .32rem -.1rem/.9rem .7rem no-repeat;
+    background: url(../image/index/light.png) .32rem -.1rem/.9rem .7rem no-repeat;
     position: absolute;
     top: 0;
     left: 0;
@@ -310,19 +310,19 @@ marquee>span{
 }
 .footer_right>div:active{transform: scale(.96)}
 .footer_right>div:nth-of-type(1){
-    background: url(../image/index/footer_right1.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/btn_welfare.png) 0 0/100% 100% no-repeat;
     width: 1.35rem;
 }
 .footer_right>div:nth-of-type(2){
-    background: url(../image/index/footer_right2.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/btn_income.png) 0 0/100% 100% no-repeat;
     width: 1rem;
 }
 .footer_right>div:nth-of-type(3){
-    background: url(../image/index/footer_right3.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/btn_share.png) 0 0/100% 100% no-repeat;
     width: 1rem;
 }
 .footer_right>div:nth-of-type(4){
-    background: url(../image/index/footer_right4.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/btn_return.png) 0 0/100% 100% no-repeat;
     width: .8rem;
     position: absolute;
     right: .05rem;
@@ -344,7 +344,7 @@ marquee>span{
 
 .right_pop_box_top{
     height: 20%;
-    background: url(../image/index/popRight_top.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/top_bg2.png) 0 0/100% 100% no-repeat;
     position: relative;
 }
 
@@ -389,7 +389,7 @@ marquee>span{
 }
 
 .right_pop_box_bottom{
-    background: url(../image/index/popRight_down.png)0 0/100% 100% no-repeat;
+    background: url(../image/index/menu_bg.png)0 0/100% 100% no-repeat;
     height: 80%;
     width: 100%;
     display: flex;
@@ -410,7 +410,7 @@ transform: scale(.96)
 }
 
  .right_pop_box_bottom a{
-    background:url(../image/index/popRight_img.png) 0 0/100% 100% no-repeat;
+    background:url(../image/index/btn_general_h5.png) 0 0/100% 100% no-repeat;
     font-size: .16rem;
     text-align: center;
     line-height: .43rem;
@@ -432,10 +432,10 @@ transform: scale(.96)
 
     .right_pop_box_bottom a:nth-of-type(5){
         width: .7rem;
-    height: .25rem;
-    margin:.07rem auto 0 auto;
-        background: url(../image/index/popRight_img5.png) 0 0/100% 100% no-repeat;
-        }
+        height: .25rem;
+        margin:.07rem auto 0 auto;
+        background: url(../image/index/back.png) 0 0/100% 100% no-repeat;
+    }
 
         #footer_backBtn{
            right: -200rem;
