@@ -7,7 +7,7 @@ body { font-size: 13px; }
   }
 }
 
-header.mui-bar-nav .logo { height: 28px; position: absolute; left: 44px; top: 0; bottom: 0; margin: auto; }
+header.mui-bar-nav .logo { height: 28px; position: absolute; left: 0; top: 0; bottom: 0; right: 0; margin: auto;}
 header.mui-bar-nav .btn-login, header.mui-bar-nav .btn-demo, header.mui-bar-nav .btn-register { margin-left: 5px !important; padding: 4px 5px; font-size: 12px; top: 10px; }
 header.mui-bar-nav .btn-download { display: inline-block; width: 24px; height: 24px; background: url(images/icon-download.png) center/24px no-repeat; margin: 10px; float: left; }
 header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
