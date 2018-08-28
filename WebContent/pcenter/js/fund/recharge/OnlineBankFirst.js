@@ -41,7 +41,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                 var bankCode = $account.attr("bankCode");
                 var account = $account.attr("account");
                 $(".accountInfo").hide();
-                $("[name=accountInfo" + bankCode + account + "]").show();
+                $("[name='accountInfo" + bankCode + account + "']").show();
                 $(this).addClass("select");
             })
         },
