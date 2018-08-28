@@ -74,6 +74,7 @@ function loginOk(obj, options) {
                 } else {
                     if (data.isOpenCaptcha) {
                         mui("#captcha_div")[0].style.display = "block";
+                        captchaChange();
                     }
                     if (data.message) {
                         //data.message("用户名或密码错误");
@@ -89,7 +90,6 @@ function loginOk(obj, options) {
                             $("#captcha-error-msg").html("");
                         }
                     }
-                    captchaChange();
                     setTimeout(function () {
                         $this.text(window.top.message.passport_auto['登录']).removeAttr("disabled");
                     }, 1000);
