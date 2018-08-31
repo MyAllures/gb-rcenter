@@ -200,9 +200,9 @@ img{margin: 0 auto;padding: 0;}
 .login-box .user>input{width: 2.08rem; color: #fff;   margin-left: 8px; }
 .login-box .password{margin-bottom: 0.08rem;}
 .login-box .password>input{width: 2.08rem;  color: #fff;  margin-left: 8px;}
-.login-box .code{  text-align: left;  position: relative;    margin: 0.2rem 0 0.08rem 0.27rem;}
-.login-box .code>input{width: 1.25rem;color: #fff;margin: 0 0.06rem;}
-.login-box .code>img{width: 0.78rem;height: 0.33rem;     position: absolute;  top: -0.04rem;   margin-bottom: -0.12rem;}
+.login-box>.code{  text-align: left;  position: relative;    margin: 0.2rem 0 0.08rem 0.27rem;}
+.login-box>.code>input{width: 1.25rem;color: #fff;margin: 0 0.06rem;}
+.login-box>.code>img{width: 0.78rem;height: 0.33rem;     position: absolute;  top: -0.04rem;   margin-bottom: -0.12rem;}
 .login-box .remember{margin-bottom: 0.08rem;position: relative;}
 .login-box .remember a{margin-right: 0.36rem;  color: #fff;}
 .login-xuan{width: 0.13rem;height: 0.13rem; font-size: 0.13rem; border: 1px solid #fff;   position: absolute;  top: 0.03rem;  left: 0.75rem;}
@@ -433,7 +433,7 @@ img{margin: 0 auto;padding: 0;}
 /*填写姓名*/
 .name-cpm-box{width: 2.88rem;height: 2.22rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
 .name-top-img{width: 2.88rem;  background: url("../image/cpm/marroon/title_bg_short.png") no-repeat 0 0;background-size:100%;height: 0.48rem}
-.name-top-img>.img_size{  height: 0.3rem; width: 0.9rem;position: absolute;  top: 0.1rem;  left: 1rem;background: url("../image/cpm/marroon/title18.png") no-repeat 0 0/100%;}
+.name-top-img>.img_size{  height: 0.3rem; width: 0.9rem;position: absolute;  top: 0.1rem;  left: 1rem;background: url("../image/cpm/marroon/title17.png") no-repeat 0 0/100%;}
 .name_content1{width: 2.88rem;height: 1.84rem;text-align:center;border: 1px solid #FFFFFF; margin-top: -0.08rem;border-top: none; background-color: #350000;padding: 0.1rem 0.05rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
 .name-box1{border: 1px solid #8B6B48;padding:0  0.1rem;box-sizing: border-box; width: 2.75rem;height: 1.16rem; color: #fff;font-size: 0.17rem;line-height: 0.93rem;   border-radius: 5px; background-color: #801F1F;}
 .name-size{font-size: 0.12rem;  line-height: 0.2rem;margin-top: 0.06rem;  width: 2.64rem;}
@@ -443,14 +443,13 @@ img{margin: 0 auto;padding: 0;}
 .name-box1>span>img{width:0.15rem;position: absolute;top: 0.04rem;left:-0.18rem ; }
 .name-img1{ width: 1.31rem;height: 0.4rem;margin: -0.06rem auto 0 auto;background: url("../image/cpm/marroon/btn_large.png") no-repeat 0 0/100%;background-color: #801F1F ;letter-spacing: 0.05rem;font-weight: bold;border-radius: 0.1rem;text-align:center;color: #fff;font-size: 0.2rem;line-height: 0.4rem;}
 .name-img1-a{  background-color: #240000 !important ;}
-.name-b{margin-top: 0.12rem;}
-
+.name-b{margin-top: 0.12rem;}>
 /*出币详情*/
 .currency-cpm-box{width: 3.17rem;height: 3.3rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
 .currency-top-img{width: 3.17rem;  background: url("../image/cpm/marroon/title_bg_short.png") no-repeat 0 0/100%;height: 0.47rem}
 .currency-top-img>.img_size{  height: 0.3rem; width: 0.94rem;position: absolute;  top: 0.1rem;  left: 1.13rem;background: url("../image/cpm/marroon/title14.png") no-repeat 0 0/100%;}
 .currency_content{width: 3.17rem;height: 2.83rem;margin-top: -0.05rem;border: 1px solid #FFFFFF;border-top:none !important;  background-color: #350000;padding: 0.06rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
-.currency_content>.currency-box{width: 3.03rem;height: 2.69rem;  background-color:#653F92;border: 1px solid #5F68A7;border-radius: 10px;  }
+.currency_content>.currency-box{width: 3.03rem;height: 2.69rem;  background-color:#801F1F;border: 1px solid #5F68A7;border-radius: 10px;  }
 .currency-box>ul{  margin-top: 0.05rem;  padding-right: 0.12rem;  box-sizing: border-box;  text-align: right;}
 .currency-box>ul>li{font-size: 0.14rem;color: #fff;margin-bottom: 0.06rem;}
 .currency-box>ul>li>input{width: 2.08rem;height: 0.3rem;margin-left:0.08rem;box-sizing: border-box;background-color: #350000;color:#fff;border: 1px solid #8994DB;border-radius: 0.05rem;padding: 0 0.05rem;}
@@ -463,7 +462,7 @@ img{margin: 0 auto;padding: 0;}
 .audit-top-img{width: 4.65rem;  background: url("../image/cpm/marroon/title_bg1.png") no-repeat 0 0;background-size:100%;height: 0.5rem}
 .audit-top-img>.img_size{  height: 0.3rem; width: 0.94rem;position: absolute;  top: 0.1rem;  left: 1.97rem;background: url("../image/cpm/marroon/title15.png") no-repeat 0 0/100%;}
 .audit_content1{width: 4.65rem;height: 3.05rem;margin-top: -0.05rem;border: 1px solid #FFFFFF;border-top:none !important;  background-color: #350000;padding: 0.06rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
-.audit_content1>.audit-box1{width: 4.52rem;height: 2.91rem;  background-color: #653F91;box-sizing: border-box;padding-top: 0.06rem;}
+.audit_content1>.audit-box1{width: 4.52rem;height: 2.91rem;  background-color: #801F1F;box-sizing: border-box;padding-top: 0.06rem;}
 .audit-box1>h4{width:100%;box-sizing: border-box;text-align:center;font-size: 0.16rem;color:#D2D7FF;line-height: 0.37rem;}
 .audit-box1>ul{width: 4.1rem;height: 2.29rem;overflow: auto;-webkit-overflow-scrolling: touch ;margin: 0 auto;}
 .audit-box1>ul>li{width: 1rem;height: 0.31rem; text-align: center; background-color:#350000 ;float:left;margin: 0 0.02rem 0.02rem 0;}
@@ -482,12 +481,12 @@ img{margin: 0 auto;padding: 0;}
 /*优惠活动-消息中心*/
 .act-word-cpm{width: 4.65rem;height: 3.5rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
 .act-word-top{width: 4.65rem;  background: url("../image/cpm/marroon/title_bg_long.png") no-repeat 0 0;background-size:100%;text-align:center;height: 0.5rem;}
-.list-top{width: 2.1rem;height: 0.23rem;border:1px solid #8B6C1C;border-radius: 0.2rem;position: relative;margin-left: 1.27rem;top: 0.13rem;  background-color: #A47500; }
+.list-top{width: 2.1rem;height: 0.23rem;border:1px solid #8B6C1C;border-radius: 0.2rem;position: relative;margin-left: 1.27rem;top: 0.13rem;  background-color: #902D2D; }
 .list-top>li{width:1rem;display: inline-block;opacity:0.8;line-height: 0.3rem;height: 0.3rem;position: absolute;top: -0.01rem;left: 1.11rem;   }
 .list-top>li:first-child{left: -0.01rem;}
 .huangse{border-radius:0.1rem;height: 0.24rem !important;opacity:1!important;background: url("../image/cpm/marroon/btn_activity_bg.png") no-repeat 0 0/100%;}
-.list-top>li>img{width: 0.94rem;position: absolute;top: 0;left: 0.03rem;z-index: 15000;   }
-/*.list-top>li:first-child>img{left: 0.03rem !important;}*/
+.list-top>li>div{width: 0.94rem;height:0.24rem;background: url("../image/cpm/marroon/btn_activity.png") no-repeat 0 0/100%;position: absolute;top: 0;left: 0.03rem;z-index: 15000;   }
+.list-top>li:first-child>div{width: 0.94rem;height:0.24rem;background: url("../image/cpm/marroon/btn_news.png") no-repeat 0 0/100%;position: absolute;top: 0;z-index: 15000;left: 0.03rem ;}
 .act-word_content{width: 4.65rem;word-break: break-all;height: 3rem;margin-top:-0.05rem;border: 1px solid #FFFFFF; border-top:none !important; background-color: #350000;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
 .act-word-nav{width: 1.35rem;padding-top:0.05rem;background: url("../image/cpm/marroon/left_bg.png") no-repeat 0 0;background-size:100%;height: 2.94rem;overflow: auto;}
 .act-word-nav>li{text-align:center; position:relative;width:1.24rem ;height:0.46rem;  font-size:0.14rem;border-radius: 0.08rem;margin: 0.03rem 0.05rem 0 0.05rem;}
@@ -501,15 +500,15 @@ img{margin: 0 auto;padding: 0;}
 .list-player{ height: 0.45rem;  color: #fff;  font-size: 0.12rem;padding-left: 0.05rem; }
 .list-player>.player{width:0.8rem;height: 0.3rem;overflow: hidden;  text-overflow:ellipsis;  white-space: nowrap; display: inline-block; text-align:center;line-height:0.3rem;background: url("../image/cpm/marroon/btn_blue_action.png") no-repeat 0 0/100%;    margin: 0.08rem 0.05rem 0 0; }
 .player-a{background: url("../image/cpm/marroon/btn_green_action.png") no-repeat 0 0/100% !important;}
-.player-detail{width:3.15rem ;height: 2.5rem; box-sizing: border-box;padding: 0.1rem;overflow: auto; -webkit-overflow-scrolling: touch;  background-color:#653F92 ;color: #E8D5FF; font-size: 0.12rem;  position: absolute;  top: 0.9rem;  right: 0.1rem;}
-.player-detail>h3{font-size: 0.15rem;color:#E8D5FF; margin-bottom: 0.05rem;}
-.player-detail>h3>img{width: 0.24rem;    vertical-align: bottom;}
+.player-detail{width:3.15rem ;height: 2.5rem; box-sizing: border-box;padding: 0.1rem;overflow: auto; -webkit-overflow-scrolling: touch;  background-color:#801F1F ;color: #FFE3E3; font-size: 0.12rem;  position: absolute;  top: 0.9rem;  right: 0.1rem;}
+.player-detail>h3{font-size: 0.15rem;color:#FFE3E3; margin-bottom: 0.05rem;}
+.player-detail>h3>.tu_biao{width: 0.24rem; height: 0.14rem; background: url("../image/cpm/marroon/title.png") no-repeat 0 0/100% ;  vertical-align: bottom;}
 .player-detail>img{width: 100%;}
 .hd{width: 3rem;  box-sizing: border-box;padding:0.01rem 0.1rem;position: relative;}
-.hd-quan{margin:0.1rem 0 0.03rem 0;color:#D2DBFF;border-radius:0.1rem;width:0.7rem;text-align: center;  background-color: #2D115B;height: 0.18rem;line-height: 0.17rem; }
+.hd-quan{margin:0.1rem 0 0.03rem 0;color:#FFE3E3;border-radius:0.1rem;width:0.7rem;text-align: center;  background-color: #B94B4B;height: 0.18rem;line-height: 0.17rem; }
 .hd-con{padding: 0 0.03rem;line-height: 0.17rem;margin-bottom: 0.4rem;}
-.hd-btn{background: url("../image/cpm/marroon/btn_blue.png") no-repeat 0 0/100%;width: 0.81rem;height: 0.34rem;border-radius: 0.06rem; color: #fff;font-size: 0.15rem;position:absolute; bottom: 0.01rem;right:0.1rem ; text-align: center;line-height: 0.34rem;box-shadow: 0 2px 10px #0000003b;}
-.hd-btn-a{background: url("../image/cpm/marroon/btn_blue_action.png") no-repeat 0 0/100%!important;box-shadow: 0 2px 6px #232121a6 !important;height: 0.32rem !important;line-height: 0.32rem!important;}
+.hd-btn{background: url("../image/cpm/marroon/btn_blue.png") no-repeat 0 0/100%;width: 0.81rem;height: 0.34rem;border-radius: 0.06rem; color: #fff;font-size: 0.15rem;position:absolute; bottom: 0.01rem;right:0.1rem ; text-align: center;line-height: 0.3rem;box-shadow: 0 2px 10px #0000003b;}
+.hd-btn-a{background: url("../image/cpm/marroon/btn_blue_action.png") no-repeat 0 0/100%!important;box-shadow: 0 2px 6px #232121a6 !important;height: 0.32rem !important;line-height: 0.3rem!important;}
 
 .act-word_content1{width: 4.65rem;word-break: break-all;height: 3rem;margin-top:-0.05rem;border: 1px solid #FFFFFF; border-top:none !important; background-color: #350000;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
 .act-word-nav1{width: 1.35rem;padding-top:0.05rem;background: url("../image/cpm/marroon/left_bg.png") no-repeat 0 0;background-size:100%;height: 2.94rem;overflow: auto;}
@@ -569,7 +568,7 @@ img{margin: 0 auto;padding: 0;}
 .err-jindu{height: 0.09rem;background: linear-gradient( #fff,#61D017 22%, #39661B 70%);border-radius: 0.05rem;width: 100%;}
 .err-chenggong{color:#2DE614; }
 .err-shibai{color:#CE0101;}
-.err-lxkf{width: 0.93rem;height: 0.3rem;border-radius: 0.15rem; letter-spacing: 0.02rem; text-align: center; color: #fff;display: inline-block;position: absolute;bottom: 0.12rem;left: 0.1rem; font-size: 0.15rem;font-weight: 800;line-height: 0.3rem;  background-color: #121956;}
+.err-lxkf{width: 0.93rem;height: 0.3rem;border-radius: 0.15rem; letter-spacing: 0.02rem; text-align: center; color: #fff;display: inline-block;position: absolute;bottom: 0.12rem;left: 0.1rem; font-size: 0.15rem;font-weight: 800;line-height: 0.3rem;  background-color: #6D2424;}
 .term{position: relative;margin-top: 0.2rem;top: 0.55rem;}
 .term>img{position: absolute;top: 0;left: 0;width: 0.17rem;}
 .term-concer{width: 3.15rem;font-size: 0.13rem;position:absolute; top: 0;right: 0;}
@@ -580,7 +579,7 @@ img{margin: 0 auto;padding: 0;}
 .term-jindu{height: 0.09rem;background: linear-gradient( #fff,#D01717 22%,#BD0000 70%);border-radius: 0.05rem;width: 20%;}
 .term-chenggong{color:#2DE614; }
 .term-shibai{color:#CE0101;}
-.term-lxkf{width: 0.93rem;height: 0.3rem;border-radius: 0.15rem; letter-spacing: 0.02rem; text-align: center; color: #fff;display: inline-block;position: absolute;bottom: 0.15rem;left: 0.1rem; font-size: 0.15rem;font-weight: 800;line-height: 0.3rem;  background-color: #121956;}
+.term-lxkf{width: 0.93rem;height: 0.3rem;border-radius: 0.15rem; letter-spacing: 0.02rem; text-align: center; color: #fff;display: inline-block;position: absolute;bottom: 0.15rem;left: 0.1rem; font-size: 0.15rem;font-weight: 800;line-height: 0.3rem;  background-color: #6D2424;}
 .ip-renzheng>p{position:relative;font-size: 0.14rem;line-height: 0.22rem;margin-top: 0.12rem;    padding-left: 0.26rem; }
 .ip-renzheng>p>img{position: absolute;top: 0.03rem;left: 0;}
 .err-size2{width: 3.5rem; height: 2.3rem; position:absolute;top: 0.1rem;right: 0.15rem; color: #fff;}
@@ -608,7 +607,7 @@ img{margin: 0 auto;padding: 0;}
 .term-jindu1{height: 0.09rem;background: linear-gradient( #fff,#D01717 22%,#BD0000 70%);border-radius: 0.05rem;width: 20%;}
 .term-chenggong1{color:#2DE614; }
 .term-shibai1{color:#CE0101;}
-.term-lxkf1{width: 0.93rem;height: 0.3rem;border-radius: 0.15rem; letter-spacing: 0.02rem; text-align: center; color: #fff;display: inline-block;position: absolute;bottom: 0.15rem;left: 0.1rem; font-size: 0.15rem;font-weight: 800;line-height: 0.3rem;  background-color: #121956;}
+.term-lxkf1{width: 0.93rem;height: 0.3rem;border-radius: 0.15rem; letter-spacing: 0.02rem; text-align: center; color: #fff;display: inline-block;position: absolute;bottom: 0.15rem;left: 0.1rem; font-size: 0.15rem;font-weight: 800;line-height: 0.3rem;  background-color: #6D2424;}
 .award1{background: url("../image/cpm/marroon/btn_blue.png") no-repeat 0 0/100%; position: absolute; top: 0;right: 0; width: 0.81rem;height: 0.34rem;border-radius: 0.06rem; color: #fff;font-size: 0.15rem; text-align: center;display:inline-block;line-height: 0.3rem;box-shadow: 0 2px 10px #0000003b;}
 .award1-a{background: url("../image/cpm/marroon/#801F1Fbtn_blue_action.png") no-repeat 0 0/100%!important;box-shadow: 0 2px 6px #232121a6 !important;height: 0.32rem !important;line-height: 0.3rem!important;}
 .jin-err{opacity: 0.6;}

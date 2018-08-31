@@ -337,28 +337,28 @@ function touch(event) {
             deltaY = endPosition.y - startPosition.y;
             break;
     }
-    let boxLeft = $(".r-bar").offset().left;
-    let boxWidth = $(".r-bar").width();
-    let allWidth = boxLeft - boxWidth;
+    var boxLeft = $(".r-bar").offset().left;
+    var boxWidth = $(".r-bar").width();
+    var allWidth = boxLeft - boxWidth;
     if(isscroll){
         if(aac){
             if (endPosition.x <= boxLeft) {
-                $('.r-bar-b').css('width', '0%');
+                $('.r-bar-b').css('width', '0%var
             } else if (endPosition.x >= boxLeft + boxWidth) {
                 $('.r-bar-b').css('width', '91%');
             } else {
-                let a = endPosition.x - boxLeft;
-                let b = parseFloat(a/boxWidth,4)*100;
+                var a = endPosition.x - boxLeft;
+                var b = parseFloat(a/boxWidth,4)*100;
                 $('.r-bar-b').css('width', b + '%');
             }
         }else{
             if (endPosition.x <= boxLeft) {
-                $('.r-bar-b1').css('width', '0%');
+                $('.r-bar-b1').css('width', '0%');6
             } else if (endPosition.x >= boxLeft + boxWidth) {
                 $('.r-bar-b1').css('width', '91%');
             } else {
-                let a = endPosition.x - boxLeft;
-                let b = parseFloat(a/boxWidth,4)*100;
+                var a = endPosition.x - boxLeft;
+                var b = parseFloat(a/boxWidth,4)*100;
                 $('.r-bar-b1').css('width', b + '%');
             }
         }
