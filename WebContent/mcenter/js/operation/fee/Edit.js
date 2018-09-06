@@ -12,23 +12,6 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
             _this = this;
             var isFee=$("#isFee").val();
             var isReturnFee = $("#isReturnFee").val();
-            // if(isFee!=''){
-            //     if(isFee=='true'){
-            //         $(".div1").click();
-            //     }else{
-            //         if(isReturnFee==''){
-            //             $(".div1").click();
-            //         }else{
-            //             if(isReturnFee=='true'){
-            //                 $(".div2").click();
-            //             }else{
-            //                 $(".div1").click();
-            //             }
-            //         }
-            //     }
-            // }else{
-            //     $(".div2").click();
-            // }
 
             //固定，比例
             var returnType=$("#returnType").val();
@@ -93,57 +76,6 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                 $("#"+ff).attr("disabled",true);
                 $("#"+ff).removeClass("error").addClass("valid");
             });
-            $('.divSelect').click(function(){
-                // $('.divSelect').removeClass("cur");
-                // $(this).addClass("cur")
-                // $('.divSelect').find("i").removeClass("fa fa-check-square-o m-r-sm")
-                // $(this).find("i").addClass("fa fa-check-square-o m-r-sm")
-                var tname = $(this).attr("tt");
-                var ff = $(this).attr("ff");
-                // $(".div_css").hide();
-                // $("#div_"+tname).show();
-                //$("#box_"+ff).bootstrapSwitch("state", false);
-                var attr = $("#box_" + ff).attr("tt");
-                $("#"+attr).val("");
-                $("#first_div_"+ff).find("input").attr("disabled",true);
-
-
-                var attr = $("#box_" + tname).attr("tt");
-                if($("#"+attr).val()==""){
-                    $("#"+attr).val(false);
-                }else{
-                    if($("#"+attr).val()=="true"){
-                        $("#first_div_"+ff).find("input").attr("disabled",false);
-                    }
-
-                }
-                //手续费开关（控制input知否启用）
-                var  state=$("#box_"+ff).bootstrapSwitch("state");
-                if (state) { //开
-                    $("#first_div_"+ff).find("input").attr("disabled", false);
-                } else { //关
-                    $("#first_div_"+ff).find("input").attr("disabled", true);
-                }
-
-                //$("#box_"+tname).bootstrapSwitch("state", $("#"+attr).val());
-                //$("#first_div_"+tname).find("input").attr("disabled",false);
-                var type = $("#" + tname + "Type").val();//1比例 2固定
-                if(type==1){
-                    $("#"+tname+"FixedAmount").attr("disabled",true);
-                }else{
-                    $("#"+tname+"PercentageAmount").attr("disabled",true);
-                }
-                var dd=$(this).attr("dd");
-                $("#"+dd).val("");
-
-                //把开关状态赋值到input
-                var  feeState=$("#box_fee").bootstrapSwitch("state");
-                var  returnState=$("#box_return").bootstrapSwitch("state");
-                $("#isFee").attr("disabled", !feeState);
-                $("#isReturnFee").attr("disabled", !returnState);
-                $("#isFee").val(feeState?true:'');
-                $("#isReturnFee").val(returnState?true:'');
-            });
 
             //复选框
             //switch
@@ -154,61 +86,8 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                     var isFee=$(_target).attr("tt");
                     var tname = $(this).attr("tt");
                     $("#"+tname).val(state);
-                    $(this).parent().parent().parent().parent().nextAll().each(function(){
-                        var obj = $(this).find("input");
-                        if(obj!=null){
-                            obj.attr("disabled",!state);
-                            if(state){
-                                if(isFee=='isFee'){
-                                    $("#box_return").attr("checked",false);
-                                    //$("#box_return").bootstrapSwitch("state",false);
-                                    //$("#isReturnFee").val('');
-                                    $(".maxFee").attr("disabled",state);
-                                    if($("#maxFee").val()>0){
-                                        $(".maxFeeRadio").attr("disabled",false);
-                                        var val=$("input[name='radio_feeType']:checked").val();
-                                        $(".maxFee"+val).attr("disabled",false);
-                                    }
-                                }else if(isFee=='isReturnFee'){
-                                    $("#box_fee").attr("checked",false);
-                                    //$("#box_fee").bootstrapSwitch("state",false);
-                                    //$("#isFee").val('');
-                                    $(".fee_txt").attr("disabled",state);
-                                    if($("#maxReturnFee").val()>0){
-                                        $(".returnTypeRadio").attr("disabled",false);
-                                        var val=$("input[name='radio_returnType']:checked").val();
-                                        $(".fee"+val).attr("disabled",false);
-                                    }
-                                }
-                            }else{
-                                if(isFee=='isFee'){
-                                    //$("#box_return").attr("checked",true);
-                                    //$("#box_return").bootstrapSwitch("state",true);
-                                    //$("#isReturnFee").val(true);
-                                    $("input[name='result.feeTime']").val("");
-                                    $("input[name='result.freeCount']").val("");
-                                    $("input[name='result.maxFee']").val("");
-                                    $("input[name=percentageAmount]").val("");
-                                    $("input[name=fixedAmount]").val("");
-                                    $("#editForm").validate().resetForm();
-                                    //$(".feeStatus").val("");
-                                }else if(isFee=='isReturnFee'){
-                                    //$("#box_fee").attr("checked",true);
-                                    //$("#box_fee").bootstrapSwitch("state",true);
-                                    //$("#isFee").val(true);
-                                    $("input[name='result.reachMoney']").val("");
-                                    $("input[name='result.maxReturnFee']").val("");
-                                    $("input[name='result.returnTime']").val("");
-                                    $("input[name='result.returnFeeCount']").val("");
-                                    $("input[name=returnPercentageAmount]").val("");
-                                    $("input[name=returnFixedAmount]").val("");
-                                    $("#editForm").validate().resetForm();
-                                    //$(".returnFeeStatus").val("");
-                                }
-                            }
-                        }
-                    })
-
+                    //点击fee按钮时处理相关控件的可用不可用状态
+                    _this.dealwithComponents($(this), isFee,state);
                 });
             $("#maxFee").on("keyup change",function(){
                 var val = $(this).val();
@@ -239,6 +118,62 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                 placement: 'top'
             });
         },
+
+        /**
+         * 点击fee按钮时处理相关控件的可用不可用状态
+         * @param feeBtn 被点击按钮本身
+         * @param isFee  被点击按钮名字
+         * @param state  被点击按钮状态
+         */
+        dealwithComponents:function(feeBtn,isFee,state){
+            feeBtn.parent().parent().parent().parent().nextAll().each(function(){
+                var obj = $(this).find("input");
+                if(obj!=null){
+                    obj.attr("disabled",!state);
+                    if(state){
+                        if(isFee=='isFee'){
+                            //$('.bootstrap-switch-id-box_return').bootstrapSwitch('indeterminate',false);;//关闭相对的按钮
+                            $("#box_return").attr("checked",false);
+                            $(".maxFee").attr("disabled",state);
+                            if($("#maxFee").val()>0){
+                                $(".maxFeeRadio").attr("disabled",false);
+                                var val=$("input[name='radio_feeType']:checked").val();
+                                $(".maxFee"+val).attr("disabled",false);
+                            }
+                        }else if(isFee=='isReturnFee'){
+                            //$('.bootstrap-switch-id-box_fee').bootstrapSwitch('indeterminate',false);//关闭相对的按钮
+                            $("#box_fee").attr("checked",false);
+                            $(".fee_txt").attr("disabled",state);
+                            if($("#maxReturnFee").val()>0){
+                                $(".returnTypeRadio").attr("disabled",false);
+                                var val=$("input[name='radio_returnType']:checked").val();
+                                $(".fee"+val).attr("disabled",false);
+                            }
+                        }
+                    }else{
+                        if(isFee=='isFee'){
+                            $("input[name='result.feeTime']").val("");
+                            $("input[name='result.freeCount']").val("");
+                            $("input[name='result.maxFee']").val("");
+                            $("input[name=percentageAmount]").val("");
+                            $("input[name=fixedAmount]").val("");
+                            $("#editForm").validate().resetForm();
+                            //$(".feeStatus").val("");
+                        }else if(isFee=='isReturnFee'){
+                            $("input[name='result.reachMoney']").val("");
+                            $("input[name='result.maxReturnFee']").val("");
+                            $("input[name='result.returnTime']").val("");
+                            $("input[name='result.returnFeeCount']").val("");
+                            $("input[name=returnPercentageAmount]").val("");
+                            $("input[name=returnFixedAmount]").val("");
+                            $("#editForm").validate().resetForm();
+                        }
+                    }
+                }
+            })
+
+        },
+
 
         myValidateForm:function(e,option){
             if (!this.validateForm(e)) {
