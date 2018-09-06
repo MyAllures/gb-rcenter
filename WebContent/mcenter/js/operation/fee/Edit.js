@@ -133,6 +133,8 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                     if(state){
                         if(isFee=='isFee'){
                             //$('.bootstrap-switch-id-box_return').bootstrapSwitch('indeterminate',false);;//关闭相对的按钮
+                            $(".div1").addClass("cur");
+                            $(".div2").removeClass("cur");
                             $("#box_return").attr("checked",false);
                             $(".maxFee").attr("disabled",state);
                             if($("#maxFee").val()>0){
@@ -142,6 +144,8 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                             }
                         }else if(isFee=='isReturnFee'){
                             //$('.bootstrap-switch-id-box_fee').bootstrapSwitch('indeterminate',false);//关闭相对的按钮
+                            $(".div2").addClass("cur");
+                            $(".div1").removeClass("cur");
                             $("#box_fee").attr("checked",false);
                             $(".fee_txt").attr("disabled",state);
                             if($("#maxReturnFee").val()>0){
@@ -152,6 +156,7 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                         }
                     }else{
                         if(isFee=='isFee'){
+                            $(".div1").removeClass("cur");
                             $("input[name='result.feeTime']").val("");
                             $("input[name='result.freeCount']").val("");
                             $("input[name='result.maxFee']").val("");
@@ -160,6 +165,7 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                             $("#editForm").validate().resetForm();
                             //$(".feeStatus").val("");
                         }else if(isFee=='isReturnFee'){
+                            $(".div2").removeClass("cur");
                             $("input[name='result.reachMoney']").val("");
                             $("input[name='result.maxReturnFee']").val("");
                             $("input[name='result.returnTime']").val("");
@@ -194,7 +200,7 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
             var freeCount = $("#freeCount").val();
             //开关停用的要把相关输入框清空
 
-            if((feeTime==''||freeCount=='') && isFee=='true'){
+            if((feeTime==''||freeCount=='') && (isFee=='true' || isFee)){
                 var _msg = window.top.message.player_auto['你还未设置时限'];
                 window.top.topPage.showConfirmDynamic(window.top.message.player_auto['消息'],_msg,window.top.message.player_auto['继续提交'],window.top.message.player_auto['返回设置'], function (confirm) {
                     if(confirm){
