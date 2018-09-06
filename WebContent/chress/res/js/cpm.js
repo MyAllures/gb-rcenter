@@ -343,7 +343,7 @@ function touch(event) {
     if(isscroll){
         if(aac){
             if (endPosition.x <= boxLeft) {
-                $('.r-bar-b').css('width', '0%var
+                $('.r-bar-b').css('width', '0%');
             } else if (endPosition.x >= boxLeft + boxWidth) {
                 $('.r-bar-b').css('width', '91%');
             } else {
