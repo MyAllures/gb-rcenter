@@ -10,6 +10,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             this.formSelector = "form";
             this._super();
         },
+
         /**
          * 页面加载和异步加载时需要重新初始化的工作
          */
@@ -17,15 +18,30 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             this._super();
             this.changeSmsInterface();
         },
+
         /**
          * 当前页面所有事件初始化函数
          */
         bindEvent: function () {
 
         },
-        getSmsInterfaceDateForm:function (e,opt) {
-            return $("input,textarea","#smsInterface").serialize();
+
+        getSmsInterfaceDateForm: function (e, opt) {
+            var o = {};
+            var a = $("input", "#smsInterface").serializeArray();
+            $.each(a, function() {
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return JSON.stringify(o);
         },
+
         validSmsInterface: function (e, opt) {
             var opt = {};
             var flag = this.validDataVal($("[name='sms.id']"),false,24,window.top.message.setting_auto['接口名称'],opt);
@@ -38,6 +54,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             }
             return false;
         },
+
         validDataVal: function (obj, empty, len, title,opt) {
             var val = $(obj).val();
             var e = {};
@@ -63,6 +80,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             }
             return true;
         },
+
         /**
          * 选择不同的短信接口，显示不同的输入框
          * @param e
@@ -71,39 +89,60 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         changeSmsInterface: function () {
             //清空旧数据
-            $("input[name^='sms']").not("input[name$='id']").val('');
-            $("textarea[name='sms.dataKey']").val('');
+            $("#smsInterfaceForm").empty();
 
             //数据库中的值
-            var existedSmsInterfaceMapJsonStr = $('#existedSmsInterfaceMap').html();
-            var json = $.parseJSON( existedSmsInterfaceMapJsonStr );
+            var bossSmsStr = $('#bossSmsInterfaceMap').html();
+            var siteSmsStr = $('#siteSmsInterfaceMap').html();
+            var bossSmsMap = $.parseJSON(bossSmsStr);
+            var siteSmsMap = $.parseJSON(siteSmsStr);
+            var smsId = this.selectedSmsInterface();
 
-            //罗斯猫
-            if (this.selectedSmsInterface() == '1'){
-                // $("input").val("");
-                $("input[name='sms.appId']").parent().parent().addClass("hide");
-                $("input[name='sms.username']").parent().parent().removeClass("hide");
-                $("input[name='sms.password']").parent().parent().removeClass("hide");
-
-                //默认值
-                $("input[name='sms.username']").val(json['1']['username']);
-                $("input[name='sms.password']").val(json['1']['password']);
-                $("textarea[name='sms.dataKey']").val(json['1']['dataKey']);
-                $("input[name='sms.signature']").val(json['1']['signature']);
-            }else if (this.selectedSmsInterface() == '2'){
-                // $("input").val("");
-                $("input[name='sms.appId']").parent().parent().removeClass("hide");
-                $("input[name='sms.username']").parent().parent().addClass("hide");
-                $("input[name='sms.password']").parent().parent().addClass("hide");
-
-                //默认值
-                $("input[name='sms.appId']").val(json['2']['appId']);
-                $("textarea[name='sms.dataKey']").val(json['2']['dataKey']);
-                $("input[name='sms.signature']").val(json['2']['signature']);
+            var columnExtJson = null;
+            var valuesExtJson = null;
+            if (smsId && bossSmsMap[smsId] && bossSmsMap[smsId]['extJson']) {
+                columnExtJson = $.parseJSON(bossSmsMap[smsId]['extJson']);
             }
-            this.resizeDialog();
+            if (columnExtJson && smsId && siteSmsMap[smsId] && siteSmsMap[smsId]['extJson']) {
+                valuesExtJson = $.parseJSON(siteSmsMap[smsId]['extJson']);
+            }
 
+            var smsHtml = "";
+            if (columnExtJson) {
+                $.each(columnExtJson, function (key, value) {
+                    value = valuesExtJson ? valuesExtJson[key] : "";
+                    smsHtml = smsHtml + '<div class="clearfix m-b sms-column sms-signature">'
+                        + '<div class="ft-bold pull-left line-hi34" style="width: 100px;text-align: right;">'
+                        + window.top.message.setting_auto[key]
+                        + '</div>'
+                        + '<div class="col-xs-5">'
+                        + '    <input type="text" name="' + key + '" maxlength="30" value="' + value + '" class="form-control">'
+                        + '</div>'
+                        + '</div>';
+                });
+            }
+            $("#smsInterfaceForm").html(smsHtml);
+            this.resizeDialog();
         },
+
+        /**
+         * 提交保存
+         */
+        saveSubmit: function()　{
+            var extJson = this.getSmsInterfaceDateForm();
+            var smsId = this.selectedSmsInterface();
+            window.top.topPage.ajax({
+                type:"POST",
+                url: root+"/smsInterface/saveSmsInterface.html?sms.id="+smsId+"&sms.extJson="+extJson,
+                error: function (request) {
+
+                },
+                success: function (data) {
+                    window.top.topPage.closeDialog();
+                }
+            })
+        },
+
         /**
          * 接口名称
          * @param e
@@ -113,10 +152,5 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         selectedSmsInterface: function () {
             return $("input[name='sms.id']").val();
         }
-
-
-
-
-
     });
 });
