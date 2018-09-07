@@ -221,7 +221,18 @@
         --
     </c:if>
 </c:if>
-
+<%--骰宝--%>
+<c:if test="${betType eq 'SICBO'}">
+    <c:if test="${!empty porkerList}">
+        <c:forEach items="${porkerList}" var="poker">
+            <em class="gr gr-dice-${poker} fs1"></em>
+        </c:forEach>
+        <%--<em class="gr-roulette-${porkerList[0]}"></em>--%>
+    </c:if>
+    <c:if test="${empty porkerList[0]}">
+        --
+    </c:if>
+</c:if>
 <%--无限21点--%>
 <c:if test="${betType eq 'BLACKJACK'}">
     <c:if test="${!empty porkerList && !empty porkerListSet}">
