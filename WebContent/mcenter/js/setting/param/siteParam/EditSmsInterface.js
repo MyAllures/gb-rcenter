@@ -133,7 +133,9 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             var smsId = this.selectedSmsInterface();
             window.top.topPage.ajax({
                 type:"POST",
-                url: root+"/smsInterface/saveSmsInterface.html?sms.id="+smsId+"&sms.extJson="+extJson,
+                url: root+"/smsInterface/saveSmsInterface.html",
+                data:{"sms.id":smsId,"sms.extJson":extJson},
+                dataType:"json",
                 error: function (request) {
 
                 },
