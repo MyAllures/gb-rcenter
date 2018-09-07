@@ -1,6 +1,5 @@
 <script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery.mailAutoComplete-4.0.js"></script>
 <script>
-    var message =${data.message}
     var emailCheckCountBackTimer;
     var REGSTER_SEND_EMAIL_TIME = "REGSTER_SEND_EMAIL_TIME";
     var REGSTER_SEND_PHONE_TIME = "REGSTER_SEND_PHONE_TIME";
