@@ -193,26 +193,36 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                 var _msg = window.top.message.player_auto['收取返还不能同时启用'];
                 window.top.topPage.showErrorMessage(_msg);
                 return;
+            }else if (!isFee && !isReturn) {
+                var _msg = "收取/返还手续费都没有设置，与之关联的账户的存款将不会产生手续费";
+                    window.top.topPage.showConfirmDynamic(window.top.message.player_auto['消息'],_msg,window.top.message.player_auto['继续提交'],window.top.message.player_auto['返回设置'], function (confirm) {
+                        if(confirm){
+                            $(":disabled").removeAttr("disabled");
+                            window.top.topPage.doAjax(e, option);
+                        }
+                    });
+                return;
             }
 
-
-            var feeTime = $("#feeTime").val();
-            var freeCount = $("#freeCount").val();
-            //开关停用的要把相关输入框清空
-
-            if((feeTime==''||freeCount=='') && (isFee=='true' || isFee)){
-                var _msg = window.top.message.player_auto['你还未设置时限'];
-                window.top.topPage.showConfirmDynamic(window.top.message.player_auto['消息'],_msg,window.top.message.player_auto['继续提交'],window.top.message.player_auto['返回设置'], function (confirm) {
-                    if(confirm){
-                        $(":disabled").removeAttr("disabled");
-                        window.top.topPage.doAjax(e, option);
-                    }
-                });
-            }else{
-                $(":disabled").removeAttr("disabled");
-                return true;
-
-            }
+            //
+            // var feeTime = $("#feeTime").val();
+            // var freeCount = $("#freeCount").val();
+            // //开关停用的要把相关输入框清空
+            //
+            // if((feeTime==''||freeCount=='') && (isFee=='true' || isFee)){
+            //     var _msg = window.top.message.player_auto['你还未设置时限'];
+            //     window.top.topPage.showConfirmDynamic(window.top.message.player_auto['消息'],_msg,window.top.message.player_auto['继续提交'],window.top.message.player_auto['返回设置'], function (confirm) {
+            //         if(confirm){
+            //             $(":disabled").removeAttr("disabled");
+            //             window.top.topPage.doAjax(e, option);
+            //         }
+            //     });
+            // }else{
+            //     $(":disabled").removeAttr("disabled");
+            //     return true;
+            //
+            // }
+            return true;
         },
         /**
          * 跳转到列表页
