@@ -132,7 +132,7 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                     obj.attr("disabled",!state);
                     if(state){
                         if(isFee=='isFee'){
-                            //$('.bootstrap-switch-id-box_return').bootstrapSwitch('indeterminate',false);;//关闭相对的按钮
+                            $("#box_return").bootstrapSwitch("state",false);
                             $(".div1").addClass("cur");
                             $(".div2").removeClass("cur");
                             $("#box_return").attr("checked",false);
@@ -143,7 +143,7 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                                 $(".maxFee"+val).attr("disabled",false);
                             }
                         }else if(isFee=='isReturnFee'){
-                            //$('.bootstrap-switch-id-box_fee').bootstrapSwitch('indeterminate',false);//关闭相对的按钮
+                            $("#box_fee").bootstrapSwitch("state",false);
                             $(".div2").addClass("cur");
                             $(".div1").removeClass("cur");
                             $("#box_fee").attr("checked",false);
