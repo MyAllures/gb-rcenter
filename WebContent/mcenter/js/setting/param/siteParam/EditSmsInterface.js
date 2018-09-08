@@ -116,7 +116,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                         + window.top.message.setting_auto[key]
                         + '</div>'
                         + '<div class="col-xs-5">'
-                        + '    <input type="text" name="' + key + '" maxlength="30" value="' + value + '" class="form-control">'
+                        + '    <input type="text" name="' + key + '" maxlength="64" value="' + value + '" class="form-control">'
                         + '</div>'
                         + '</div>';
                 });
