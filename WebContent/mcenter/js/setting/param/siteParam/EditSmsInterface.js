@@ -115,7 +115,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                         + '<div class="ft-bold pull-left line-hi34" style="width: 100px;text-align: right;">'
                         + window.top.message.setting_auto[key]
                         + '</div>'
-                        + '<div class="col-xs-5">'
+                        + '<div class="col-xs-8">'
                         + '    <input type="text" name="' + key + '" maxlength="64" value="' + value + '" class="form-control">'
                         + '</div>'
                         + '</div>';
