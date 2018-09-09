@@ -22,7 +22,7 @@ define(['common/BaseEditPage','bootstrapswitch'], function (BaseEditPage) {
                 this.bankChannel(e);
             }
             if ($("#funds_error").val() === '1') {
-                window.top.topPage.showAlertMessage("重要提示","该订单资金异常,无法处理!","确定",function () {
+                window.top.topPage.showAlertMessage("重要提示","稽核异常!","确定",function () {
                     the.closePage();
                 });
             }
