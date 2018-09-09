@@ -158,6 +158,7 @@ define(['common/BaseListPage', 'jsrender', 'bootstrapswitch'], function(BaseList
             if(opt.data.state){
                 page.showPopover(e,{},"success","操作成功",true);
             }
+            $(e.currentTarget).unlock();
         }
     });
 });
