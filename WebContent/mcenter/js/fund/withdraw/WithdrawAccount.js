@@ -9,6 +9,7 @@ define(['common/BaseEditPage','bootstrapswitch'], function (BaseEditPage) {
          * 调用
          */
         init: function (title) {
+            var the  = this;
             this.formSelector = "form";
             this._super();
             $('.help-popover').popover();
@@ -19,6 +20,11 @@ define(['common/BaseEditPage','bootstrapswitch'], function (BaseEditPage) {
                 e.page = this;
                 e.currentTarget = $("a[key=" + key + "]");
                 this.bankChannel(e);
+            }
+            if ($("#funds_error").val() === '1') {
+                window.top.topPage.showAlertMessage("稽核异常","稽核异常!","确定",function () {
+                    the.closePage();
+                });
             }
         },
 
