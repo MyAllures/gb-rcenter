@@ -343,7 +343,7 @@ function touch(event) {
     if(isscroll){
         if(aac){
             if (endPosition.x <= boxLeft) {
-                $('.r-bar-b').css('width', '0%');
+                $('.r-bar-b').css('width','0%');
             } else if (endPosition.x >= boxLeft + boxWidth) {
                 $('.r-bar-b').css('width', '91%');
             } else {
@@ -353,7 +353,7 @@ function touch(event) {
             }
         }else{
             if (endPosition.x <= boxLeft) {
-                $('.r-bar-b1').css('width', '0%');6
+                $('.r-bar-b1').css('width', '0%');
             } else if (endPosition.x >= boxLeft + boxWidth) {
                 $('.r-bar-b1').css('width', '91%');
             } else {
