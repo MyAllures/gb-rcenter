@@ -21,8 +21,8 @@
 .swiper-pagination-bullet-active{background: #fdeb6e!important}
 .swiper-pagination-bullet{background: #3060dc;border: 1px solid #8390c3!important;opacity: 1!important;width: .05rem!important;height: .05rem!important;}
 .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
-    bottom: 5.07px!important;
-    width: 92%!important;
+      bottom: -16px!important;
+      width: 92%!important;
 }
 .game-box>div:active{transform: scale(.96)}
 
@@ -44,8 +44,8 @@
 .game16{background: url(../image/home/gm16.png) 0 0/1.10rem .97rem no-repeat}
 .game17{background: url(../image/home/gm17.png) 0 .11rem/1.13rem 1.03rem no-repeat}
 .snow{
-    position: fixed;
-    top: 0;
-    left: 0;
-    user-select: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      user-select: none;
 }

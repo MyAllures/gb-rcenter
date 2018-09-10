@@ -79,6 +79,33 @@ iframe {
 }
 .notice ul li{float:left; padding:0 10px; line-height:.15rem;}
 
+.header_search_box {
+      position: absolute;
+      top: .58rem;
+      right: .18rem;
+}
+.search_input_box {
+      box-sizing: border-box;
+      width: 1.45rem;
+      height: .19rem;
+      line-height:  .19rem;
+      background-color: #412A5E;
+      border-radius: .2rem;
+      border: 1px solid rgb(109, 112, 122);
+      outline:  none;
+      font-size: .10rem;
+      padding:  .03rem .1rem;
+      color: #fff;
+      box-shadow: 0px 0px 5px white;
+}
+.search_pic {
+      position: absolute;
+      top: -.03rem;
+      right: 0;
+      width:  .27rem;
+      height:  .27rem;
+}
+
 .notice_name,
 notice_price {
     display: inline-block;
@@ -253,11 +280,11 @@ marquee>span{
 }
 
 .header_right a:nth-of-type(1) {
-    background: url(../image/index/violet/header_right_gamer.png) 0 0/100% 100% no-repeat;
+      background: url(../image/index/violet/header_right_offe.png) 0 0/100% 100% no-repeat;
 }
 
 .header_right a:nth-of-type(2) {
-    background: url(../image/index/violet/header_right_offe.png) 0 0/100% 100% no-repeat;
+      background: url(../image/index/violet/header_right_gamer.png) 0 0/100% 100% no-repeat;
 }
 
 .footer_left{
