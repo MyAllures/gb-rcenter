@@ -345,7 +345,7 @@ marquee>span{
     width: 1rem;
 }
 .footer_right>div:nth-of-type(3){
-    background: url(../image/index/violet/btn_share.png) 0 0/100% 100% no-repeat;
+    background: url(../image/index/violet/btn_share.png) 0 -.03rem/100% 100% no-repeat;
     width: 1rem;
 }
 .footer_right>div:nth-of-type(4){

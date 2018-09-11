@@ -14,9 +14,9 @@ iframe{border: none}
 .comm_shad{position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: rgba(5, 5, 5, 0.675);z-index: 10000;}
 
 .comm_uodate::after{content: "";position: absolute;right: .05rem;top: .24rem;width: .32rem;height: .16rem;background: url(../image/index/update.png)0 0/100% 100% no-repeat;}
-.swiper-nextBtn{position: fixed;right: .1rem;top:0;bottom:0;margin:auto 0;width: .47rem;height: .55rem;background: url(../image/home/lar.png) 0 0/100% 100% no-repeat;
+.swiper-nextBtn{position: fixed;right: .1rem;top:0;bottom:0;margin:auto 0;width: .27rem;height: .34rem;background: url(../image/index/violet/arrow_next.png) 0 0/100% 100% no-repeat;
   z-index: 1000;animation: swoperBtn 2s infinite linear}
-.swiper-prevBtn{position: fixed;left: .1rem;top:0;bottom:0;margin:auto 0;width: .47rem;height: .55rem;background: url(../image/home/lar.png) 0 0/100% 100% no-repeat;
+.swiper-prevBtn{position: fixed;left: .1rem;top:0;bottom:0;margin:auto 0;width: .27rem;height: .34rem;background: url(../image/index/violet/arrow_prev.png) 0 0/100% 100% no-repeat;
   z-index: 1000;display: none;animation: swoperBtn1 2s infinite linear}
 .comm_loading{
     position: relative;
