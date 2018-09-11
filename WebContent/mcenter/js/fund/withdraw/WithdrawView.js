@@ -15,6 +15,11 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             this._super(this.formSelector);
             this.allFee = this.getAllFee();
             $("#mainFrame .return-btn").css("display", "");
+            if ($("#funds_error").val() === '1') {
+                window.top.topPage.showAlertMessage("稽核异常","稽核异常!","确定",function () {
+                    window.top.topPage.goToLastPage(false);
+                });
+            }
         },
         onPageLoad: function () {
             this._super();

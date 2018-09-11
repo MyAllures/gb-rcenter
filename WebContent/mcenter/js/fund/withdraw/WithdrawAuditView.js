@@ -11,8 +11,14 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         allFee: null,
         init: function () {
+            var the= this;
             this.formSelector = "form[name=withdrawAuditViewForm]";
             this._super(this.formSelector);
+            if ($("#funds_error").val() === '1') {
+                window.top.topPage.showAlertMessage("稽核异常","稽核异常!","确定",function () {
+                    the.closePage();
+                });
+            }
         },
 
         /**
