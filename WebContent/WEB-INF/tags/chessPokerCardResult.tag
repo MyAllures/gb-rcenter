@@ -394,3 +394,46 @@
         </c:forEach>
     </c:if>
 </c:if>
+
+<%--乐游棋牌，21点--%>
+<c:if test="${betType eq 'LEG_BLACKJACK'}">
+    <c:if test="${!empty porkerList && !empty porkerListSet}">
+        <span style="vertical-align: 10px">
+        庄：&nbsp;&nbsp;&nbsp;
+        </span>
+        <c:forEach items="${porkerList}" var="poker">
+            <gb:poker poker="${poker}"/>
+        </c:forEach>
+        <span style="vertical-align: 10px">
+
+        </span>
+        <br/>
+        <c:forEach items="${porkerListSet}" var="pokerList" varStatus="pokerIndex">
+            <c:forEach items="${pokerList}" var="poker">
+                <c:choose>
+                    <c:when test="${poker == -100}"><!--i-->
+                        <span style="vertical-align:10px;">
+                        |
+                       </span>
+                    </c:when>
+                    <c:when test="${poker == -101}"><!--分牌-->
+                        <span style="vertical-align:10px;">
+                        \
+                       </span>
+                    </c:when>
+                    <c:when test="${poker < 0}"><!--座位号-->
+                        <span style="vertical-align: 10px">
+                          座位${-poker}:
+                        </span>
+                    </c:when>
+                    <c:otherwise>
+                        <gb:poker poker="${poker}"/>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+            <span style="vertical-align: 10px">
+                <br/>
+            </span>
+        </c:forEach>
+    </c:if>
+</c:if>
