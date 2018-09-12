@@ -209,6 +209,12 @@ define(['common/BaseListPage','checkboxX'], function (BaseListPage,CheckboxX) {
                     _this.query(e,opt);
                 },"placement":"left"}, 'danger', '操作失败', true);
             }
+        },
+        showMsg:function (e, opt) {
+            if(opt.data.state){
+                page.showPopover(e,{},"success","操作成功",true);
+            }
+            $(e.currentTarget).unlock();
         }
 
     });
