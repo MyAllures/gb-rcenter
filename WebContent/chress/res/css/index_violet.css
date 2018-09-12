@@ -83,6 +83,7 @@ iframe {
       position: absolute;
       top: .58rem;
       right: .18rem;
+      margin-left: .1rem;
 }
 .search_input_box {
       box-sizing: border-box;
