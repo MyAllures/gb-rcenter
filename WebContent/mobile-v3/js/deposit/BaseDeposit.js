@@ -20,6 +20,14 @@ var BaseDeposit = function () {
     this.quickCheckMoney = function (obj, options) {
         document.getElementById("result.rechargeAmount").value = options.mone;
     };
+
+    //当点击超出单笔存款金额范围的快选机金额时，给予提示
+    this.invalidMoney = function (obj, options) {
+        var minMoney = $("input[name='minMoney']").val();
+        var maxMoney = $("input[name='maxMoney']").val();
+        toast(window.top.message.deposit_auto['单笔存款金额为'] + minMoney + "~" + maxMoney);
+    };
+
     //验证金额
     this.verificationAmount = function (rechargeAmount) {
         if (rechargeAmount.val() == null || rechargeAmount.val() == "") {
