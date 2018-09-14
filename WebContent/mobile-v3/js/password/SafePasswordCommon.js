@@ -81,7 +81,9 @@ function setRealName() {
 /** 检测真实姓名 */
 function checkRealName($ele) {
     var realName = $ele.val();
-
+    if($ele && $($ele).length > 1){
+        realName = $($ele[1]).val();
+    }
     if (realName == null || realName.trim().length == 0) {
         toast(window.top.message.passport_auto['请输入真实姓名']);
         $ele.focus();
