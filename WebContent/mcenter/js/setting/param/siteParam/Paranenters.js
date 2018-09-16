@@ -897,9 +897,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                     var $this = $(this);
                     var _msg = "";
                     if (state) {
-                        _msg = window.top.message.setting['confirm.open'];
+                        _msg = '确认启用吗？启用完成，设置完成后请再点击【保存】按钮保存您的设置';//window.top.message.setting['confirm.open'];
                     } else {
-                        _msg =  window.top.message.setting['confirm.close'];
+                        _msg =  '确认停用吗？停用完成后请再点击【保存】按钮保存您的设置';//window.top.message.setting['confirm.close'];
                     }
                     $this.bootstrapSwitch('indeterminate', true);
                     window.top.topPage.showConfirmMessage(_msg, function (confirm) {
