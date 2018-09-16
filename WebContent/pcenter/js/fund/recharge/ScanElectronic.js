@@ -241,9 +241,10 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                         if (data.responseText == "true") {
                             var rechargeAmount = $("[name='result.rechargeAmount']").val();
                             var rechargeType = $("[name='result.rechargeType']").val();
+                            var account = $(_this.formSelector + " input[name=account]:checked").val();
                             window.top.topPage.ajax({
                                 url: root + '/fund/recharge/ScanElectronic/counterFee.html',
-                                data: {"result.rechargeAmount": rechargeAmount, "type": rechargeType},
+                                data: {"result.rechargeAmount": rechargeAmount, "type": rechargeType, "account":account},
                                 dataType: 'json',
                                 success: function (data) {
                                     var fee = data.fee;
