@@ -116,6 +116,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
         getValidateRule: function ($form) {
             var rule = this._super($form);
             var _this = this;
+            account =  $(_this.formSelector + " input[name=account]").val();
             if (rule && rule.rules['result.rechargeAmount']) {
                 var displayFee = $("input[name=displayFee]").val();
                 rule.rules['result.rechargeAmount'].remote = {
@@ -125,14 +126,15 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                     data: {
                         'result.rechargeAmount': function () {
                             return $("[name='result.rechargeAmount']").val();
-                        }
+                        },
+                        'account': account
                     },
                     complete: function (data) {
                         if (data.responseText == "true") {
                             var rechargeAmount = $($form).children().find("[name='result.rechargeAmount']").val();
                             window.top.topPage.ajax({
                                 url: root + '/fund/recharge/company/counterFee.html',
-                                data: {"result.rechargeAmount": rechargeAmount, "type": 'company_deposit'},
+                                data: {"result.rechargeAmount": rechargeAmount, "type": 'company_deposit', 'account': account},
                                 dataType: 'json',
                                 success: function (data) {
                                     var fee = data.fee;
