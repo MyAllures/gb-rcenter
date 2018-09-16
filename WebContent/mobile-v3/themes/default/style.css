@@ -97,7 +97,11 @@ header.mui-bar-nav .mui-action-back {
       color: #fff;
 }
 
-.nav .swiper-slide.swiper-slide-active:after {
+.nav .swiper-slide.swiper-slide-active::before {
+      zoom: 118%;
+}
+
+.nav .swiper-slide.swiper-slide-active:after {  /*遮罩层*/
       content: '';
       position: absolute;
       top: 0;
@@ -159,6 +163,10 @@ header.mui-bar-nav .mui-action-back {
 
 .mui-bar-tab .mui-active .mui-tab-label {
       color: #007aff;
+}
+
+.mui-bar-tab .mui-tab-item.mui-active {  /*图标选中时放大13% */
+      zoom: 113%;
 }
 
 /* mui-off-canvas-left */
@@ -345,14 +353,21 @@ header.mui-bar-nav .mui-action-back {
 }
 
 .login-info .ex {
-      box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
+      box-sizing: border-box;
       width:  230px;
       height: 468px;
       border: none;
       font-size:  12px;
-      box-sizing: border-box;
       display: flex;
       flex-direction:  column;
+      box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
+
+      position: absolute;
+      top: 34px;
+      right: -240px;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      z-index: 112;
 }
 
 .total_asset,.wallet {
@@ -492,6 +507,7 @@ header.mui-bar-nav .mui-action-back {
 .casino-game-type .g-t-slide-indicators .swiper-slide-active {
       color: #0088fe;
       border-bottom: 1px solid #0088fe;
+
 }
 
 .loader.api-loader {
