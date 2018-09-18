@@ -19,12 +19,13 @@
 <body>
 <!-- 主页面标题 -->
 <header class="mui-bar mui-bar-nav promo-head">
-      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-      <div class="login-info" id="login-info">
+      <!--<a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>-->
+      <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+      <!--<div class="login-info" id="login-info">
             <div class="money-shadow"></div>
             <div class="user_name">a*1</div>
             <div class="money">￥0.00</div>
-            <div class="ex">
+            &lt;!&ndash;<div class="ex">
                   <table>
                         <tr>
                               <td><span class="zzc">总资产</span></td>
@@ -82,17 +83,55 @@
                         <p><a class="go btn-refresh">刷新额度</a></p>
                         <p><a class="go btn-deposit">存款</a></p>
                   </div>
+            </div>&ndash;&gt;
+
+            &lt;!&ndash;右侧资金下拉&ndash;&gt;
+            <div class="ex">
+                  <div class="top_part">
+                        <div class="total_asset">
+                              <span class="asset_txt">总资产</span>
+                              <span class="asset_num">0.00</span>
+                        </div>
+                        <div class="wallet">
+                              <span class="asset_txt">钱包</span>
+                              <span class="asset_num">0.00</span>
+                        </div>
+                  </div>
+                  &lt;!&ndash;中间滚动部分&ndash;&gt;
+                  &lt;!&ndash;<div class="mui-scroll-wrapper  mui-assets" >&ndash;&gt;
+                  &lt;!&ndash;<div class="mui-scroll">&ndash;&gt;
+                  <ul class="central_scroll">
+                        <li class="item_data"> <span>DS贵宾厅</span><span>0.00</span></li>
+                        <li class="item_data"> <span>KY棋牌</span><span>0.00</span></li>
+                        <li class="item_data"> <span>AG大厅</span><span>0.00</span></li>
+                        <li class="item_data"> <span>Ebet如意厅</span><span>0.00</span></li>
+                        <li class="item_data"> <span>DS贵宾厅</span><span>0.00</span></li>
+                        <li class="item_data"> <span>KY棋牌</span><span>0.00</span></li>
+                        <li class="item_data"> <span>AG大厅</span><span>0.00</span></li>
+                        <li class="item_data"> <span>Ebet如意厅</span><span>0.00</span></li>
+
+                        <li class="item_data"> <span>DS贵宾厅</span><span>0.00</span></li>
+                        <li class="item_data"> <span>KY棋牌</span><span>0.00</span></li>
+                        <li class="item_data"> <span>AG大厅</span><span>0.00</span></li>
+                        <li class="item_data"> <span>Ebet如意厅</span><span>0.00</span></li>
+                  </ul>
+                  &lt;!&ndash;</div>&ndash;&gt;
+                  &lt;!&ndash;</div>&ndash;&gt;
+
+                  <div class="btn_group">
+                        <div  class="one_key_recycle">一键回收</div>
+                        <div class="saving_money">存款</div>
+                  </div>
             </div>
-      </div><!--login-info end-->
-      <h1 class="mui-title">优惠活动</h1>
+      </div>-->
+      <h1 class="mui-title">优惠</h1>
       <div class="promo-header">
             <div class="swiper-container p-t-slide-indicators promo-sorts">
                   <div class="swiper-wrapper">
-                        <a class="swiper-slide mui-btn btn-promo-sort"><span>分类1</span></a>
-                        <a class="swiper-slide mui-btn btn-promo-sort"><span>分类2</span></a>
-                        <a class="swiper-slide mui-btn btn-promo-sort"><span>分类3</span></a>
-                        <a class="swiper-slide mui-btn btn-promo-sort"><span>分类4</span></a>
-                        <a class="swiper-slide mui-btn btn-promo-sort"><span>分类5</span></a>
+                        <a class="swiper-slide mui-btn btn-promo-sort"><span>新手优惠</span></a>
+                        <a class="swiper-slide mui-btn btn-promo-sort"><span>老玩家专享</span></a>
+                        <a class="swiper-slide mui-btn btn-promo-sort"><span>存款类优惠</span></a>
+                        <a class="swiper-slide mui-btn btn-promo-sort"><span>其他活动</span></a>
                   </div>
             </div>
       </div>
@@ -153,7 +192,6 @@
                                           </div>
                                     </div>
                               </div>
-
                         </div>
                         <div class="swiper-slide">
                               <div class="mui-scroll-wrapper">
@@ -295,9 +333,9 @@
             </div>
       </div>
 </div>  <!--mui-content 闭合标签-->
-<!--footer-->
+<!------------------------------------footer--------------------------------------------->
 <footer class="mui-bar promo-bar mui-bar-tab">
-      <a class="mui-tab-item">
+      <a class="mui-tab-item" href="../mobile-v3-newDeposit/mine-deposit-2-online.html">
             <span class="mui-icon icon-deposit"></span>
             <span class="mui-tab-label">存款</span>
       </a>
@@ -366,13 +404,13 @@
       </aside>
       <!-- 主页面容器 -->
 </div>
+
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v3/js/swiper.min.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
 <script type="text/javascript">
       $(function(){
-
             /*侧滑菜单脚本*/
             $(".index-canvas-wrap").on("tap",".mui-icon-closeempty",function(e){
                   //e.preventDefault();
@@ -399,7 +437,7 @@
             var slideIndicators = new Swiper('.p-t-slide-indicators', {
                   loop:true,
                   loopedSlides: 5,
-                  slidesPerView: '4',
+                  slidesPerView: 4,
                   touchRatio: 0.2,
                   slideToClickedSlide: true,
             });

@@ -165,7 +165,7 @@ header.mui-bar-nav .mui-action-back {
       color: #007aff;
 }
 
-.mui-bar-tab .mui-tab-item.mui-active {  /*图标选中时放大13% */
+.mui-bar-tab .mui-active .mui-icon {/*图标选中时放大13% */
       zoom: 113%;
 }
 
@@ -223,10 +223,6 @@ header.mui-bar-nav .mui-action-back {
 /* page promo */
 .promo .p-t-slide-content {
       color: #333;
-}
-
-.promo-header {
-      border-bottom: 1px solid #ccc;
 }
 
 /* login and register page */
@@ -447,6 +443,8 @@ header.mui-bar-nav .mui-action-back {
       font-family: "PingFangSC-Regular";
 }
 
+/*
+
 .login-info .ex hr {
       border-bottom: 1px solid #f2f2f2;
 }
@@ -494,6 +492,7 @@ header.mui-bar-nav .mui-action-back {
 .login-info .ex .loader.api-loader .ball-pulse.api-div div {
       background-color: #252525 !important;
 }
+*/
 
 /* 修补样式 */
 .ball-pulse.api-div div {
