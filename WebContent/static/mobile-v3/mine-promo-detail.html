@@ -9,6 +9,9 @@
       <link rel="bookmark" href="../../mobile-v3/favicon.ico">
       <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
       <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+      <link rel="stylesheet" href="../../mobile-v3/themes/mui.previewimage.css">
+      <link rel="stylesheet" href="../../mobile-v3/themes/imageview.css">
+      <link rel="stylesheet" href="../../mobile-v3/themes/mui.imageviewer.css">
       <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
       <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
       <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
@@ -36,6 +39,8 @@
                                                       <li>
                                                             <a href=""><img src="../../mobile-v3/images/img-sale1.jpg" alt=""></a>
                                                             <div class="ct">
+                                                                  <h5><i></i><span>平台足够权威</span></h5>
+                                                                  <img src="../../mobile-v3/images/img-sale1.jpg" data-preview-src="" data-preview-group="1" alt="">
                                                                   <h5><i></i><span>平台足够权威</span></h5>
                                                                   <p>澳门永利娱乐场与BBIN集团进行技术合作，并获得GEOTRUST国际认证，确保网站公平、公正、公开。</p>
                                                                   <h5><i></i><span>平台足够权威</span></h5>
@@ -71,7 +76,7 @@
                               </div>
                         </div>
                         <div class="gb-form-foot new_foo">
-                              <a href="" class="mui-btn mui-btn-primary btn-deposit">前往存款</a>
+                              <a href="../mobile-v3-newDeposit/mine-deposit-2-online.html" class="mui-btn mui-btn-primary btn-deposit">前往存款</a>
                               <a href="promo-apply.html" class="mui-btn mui-btn-primary btn-apply">申请优惠</a>
                         </div>
                   </div> <!--mui-scroll 闭合标签-->
@@ -79,7 +84,7 @@
 
             <!--浮窗广告轮播-->
             <div class="ads-slider">
-                  <a href="javascript:" class="close-ads"></a>
+                  <a href="javascript:;" class="close-ads"></a>
                   <div class="mui-slider">
                         <div class="mui-slider-group">
                               <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/ads-banner-01.png" /></a></div>
@@ -98,8 +103,13 @@
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
+<script src="../../mobile-v3/js/mui/mui.previewimage.js"></script>
+<script src="../../mobile-v3/js/mui/mui.zoom.js"></script>
 <script>
       $(function () {
+            mui.previewImage();
+            mui.plusReady(function () { });
+
             $('.table-scroll').css({
                   height:$('.table-scroll .mui-scroll>table').css('height')
             });
