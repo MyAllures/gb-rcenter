@@ -10,6 +10,9 @@ body {
       background-color: #151515;
       box-shadow: none;
 }
+.mui-bar.audit_login_header {
+      background-color: #7f0213;
+}
 
 header.mui-bar-nav a.mui-icon-bars {
       color: #fff;
@@ -237,6 +240,9 @@ header.mui-bar-nav .mui-action-back {
 .login {
       color: wheat;
 }
+a.audit_back_home {
+      color: #FFFFFF ;
+}
 
 .login .user-img {
       background: url(../../images/login-user.png) center no-repeat/100px, linear-gradient(#151515, #151515);
@@ -245,6 +251,9 @@ header.mui-bar-nav .mui-action-back {
       border-radius: 100%;
       box-shadow: 3px 5px 15px 6px rgba(21, 21, 21, 0.25);
       margin: 50px auto;
+}
+.login .user-img.user-img-audit {
+      background: url(../../images/login-user.png) center no-repeat/100px, linear-gradient(#7f0213, #7f0213);
 }
 
 .login .login-form a.btn {
@@ -261,9 +270,16 @@ header.mui-bar-nav .mui-action-back {
       margin-bottom: 15px;
 }
 
+.login .login-form .btn-login.btn-login-audit {
+      background: #7f0213;
+}
 .login .login-form .btn-regist {
       color: #151515;
       border: 1px solid #151515;
+}
+.login .login-form .btn-regist.btn-register-audit {
+      color: #7f0213;
+      border: 1px solid #7f0213;
 }
 
 /* mine page */

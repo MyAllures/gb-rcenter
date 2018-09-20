@@ -2290,11 +2290,8 @@ body.withdraw{
       .gb-form-foot {
             padding: 10px;
       }
-      .gb-form-foot .text p {
-            color: #333;
-            font-size: 12px;
-      }
       .gb-form-foot .text p a {
+            font-size: 12px;
             color: #333;
             display: block;
             padding: 0 10px 5px;
@@ -3960,10 +3957,6 @@ body.mine-user{color: #000;
 .window-ok .ft a{display: block;margin-top:5px;}
 
 // 取款页面的状态提示样式
-.withdraw-out {
-      margin: 20px
-}
-
 .withdraw-not {
       margin: 0 auto;
       background: #f9fafd;

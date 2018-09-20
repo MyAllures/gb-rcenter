@@ -1809,24 +1809,37 @@ body.deposit .gb-select > a {
       position: relative; }
 .deposit_promo {
       position: absolute;
-      top: 5px;
-      left:  -16px;
-      width: 55px;
+      top: 3px;
+      left:  -21px;
+      width: 60px;
       height: 12px;
       line-height:  12px;
       text-align: center;
       background-color: #ff2743;
       color: #ffffff;
-      font-size:  4px;
-      transform: rotate(-45deg);
+      transform: rotate(-48deg) scale(0.6);
       box-sizing: border-box;
-      padding: 0 5px;
       white-space: nowrap;
+}
+.deposit_promo::before {
+      content: '';
+      position: absolute;
+      top: -11px;
+      left: -3px;
+      width: 12px;
+      height: 22px;
+      background-color: #dcdcdc;
+      transform: rotate(45deg);
 }
 .deposit_promo::after {
       content: '';
-      display: inline-block;
-
+      position: absolute;
+      top: -2px;
+      right: -8px;
+      width: 20px;
+      height: 12px;
+      background-color: #dcdcdc;
+      transform: rotate(45deg);
 }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item.cur {
       border-color: #1766bb; }
@@ -2284,10 +2297,13 @@ body.deposit .gb-select > a {
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.3);
-      display: none; }
+      /*display: none; */
+}
 
 .masker.darker {
-      background-color: rgba(0, 0, 0, 0.8); }
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+}
 
 .masker.trans {
       background-color: rgba(0, 0, 0, 0.5); }
@@ -2413,9 +2429,12 @@ body.deposit .gb-select > a {
 .gb-bindcard-box {
       position: absolute;
       z-index: 1000;
-      top: 0;
+      bottom: 0;
       left: 0;
-      width: 100%; }
+      width: 100%;
+      background-color: #cecece;
+      /*display: none;*/
+}
 
 .gb-bindcard-box > a {
       display: inline-block;
@@ -3351,13 +3370,12 @@ body.withdraw .mine-form p.text-gray {
       color: #aeaeae; }
 body.withdraw .gb-form-foot {
       padding: 10px; }
-body.withdraw .gb-form-foot .text p {
-      color: #333;
-      font-size: 12px; }
-body.withdraw .gb-form-foot .text p a {
+body.withdraw .gb-form-foot .text a {
       color: #333;
       display: block;
-      padding: 0 10px 5px; }
+      padding: 0 10px 5px;
+      font-size: 12px;
+}
 body.withdraw .gb-form-foot .submit {
       width: 100%;
       padding: 10px 12px;
@@ -5196,16 +5214,15 @@ body.mine-user .gb-select > a {
       display: block;
       margin-top: 5px; }
 
-.withdraw-out {
-      margin: 20px; }
-
 .withdraw-not {
-      margin: 0 auto;
+      margin:  20px;
       background: #f9fafd;
       padding: 20px;
       border: 1px solid #e8ecef;
       border-radius: 3px;
-      text-align: center; }
+      text-align: center;
+      display: none;
+}
 
 .withdraw-not h1 {
       margin: 0; }
