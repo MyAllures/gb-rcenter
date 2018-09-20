@@ -307,10 +307,68 @@ a.audit_back_home {
       box-shadow: none !important;
 }
 
-/***************index-login-info *****************/
+
+/********************* index-login-info ************************/
+.index-canvas-wrap {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 9999;
+      left: -100%;
+      -webkit-transition: all 0.5s  ease-in-out;
+      transition: all 0.5s  ease-in-out; }
+.index-canvas-wrap aside {
+      visibility: visible; }
+.index-canvas-wrap .mui-icon-closeempty {
+      position: absolute;
+      margin-left: -40px;
+      left: 60%;
+      background: #444;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 40px; }
+.index-canvas-show, .index-canvas-show body {
+      height: 100%; }
+.index-canvas-show body {
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0; }
+.index-canvas-show .index-canvas-wrap {
+      left: 0; }
+.login-before {
+      display:none;
+}
 .login-info {
+      display: inline-block;
+      height: 24px;
+      padding-right: 10px;
+      margin-top: 10px;
+      min-width: 40px;
+      float: right;
+      position: relative;
       background: url(images/icon-open-offcanvas.png) no-repeat right center/5px;
 }
+.login-info .user_name, .login-info .money {
+      font-size: 9px;
+      text-align: right;
+      line-height: 13px;
+      transform: scale(0.85);
+}
+.login-info .money {
+      padding-left: 10px;
+      height: 14px;
+      line-height: 14px; }
+.login-info .mui-scroll-wrapper.mui-assets {
+      top: 68px;
+      height: 230px;
+      left: 20px; }
+
 
 /* nots deficiency */
 .deficiency-nots {
