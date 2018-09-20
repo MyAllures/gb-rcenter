@@ -90,6 +90,9 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             if(e.returnValue==true){
                 $("#reloadView").click();
             }
+        },
+        refreshPage : function (e) {
+            window.location.reload();
         }
 
     });
