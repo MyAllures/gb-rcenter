@@ -285,7 +285,7 @@
                                 <p style="white-space: normal;"><strong><img
                                         src="${data.configInfo.sitePath}/themes/images/help/dzzf11.png"
                                         title="电子支付-支付宝-电脑范例06.png"></strong></p>
-                                <p style="white-space: normal;"><strong>7.订单号查询-电脑</strong><br></p>
+                                <p style="white-space: normal;"><strong>7.交易号查询-电脑</strong><br></p>
                                 <p style="white-space: normal;"><strong>1)电脑登录【支付宝】后，请点击“查看”；</strong></p>
                                 <p style="white-space: normal;"><img
                                         src="${data.configInfo.sitePath}/themes/images/help/dzzf12.png"
@@ -347,23 +347,23 @@
                                 <p style="white-space: normal;"><strong><img
                                         src="${data.configInfo.sitePath}/themes/images/help/dzzf20.png"
                                         title="电子支付-支付宝-银行范例05.png"></strong></p>
-                                <p style="white-space: normal;"><strong>4.订单号查询-手机</strong></p>
+                                <p style="white-space: normal;"><strong>4.交易号查询-手机</strong></p>
                                 <p style="white-space: normal;"><strong>1)手机登录【支付宝】后，请点击“账单”；</strong></p>
                                 <p style="white-space: normal;"><strong><img
                                         src="${data.configInfo.sitePath}/themes/images/help/dzzf21.png"
-                                        title="订单号查询-手机01.png"></strong></p>
+                                        title="交易号查询-手机01.png"></strong></p>
                                 <p style="white-space: normal;"><strong>2)点击单笔交易进入账单详情；</strong></p>
                                 <p style="white-space: normal;"><strong><img
                                         src="${data.configInfo.sitePath}/themes/images/help/dzzf22.png"
-                                        title="订单号查询-手机02.png"></strong></p>
+                                        title="交易号查询-手机02.png"></strong></p>
                                 <p style="white-space: normal;"><strong>3)点击“创建时间”；</strong></p>
                                 <p style="white-space: normal;"><strong><img
                                         src="${data.configInfo.sitePath}/themes/images/help/dzzf23.png"
-                                        title="订单号查询-手机03.png"></strong></p>
+                                        title="交易号查询-手机03.png"></strong></p>
                                 <p style="white-space: normal;"><strong>4)下图红框内数字，即为订单号后五位。</strong></p>
                                 <p style="white-space: normal;"><strong><img
                                         src="${data.configInfo.sitePath}/themes/images/help/dzzf24.png"
-                                        title="订单号查询-手机04.png"></strong></p>
+                                        title="交易号查询-手机04.png"></strong></p>
                             </div>
 
                             <button title="微信相关--操作流程" id="q369" class="btn btn-block primary-btn -blue -sm title"

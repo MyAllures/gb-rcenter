@@ -102,7 +102,7 @@ define(['common/BaseListPage', 'autocompleter'], function (BaseListPage) {
                 $("input[name='search.topagentusername']").val($("input[name='search.topagentusername']").val().trim());
 
             });
-             //订单号自动过滤空格
+             //交易号自动过滤空格
             $(this.formSelector).on("input", "input[name='search.transactionNo']", function (e) {
                 $("input[name='search.transactionNo']").val($("input[name='search.transactionNo']").val().trim());
             });
