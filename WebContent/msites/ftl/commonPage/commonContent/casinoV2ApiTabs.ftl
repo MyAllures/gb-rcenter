@@ -6,7 +6,7 @@
             <#if data.siteApiTypeRelationMap??>
                 <#list data.siteApiTypeRelationMap[apiType] as relationMap>
                     <#assign apiId = relationMap.apiId?string.computer>
-                    <#if apiId!="28">
+                    <#if apiId!="28" && apiId!="49">
                         <div class="swiper-slide <#if apiId == data.gameSearch.apiId?default('')>active</#if>" data-slide="<#if apiMap[apiId]??>${apiMap[apiId]}</#if>">
                             <a href="javascript:" class="_vr_getGames" data-apitype="${apiType}" data-api="${apiId}" data-href="casino_partial.html?apiType=${apiType}&apiId=${apiId}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>">
                                 <span class="gui gui-logo-<#list apiMapKeys as key><#if key == apiId>${apiMap[key]}</#if></#list>"></span>
@@ -47,7 +47,7 @@
             <#if data.siteApiTypeRelationMap??>
                 <#list data.siteApiTypeRelationMap[apiType] as relationMap>
                     <#assign apiId = relationMap.apiId?string.computer>
-                    <#if apiId!="28">
+                    <#if apiId!="28" && apiId!="49">
                         <div class="swiper-slide <#if apiId == data.gameSearch.apiId?default('')>active</#if>" data-slide="<#if apiMap[apiId]??>${apiMap[apiId]}</#if>">
                             <a href="javascript:" class="_vr_getGames" data-apitype="${apiType}" data-api="${apiId}" data-href="casino_partial.html?apiType=${apiType}&apiId=${apiId}<#if apiId!="39">&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list></#if>">
                                 <span class="gui gui-logo-<#list apiMapKeys as key><#if key == apiId>${apiMap[key]}</#if></#list>"></span>
