@@ -243,7 +243,6 @@ header.mui-bar-nav .mui-action-back {
 a.audit_back_home {
       color: #FFFFFF ;
 }
-
 .login .user-img {
       background: url(../../images/login-user.png) center no-repeat/100px, linear-gradient(#151515, #151515);
       width: 100px;
@@ -252,10 +251,6 @@ a.audit_back_home {
       box-shadow: 3px 5px 15px 6px rgba(21, 21, 21, 0.25);
       margin: 50px auto;
 }
-.login .user-img.user-img-audit {
-      background: url(../../images/login-user.png) center no-repeat/100px, linear-gradient(#7f0213, #7f0213);
-}
-
 .login .login-form a.btn {
       display: block;
       text-align: center;
@@ -263,26 +258,38 @@ a.audit_back_home {
       line-height: 40px;
       border-radius: 2px;
 }
-
 .login .login-form .btn-login {
       background: #151515;
       color: #fff;
       margin-bottom: 15px;
 }
-
-.login .login-form .btn-login.btn-login-audit {
-      background: #7f0213;
-}
 .login .login-form .btn-regist {
       color: #151515;
       border: 1px solid #151515;
+}
+
+/********************稽查登录页***********************/
+.login .login-form .btn-login.btn-login-audit {
+      background: #7f0213;
+}
+.login .user-img.user-img-audit {
+      background: url(../../images/login-user.png) center no-repeat/100px, linear-gradient(#7f0213, #7f0213);
 }
 .login .login-form .btn-regist.btn-register-audit {
       color: #7f0213;
       border: 1px solid #7f0213;
 }
+.top-tip-text {
+      padding-left: 20px;
+}
+.mui-input-row label.true-name {
+      padding: 5px 15px;
+}
+.mui-input-row label.open-bank-info {
+      padding: 5px 15px;
+}
 
-/* mine page */
+/****************** mine page *********************/
 .mine-content {
       background: #efefef;
 }
@@ -300,7 +307,7 @@ a.audit_back_home {
       box-shadow: none !important;
 }
 
-/* index-login-info */
+/***************index-login-info *****************/
 .login-info {
       background: url(images/icon-open-offcanvas.png) no-repeat right center/5px;
 }
@@ -363,25 +370,36 @@ a.audit_back_home {
 .login-info .money {
       background: url(images/icon-wallet.png) no-repeat 0 2px/10px;
 }
-
-.login-info .ex {
+.money-shadow {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      /*right: 0;*/
+      /*bottom: 0;*/
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      display: none;
+}
+.ex {
       box-sizing: border-box;
       width:  230px;
       height: 468px;
       border: none;
-      font-size:  12px;
       display: flex;
       flex-direction:  column;
       box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
-
       position: absolute;
-      top: 34px;
+      top: 45px;
       right: -240px;
       -webkit-transition: all 0.3s;
       transition: all 0.3s;
-      z-index: 112;
+      z-index: 1001;
 }
-
+.ex.open {
+      right: 0;
+}
 .total_asset,.wallet {
       box-sizing: border-box;
       display: flex;
@@ -391,33 +409,53 @@ a.audit_back_home {
       padding: 0 13px ;
       border-bottom:  1px solid #888888;
       background-color:  #515151;
-      height: 38px
+      height: 26px;
+      line-height: 26px;
 }
-
+.asset_txt {
+      font-family: "PingFangSC-Regular";
+      color: #eeeeee;
+      font-size: 12px;
+      transform: scale(0.9);
+      height: 26px;
+      line-height: 26px;
+}
+.asset_num {
+      color: #FFC000;
+      font-family: "PingFangSC-Regular";
+      height: 26px;
+      line-height: 26px;
+      font-size: 12px;
+      transform: scale(0.9);
+}
 .central_scroll {
       box-sizing: border-box;
       background-color:  #343434;
       padding: 0 12px;
       font-family: "PingFangSC-Regular";
-      font-size:  12px;
       color: #999;
-      height: 288px;
+      height: 320px;
       overflow: scroll;
 }
-
 .item_data {
       box-sizing: border-box;
-      height: 36px;
+      height: 26px;
       display: flex;
       flex-direction:  row;
       justify-content:  space-between;
       align-items:  center;
       border-top: 1px solid #3E3E3E;
 }
+.item_data span {
+      font-size:  12px;
+      transform: scale(0.85);
+}
+.item_data .maintaining {
+      color: #B1620E;
+}
 .item_data:first-child {
       border-top:  none;
 }
-
 .btn_group {
       box-sizing: border-box;
       background: #343434;
@@ -430,7 +468,6 @@ a.audit_back_home {
       flex: 1;
       padding-bottom:  6px;
 }
-
 .one_key_recycle {
       width: 206px;
       height: 37px;
@@ -439,7 +476,6 @@ a.audit_back_home {
       border-radius: 5px;
       background: #2377D6;
 }
-
 .saving_money {
       width: 206px;
       height: 37px;
@@ -449,66 +485,6 @@ a.audit_back_home {
       background: #28BD95;
 }
 
-.asset_txt {
-      font-family: "PingFangSC-Regular";
-      color: #eeeeee;
-}
-
-.asset_num {
-      color: #FFC000;
-      font-family: "PingFangSC-Regular";
-}
-
-/*
-
-.login-info .ex hr {
-      border-bottom: 1px solid #f2f2f2;
-}
-
-.login-info .ex table tr td {
-      color: #333;
-}
-
-.login-info .ex .bar-asset {
-      padding-right: 0;
-      color: #1b75d9;
-}
-
-.login-info .ex .bar-wallet {
-      color: #0ec392;
-}
-
-.login-info .ex .zzc, .login-info .ex .qb {
-      background: #1b75d9;
-      white-space: nowrap;
-      color: #fff;
-      display: inline-block;
-      line-height: 1;
-      text-align: center;
-      padding: 4px 5px;
-      border-radius: 3px;
-}
-
-.login-info .ex .qb {
-      background: #0ec392;
-}
-
-.login-info .ex .ct p .go.btn-refresh {
-      background: #1b75d9;
-}
-
-.login-info .ex .ct p .go.btn-deposit {
-      background: #0ec392;
-}
-
-.login-info .ex .loader.api-loader {
-      background: #fff;
-}
-
-.login-info .ex .loader.api-loader .ball-pulse.api-div div {
-      background-color: #252525 !important;
-}
-*/
 
 /* 修补样式 */
 .ball-pulse.api-div div {

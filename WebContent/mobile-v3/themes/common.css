@@ -486,7 +486,10 @@ li {
 .index-canvas-show .index-canvas-wrap {
       left: 0; }
 
-/* index-login-info */
+/********************* index-login-info ************************/
+.login-before {
+      display:none;
+}
 .login-info {
       display: inline-block;
       height: 24px;
@@ -498,51 +501,14 @@ li {
 .login-info .user_name, .login-info .money {
       font-size: 9px;
       text-align: right;
-      line-height: 13px; }
+      line-height: 13px;
+      transform: scale(0.85);
+}
 .login-info .money {
       padding-left: 10px;
       height: 14px;
       line-height: 14px; }
-.login-info .ex {
-      /*width: 230px;*/
-      /*height: 468px;*/
-      /*position: absolute;*/
-      /*top: 34px;*/
-      /*-webkit-transition: all 0.3s;*/
-      /*transition: all 0.3s;*/
-      /*right: -240px;*/
-      /*z-index: 112;*/
-}
-.login-info .ex.open {
-      right: -10px; }
-.login-info .ex hr {
-      border-top: 0;
-      border-bottom: 1px solid #909090;
-      margin: 5px 0; }
-.login-info .ex table {
-      width: 160px; }
-.login-info .ex table tr td {
-      color: #fff;
-      font-size: 10px;
-      line-height: 20px;
-      text-transform: uppercase; }
-.login-info .ex table tr td:last-child {
-      text-align: right; }
-.login-info .ex .ct {
-      position: absolute;
-      bottom: 0;
-      left: 20px;
-      width: 150px; }
-.login-info .ex .ct p .go {
-      display: block;
-      height: 35px;
-      line-height: 35px;
-      color: #fff;
-      font-size: 10px;
-      background-color: #403f3f;
-      font-size: 13px;
-      border-radius: 5px;
-      text-align: center; }
+
 .login-info .mui-scroll-wrapper.mui-assets {
       top: 68px;
       height: 230px;
@@ -946,15 +912,6 @@ li {
 .mine-cash-record-body .mine-table .text-green {
       color: #4ec545; }
 
-.money-shadow {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 111;
-      display: none; }
 
 /* 投注记录 */
 .mine-bet-record-body {
@@ -5359,7 +5316,8 @@ body.mine-user .gb-select > a {
       font-size: 14px; }
 .home-collect-dialog .star {
       text-align: center;
-      color: #fff; }
+      color: #fff;
+}
 .home-collect-dialog .star .icon-star {
       margin-right: 3px;
       width: 20px;
@@ -5367,6 +5325,9 @@ body.mine-user .gb-select > a {
       background: url(images/star.png) center no-repeat/100%;
       display: inline-block;
       vertical-align: middle; }
+.home-collect-dialog .star .my-collection {
+
+ }
 .home-collect-dialog .wraning p {
       text-align: center;
       color: #fff;
