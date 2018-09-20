@@ -3,7 +3,7 @@
  */
 define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.' + window.top.language, 'css!themesCss/fileinput/fileinput'], function (Money, fileinput) {
     return Money.extend({
-        maxRange: 5,
+        maxRange: 10,
         ue: null,
         system_recommend_case_num:5,
         system_recommend_data:null,
@@ -861,7 +861,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 _tr = this.resetIndex(_tr, _tr_len)
                 $("#first_deposit").find("tr:last").after(_tr);
             } else {
-                var _message = window.top.message.operation_auto['最多5个区间'];
+                var _message = window.top.message.operation_auto['最多10个区间'];
                 window.top.topPage.showInfoMessage(_message);
             }
             $(e.currentTarget).unlock();
@@ -878,7 +878,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 _tr = this.resetIndex2(_tr, _tr_len)
                 $("#loss").find("tr:last").after(_tr);
             } else {
-                var _message = window.top.message.operation_auto['最多5个区间'];
+                var _message = window.top.message.operation_auto['最多10个区间'];
                 window.top.topPage.showInfoMessage(_message);
             }
             $(e.currentTarget).unlock();
