@@ -221,7 +221,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 $("input[name='search.usernames']").val($("input[name='search.usernames']").val().trim());
 
             });
-            //交易号自动过滤空格
+            //订单号自动过滤空格
             $(this.formSelector).on("input", "input[name='search.transactionNo']", function (e) {
                 $("input[name='search.transactionNo']").val($("input[name='search.transactionNo']").val().trim());
             });
