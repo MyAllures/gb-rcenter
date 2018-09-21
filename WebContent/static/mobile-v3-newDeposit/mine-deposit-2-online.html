@@ -191,7 +191,7 @@
                                           <!--优惠提醒-->
                                           <div class="deposit_tips">
                                                 <span  class="tip_txt">温馨提示：完成存款后，请前往活动大厅申请活动优惠。</span>
-                                                <i  class="close_icon">x</i>
+                                                <i  class="close_icon"></i>
                                           </div>
                                           <!--支付方式-->
                                           <div class="list_pay">
@@ -242,6 +242,7 @@
                                                       <div class="list_pay_item">
                                                             <i class="icon-pay bitcoin-pay"></i>
                                                             <div class="pay_nam">比特币</div>
+                                                            <small class="deposit_promo">加送0.4%</small>
                                                       </div>
                                                 </div>
                                                 <div class="list_pay_item_w">
@@ -265,7 +266,7 @@
                                                 <div class="list_pay_item_w">
                                                       <div class="list_pay_item">
                                                             <i class="icon-pay wangyin-dep"></i>
-                                                            <div class="pay_nam">网银存款</div>
+                                                            <div class="pay_nam">柜台机</div>
                                                       </div>
                                                 </div>
                                                 <div class="list_pay_item_w">
@@ -286,40 +287,46 @@
                                                 <div class="tit">选择金额</div>
                                                 <div class="conv_mone">
                                                       <div class="conv_mone_i">
-                                                            <i class="icon_mone mone_100"></i>
+                                                            <span class="icon_mone mone_100">100</span>
                                                       </div>
                                                       <div class="conv_mone_i">
-                                                            <i class="icon_mone mone_200"></i>
+                                                            <span class="icon_mone mone_200">200</span>
                                                       </div>
                                                       <div class="conv_mone_i">
-                                                            <i class="icon_mone mone_500"></i>
+                                                            <span class="icon_mone mone_500">500</span>
                                                       </div>
                                                       <div class="conv_mone_i">
-                                                            <i class="icon_mone mone_1000"></i>
+                                                            <span class="icon_mone mone_1000">1000</span>
                                                       </div>
                                                       <div class="conv_mone_i">
-                                                            <i class="icon_mone mone_5000"></i>
+                                                            <span class="icon_mone mone_5000">5000</span>
                                                       </div>
                                                 </div>
                                                 <div class="depo_row">
                                                       <div class="label">存款金额</div>
-                                                      <div class="input"><input type="text" placeholder="10.00~50,000.00"></div>
+                                                      <div class="input_dp_num">
+                                                            <input type="number" placeholder="10.00~50,000.00">
+                                                      </div>
                                                       <div class="ext">
                                                             <div class="cha">.66</div>
                                                       </div>
                                                 </div>
                                                 <div class="depo_row">
                                                       <div class="label">支付银行</div>
-                                                      <div class="input"><input id="selectBank" type="text" value="中国工商银行" readonly></div>
+                                                      <div class="input_dp_bank">
+                                                            <input id="selectBank" type="text" value="中国工商银行" readonly>
+                                                      </div>
                                                       <div class="ext">
                                                             <i class="mui-icon mui-icon-arrowdown"></i>
                                                       </div>
                                                 </div>
-                                                <p class="depositHelp">存款教程 <span>?</span></p>
+                                                <!--<p class="depositHelp">存款教程 <span>?</span></p>-->
                                           </div>
                                           <!--提交-->
                                           <div class="btn_wrap">
-                                                <a href="javascript:" class="mui-btn btn_submit mui-btn-block">提交</a>
+                                                <!--<a href="javascript:" class="mui-btn btn_submit mui-btn-block">提交</a>-->
+                                                <a href="online-pay-qq-wallet.html" class="mui-btn btn_submit mui-btn-block">提交</a>
+                                                <!--<a href="online-pay-counter.html" class="mui-btn btn_submit mui-btn-block">提交</a>-->
                                           </div>
                                           <!--提示说明-->
                                           <div class="deposit_help">
@@ -402,7 +409,7 @@
             <span class="mui-icon icon-promo"></span>
             <span class="mui-tab-label">优惠</span>
       </a>
-      <a class="mui-tab-item"  href="../mobile-v3/help-center-01.html">
+      <a class="mui-tab-item"  href="">
             <span class="mui-icon icon-service"></span>
             <span class="mui-tab-label">客服</span>
       </a>
@@ -425,7 +432,7 @@
             });
 
             /*存款教程*/
-            var mySwiper = new Swiper ('.depositHelpBox .swiper-container', {
+            /*var mySwiper = new Swiper ('.depositHelpBox .swiper-container', {
                   observer:true,
                   observeParents:true,
                   pagination: {
@@ -438,33 +445,44 @@
             });
             $('.depositHelp').click(function(){
                   $(".depositHelpBox").show(100);
-            });
+            });*/
+
+            //选择银行
             $('#selectBank').on('tap', function () {
                   var picker = new mui.PopPicker();
-                  picker.setData([{value:'银行1',text:'银行1'},{value:'银行2',text:'银行2'},{value:'银行3',text:'银行3'}]);
+                  picker.setData([
+                        {value:'gsyh',text:'中国工商银行'},
+                        {value:'nyyh',text:'中国农业银行'},
+                        {value:'jsyh',text:'中国建设银行'},
+                        {value:'zgyh',text:'中国银行'},
+                        {value:'jtyh',text:'中国交通银行'},
+                        {value:'zsyh',text:'招商银行'},
+                  ]);
                   picker.show();
             });
 
             /*存款-提交*/
             $('.btn_submit').on('tap', function () {
-                  mui.alert('<div class="pro_ite">金额：<span>1000</span></div>' +
-                        '<div class="pro_ite">手续费：<span>无手续费</span></div>' +
-                        '<div class="pro_ite">优惠：</div>' +
-                        '<div class="pro_lis">' +
-                        '<div class="mui-scroll-wrapper">' +
-                        '<div class="mui-scroll">' +
-                        '<div class="pro_list_item"><label for="pro_item"><div class="tex">不参与优惠</div><input type="radio" name="pro_ite"></label></div>' +
-                        '<div class="pro_list_item"><label for="pro_item"><div class="tex">存就送9999999999999元</div><input type="radio" name="pro_ite"></label></div>' +
-                        '<div class="pro_list_item"><label for="pro_item"><div class="tex">电子存50000送50000</div><input type="radio" name="pro_ite"></label></div>' +
-                        '<div class="pro_list_item"><label for="pro_item"><div class="tex">电子存50000送50000</div><input type="radio" name="pro_ite"></label></div>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="btn_wrap"><a href="javascript:" class="mui-btn mui-btn-block btn_dep">马上存款</a></div>' +
-                        '','消息');
-                  $('.mui-popup').addClass('deposit_promo_dialog');
-                  mui('.pro_lis .mui-scroll-wrapper').scroll();
-                  $('.mui-popup').find(".mui-popup-button").html('').append("<i class='mui-icon mui-icon-close'></i>")
+//                  mui.alert(
+//                        '<div class="pro_ite">金额：<span>1000</span></div>' +
+//                        '<div class="pro_ite">手续费：<span>无手续费</span></div>' +
+//                        '<div class="pro_ite">优惠：</div>' +
+//                        '<div class="pro_lis">' +
+//                        '<div class="mui-scroll-wrapper">' +
+//                        '<div class="mui-scroll">' +
+//                        '<div class="pro_list_item"><label for="pro_item"><div class="tex">不参与优惠</div><input type="radio" name="pro_ite"></label></div>' +
+//                        '<div class="pro_list_item"><label for="pro_item"><div class="tex">存就送9999999999999元</div><input type="radio" name="pro_ite"></label></div>' +
+//                        '<div class="pro_list_item"><label for="pro_item"><div class="tex">电子存50000送50000</div><input type="radio" name="pro_ite"></label></div>' +
+//                        '<div class="pro_list_item"><label for="pro_item"><div class="tex">电子存50000送50000</div><input type="radio" name="pro_ite"></label></div>' +
+//                        '</div>' +
+//                        '</div>' +
+//                        '</div>' +
+//                        '<div class="btn_wrap"><a href="javascript:" class="mui-btn mui-btn-block btn_dep">马上存款</a></div>' +
+//                        '','消息'
+//                  );
+//                  $('.mui-popup').addClass('deposit_promo_dialog');
+//                  mui('.pro_lis .mui-scroll-wrapper').scroll();
+//                  $('.mui-popup').find(".mui-popup-button").html('').append("<i class='mui-icon mui-icon-close'></i>")
             })
 
             /*顶部导航tab*/

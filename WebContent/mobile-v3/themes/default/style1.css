@@ -40,12 +40,12 @@ body {
       position: relative;
       padding-bottom: 53px;
 }
-.total_asset {
+.total-asset {
       padding-right: 10px;
       border-bottom: 1px solid #ddd;
       background-color: #f3ecec;
 }
-.asset_num {
+.asset-num {
       color: #1b75d9;
       font-size: 14px;
 }

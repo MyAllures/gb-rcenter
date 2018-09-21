@@ -1680,11 +1680,9 @@ body.deposit .gb-select > a {
 .tab_content .swiper-container {
       height: 100%;
 }
-.tab_content .swiper-container .swiper-slide .mui-scroll {
-
-}
 .deposit_2 .list_pay {
-      padding: 12px 10px 8px;
+      background-color: #EFEFEF;
+      padding: 13px 12px;
       overflow: hidden;
 }
 .deposit_2 .list_pay .list_pay_item_w {
@@ -1693,36 +1691,38 @@ body.deposit .gb-select > a {
       padding: 0 4px;
       margin-bottom: 8px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item {
-      height: 68px;
+      box-sizing: border-box;
+      height: 65px;
       background: #fff;
       border-radius: 2px;
       text-align: center;
       padding-top: 5px;
       padding-bottom: 8px;
       border: 1px solid #fff;
-      position: relative; }
+      position: relative;
+}
 .deposit_promo {
       position: absolute;
-      top: 3px;
-      left:  -21px;
-      width: 60px;
-      height: 12px;
-      line-height:  12px;
+      top: 0px;
+      left:  -27px;
+      width: 72px;
+      height: 17px;
+      line-height:  17px;
       text-align: center;
-      background-color: #ff2743;
+      background-color: #CD1F1F;
       color: #ffffff;
-      transform: rotate(-48deg) scale(0.6);
+      transform: rotate(-45deg) scale(0.5);
       box-sizing: border-box;
       white-space: nowrap;
 }
 .deposit_promo::before {
       content: '';
       position: absolute;
-      top: -11px;
-      left: -3px;
+      top: -9px;
+      left: -2px;
       width: 12px;
-      height: 22px;
-      background-color: #dcdcdc;
+      height: 24px;
+      background-color: #EFEFEF;
       transform: rotate(45deg);
 }
 .deposit_promo::after {
@@ -1730,54 +1730,56 @@ body.deposit .gb-select > a {
       position: absolute;
       top: -2px;
       right: -8px;
-      width: 20px;
-      height: 12px;
-      background-color: #dcdcdc;
+      width: 24px;
+      height: 13px;
+      background-color: #EFEFEF;
       transform: rotate(45deg);
 }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item.cur {
       border-color: #1766bb; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay {
-      width: 38px;
-      height: 38px;
+      width: 33px;
+      height: 33px;
       display: block;
       margin: 0 auto 6px;
       background-image: url(images/pay-icon.png);
       background-repeat: no-repeat;
-      background-size: 38px;
+      background-size: 33px;
       background-position-x: center; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.online-pay {
       background-position-y: 0; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.wangyin {
-      background-position-y: -38px; }
+      background-position-y: -33px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.weichat-pay {
-      background-position-y: -76px; }
+      background-position-y: -66px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.alipay {
-      background-position-y: -114px; }
+      background-position-y: -99px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.qq-wallet {
-      background-position-y: -152px; }
+      background-position-y: -132px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.jingdong-wallet {
-      background-position-y: -190px; }
+      background-position-y: -165px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.baidu-wallet {
-      background-position-y: -228px; }
+      background-position-y: -198px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.bitcoin-pay {
-      background-position-y: -266px; }
+      background-position-y: -231px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.yima-pay {
-      background-position-y: -304px; }
+      background-position-y: -264px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.union-pay {
-      background-position-y: -342px; }
+      background-position-y: -297px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.kuaichong {
-      background-position-y: -380px; }
+      background-position-y: -330px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.wangyin-dep {
-      background-position-y: -418px; }
+      background-position-y: -363px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.yishou-pay {
-      background-position-y: -456px; }
+      background-position-y: -396px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.other-pay {
-      background-position-y: -494px; }
+      background-position-y: -429px; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .pay_nam {
-      font-size: 10px;
+      font-size: 12px;
+      transform: scale(0.85);
       color: #333;
-      line-height: 1; }
+      line-height: 1;
+}
 .deposit_2 .pay_mone {
       background: #fff; }
 .deposit_2 .pay_mone .tit {
@@ -1795,29 +1797,40 @@ body.deposit .gb-select > a {
       top: 11px; }
 .deposit_2 .pay_mone .conv_mone {
       overflow: hidden;
-      padding-bottom: 15px; }
+      padding-bottom: 15px;
+}
 .deposit_2 .pay_mone .conv_mone .conv_mone_i {
       width: 20%;
-      float: left; }
+      float: left;
+}
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone {
-      width: 58px;
-      height: 58px;
+      width: 50px;
+      height: 50px;
       display: block;
       margin: 0 auto;
-      background-image: url(images/conv_mone1.png);
       background-repeat: no-repeat;
       background-size: 100%;
-      background-position-x: center; }
+      background-position-x: center;
+      text-align: center;
+      line-height: 50px;
+      color: #333;
+      font-size: 13px;
+}
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_100 {
-      background-position-y: 0; }
+      background-image: url(images/chip_blue.png);
+}
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_200 {
-      background-position-y: -58px; }
+      background-image: url(images/chip_red.png);
+}
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_500 {
-      background-position-y: -116px; }
+      background-image: url(images/chip_yellow.png);
+}
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_1000 {
-      background-position-y: -174px; }
+      background-image: url(images/chip_green.png);
+}
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_5000 {
-      background-position-y: -232px; }
+      background-image: url(images/chip_black.png);
+}
 .deposit_2 .pay_mone .bank_list {
       overflow: hidden;
       padding: 0 10px;
@@ -1963,35 +1976,63 @@ body.deposit .gb-select > a {
       display: flex;
       height: 50px;
       font-size: 14px; }
+.mui-poppicker-header {
+      background-color: #646464;
+}
+.mui-poppicker-header .mui-btn {
+      background-color: transparent;
+      font-size:  17px;
+      border: none;
+}
+.mui-poppicker-btn-cancel {
+      color: #CCC;
+}
+.mui-poppicker-btn-ok {
+      color: #3D97FF !important;
+}
+.mui-picker-inner {
+      background-color: #fff;
+      -webkit-mask-box-image: none;
+}
 .deposit_2 .depo_row .label {
       width: 100px;
       line-height: 49px;
       padding-left: 10px;
-      color: #666; }
+      color: #999;
+      font-size: 14px;
+}
 .deposit_2 .depo_row .label.w_120 {
       width: 120px; }
-.deposit_2 .depo_row .input {
-      flex: 1; }
-.deposit_2 .depo_row .input input[type='text'] {
+.input_dp_num, .input_dp_bank {
+      flex: 1;
       border: 0;
       margin: 0;
       height: 49px;
       line-height: 49px;
       padding: 0 10px;
+}
+.input_dp_num input, .input_dp_bank input {
+      border: none;
+      outline:  none;
       font-size: 14px;
-      color: #333; }
-.deposit_2 .depo_row .input input[type='text'].text-right {
-      text-align: right; }
+      color: #333;
+}
+.input_dp_num input::-webkit-input-placeholder {
+      color: #333;
+}
 .deposit_2 .depo_row .ext {
       width: 50px;
       height: 49px;
       text-align: center;
       line-height: 49px;
-      color: #333; }
+      color: #333;
+}
 .deposit_2 .depo_row .ext .cha {
       background: #e2e2e2; }
 .deposit_2 .btn_wrap {
-      padding: 20px 10px; }
+      padding: 20px 14px;
+      background-color: #EFEFEF;
+}
 .deposit_2 .btn_wrap .btn_submit {
       height: 40px;
       line-height: 40px;
@@ -1999,9 +2040,12 @@ body.deposit .gb-select > a {
       text-align: center;
       font-size: 14px;
       color: #fff;
-      background: #1766bb;
-      border-color: #1766bb; }
+      background: #1C75DB;
+      border: none;
+      border-radius: 5px;
+}
 .deposit_2 .deposit_help {
+      background-color: #EFEFEF;
       padding: 0 20px 40px;
       font-size: 12px;
       color: #666; }
@@ -2191,7 +2235,7 @@ body.deposit .gb-select > a {
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.3);
-      /*display: none; */
+      display: none;
 }
 
 .masker.darker {
@@ -4311,7 +4355,7 @@ body.cash-detail .fail-reason.mui-input-row > .ct {
       margin: 0 15px;
       padding: 0; }
 
-/* exchange */
+/******************* exchange  page*********************/
 body.exchange {
       color: #000; }
 body.exchange .mui-content {

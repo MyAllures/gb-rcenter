@@ -424,7 +424,7 @@ a.audit_back_home {
       width: 48px;
 }
 
-/* index-login-info */
+/*************************index-login-info************************/
 .login-info .money {
       background: url(images/icon-wallet.png) no-repeat 0 2px/10px;
 }
@@ -533,6 +533,7 @@ a.audit_back_home {
       text-align: center;
       border-radius: 5px;
       background: #2377D6;
+      color: #fff;
 }
 .saving_money {
       width: 206px;
@@ -541,7 +542,384 @@ a.audit_back_home {
       text-align: center;
       border-radius: 5px;
       background: #28BD95;
+      color: #fff;
 }
+
+/***************************QQ钱包付款**************************/
+.online-pay-qq-wallet .mui-content {
+      background-color: #EFEFEF;
+}
+.online-pay-qq-wallet  .qq_account_info {
+      background-color: #fff;
+}
+.online-pay-qq-wallet .account_info_title {
+      font-size: 14px;
+      color: #333;
+      padding: 10px 24px;
+      position: relative;
+}
+.online-pay-qq-wallet .account_info_title:before {
+      content: '';
+      width: 3px;
+      height: 17px;
+      background: #1766bb;
+      position: absolute;
+      left: 11px;
+      top: 11px;
+}
+.qq_wallet_name {
+      width: 90%;
+      margin: 7px auto 0;
+      text-align: center;
+}
+.qq_wallet_txt {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 13px;
+}
+.qq_wallet_txt .qq_wallet_icon {
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+      background-image: url("../../themes/images/pay-icon.png");
+      background-repeat:  no-repeat;
+      background-size: 38px;
+      background-position-x: center;
+      background-position-y: -152px;
+}
+.qq_wallet_txt .qq_txt_style {
+      color: #333;
+      font-size: 14px;
+      margin-left: 10px;
+}
+.user_nickname {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 13px;
+      color: #333;
+      font-size: 16px;
+}
+.user_nickname .nickname_copy {
+      display: inline-block;
+      width: 50px;
+      height: 19px;
+      line-height: 19px;
+      text-align: center;
+      background-color: #F6FAFF;
+      color: #1F67B9;
+      border-radius: 10px;
+      margin-left: 5px;
+      font-size: 14px;
+}
+.qq_copy_box {
+      margin: 17px 29px 10px;
+      background-color: #F7F7F7;
+      padding: 12px 13px;
+      border-radius: 3px;
+}
+.copy_account, .copy_nickname {
+      box-sizing: border-box;
+      height: 37px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+}
+.copy_account {
+      border-bottom: 1px solid #E6E6E6;
+}
+.account_txt i, .nickname_txt i  {
+      font-style: normal;
+      font-size: 14px;
+      color: #999;
+}
+.account_txt span, .nickname_txt span {
+      font-size: 14px;
+      color: #333;
+      margin-left: 5px;
+}
+.qq_account_copy, .qq_nickname_copy {
+      display: inline-block;
+      width: 50px;
+      height: 19px;
+      line-height: 19px;
+      text-align: center;
+      background-color: #ffffff;
+      color: #999;
+      border-radius: 10px;
+      font-size: 14px;
+}
+.qr_code_info {
+      margin: 0 29px;
+      background-color: #F7F7F7;
+      padding: 0 14px 16px;
+}
+.qr_code_txt {
+      font-size: 16px;
+      color: #333;
+      text-align: center;
+      padding: 14px 0;
+      border-bottom: 1px solid #CCCCCC;
+}
+.qr_code_img {
+      box-sizing: border-box;
+      width: 100px;
+      height: 100px;
+      padding: 5px;
+      margin: 12px auto 15px;
+      background: #fff url("../../images/qcode.png") no-repeat;
+      background-size: contain;
+}
+.qr_code_btns {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: row;
+      justify-content: center;
+      align-items: center;
+}
+.save_to_phone {
+      color: #1F67B9;
+      font-size: 14px;
+      border-right: 1px solid #CCCCCC;
+      padding-right: 11px;
+}
+.use_qq_pay {
+      color: #0EC392;
+      font-size: 14px;
+      padding-left: 11px;
+}
+.qq_account_num, .order_last_num {
+      height: 51px;
+      padding: 0 15px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+}
+.qq_account_num {
+      border-bottom: 1px solid #F2F2F2;
+}
+.qq_account_num span, .order_last_num span {
+      font-size: 14px;
+      color: #999;
+      flex: 1;
+}
+.input_qq_account, .input_order_num   {
+      text-align: right;
+      flex: 1;
+      border: none !important;
+      outline: none;
+      margin-bottom: 0 !important;
+      padding: 8px 5px !important;
+}
+.input_qq_account::-webkit-input-placeholder  {
+      color: #CCCCCC;
+      font-size: 14px;
+}
+.input_order_num::-webkit-input-placeholder  {
+      color: #333;
+      font-size: 14px;
+}
+.online-pay-qq-wallet .btn_wrap {
+      padding: 20px 14px;
+      background-color: #EFEFEF;
+}
+.online-pay-qq-wallet .btn_wrap .btn_submit {
+      height: 40px;
+      line-height: 40px;
+      padding: 0;
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+      background: #1C75DB;
+      border: none;
+      border-radius: 5px;
+}
+.online-pay-qq-wallet .deposit_help {
+      background-color: #EFEFEF;
+      padding: 0 20px 40px;
+      font-size: 12px;
+      color: #666; }
+.online-pay-qq-wallet .deposit_help p {
+      margin-bottom: 0; }
+
+/*****************************柜台付款****************************/
+.online-pay-counter .mui-content {
+        background-color: #EFEFEF;
+  }
+.online-pay-counter  .counter_account_info {
+      background-color: #fff;
+}
+.online-pay-counter .account_info_title {
+      font-size: 14px;
+      color: #333;
+      padding: 10px 24px;
+      position: relative;
+}
+.online-pay-counter .account_info_title:before {
+      content: '';
+      width: 3px;
+      height: 17px;
+      background: #1766bb;
+      position: absolute;
+      left: 11px;
+      top: 11px;
+}
+.bank_name {
+      width: 90%;
+      margin: 7px auto 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 13px;
+}
+.bank_counter_icon {
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+      background-image: url("../../themes/images/pay_bank_b.png");
+      background-repeat:  no-repeat;
+      background-size: 38px;
+      background-position-x: center;
+      background-position-y: -340px;
+}
+.counter_txt_style {
+      color: #333;
+      font-size: 14px;
+}
+.bank_card_resume {
+      color: #999;
+      font-size: 14px;
+}
+.bank_copy_box {
+      margin: 17px 29px 10px;
+      background-color: #F7F7F7;
+      padding: 0 13px;
+      border-radius: 3px;
+}
+.account_code_info, .copy_account_name, .copy_bank_name {
+      box-sizing: border-box;
+      height: 37px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #E6E6E6;
+}
+.copy_account_name {
+      border-bottom: 1px solid #E6E6E6;
+}
+.copy_bank_name {
+      border-bottom: none;
+}
+.account_code_info i {
+      font-style: normal;
+      color: #1F67B9;
+      font-size: 14px;
+}
+.account_code_icon {
+      width: 23px;
+      height: 19px;
+      background: url("../../themes/images/icon_contact.png") no-repeat;
+      position:relative;
+      right: 14px;
+}
+.copy_account_name .account_txt i, .copy_bank_name .bank_name_txt i  {
+      font-style: normal;
+      font-size: 14px;
+      color: #999;
+}
+.copy_account_name .account_txt span, .copy_bank_name .bank_name_txt span {
+      font-size: 14px;
+      color: #333;
+      margin-left: 5px;
+}
+.account_name_copy, .bank_name_copy {
+      display: inline-block;
+      width: 50px;
+      height: 19px;
+      line-height: 19px;
+      text-align: center;
+      background-color: #ffffff;
+      color: #999;
+      border-radius: 10px;
+      font-size: 14px;
+}
+.deposit_info {
+      margin-top: 20px;
+}
+.deposit_way, .deposit_person, .deposit_location {
+      height: 51px;
+      padding: 0 15px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #F2F2F2;
+      color: #333;
+}
+.deposit_way span, .deposit_person span, .deposit_location span {
+      font-size: 14px;
+      color: #999;
+      flex: 1;
+}
+
+.input_deposit_person, .input_deposit_place   {
+      text-align: right;
+      flex: 1;
+      border: none !important;
+      outline: none;
+      margin-bottom: 0 !important;
+      padding: 8px 5px !important;
+}
+.input_deposit_way {
+      font-style: normal;
+      color: #333;
+      text-align: right;
+      flex: 1;
+      border: none ;
+      outline: none;
+      margin-bottom: 0 ;
+      padding: 8px 5px ;
+}
+.input_deposit_person::-webkit-input-placeholder  {
+      color: #CCC;
+      font-size: 14px;
+}
+.input_deposit_place::-webkit-input-placeholder  {
+      color: #333;
+      font-size: 14px;
+}
+
+.online-pay-counter .btn_wrap {
+      padding: 20px 14px;
+      background-color: #EFEFEF;
+}
+.online-pay-counter .btn_wrap .btn_submit {
+      height: 40px;
+      line-height: 40px;
+      padding: 0;
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+      background: #1C75DB;
+      border: none;
+      border-radius: 5px;
+}
+.online-pay-counter .deposit_help {
+      background-color: #EFEFEF;
+      padding: 0 20px 40px;
+      font-size: 12px;
+      color: #666; }
+.online-pay-counter .deposit_help p {
+      margin-bottom: 0; }
+
+
 
 
 /* 修补样式 */
@@ -630,11 +1008,6 @@ a.audit_back_home {
 
 .content-casino-transfer .game-item .game-detail .g-money {
       color: #fff;
-}
-
-.deposit_2 .btn_wrap .btn_submit {
-      background: #151515;
-      border-color: #151515;
 }
 
 body.withdraw .gb-form-foot .submit {
