@@ -163,6 +163,9 @@ define(['common/BasePage', 'site/home/include/Chart', 'site/home/include/Table',
             $('div#openMoreAgent').show();
             $('div#hideMoreAgent').hide();
             $(e.currentTarget).unlock();
+        },
+        refreshPage : function (e) {
+            window.location.reload();
         }
     });
 });
