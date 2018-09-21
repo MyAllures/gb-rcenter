@@ -35,7 +35,7 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell a { background: #252525; }
 .api-grid ul[data-list="lottery"] .lottery-nav { color: #333; border-bottom: 1px solid #fff; }
 .api-grid ul[data-list="lottery"] .lottery-nav ul { background: transparent; }
-.api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item { color: #333; border-bottom: 1px solid transparent; }
+.api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item { color: #fff; border-bottom: 1px solid transparent; }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.mui-active { border-bottom: 1px solid #168df6; }
 
 /* mui-bar-footer */
