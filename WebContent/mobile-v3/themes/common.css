@@ -87,8 +87,9 @@ li {
       vertical-align: middle; }
 
 .mine-form .mui-input-row > .ct input {
-      font-size: 12px;
-      color: #999; }
+      font-size: 14px;
+      color: #333;
+}
 
 .mine-form input {
       width: 100%;
@@ -2226,7 +2227,240 @@ body.deposit .gb-select > a {
       bottom: 62%;
       left: 44%; }
 
-/*弹窗*/
+/*********存款-> 资金转账页面 ************/
+.asset_transfer_page {
+      background-color: #F6FAFF;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+}
+.asset_transfer_page .total_asset_info {
+      width: 100%;
+      height: 73px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid #E6E6E6;
+}
+.asset_transfer_page .total_money_num, .asset_transfer_page .wallet_balance_num {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+}
+.asset_transfer_page .total_money_num {
+      border-right: 1px solid #E6E6E6;
+}
+.asset_transfer_page .total_money_num span, .asset_transfer_page .wallet_balance_num span {
+      color: #333;
+      font-size: 13px;
+}
+.asset_transfer_page .total_money_num i {
+      color: #1F67B9;
+      font-size: 15px;
+      font-style: normal;
+}
+.asset_transfer_page .wallet_balance_num i {
+      color: #0EC392;
+      font-size: 15px;
+      font-style: normal;
+}
+.asset_transfer_page .all_items {
+      background-color: #fff;
+      height: 363px;
+      /*position: relative;*/
+      overflow: scroll;
+}
+.asset_transfer_page .all_items .mui-scroll-wrapper {
+      top: 71px;
+      overflow:  visible;
+}
+.asset_transfer_page .each_line {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      /*align-items: center;*/
+      border-bottom: 1px solid #E6E6E6;
+}
+.asset_transfer_page .each_item {
+      width: 33.33%;
+      /*height: 72px;*/
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 10px 11px;
+      border-right: 1px solid #E6E6E6;
+}
+.asset_transfer_page .each_item.game_maintaining {    /*游戏维护中*/
+      background: url("images/maintaining_bg.png") repeat;
+}
+.asset_transfer_page .each_item:last-child {
+      /*border-right: 0;*/
+}
+.asset_transfer_page .item_name {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+}
+.asset_transfer_page .item_name span {
+      color: #999;
+      font-size: 12px;
+}
+.asset_transfer_page .each_item.game_maintaining span{
+      color: #CCC;
+}
+.asset_transfer_page .item_name i {
+      width:15px;
+      height: 15px;
+}
+.asset_transfer_page .each_item.item_active i{  /*active状态下*/
+      background: url("images/icon_recycling.png") no-repeat;
+}
+.asset_transfer_page .each_item.game_maintaining i {    /*游戏维护中*/
+      background: url("images/icon_lock.png") no-repeat;
+}
+.asset_transfer_page .each_item b {
+      color: #333;
+      font-size: 12px;
+      font-weight: normal;
+}
+.asset_transfer_page .each_item.item_active b{
+      color: #EDA82F;
+}
+.asset_transfer_page .each_item.game_maintaining b{
+      color: #CCC;
+}
+.asset_transfer_page .item_num {
+
+}
+.asset_transfer_page .no_more_content {
+      width: 100%;
+      /*height: 100px;*/
+      background-color: #F6FAFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      margin-bottom: 44px;
+      box-sizing: border-box;
+}
+.asset_transfer_page .no_more_content i {
+      width: 30px;
+      height: 30px;
+      background: url("images/icon_up.png") no-repeat;
+      margin-bottom: 8px;
+}
+.asset_transfer_page .no_more_content span {
+      color: #CCCCCC;
+      font-size: 12px;
+}
+.asset_transfer_page .btn_groups {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 44px;
+}
+.asset_transfer_page .btn_groups_recycle, .asset_transfer_page .btn_groups_refresh {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      color: #fff;
+      flex:1;
+}
+.asset_transfer_page .btn_groups_recycle{
+      background-color: #2377D6;
+}
+.asset_transfer_page .btn_groups_refresh {
+      background-color: #0EC392;
+}
+/****************存款->提现页面*************/
+.withdraw_money_page {
+      background-color: #EFEFEF;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding-top: 10px;
+}
+.withdraw_money_page .bankitem {
+      height: 50px;
+      line-height: 50px;
+      padding-left: 15px;
+}
+.withdraw_money_page .bankitem i {
+      font-style: normal;
+      color: #333;
+      font-size: 14px;
+}
+.withdraw_money_page .deposit_num_label {
+      color: #999 !important;
+      font-size: 14px !important;
+}
+.withdraw_money_page .input_deposit_num::-webkit-input-placeholder {
+      font-size: 14px;
+      color: #333;
+}
+.withdraw_money_page .mine-form .mui-input-row > label {
+      color: #999;
+      font-size: 14px;
+}
+.withdraw_money_page .mine-form .mui-input-row > .ct {
+      padding-right: 15px;
+}
+.withdraw_money_page .mui-input-group:before {
+      background-color: #E2E2E2;
+}
+.withdraw_money_page .mui-input-group:after {
+      background-color: #E2E2E2;
+}
+.withdraw_money_page .mui-input-group .mui-input-row:after {
+      background-color: #E2E2E2;
+      right: 11px;
+}
+.withdraw_money_page .gb-form-foot {
+      padding: 14px 15px;
+}
+.withdraw_money_page  .check_audit_btn {
+      color: #1F67B9;
+}
+.withdraw_money_page .gb-form-foot .submit {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 13px;
+      margin-top: 14px;
+      background-color: #1B75D9;
+      color: #FFF;
+      font-size: 14px;
+      border-radius: 4px;
+      border: none;
+}
+
+
+
+
+
+
+      /*弹窗*/
 .masker {
       position: fixed;
       z-index: 999;
