@@ -1737,44 +1737,75 @@ body.deposit .gb-select > a {
       transform: rotate(45deg);
 }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item.cur {
-      border-color: #1766bb; }
+      border-color: #1766bb;
+      background-color: rgba(23,102,187, .2);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay {
       width: 33px;
       height: 33px;
       display: block;
       margin: 0 auto 6px;
-      background-image: url(images/pay-icon.png);
+      /*background-image: url(images/pay-icon.png);*/
       background-repeat: no-repeat;
-      background-size: 33px;
-      background-position-x: center; }
+      background-size: 33px 33px;
+      /*background-position-x: center; */
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.online-pay {
-      background-position-y: 0; }
+      /*background-position-y: 0; */
+      background-image: url(images/online_payment@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.wangyin {
-      background-position-y: -33px; }
+      /*background-position-y: -33px; */
+      background-image: url(images/online_banking_deposit@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.weichat-pay {
-      background-position-y: -66px; }
+      /*background-position-y: -66px;*/
+      background-image: url(images/wchat@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.alipay {
-      background-position-y: -99px; }
+      /*background-position-y: -99px;*/
+      background-image: url(images/alipay@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.qq-wallet {
-      background-position-y: -132px; }
+      /*background-position-y: -132px;*/
+      background-image: url(images/tencent@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.jingdong-wallet {
-      background-position-y: -165px; }
+      /*background-position-y: -165px;*/
+      background-image: url(images/jingdong_wallet@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.baidu-wallet {
-      background-position-y: -198px; }
+      /*background-position-y: -198px;*/
+      background-image: url(images/baidu_wallet@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.bitcoin-pay {
-      background-position-y: -231px; }
+      /*background-position-y: -231px;*/
+      background-image: url(images/bitcoin@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.yima-pay {
-      background-position-y: -264px; }
+      /*background-position-y: -264px;*/
+      background-image: url(images/one_yard_pay@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.union-pay {
-      background-position-y: -297px; }
+      /*background-position-y: -297px;*/
+      background-image: url(images/unionPay_scan_code@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.kuaichong {
-      background-position-y: -330px; }
+      /*background-position-y: -330px;*/
+      background-image: url(images/fast_charge_center@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.wangyin-dep {
-      background-position-y: -363px; }
+      /*background-position-y: -363px; */
+      background-image: url(images/teller_machine@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.yishou-pay {
-      background-position-y: -396px; }
+      /*background-position-y: -396px; */
+      background-image: url(images/easy_to_pay@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.other-pay {
-      background-position-y: -429px; }
+      /*background-position-y: -429px;*/
+      background-image: url(images/other@2x.png);
+}
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .pay_nam {
       font-size: 12px;
       transform: scale(0.85);
@@ -1810,7 +1841,8 @@ body.deposit .gb-select > a {
       display: block;
       margin: 0 auto;
       background-repeat: no-repeat;
-      background-size: 100%;
+      /*background-size: 100%;*/
+      background-size: 50px 50px;
       background-position-x: center;
       text-align: center;
       line-height: 50px;
@@ -1818,19 +1850,19 @@ body.deposit .gb-select > a {
       font-size: 13px;
 }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_100 {
-      background-image: url(images/chip_blue.png);
+      background-image: url(images/chip_blue@3x.png);
 }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_200 {
-      background-image: url(images/chip_red.png);
+      background-image: url(images/chip_red@3x.png);
 }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_500 {
-      background-image: url(images/chip_yellow.png);
+      background-image: url(images/chip_yellow@3x.png);
 }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_1000 {
-      background-image: url(images/chip_green.png);
+      background-image: url(images/chip_green@3x.png);
 }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_5000 {
-      background-image: url(images/chip_black.png);
+      background-image: url(images/chip_black@3x.png);
 }
 .deposit_2 .pay_mone .bank_list {
       overflow: hidden;

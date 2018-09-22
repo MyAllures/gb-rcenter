@@ -61,16 +61,14 @@
                         </div>
                         <div class="deposit_person">
                               <span>存款人</span>
-                              <input class="input_deposit_person" type="number" placeholder="请输入转帐号对应的姓名 ">
+                              <input class="input_deposit_person" type="text" placeholder="请输入转帐号对应的姓名 ">
                         </div>
                         <div class="deposit_location">
                               <span>存款地点</span>
-                              <input class="input_deposit_place" type="number" placeholder="中国">
+                              <input class="input_deposit_place" type="text" placeholder="中国">
                         </div>
                   </div>
             </div>
-
-
 
             <!--提交-->
             <div class="btn_wrap">
@@ -81,17 +79,21 @@
             <div class="deposit_help">
                   <p>温馨提示</p>
                   <p>
-                        *为了提高对账速度及成功率，当前支付方式已开随机额度，请
-                        输入整数存款金额，将随机增加0.11~0.99元！
+                        *为了提高对账速度及成功率，当前支付方式已开随机额度，请输入整数存款金额，将随机增加0.11~0.99元！
                   </p>
                   <p>*请保留好转账单据作为核对证明。</p>
                   <p>
-                        *如出现充值失败或充值后未到账等情况，请联系在线客服获取
-                        帮助。
-                        <!--<a href="javascript:;">点击联系在线客服</a>-->
+                        *如出现充值失败或充值后未到账等情况，请联系在线客服获取帮助。
                   </p>
             </div>
+
+            <!--复制成功提示框-->
+            <div class="copy_success">
+                  <i></i>
+                  <span>复制成功</span>
+            </div>
       </div>
+
 </div>
 
 <!-----------------------------------------------footer--------------------------------------------->
@@ -123,6 +125,21 @@
 <script src="../../mobile-v3/js/common.js"></script>
 <script>
       $(function () {
+            /*弹出复制成功弹框,1秒后消失*/
+            $('.account_name_copy').click(function () {
+                  $('.copy_success').fadeIn(300);
+                  setTimeout(function () {
+                        $('.copy_success').fadeOut(200)
+                  },1000);
+            })
+
+            $('.bank_name_copy').click(function () {
+                  $('.copy_success').fadeIn(300); /*css("opacity","1")*/
+                  setTimeout(function () {
+                        $('.copy_success').fadeOut(200)
+                  },1000);
+            })
+
       });
 </script>
 </body>
