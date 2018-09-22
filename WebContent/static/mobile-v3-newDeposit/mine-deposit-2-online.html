@@ -179,7 +179,7 @@
                                                 <!--QQ钱包付款页面-->
                                                 <a href="online-pay-qq-wallet.html" class="mui-btn btn_submit mui-btn-block">提交</a>
                                                 <!--柜台付款页面-->
-                                                <a href="online-pay-counter.html" class="mui-btn btn_submit mui-btn-block">提交</a>
+                                                <!--<a href="online-pay-counter.html" class="mui-btn btn_submit mui-btn-block">提交</a>-->
                                           </div>
                                           <!--提示说明-->
                                           <div class="deposit_help">
@@ -376,12 +376,20 @@
                         <div class="swiper-slide">
                               <div class="withdraw_money_page">
                                     <div class="mui-row">
-                                          <div class="mui-input-group mine-form">
+                                          <!--未绑定银行卡-->
+                                          <a class="mui-input-group mine-form" href="javascript:;">
+                                                <div class="bankitem unbind_card">
+                                                      <i>请先绑定银行卡</i>
+                                                      <span class="unbind_card_icon"></span>
+                                                </div>
+                                          </a>
+                                          <!--已绑定银行卡-->
+                                          <!--<div class="mui-input-group mine-form">
                                                 <div class="bankitem">
                                                       <span class="pay-bank icbc"></span>
                                                       <i>虞*   6222 0209  **** 3077</i>
                                                 </div>
-                                          </div>
+                                          </div>-->
                                           <div class="mui-input-group mine-form m-t-sm">
                                                 <div class="mui-input-row">
                                                       <label  class="deposit_num_label">取款金额</label>

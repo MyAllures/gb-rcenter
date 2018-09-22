@@ -2434,15 +2434,33 @@ body.deposit .gb-select > a {
       bottom: 0;
       padding-top: 10px;
 }
-.withdraw_money_page .bankitem {
+.withdraw_money_page .bankitem, .withdraw_money_page .bankitem.unbind_card {
       height: 50px;
       line-height: 50px;
       padding-left: 15px;
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      align-items: center;
+      background-color: #fff;
 }
 .withdraw_money_page .bankitem i {
       font-style: normal;
       color: #333;
       font-size: 14px;
+}
+.withdraw_money_page .bankitem.unbind_card i {
+      font-style: normal;
+      color: #1F67B9;
+      font-size: 14px;
+}
+.withdraw_money_page .bankitem.unbind_card .unbind_card_icon {
+      display: inline-block;
+      width: 19px;
+      height: 14px;
+      background: url("images/icon_credit@2x.png") no-repeat;
+      background-size: 19px 14px;
+      margin-left: 5px;
 }
 .withdraw_money_page .deposit_num_label {
       color: #999 !important;
