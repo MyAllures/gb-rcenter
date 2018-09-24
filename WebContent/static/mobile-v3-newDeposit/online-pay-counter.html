@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8">
+      <title>Dawoo</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+      <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+      <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+      <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+      <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+      <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+</head>
+
+<body class="online-pay-counter">
+<header class="mui-bar mui-bar-nav">
+      <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+      <h1 class="mui-title">柜员机/柜台付款</h1>
+</header>
+
+<div class="mui-content mui-scroll-wrapper">
+      <div class="mui-scroll">
+            <div class="mui-row "> </div>
+            <div class="counter_account_info">
+                  <!--账号信息-->
+                  <div class="account_info_title">账号信息</div>
+                  <div class="bank_name">
+                        <i class="mui-icon bank_counter_icon"></i>
+                        <span  class="counter_txt_style">工商银行</span>
+                        <span class="bank_card_resume">（储蓄卡）</span>
+                  </div>
+                  <!--复制开户行信息-->
+                  <div class="bank_copy_box">
+                        <div class="account_code_info">
+                              <i>帐号代码 0000172601212</i>
+                              <span class="account_code_icon"></span>
+                        </div>
+                        <div class="copy_account_name">
+                              <div class="account_txt">
+                                    <i>开户名</i>
+                                    <span>172601212</span>
+                              </div>
+                              <span class="account_name_copy">复制</span>
+                        </div>
+                        <div class="copy_bank_name">
+                              <div class="bank_name_txt">
+                                    <i>开户行</i>
+                                    <span>玩家姓名</span>
+                              </div>
+                              <span class="bank_name_copy">复制</span>
+                        </div>
+                  </div>
+
+                  <!--存款信息-->
+                  <div class="deposit_info">
+                        <div class="deposit_way">
+                              <span>存款方式</span>
+                              <i class="input_deposit_way">柜台机现金存款</i>
+                        </div>
+                        <div class="deposit_person">
+                              <span>存款人</span>
+                              <input class="input_deposit_person" type="text" placeholder="请输入转帐号对应的姓名 ">
+                        </div>
+                        <div class="deposit_location">
+                              <span>存款地点</span>
+                              <input class="input_deposit_place" type="text" placeholder="中国">
+                        </div>
+                  </div>
+            </div>
+
+            <!--提交-->
+            <div class="btn_wrap">
+                  <!--<a href="javascript:" class="mui-btn btn_submit mui-btn-block">提交</a>-->
+                  <a href="online-pay-qq-wallet.html" class="mui-btn btn_submit mui-btn-block">提交</a>
+            </div>
+            <!--提示说明-->
+            <div class="deposit_help">
+                  <p>温馨提示</p>
+                  <p>
+                        *为了提高对账速度及成功率，当前支付方式已开随机额度，请输入整数存款金额，将随机增加0.11~0.99元！
+                  </p>
+                  <p>*请保留好转账单据作为核对证明。</p>
+                  <p>
+                        *如出现充值失败或充值后未到账等情况，请联系在线客服获取帮助。
+                  </p>
+            </div>
+
+            <!--复制成功提示框-->
+            <div class="copy_success">
+                  <i></i>
+                  <span>复制成功</span>
+            </div>
+      </div>
+
+</div>
+
+<!-----------------------------------------------footer--------------------------------------------->
+<footer class="mui-bar mui-bar-tab">
+      <a class="mui-tab-item" href="../mobile-v3/index.html">
+            <span class="mui-icon icon-home"></span>
+            <span class="mui-tab-label">首页</span>
+      </a>
+      <a class="mui-tab-item mui-active" href="mine-deposit-2-online.html">
+            <span class="mui-icon icon-deposit"></span>
+            <span class="mui-tab-label">存款</span>
+      </a>
+      <a class="mui-tab-item" href="../mobile-v3/promo.html">
+            <span class="mui-icon icon-promo"></span>
+            <span class="mui-tab-label">优惠</span>
+      </a>
+      <a class="mui-tab-item"  href="">
+            <span class="mui-icon icon-service"></span>
+            <span class="mui-tab-label">客服</span>
+      </a>
+      <a class="mui-tab-item" href="../mobile-v3/mine_new.html">
+            <span class="mui-icon icon-mine"></span>
+            <span class="mui-tab-label">我的</span>
+      </a>
+</footer>
+
+<script src="../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/common.js"></script>
+<script>
+      $(function () {
+            /*弹出复制成功弹框,1秒后消失*/
+            $('.account_name_copy').click(function () {
+                  $('.copy_success').fadeIn(300);
+                  setTimeout(function () {
+                        $('.copy_success').fadeOut(200)
+                  },1000);
+            })
+
+            $('.bank_name_copy').click(function () {
+                  $('.copy_success').fadeIn(300); /*css("opacity","1")*/
+                  setTimeout(function () {
+                        $('.copy_success').fadeOut(200)
+                  },1000);
+            })
+
+      });
+</script>
+</body>
+</html>
