@@ -1,220 +1,232 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Dawoo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
-    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
-    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
-    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
-    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
-    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+      <meta charset="utf-8">
+      <title>Dawoo</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+      <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+      <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+      <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+      <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+      <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
 </head>
 
 <body class="withdraw">
 <header class="mui-bar mui-bar-nav">
-    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-    <h1 class="mui-title">取款</h1>
+      <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+      <h1 class="mui-title">取款</h1>
 </header>
 <div class="mui-content mui-scroll-wrapper widthdraw-content">
-    <div class="mui-scroll">
-        <div class="account_tab">
-            <div class="mui-segmented-control">
-                <a class="mui-control-item mui-active" href="#bank_account">银行卡账户</a>
-                <a class="mui-control-item" href="#bit_account">比特币账户</a>
+      <div class="mui-scroll">
+            <!--选择账户-->
+            <!--<div class="account_tab">
+                  <div class="mui-segmented-control">
+                        <a class="mui-control-item mui-active" href="#bank_account">银行卡账户</a>
+                        <a class="mui-control-item" href="#bit_account">比特币账户</a>
+                  </div>
+            </div>-->
+            <div class="mui-clearfix">
+                  <div class="mui-control-content mui-active" id="bank_account">
+                        <div class="mui-scroll">
+                              <div class="mui-row">
+                                    <div class="mui-input-group mine-form">
+                                          <div class="bankitem">
+                                                <span>
+                                                      <span class="pay-bank s cmb"></span>
+                                                      <span>宋*宝 ***0945</span>
+                                                </span>
+                                                <p>
+                                                      <span>取款处理中</span>
+                                                      <span class="text-green">￥1000</span>
+                                                </p>
+                                                <div class="clearfix"></div>
+                                          </div>
+                                    </div>
+                                    <div class="mui-input-group mine-form m-t-sm">
+                                          <div class="mui-input-row"><label  >取款金额</label>
+                                                <div class="ct">
+                                                      <input type="number" class=" text-gray" placeholder="请输入整数金额">
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <div class="mui-input-group mine-form m-t-sm">
+                                          <div class="mui-input-row"><label  >手续费</label>
+                                                <div class="ct">
+                                                      <p class="mui-text-right text-gray">
+                                                            --
+                                                      </p>
+                                                </div>
+                                          </div>
+                                          <div class="mui-input-row"><label  >行政费</label>
+                                                <div class="ct">
+                                                      <p class="mui-text-right text-gray">
+                                                            -￥20.00
+                                                      </p>
+                                                </div>
+                                          </div>
+                                          <div class="mui-input-row"><label  >扣除优惠</label>
+                                                <div class="ct">
+                                                      <p class="mui-text-right text-gray">
+                                                            -￥200.00
+                                                      </p>
+                                                </div>
+                                          </div>
+                                          <div class="mui-input-row"><label  >最终可取</label>
+                                                <div class="ct">
+                                                      <p class="mui-text-right text-green">
+                                                            <span class="text-green">￥80.00</span>
+                                                      </p>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="mui-row">
+                                    <div class="gb-form-foot">
+                                          <div class="text mui-text-right">
+                                                <a href="../mobile-v3-newDeposit/audit-login.html">查看稽核</a>
+                                          </div>
+                                          <a href="javascript:;" class="mui-btn mui-btn-primary submit">确认提交</a>
+                                    </div>
+                              </div>
+                              <!--取款金额小于最低金额时显示-->
+                              <div class="withdraw-not">
+                                    <h1><i class="tipbig fail"></i></h1>
+                                    <div class="tiptext">
+                                          <p>取款金额最少为1.00元</p>
+                                          <p>您当前钱包余额不足，您可以先把游戏里的钱转到钱包！</p>
+                                    </div>
+                                    <a class="mui-btn mui-btn-blue btn-deposit" data-target="1" data-os="ios" data-skip="/wallet/deposit/index.html">快速存款</a>
+                              </div>
+                        </div>
+                  </div>
+                  <!--比特币账户-->
+                  <!--<div class="mui-control-content" id="bit_account">
+                        <div class="mui-scroll">
+                              <div class="mui-row">
+                                    <div class="mui-input-group mine-form">
+                                          <div class="bankitem">
+                                                <span><span class="pay-bank s cmb"></span>比特币 ***0945</span>
+                                                <p>取款处理中<span class="text-green">￥1000</span></p>
+                                                <div class="clearfix"></div>
+                                          </div>
+                                    </div>
+                                    <div class="mui-input-group mine-form m-t-sm">
+                                          <div class="mui-input-row"><label  >取款金额</label>
+                                                <div class="ct">
+                                                      <p class="mui-text-right text-gray">
+                                                            ￥50~￥500
+                                                      </p>
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <div class="mui-input-group mine-form m-t-sm">
+                                          <div class="mui-input-row"><label  >手续费</label>
+                                                <div class="ct">
+                                                      <p class="mui-text-right text-gray">
+                                                            &#45;&#45;
+                                                      </p>
+                                                </div>
+                                          </div>
+                                          <div class="mui-input-row"><label  >行政费</label>
+                                                <div class="ct">
+                                                      <p class="mui-text-right text-gray">
+                                                            -￥20.00
+                                                      </p>
+                                                </div>
+                                          </div>
+                                          <div class="mui-input-row"><label  >扣除优惠</label>
+                                                <div class="ct">
+                                                      <p class="mui-text-right text-gray">
+                                                            -￥200.00
+                                                      </p>
+                                                </div>
+                                          </div>
+                                          <div class="mui-input-row"><label  >最终可取</label>
+                                                <div class="ct">
+                                                      <p class="mui-text-right text-green">
+                                                            <span class="text-green">￥80.00</span>
+                                                      </p>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="mui-row">
+                                    <div class="gb-form-foot">
+                                          <div class="text">
+                                                <p class="mui-text-right"><a href="">查看稽核</a></p>
+                                          </div>
+                                          <a href="" class="mui-btn mui-btn-primary submit">下一步</a>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>-->
             </div>
-        </div>
-        <div class="mui-clearfix">
-            <div class="mui-control-content mui-active" id="bank_account">
-                <div class="mui-scroll">
-                    <div class="mui-row">
-                        <div class="mui-input-group mine-form">
-                            <div class="bankitem">
-                                <span><span class="pay-bank s cmb"></span>宋*宝 ***0945</span>
-                                <p>取款处理中<span class="text-green">￥1000</span></p>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="mui-input-group mine-form m-t-sm">
-                            <div class="mui-input-row"><label for="">取款金额</label>
-                                <div class="ct">
-                                    <p class="mui-text-right text-gray">
-                                        ￥50~￥500
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mui-input-group mine-form m-t-sm">
-                            <div class="mui-input-row"><label for="">手续费</label>
-                                <div class="ct">
-                                    <p class="mui-text-right text-gray">
-                                        --
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mui-input-row"><label for="">行政费</label>
-                                <div class="ct">
-                                    <p class="mui-text-right text-gray">
-                                        -￥20.00
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mui-input-row"><label for="">扣除优惠</label>
-                                <div class="ct">
-                                    <p class="mui-text-right text-gray">
-                                        -￥200.00
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mui-input-row"><label for="">最终可取</label>
-                                <div class="ct">
-                                    <p class="mui-text-right text-green">
-                                        <span class="text-green">￥80.00</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mui-row">
-                        <div class="gb-form-foot">
-                            <div class="text">
-                                <p class="mui-text-right"><a href="">查看稽核</a></p>
-                            </div>
-                            <a href="" class="mui-btn mui-btn-primary submit">下一步</a>
-                        </div>
-                    </div>
-                    <!--取款金额最少为提示-->
-                    <div class="withdraw-out">
-                        <div class="withdraw-not">
-                            <h1><i class="tipbig fail"></i></h1>
-                            <div class="tiptext">
-                                <p>取款金额最少为1.00元</p>
-                                <p>您当前钱包余额不足，您可以先把游戏里的钱转到钱包！</p>
-                            </div>
-                            <a class="mui-btn mui-btn-blue btn-deposit" data-target="1" data-os="ios" data-skip="/wallet/deposit/index.html">快速存款</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mui-control-content" id="bit_account">
-                <div class="mui-scroll">
-                    <div class="mui-row">
-                        <div class="mui-input-group mine-form">
-                            <div class="bankitem">
-                                <span><span class="pay-bank s cmb"></span>比特币 ***0945</span>
-                                <p>取款处理中<span class="text-green">￥1000</span></p>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="mui-input-group mine-form m-t-sm">
-                            <div class="mui-input-row"><label for="">取款金额</label>
-                                <div class="ct">
-                                    <p class="mui-text-right text-gray">
-                                        ￥50~￥500
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mui-input-group mine-form m-t-sm">
-                            <div class="mui-input-row"><label for="">手续费</label>
-                                <div class="ct">
-                                    <p class="mui-text-right text-gray">
-                                        --
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mui-input-row"><label for="">行政费</label>
-                                <div class="ct">
-                                    <p class="mui-text-right text-gray">
-                                        -￥20.00
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mui-input-row"><label for="">扣除优惠</label>
-                                <div class="ct">
-                                    <p class="mui-text-right text-gray">
-                                        -￥200.00
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mui-input-row"><label for="">最终可取</label>
-                                <div class="ct">
-                                    <p class="mui-text-right text-green">
-                                        <span class="text-green">￥80.00</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mui-row">
-                        <div class="gb-form-foot">
-                            <div class="text">
-                                <p class="mui-text-right"><a href="">查看稽核</a></p>
-                            </div>
-                            <a href="" class="mui-btn mui-btn-primary submit">下一步</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+      </div>
 </div>
 <!--绑定银行卡弹窗-->
-<div class="masker darker" style="display: none;"></div>
-<div class="gb-bindcard-box" style="display: none;"><a href="" class="close"></a>
-    <div class="cont">
-        <p>请绑定银行卡！</p>
-        <div class="mui-row">
-            <div class="mui-input-group mine-form">
-                <div class="mui-input-row">
-                    <label for="">真实姓名<br>
-                        <small>银行卡户名与真实姓名一致才能取款成功</small>
-                    </label>
-                    <div class="ct">
-                        <p class="mui-text-right text-gray">黄*二</p>
-                    </div>
-                </div>
-                <div class="mui-input-row"><label for="">银行</label>
-                    <div class="ct">
-                        <div class="gb-select">
-                            <a href="">请选择<i class="mui-icon mui-icon-arrowdown"></i></a>
+<div class="masker darker" >
+      <div class="gb-bindcard-box" >
+            <div class="cont">
+                  <p  class="top-tip-text">请绑定银行卡！</p>
+                  <div class="mui-row">
+                        <div class="mui-input-group mine-form">
+                              <div class="mui-input-row">
+                                    <label  class="true-name">真实姓名<br>
+                                          <small>银行卡户名与真实姓名一致才能取款成功</small>
+                                    </label>
+                                    <div class="ct">
+                                          <input  type="text" class="mui-text-right text-gray" placeholder="黄*二">
+                                    </div>
+                              </div>
+                              <div class="mui-input-row"><label  >银行</label>
+                                    <div class="ct">
+                                          <div class="gb-select">
+                                                <a href="">请选择<i class="mui-icon mui-icon-arrowdown"></i></a>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="mui-input-row"><label  >卡号</label>
+                                    <div class="ct">
+                                          <input type="text" placeholder="请输入卡号">
+                                    </div>
+                              </div>
+                              <div class="mui-input-row">
+                                    <label  class="open-bank-info">开户银行<br>
+                                          <small>选择“其他”银行时必填</small>
+                                    </label>
+                                    <div class="ct">
+                                          <input type="text" placeholder="如：河北唐山建设银行">
+                                    </div>
+                              </div>
+                              <div class="mui-row">
+                                    <div class="gb-form-foot  bind_bankCard">
+                                          <a href="" class="mui-btn mui-btn-primary submit">绑定</a>
+                                    </div>
+                              </div>
                         </div>
-                    </div>
-                </div>
-                <div class="mui-input-row"><label for="">卡号</label>
-                    <div class="ct">
-                        <input type="text" placeholder="请输入卡号">
-                    </div>
-                </div>
-                <div class="mui-input-row">
-                    <label for="">开户银行<br>
-                        <small>选择“其他”银行时必填</small>
-                    </label>
-                    <div class="ct">
-                        <input type="text" placeholder="如：河北唐山建设银行">
-                    </div>
-                </div>
-                <div class="mui-row">
-                    <div class="gb-form-foot">
-                        <a href="" class="mui-btn mui-btn-primary submit">绑定</a>
-                    </div>
-                </div>
+                  </div>
             </div>
-        </div>
-    </div>
+      </div>
 </div>
-
-</body>
-
 
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
 <script>
-    $(function () {
-    });
+      $(function () {
+            //打开绑定银行卡弹窗
+            $('.bankitem').click(function () {
+                  $('.darker').fadeIn(300);
+            });
+            //关闭弹窗
+            $('.bind_bankCard').click(function () {
+                  $('.darker').fadeOut(300)
+            })
+      });
 </script>
+</body>
+
 </html>

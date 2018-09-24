@@ -39,6 +39,7 @@
 .api-grid .api-item.api-icon-2-35:before { background-position: 0 -1820px; }
 .api-grid .api-item.api-icon-3-21:before { background-position: 0 -1890px; }
 .api-grid .api-item.api-icon-3-36:before { background-position: 0 -1960px; }
+.api-grid .api-item.api-icon-3-39:before { background-position: 0 -2170px; }
 .api-grid .api-item.lt:before { background-position: 0 -1400px; }
 .api-grid .api-item.yzt:before { background-position: 0 -1470px; }
 .api-grid .api-item.gns:before { background-position: 0 -1541.25px; }
@@ -65,6 +66,7 @@
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-5-34 { background-image: url(images/icon-ky.png); }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-5-42 { background-image: url(images/icon-vg.png); }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-5-43 { background-image: url(images/icon-qly.png); }
+.api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-5-46 { background-image: url(images/icon-ly.png); }
 
 .api-grid .lottery-content li { font-size: 12px; }
 .api-grid .lottery-content li .lottery-img { width: 70px; height: 70px; display: inline-block; }
