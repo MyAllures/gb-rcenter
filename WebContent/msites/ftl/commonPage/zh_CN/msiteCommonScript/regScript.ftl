@@ -1,6 +1,5 @@
 <script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery.mailAutoComplete-4.0.js"></script>
 <script>
-    var message =${data.message}
     var emailCheckCountBackTimer;
     var REGSTER_SEND_EMAIL_TIME = "REGSTER_SEND_EMAIL_TIME";
     var REGSTER_SEND_PHONE_TIME = "REGSTER_SEND_PHONE_TIME";
@@ -127,10 +126,10 @@
                 sendPhoneIntervalSec = --sendPhoneIntervalSec;
                 if(!sendPhoneIntervalSec || sendPhoneIntervalSec<0){
                     clearInterval(phoneCheckCountBackTimer);
-                    $this.prop("disabled",false);
+                    $this.removeClass('disabled');
                     $this.text("重新发送")
                 }else{
-                    $this.prop("disabled",true);
+                    $this.addClass('disabled');
                     $this.text(sendPhoneIntervalSec+"秒后重新发送")
                 }
                 setCookie(REGSTER_SEND_PHONE_TIME,sendPhoneIntervalSec);

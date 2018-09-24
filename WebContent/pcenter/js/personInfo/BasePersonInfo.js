@@ -49,7 +49,6 @@ define(['common/BaseEditPage','mailAutoComplete'], function(BaseEditPage,MailAut
          * 邮箱验证码
          */
         sendmCode:function(e) {
-
             var _this = this;
             var email = $("#emailCode").val();
             window.top.topPage.ajax({
@@ -108,7 +107,7 @@ define(['common/BaseEditPage','mailAutoComplete'], function(BaseEditPage,MailAut
                         if($(".phone").parent().children().hasClass("mark")){
                             $(".phone").parent().find(".mark").remove();
                         }
-                        $(".phone").after("<span class=\"tips orange\"><i class=\"mark plaintsmall\"></i>"+window.top.message.personInfo_auto['请输入手机号']+"</span>");
+                        $(".phone").after("<span class=\"tips orange\"><i class=\"mark plaintsmall\"></i>"+data.msg+"</span>");
                         $(e.currentTarget).unlock();
                         return;
                     }

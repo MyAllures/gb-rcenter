@@ -532,7 +532,7 @@ html #layuicss-layer {
 
 .layui-layer-hui {
     min-width: 100px;
-    background-color: #000;
+    background-color: #000000;
     filter: alpha(opacity=60);
     background-color: rgba(0, 0, 0, .6);
     color: #fff;
@@ -607,7 +607,7 @@ html #layuicss-layer {
     _float: left;
     border-radius: 2px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
-    background-color: #000;
+    background-color: #000000;
     color: #fff
 }
 

@@ -163,7 +163,7 @@
             skin:'layui-layer-brand',
             success: function(layer){
                 // 重写关闭按钮
-                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                $(layer).find('.layui-layer-setwin').html('');
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
             },

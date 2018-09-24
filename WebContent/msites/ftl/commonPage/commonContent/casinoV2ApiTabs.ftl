@@ -3,22 +3,31 @@
     <!-- Api-tabs -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-        <#if data.siteApiTypeRelationMap??>
-            <#list data.siteApiTypeRelationMap[apiType] as relationMap>
-                <div class="swiper-slide <#if relationMap.apiId?string.computer == data.gameSearch.apiId?default('')>active</#if>" data-slide="<#if apiMap[relationMap.apiId?string.computer]??>${apiMap[relationMap.apiId?string.computer]}</#if>">
-                    <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>">
-                        <span class="gui gui-logo-<#list apiMapKeys as key><#if key == relationMap.apiId?string.computer>${apiMap[key]}</#if></#list>"></span>
-                        <em>${data.siteApiTypeRelationI18n[apiType+relationMap.apiId?string.computer].name}</em>
-                    </a>
-                </div>
-            </#list>
-        </#if>
-            <div class="swiper-slide">
-                <a href="javascript:" class="_vr_getGames" data-api="34" data-href="casino_partial.html?apiType=5&apiId=34">
-                    <span class="gui gui-logo-chess"></span>
-                    <em>开元棋牌</em>
-                </a>
-            </div>
+            <#if data.siteApiTypeRelationMap??>
+                <#list data.siteApiTypeRelationMap[apiType] as relationMap>
+                    <#assign apiId = relationMap.apiId?string.computer>
+                    <#if apiId!="28" && apiId!="49">
+                        <div class="swiper-slide <#if apiId == data.gameSearch.apiId?default('')>active</#if>" data-slide="<#if apiMap[apiId]??>${apiMap[apiId]}</#if>">
+                            <a href="javascript:" class="_vr_getGames" data-apitype="${apiType}" data-api="${apiId}" data-href="casino_partial.html?apiType=${apiType}&apiId=${apiId}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>">
+                                <span class="gui gui-logo-<#list apiMapKeys as key><#if key == apiId>${apiMap[key]}</#if></#list>"></span>
+                                <em>${data.siteApiTypeRelationI18n[apiType+apiId].name}</em>
+                            </a>
+                        </div>
+                    </#if>
+                </#list>
+
+            <#--棋牌游戏入口-->
+                <#if data.siteApiTypeRelationMap[apiTypeChess]?? && (data.siteApiTypeRelationMap[apiTypeChess]?size gt 0)>
+                    <div class="swiper-slide">
+                        <#assign apiId = data.siteApiTypeRelationMap[apiTypeChess][0].apiId?string.computer>
+                        <a href="javascript:" class="_vr_getGames" data-apitype="${apiTypeChess}" data-api="${apiId}"
+                           data-href="casino_partial.html?apiType=${apiTypeChess}&apiId=${apiId}">
+                            <span class="gui gui-logo-chess"></span>
+                            <em>棋牌游戏</em>
+                        </a>
+                    </div>
+                </#if>
+            </#if>
             <div class="swiper-slide">
                 <a href="casino.html?apiType=2&gameType=Fish">
                     <span class="gui gui-logo-fish"></span>
@@ -35,22 +44,31 @@
     <!-- Api-tabs -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-        <#if data.siteApiTypeRelationMap??>
-            <#list data.siteApiTypeRelationMap[apiType] as relationMap>
-                <div class="swiper-slide <#if relationMap.apiId?string.computer == data.gameSearch.apiId?default('')>active</#if>" data-slide="<#if apiMap[relationMap.apiId?string.computer]??>${apiMap[relationMap.apiId?string.computer]}</#if>">
-                    <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>">
-                        <span class="gui gui-logo-<#list apiMapKeys as key><#if key == relationMap.apiId?string.computer>${apiMap[key]}</#if></#list>"></span>
-                        <em>${data.siteApiTypeRelationI18n[apiType+relationMap.apiId?string.computer].name}</em>
-                    </a>
-                </div>
-            </#list>
-        </#if>
-            <div class="swiper-slide">
-                <a href="javascript:" class="_vr_getGames" data-api="34" data-href="casino_partial.html?apiType=5&apiId=34">
-                    <span class="gui gui-logo-chess"></span>
-                    <em>开元棋牌</em>
-                </a>
-            </div>
+            <#if data.siteApiTypeRelationMap??>
+                <#list data.siteApiTypeRelationMap[apiType] as relationMap>
+                    <#assign apiId = relationMap.apiId?string.computer>
+                    <#if apiId!="28" && apiId!="49">
+                        <div class="swiper-slide <#if apiId == data.gameSearch.apiId?default('')>active</#if>" data-slide="<#if apiMap[apiId]??>${apiMap[apiId]}</#if>">
+                            <a href="javascript:" class="_vr_getGames" data-apitype="${apiType}" data-api="${apiId}" data-href="casino_partial.html?apiType=${apiType}&apiId=${apiId}<#if apiId!="39">&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list></#if>">
+                                <span class="gui gui-logo-<#list apiMapKeys as key><#if key == apiId>${apiMap[key]}</#if></#list>"></span>
+                                <em>${data.siteApiTypeRelationI18n[apiType+apiId].name}</em>
+                            </a>
+                        </div>
+                    </#if>
+                </#list>
+
+                <#--棋牌游戏入口-->
+                <#if data.siteApiTypeRelationMap[apiTypeChess]?? && (data.siteApiTypeRelationMap[apiTypeChess]?size gt 0)>
+                    <div class="swiper-slide">
+                        <#assign apiId = data.siteApiTypeRelationMap[apiTypeChess][0].apiId?string.computer>
+                        <a href="javascript:" class="_vr_getGames" data-apitype="${apiTypeChess}" data-api="${apiId}"
+                           data-href="casino_partial.html?apiType=${apiTypeChess}&apiId=${apiId}">
+                            <span class="gui gui-logo-chess"></span>
+                            <em>棋牌游戏</em>
+                        </a>
+                    </div>
+                </#if>
+            </#if>
             <div class="swiper-slide">
                 <a href="casino.html?apiType=2&gameType=Fish">
                     <span class="gui gui-logo-fish"></span>

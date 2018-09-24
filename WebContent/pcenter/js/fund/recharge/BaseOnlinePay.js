@@ -225,12 +225,13 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                         if (data.responseText == "true") {
                             var rechargeAmount = $($form).children().find("[name='result.rechargeAmount']").val();
                             var rechargeType = $("[name='result.rechargeType']:checked").val();
+                            var account = $("[name='account']").val();
                             if (!rechargeType) {
                                 rechargeType = 'online_deposit';
                             }
                             window.top.topPage.ajax({
                                 url: root + '/fund/recharge/online/counterFee.html',
-                                data: {"result.rechargeAmount": rechargeAmount, "type": rechargeType},
+                                data: {"result.rechargeAmount": rechargeAmount, "type": rechargeType, "account":account},
                                 dataType: 'json',
                                 success: function (data) {
                                     var fee = data.fee;

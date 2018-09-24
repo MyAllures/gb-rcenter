@@ -153,6 +153,12 @@ define(['common/BaseListPage', 'jsrender', 'bootstrapswitch'], function(BaseList
             var ids = this.getSelectIds(e, option);
             option.target = root + "/sysSite/batchSiteMaintain.html?opType=cancel&siteIds="+ids;
             window.top.topPage.doDialog(e, option);
+        },
+        showMsg:function (e, opt) {
+            if(opt.data.state){
+                page.showPopover(e,{},"success","操作成功",true);
+            }
+            $(e.currentTarget).unlock();
         }
     });
 });

@@ -18,7 +18,7 @@
             <div class="showdown">
                 
                 <div onclick="downANZ()" class="down-anz click-scare">
-                    <span class="spcname">点击安装</span>    
+                    <span onclick="downANZ()" class="spcname">点击安装</span>
                     <div class="loadEffect" id="loading">
                             <span></span>
                             <span></span>
@@ -85,7 +85,7 @@
         var x = endPoint.clientX - startPoint.clientX;
         var y = endPoint.clientY - startPoint.clientY;
         //设置滑动距离的参考值
-        var d = 150;
+        var d = 50;
         if(Math.abs(y)>d){
             if(y<0){
                 spcback=true;
@@ -110,7 +110,7 @@
         var x = endPoint.clientX - startPoint1.clientX;
         var y = endPoint.clientY - startPoint1.clientY;
         //设置滑动距离的参考值
-        var d = 150;
+        var d = 50;
         if(Math.abs(y)>d){
             if(y>0){
                 document.getElementsByClassName('demonstration')[0].style.bottom = -window.screen.availHeight+'px'
@@ -193,7 +193,7 @@
             var currPoint = e.changedTouches[0].pageX;
             var disX = - (currPoint - startPoint);
             var left = startEle + disX;
-            if (disX > 150) {
+            if (disX > 50) {
                 i++;
                 for (var q = 0; q < lis.length; q++) {
                     lis[q].className = '';
@@ -206,7 +206,7 @@
             } else {
                 lb_img.style.left = -leftWidth * (i - 1) + "px";
             }
-            if (disX < -150) {
+            if (disX < -50) {
                 i--;
                 for (var q = 0; q < lis.length; q++) {
                     lis[q].className = '';
