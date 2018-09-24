@@ -1,509 +1,506 @@
 <!DOCTYPE html>
 <html>
 <head>
-      <meta charset="utf-8">
-      <title>Dawoo</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-status-bar-style" content="black">
-      <link rel="bookmark" href="../../mobile-v3/favicon.ico">
-      <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
-      <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/mui.picker.min.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/swiper.min.css" />
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/swiper.min.css" />
 </head>
 
 <body class="deposit_2">
 <header class="mui-bar mui-bar-nav">
-      <h1 class="mui-title">存款</h1>
-      <!--导航tab-->
-      <div class="deposit-2-header">
-            <div class="swiper-container  deposit-sorts">
-                  <div class="swiper-wrapper">
-                        <a class="swiper-slide mui-btn btn-promo-sort"><span>存款</span></a>
-                        <a class="swiper-slide mui-btn btn-promo-sort"><span>资金转账</span></a>
-                        <a class="swiper-slide mui-btn btn-promo-sort"><span>提现</span></a>
-                  </div>
+    <h1 class="mui-title">存款</h1>
+    <!--导航tab-->
+    <div class="deposit-2-header">
+        <div class="swiper-container  deposit-sorts">
+            <div class="swiper-wrapper">
+                <a class="swiper-slide mui-btn btn-promo-sort"><span>存款</span></a>
+                <a class="swiper-slide mui-btn btn-promo-sort"><span>资金转账</span></a>
+                <a class="swiper-slide mui-btn btn-promo-sort"><span>提现</span></a>
             </div>
-      </div>
+        </div>
+    </div>
 </header>
 <div class="mui-content mui-scroll-wrapper deposit-2-content">
-      <!--主界面tab内容展示-->
-      <div class="tab_content">
-            <div class="swiper-container slide-content promo-list">
-                  <div class="swiper-wrapper">
-                        <!--存款-->
-                        <div class="swiper-slide">
-                              <div class="mui-scroll-wrapper">
-                                    <div class="mui-scroll">
-                                          <!--优惠提醒-->
-                                          <div class="deposit_tips">
-                                                <span  class="tip_txt">温馨提示：完成存款后，请前往活动大厅申请活动优惠。</span>
-                                                <i  class="close_icon"></i>
-                                          </div>
-                                          <!--支付方式-->
-                                          <div class="list_pay">
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item cur">
-                                                            <i class="icon-pay online-pay"></i>
-                                                            <div class="pay_nam">在线支付</div>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay wangyin"></i>
-                                                            <div class="pay_nam">网银支付</div>
-                                                            <b class="deposit_promo_tip"></b>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay weichat-pay"></i>
-                                                            <div class="pay_nam">微信支付</div>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay alipay"></i>
-                                                            <div class="pay_nam">支付宝支付</div>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay qq-wallet"></i>
-                                                            <div class="pay_nam">QQ钱包</div>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay jingdong-wallet"></i>
-                                                            <div class="pay_nam">京东钱包</div>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay baidu-wallet"></i>
-                                                            <div class="pay_nam">百度钱包</div>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay bitcoin-pay"></i>
-                                                            <div class="pay_nam">比特币</div>
-                                                            <b class="deposit_promo_tip"></b>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay yima-pay"></i>
-                                                            <div class="pay_nam">一码付</div>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay union-pay"></i>
-                                                            <div class="pay_nam">银联扫码</div>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay kuaichong"></i>
-                                                            <div class="pay_nam">快充中心</div>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay wangyin-dep"></i>
-                                                            <div class="pay_nam">柜台机</div>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay yishou-pay"></i>
-                                                            <div class="pay_nam">易收付</div>
-                                                      </div>
-                                                </div>
-                                                <div class="list_pay_item_w">
-                                                      <div class="list_pay_item">
-                                                            <i class="icon-pay other-pay"></i>
-                                                            <div class="pay_nam">其它</div>
-                                                      </div>
-                                                </div>
-                                          </div>
-                                          <!--选择金额-->
-                                          <div class="pay_mone">
-                                                <div class="tit">选择金额</div>
-                                                <div class="conv_mone">
-                                                      <div class="conv_mone_i">
-                                                            <span class="icon_mone mone_100">100</span>
-                                                      </div>
-                                                      <div class="conv_mone_i">
-                                                            <span class="icon_mone mone_200">200</span>
-                                                      </div>
-                                                      <div class="conv_mone_i">
-                                                            <span class="icon_mone mone_500">500</span>
-                                                      </div>
-                                                      <div class="conv_mone_i">
-                                                            <span class="icon_mone mone_1000">1000</span>
-                                                      </div>
-                                                      <div class="conv_mone_i">
-                                                            <span class="icon_mone mone_5000">5000</span>
-                                                      </div>
-                                                </div>
-                                                <div class="depo_row">
-                                                      <div class="label">存款金额</div>
-                                                      <div class="input_dp_num">
-                                                            <input type="number" placeholder="10.00~50,000.00">
-                                                      </div>
-                                                      <div class="ext">
-                                                            <div class="cha">.66</div>
-                                                      </div>
-                                                </div>
-                                                <div class="depo_row">
-                                                      <div class="label">支付银行</div>
-                                                      <div class="input_dp_bank">
-                                                            <input id="selectBank" type="text" value="中国工商银行" readonly>
-                                                      </div>
-                                                      <div class="ext">
-                                                            <i class="mui-icon mui-icon-arrowdown"></i>
-                                                      </div>
-                                                </div>
-                                                <!--<p class="depositHelp">存款教程 <span>?</span></p>-->
-                                          </div>
-                                          <!--提交-->
-                                          <div class="btn_wrap">
-                                                <!--<a href="javascript:" class="mui-btn btn_submit mui-btn-block">提交</a>-->
-                                                <!--QQ钱包付款页面-->
-                                                <a href="online-pay-qq-wallet.html" class="mui-btn btn_submit mui-btn-block">提交</a>
-                                                <!--柜台付款页面-->
-                                                <!--<a href="online-pay-counter.html" class="mui-btn btn_submit mui-btn-block">提交</a>-->
-                                          </div>
-                                          <!--提示说明-->
-                                          <div class="deposit_help">
-                                                <p>温馨提示</p>
-                                                <p>
-                                                      *为了提高对账速度及成功率，当前支付方式已开随机额度，请
-                                                      输入整数存款金额，将随机增加0.11~0.99元！
-                                                </p>
-                                                <p>*请保留好转账单据作为核对证明。</p>
-                                                <p>
-                                                      *如出现充值失败或充值后未到账等情况，请联系在线客服获取
-                                                      帮助。
-                                                      <!--<a href="javascript:;">点击联系在线客服</a>-->
-                                                </p>
-                                          </div>
+    <!--主界面tab内容展示-->
+    <div class="tab_content">
+        <div class="swiper-container slide-content promo-list">
+            <div class="swiper-wrapper">
+                <!--存款-->
+                <div class="swiper-slide">
+                    <div class="mui-scroll-wrapper">
+                        <div class="mui-scroll">
+                            <!--优惠提醒-->
+                            <div class="deposit_tips">
+                                <span  class="tip_txt">温馨提示：完成存款后，请前往活动大厅申请活动优惠。</span>
+                                <i  class="close_icon"></i>
+                            </div>
+                            <!--支付方式-->
+                            <ul class="list_pay">
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item cur">
+                                        <i class="icon-pay online-pay"></i>
+                                        <div class="pay_nam">在线支付</div>
                                     </div>
-                              </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay wangyin"></i>
+                                        <div class="pay_nam">网银支付</div>
+                                        <b class="deposit_promo_tip"></b>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay weichat-pay"></i>
+                                        <div class="pay_nam">微信支付</div>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay alipay"></i>
+                                        <div class="pay_nam">支付宝支付</div>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay qq-wallet"></i>
+                                        <div class="pay_nam">QQ钱包</div>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay jingdong-wallet"></i>
+                                        <div class="pay_nam">京东钱包</div>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay baidu-wallet"></i>
+                                        <div class="pay_nam">百度钱包</div>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay bitcoin-pay"></i>
+                                        <div class="pay_nam">比特币</div>
+                                        <b class="deposit_promo_tip"></b>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay yima-pay"></i>
+                                        <div class="pay_nam">一码付</div>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay union-pay"></i>
+                                        <div class="pay_nam">银联扫码</div>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay kuaichong"></i>
+                                        <div class="pay_nam">快充中心</div>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay wangyin-dep"></i>
+                                        <div class="pay_nam">柜台机</div>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay yishou-pay"></i>
+                                        <div class="pay_nam">易收付</div>
+                                    </div>
+                                </li>
+                                <li class="list_pay_item_w">
+                                    <div class="list_pay_item">
+                                        <i class="icon-pay other-pay"></i>
+                                        <div class="pay_nam">其它</div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!--选择金额-->
+                            <div class="pay_mone">
+                                <div class="tit">选择金额</div>
+                                <ul class="conv_mone">
+                                    <li class="conv_mone_i">
+                                        <span class="icon_mone mone_100">100</span>
+                                    </li>
+                                    <li class="conv_mone_i">
+                                        <span class="icon_mone mone_200">200</span>
+                                    </li>
+                                    <li class="conv_mone_i">
+                                        <span class="icon_mone mone_500">500</span>
+                                    </li>
+                                    <li class="conv_mone_i">
+                                        <span class="icon_mone mone_1000">1000</span>
+                                    </li>
+                                    <li class="conv_mone_i">
+                                        <span class="icon_mone mone_5000">5000</span>
+                                    </li>
+                                </ul>
+                                <div class="depo_row">
+                                    <div class="label">存款金额</div>
+                                    <div class="input_dp_num">
+                                        <input type="number" placeholder="10.00~50,000.00">
+                                    </div>
+                                    <div class="ext">
+                                        <div class="cha">.66</div>
+                                    </div>
+                                </div>
+                                <div class="depo_row">
+                                    <div class="label">支付银行</div>
+                                    <div class="input_dp_bank">
+                                        <input id="selectBank" type="text" value="中国工商银行" readonly>
+                                    </div>
+                                    <div class="ext">
+                                        <i class="mui-icon mui-icon-arrowdown"></i>
+                                    </div>
+                                </div>
+                                <!--<p class="depositHelp">存款教程 <span>?</span></p>-->
+                            </div>
+                            <!--提交-->
+                            <div class="btn_wrap">
+                                <!--<a href="javascript:" class="mui-btn btn_submit mui-btn-block">提交</a>-->
+                                <!--QQ钱包付款页面-->
+                                <a href="online-pay-qq-wallet.html" class="mui-btn btn_submit mui-btn-block">提交</a>
+                                <!--柜台付款页面-->
+                                <!--<a href="online-pay-counter.html" class="mui-btn btn_submit mui-btn-block">提交</a>-->
+                            </div>
+                            <!--提示说明-->
+                            <div class="deposit_help">
+                                <p>温馨提示</p>
+                                <p>
+                                    *为了提高对账速度及成功率，当前支付方式已开随机额度，请输入整数存款金额，将随机增加0.11~0.99元！
+                                </p>
+                                <p>*请保留好转账单据作为核对证明。</p>
+                                <p>
+                                    *如出现充值失败或充值后未到账等情况，请联系在线客服获取帮助。
+                                </p>
+                            </div>
                         </div>
-                        <!--资金转账-->
-                        <div class="swiper-slide">
-                              <div class="asset_transfer_page">
-                                    <div class="total_asset_info">
-                                          <div class="total_money_num">
-                                                <span>总资产</span>
-                                                <i>¥100,000,000.00</i>
-                                          </div>
-                                          <div class="wallet_balance_num">
-                                                <span>钱包余额</span>
-                                                <i>¥100,000,000.00</i>
-                                          </div>
-                                    </div>
-                                    <!--中间部分-->
-                                    <div class="all_items">
-                                          <div class="each_line"><!--每一行-->
-                                                <!--从后端接收数据时判断金额是否大于0,true->添加class: item_active-->
-                                                <div class="each_item  item_active">
-                                                      <p class="item_name">
-                                                            <span>HABA电子</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">10,050.00</b>
-                                                </div>
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>AG大厅</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                                <div class="each_item item_active">
-                                                      <p class="item_name">
-                                                            <span>OG东方厅</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">10.00</b>
-                                                </div>
-                                          </div>
-                                          <div class="each_line"><!--每一行-->
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>PG电子</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                                <div class="each_item game_maintaining">
-                                                      <p class="item_name">
-                                                            <span>MG电子</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">游戏维护中</b>
-                                                </div>
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>Ebet如意厅</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                          </div>
-                                          <div class="each_line"><!--每一行-->
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>BB电子</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                                <div class="each_item item_active">
-                                                      <p class="item_name">
-                                                            <span>GG捕鱼</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">1000.00</b>
-                                                </div>
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>沙巴体育</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                          </div>
-                                          <div class="each_line"><!--每一行-->
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>PP电子</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>BBIN捕鱼达人</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                                <div class="each_item item_active">
-                                                      <p class="item_name">
-                                                            <span>新皇冠体育</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">10500.00</b>
-                                                </div>
-                                          </div>
-                                          <div class="each_line"><!--每一行-->
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>VR彩票</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>HABA电子</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>HABA电子</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                          </div>
-                                          <div class="each_line"><!--每一行-->
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>HABA电子</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>HABA电子</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>HABA电子</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                          </div>
-                                          <div class="each_line"><!--每一行-->
-                                                <div class="each_item">
-                                                      <p class="item_name">
-                                                            <span>HABA电子</span>
-                                                            <i></i>
-                                                      </p>
-                                                      <b class="item_num">0.00</b>
-                                                </div>
-                                          </div>
-                                    </div>
-                                    <div class="no_more_content">
-                                          <i class="refresh_icon"></i>
-                                          <span>没有更多内容</span>
-                                    </div>
-                                    <div class="btn_groups">
-                                          <span class="btn_groups_recycle">一键回收</span>
-                                          <span class="btn_groups_refresh">一键刷新</span>
-                                    </div>
-                              </div>
+                    </div>
+                </div>
+                <!--资金转账-->
+                <div class="swiper-slide">
+                    <div class="asset_transfer_page">
+                        <div class="total_asset_info">
+                            <div class="total_money_num">
+                                <span>总资产</span>
+                                <i>¥100,000,000.00</i>
+                            </div>
+                            <div class="wallet_balance_num">
+                                <span>钱包余额</span>
+                                <i>¥100,000,000.00</i>
+                            </div>
                         </div>
-                        <!--提现-->
-                        <div class="swiper-slide">
-                              <div class="withdraw_money_page">
-                                    <div class="mui-row">
-                                          <!--未绑定银行卡-->
-                                          <a class="mui-input-group mine-form" href="javascript:;">
-                                                <div class="bankitem unbind_card">
-                                                      <i>请先绑定银行卡</i>
-                                                      <span class="unbind_card_icon"></span>
-                                                </div>
-                                          </a>
-                                          <!--已绑定银行卡-->
-                                          <!--<div class="mui-input-group mine-form">
-                                                <div class="bankitem">
-                                                      <span class="pay-bank icbc"></span>
-                                                      <i>虞*   6222 0209  **** 3077</i>
-                                                </div>
-                                          </div>-->
-                                          <div class="mui-input-group mine-form m-t-sm">
-                                                <div class="mui-input-row">
-                                                      <label  class="deposit_num_label">取款金额</label>
-                                                      <div class="ct">
-                                                            <input type="number" class="input_deposit_num text-gray"  placeholder="¥ 1- ¥ 20000" >
-                                                      </div>
-                                                </div>
-                                          </div>
-                                          <div class="mui-input-group mine-form m-t-sm">
-                                                <div class="mui-input-row">
-                                                      <label>手续费</label>
-                                                      <div class="ct">
-                                                            <p class="mui-text-right ">
-                                                                  免费手续费
-                                                            </p>
-                                                      </div>
-                                                </div>
-                                                <div class="mui-input-row">
-                                                      <label  >行政费</label>
-                                                      <div class="ct">
-                                                            <p class="mui-text-right ">
-                                                                  ￥0
-                                                            </p>
-                                                      </div>
-                                                </div>
-                                                <div class="mui-input-row">
-                                                      <label  >扣除优惠</label>
-                                                      <div class="ct">
-                                                            <p class="mui-text-right ">
-                                                                  ￥-1
-                                                            </p>
-                                                      </div>
-                                                </div>
-                                                <div class="mui-input-row">
-                                                      <label  >最终可取</label>
-                                                      <div class="ct">
-                                                            <p class="mui-text-right ">
-                                                                  ￥--
-                                                            </p>
-                                                      </div>
-                                                </div>
-                                          </div>
-                                    </div>
-                                    <div class="mui-row">
-                                          <div class="gb-form-foot">
-                                                <div class="text mui-text-right">
-                                                      <a class="check_audit_btn" href="../mobile-v3-newDeposit/audit-login.html">查看稽核</a>
-                                                </div>
-                                                <a href="javascript:;" class="mui-btn mui-btn-primary submit">确认提交</a>
-                                          </div>
-                                    </div>
-                                    <!--取款金额小于最低金额时显示-->
-                                    <div class="withdraw-not">
-                                          <h1><i class="tipbig fail"></i></h1>
-                                          <div class="tiptext">
-                                                <p>取款金额最少为1.00元</p>
-                                                <p>您当前钱包余额不足，您可以先把游戏里的钱转到钱包！</p>
-                                          </div>
-                                          <a class="mui-btn mui-btn-blue btn-deposit" data-target="1" data-os="ios" data-skip="/wallet/deposit/index.html">快速存款</a>
-                                    </div>
-                              </div>
+                        <!--中间部分-->
+                        <div class="all_items">
+                            <div class="each_line"><!--每一行-->
+                                <!--从后端接收数据时判断金额是否大于0,true->添加class: item_active-->
+                                <div class="each_item  item_active">
+                                    <p class="item_name">
+                                        <span>HABA电子</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">10,050.00</b>
+                                </div>
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>AG大厅</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                                <div class="each_item item_active">
+                                    <p class="item_name">
+                                        <span>OG东方厅</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">10.00</b>
+                                </div>
+                            </div>
+                            <div class="each_line"><!--每一行-->
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>PG电子</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                                <div class="each_item game_maintaining">
+                                    <p class="item_name">
+                                        <span>MG电子</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">游戏维护中</b>
+                                </div>
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>Ebet如意厅</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                            </div>
+                            <div class="each_line"><!--每一行-->
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>BB电子</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                                <div class="each_item item_active">
+                                    <p class="item_name">
+                                        <span>GG捕鱼</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">1000.00</b>
+                                </div>
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>沙巴体育</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                            </div>
+                            <div class="each_line"><!--每一行-->
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>PP电子</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>BBIN捕鱼达人</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                                <div class="each_item item_active">
+                                    <p class="item_name">
+                                        <span>新皇冠体育</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">10500.00</b>
+                                </div>
+                            </div>
+                            <div class="each_line"><!--每一行-->
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>VR彩票</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>HABA电子</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>HABA电子</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                            </div>
+                            <div class="each_line"><!--每一行-->
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>HABA电子</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>HABA电子</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>HABA电子</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                            </div>
+                            <div class="each_line"><!--每一行-->
+                                <div class="each_item">
+                                    <p class="item_name">
+                                        <span>HABA电子</span>
+                                        <i></i>
+                                    </p>
+                                    <b class="item_num">0.00</b>
+                                </div>
+                            </div>
                         </div>
-                  </div>
+                        <div class="no_more_content">
+                            <i class="refresh_icon"></i>
+                            <span>没有更多内容</span>
+                        </div>
+                        <div class="btn_groups">
+                            <span class="btn_groups_recycle">一键回收</span>
+                            <span class="btn_groups_refresh">一键刷新</span>
+                        </div>
+                    </div>
+                </div>
+                <!--提现-->
+                <div class="swiper-slide">
+                    <div class="withdraw_money_page">
+                        <div class="mui-row">
+                            <!--未绑定银行卡-->
+                            <a class="mui-input-group mine-form" href="javascript:;">
+                                <div class="bankitem unbind_card">
+                                    <i>请先绑定银行卡</i>
+                                    <span class="unbind_card_icon"></span>
+                                </div>
+                            </a>
+                            <!--已绑定银行卡-->
+                            <!--<div class="mui-input-group mine-form">
+                                  <div class="bankitem">
+                                        <span class="pay-bank icbc"></span>
+                                        <i>虞*   6222 0209  **** 3077</i>
+                                  </div>
+                            </div>-->
+                            <div class="mui-input-group mine-form m-t-sm">
+                                <div class="mui-input-row">
+                                    <label  class="deposit_num_label">取款金额</label>
+                                    <div class="ct">
+                                        <input type="number" class="input_deposit_num text-gray"  placeholder="¥ 1- ¥ 20000" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mui-input-group mine-form m-t-sm">
+                                <div class="mui-input-row">
+                                    <label>手续费</label>
+                                    <div class="ct">
+                                        <p class="mui-text-right ">
+                                            免费手续费
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mui-input-row">
+                                    <label  >行政费</label>
+                                    <div class="ct">
+                                        <p class="mui-text-right ">
+                                            ￥0
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mui-input-row">
+                                    <label  >扣除优惠</label>
+                                    <div class="ct">
+                                        <p class="mui-text-right ">
+                                            ￥-1
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mui-input-row">
+                                    <label  >最终可取</label>
+                                    <div class="ct">
+                                        <p class="mui-text-right ">
+                                            ￥--
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mui-row">
+                            <div class="gb-form-foot">
+                                <div class="text mui-text-right">
+                                    <a class="check_audit_btn" href="../mobile-v3-newDeposit/audit-login.html">查看稽核</a>
+                                </div>
+                                <a href="javascript:;" class="mui-btn mui-btn-primary submit">确认提交</a>
+                            </div>
+                        </div>
+                        <!--取款金额小于最低金额时显示-->
+                        <div class="withdraw-not">
+                            <h1><i class="tipbig fail"></i></h1>
+                            <div class="tiptext">
+                                <p>取款金额最少为1.00元</p>
+                                <p>您当前钱包余额不足，您可以先把游戏里的钱转到钱包！</p>
+                            </div>
+                            <a class="mui-btn mui-btn-blue btn-deposit" data-target="1" data-os="ios" data-skip="/wallet/deposit/index.html">快速存款</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-      </div>
+        </div>
+    </div>
 </div>
 
 <!--存款帮助：-->
 <div class="depositHelpBox" style="display:none;">
-      <div class="swiper-container">
-            <!--qq反扫：-->
-            <div class="swiper-wrapper qq-fansao" style="">
-                  <div class="swiper-slide step-1"><img src="../../mobile-v3/images/qq-step-1.png" alt="" /><div class="circle"></div></div>
-                  <div class="swiper-slide step-2"><img src="../../mobile-v3/images/qq-step-2.png" alt="" /><div class="circle"></div></div>
-                  <div class="swiper-slide step-3"><img src="../../mobile-v3/images/qq-step-3.png" alt="" /><div class="circle"></div></div>
-            </div>
-            <!--微信反扫：-->
-            <!--<div class="swiper-wrapper wechat-fansao" style="">
-                <div class="swiper-slide step-1"><img src="../../mobile-v3/images/wechat-step-1.png" alt="" /><div class="circle"></div></div>
-                <div class="swiper-slide step-2"><img src="../../mobile-v3/images/wechat-step-2.png" alt="" /><div class="circle"></div></div>
-                <div class="swiper-slide step-3"><img src="../../mobile-v3/images/wechat-step-3.png" alt="" /><div class="circle"></div></div>
-            </div>-->
-            <!--支付宝反扫：-->
-            <!--<div class="swiper-wrapper alipay-fansao">
-                <div class="swiper-slide step-1"><img src="../../mobile-v3/images/alipay-step-1.png" alt="" /><div class="circle"></div></div>
-                <div class="swiper-slide step-2"><img src="../../mobile-v3/images/alipay-step-2.png" alt="" /><div class="circle"></div></div>
-            </div>-->
-            <div class="swiper-pagination"></div>
-            <div class="closeHelpBox">+</div>
-      </div>
+    <div class="swiper-container">
+        <!--qq反扫：-->
+        <div class="swiper-wrapper qq-fansao" style="">
+            <div class="swiper-slide step-1"><img src="../../mobile-v3/images/qq-step-1.png" alt="" /><div class="circle"></div></div>
+            <div class="swiper-slide step-2"><img src="../../mobile-v3/images/qq-step-2.png" alt="" /><div class="circle"></div></div>
+            <div class="swiper-slide step-3"><img src="../../mobile-v3/images/qq-step-3.png" alt="" /><div class="circle"></div></div>
+        </div>
+        <!--微信反扫：-->
+        <!--<div class="swiper-wrapper wechat-fansao" style="">
+            <div class="swiper-slide step-1"><img src="../../mobile-v3/images/wechat-step-1.png" alt="" /><div class="circle"></div></div>
+            <div class="swiper-slide step-2"><img src="../../mobile-v3/images/wechat-step-2.png" alt="" /><div class="circle"></div></div>
+            <div class="swiper-slide step-3"><img src="../../mobile-v3/images/wechat-step-3.png" alt="" /><div class="circle"></div></div>
+        </div>-->
+        <!--支付宝反扫：-->
+        <!--<div class="swiper-wrapper alipay-fansao">
+            <div class="swiper-slide step-1"><img src="../../mobile-v3/images/alipay-step-1.png" alt="" /><div class="circle"></div></div>
+            <div class="swiper-slide step-2"><img src="../../mobile-v3/images/alipay-step-2.png" alt="" /><div class="circle"></div></div>
+        </div>-->
+        <div class="swiper-pagination"></div>
+        <div class="closeHelpBox">+</div>
+    </div>
 </div>
 
 <!-----------------------------------------------footer--------------------------------------------->
 <footer class="mui-bar mui-bar-tab">
-      <a class="mui-tab-item" href="../mobile-v3/index.html">
-            <span class="mui-icon icon-home"></span>
-            <span class="mui-tab-label">首页</span>
-      </a>
-      <a class="mui-tab-item mui-active" href="mine-deposit-2-online.html">
-            <span class="mui-icon icon-deposit"></span>
-            <span class="mui-tab-label">存款</span>
-      </a>
-      <a class="mui-tab-item" href="../mobile-v3/promo.html">
-            <span class="mui-icon icon-promo"></span>
-            <span class="mui-tab-label">优惠</span>
-      </a>
-      <a class="mui-tab-item"  href="">
-            <span class="mui-icon icon-service"></span>
-            <span class="mui-tab-label">客服</span>
-      </a>
-      <a class="mui-tab-item" href="../mobile-v3/mine_new.html">
-            <span class="mui-icon icon-mine"></span>
-            <span class="mui-tab-label">我的</span>
-      </a>
+    <a class="mui-tab-item" href="../mobile-v3/index.html">
+        <span class="mui-icon icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item mui-active" href="mine-deposit-2-online.html">
+        <span class="mui-icon icon-deposit"></span>
+        <span class="mui-tab-label">存款</span>
+    </a>
+    <a class="mui-tab-item" href="../mobile-v3/promo.html">
+        <span class="mui-icon icon-promo"></span>
+        <span class="mui-tab-label">优惠</span>
+    </a>
+    <a class="mui-tab-item"  href="">
+        <span class="mui-icon icon-service"></span>
+        <span class="mui-tab-label">客服</span>
+    </a>
+    <a class="mui-tab-item" href="../mobile-v3/mine_new.html">
+        <span class="mui-icon icon-mine"></span>
+        <span class="mui-tab-label">我的</span>
+    </a>
 </footer>
 <!-----------------------------------------------JS----------------------------------------------------->
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
@@ -512,45 +509,45 @@
 <script src="../../mobile-v3/js/common.js"></script>
 <script src="../../mobile-v3/js/swiper.min.js"></script>
 <script>
-      $(function () {
-            //关闭顶部优惠提示
-            $(".close_icon").click(function () {
-                  $(".deposit_tips").fadeOut("slow");
-            });
+    $(function () {
+        //关闭顶部优惠提示
+        $(".close_icon").click(function () {
+            $(".deposit_tips").fadeOut("slow");
+        });
 
-            /*存款教程*/
-            /*var mySwiper = new Swiper ('.depositHelpBox .swiper-container', {
-                  observer:true,
-                  observeParents:true,
-                  pagination: {
-                        el: '.swiper-pagination',
-                  },
-            });
-            mySwiper.init();
-            $('.closeHelpBox').click(function(){
-                  $(".depositHelpBox").hide(100);
-            });
-            $('.depositHelp').click(function(){
-                  $(".depositHelpBox").show(100);
-            });*/
+        /*存款教程*/
+        /*var mySwiper = new Swiper ('.depositHelpBox .swiper-container', {
+              observer:true,
+              observeParents:true,
+              pagination: {
+                    el: '.swiper-pagination',
+              },
+        });
+        mySwiper.init();
+        $('.closeHelpBox').click(function(){
+              $(".depositHelpBox").hide(100);
+        });
+        $('.depositHelp').click(function(){
+              $(".depositHelpBox").show(100);
+        });*/
 
-            //选择银行
-            $('#selectBank').on('tap', function () {
-                  var picker = new mui.PopPicker();
-                  picker.setData([
-                        {value:'gsyh',text:'中国工商银行'},
-                        {value:'nyyh',text:'中国农业银行'},
-                        {value:'jsyh',text:'中国建设银行'},
-                        {value:'zgyh',text:'中国银行'},
-                        {value:'jtyh',text:'中国交通银行'},
-                        {value:'zsyh',text:'招商银行'},
-                  ]);
-                  picker.show();
-            });
+        //选择银行
+        $('#selectBank').on('tap', function () {
+            var picker = new mui.PopPicker();
+            picker.setData([
+                {value:'gsyh',text:'中国工商银行'},
+                {value:'nyyh',text:'中国农业银行'},
+                {value:'jsyh',text:'中国建设银行'},
+                {value:'zgyh',text:'中国银行'},
+                {value:'jtyh',text:'中国交通银行'},
+                {value:'zsyh',text:'招商银行'},
+            ]);
+            picker.show();
+        });
 
-            /*存款-提交*/
-            $('.btn_submit').on('tap', function () {
-                  //                  mui.alert(
+        /*存款-提交*/
+        $('.btn_submit').on('tap', function () {
+            //                  mui.alert(
 //                        '<div class="pro_ite">金额：<span>1000</span></div>' +
 //                        '<div class="pro_ite">手续费：<span>无手续费</span></div>' +
 //                        '<div class="pro_ite">优惠：</div>' +
@@ -570,53 +567,52 @@
 //                  $('.mui-popup').addClass('deposit_promo_dialog');
 //                  mui('.pro_lis .mui-scroll-wrapper').scroll();
 //                  $('.mui-popup').find(".mui-popup-button").html('').append("<i class='mui-icon mui-icon-close'></i>")
-            })
+        })
 
-            /*切换支付方式*/
-            $(".list_pay_item").click(function () {
-                    $(this).addClass("cur");
-                    $(this).addClass("cur").parent().siblings("list_pay_item_w").find("list_pay_item").removeClass("cur");
+        /*切换支付方式*/
+        $(".list_pay").on('click','.list_pay_item',function () {
+            $('.list_pay_item').removeClass('cur');
+            $(this).addClass("cur");
+        });
 
-            });
+        /*资金到账->金额大于0时可刷新*/
+        $(".each_item.item_active").click(function () {
+            alert('111')
+        })
 
-            /*资金到账->金额大于0时可刷新*/
-            $(".each_item.item_active").click(function () {
-                  alert('111')
-            })
-
-            /*顶部导航tab*/
-            var slideNavTabs = new Swiper('.deposit-sorts', {
-                  loop: true,      //无限滚动
-                  loopedSlides:3,
-                  slidesPerView:  3,
-                  freeMode: true,
-                  freeModeMomentum : false,
-                  setWrapperSize :true,
-                  allowTouchMove: true,
-                  slideToClickedSlide: true,
-                  touchRatio: 0.2,
-                  observer:true,
-                  observeParents:true,
-            });
-            /*tab内容展示*/
-            var slideContent = new Swiper('.slide-content', {
-                  loop: true,
-                  loopedSlides: 3,
-                  autoHeight: false,
-                  controller: {
-                        control: slideNavTabs,
-                  },
-                  on: {
-                        slideChangeTransitionEnd: function () {
-                              mui('.slide-content .mui-scroll-wrapper').scroll({
-                                    indicators: false
-                              });
-                        }
-                  },
-            });
-            slideNavTabs.controller.control = slideContent;
+        /*顶部导航tab*/
+        var slideNavTabs = new Swiper('.deposit-sorts', {
+            loop: true,      //无限滚动
+            loopedSlides:3,
+            slidesPerView:  3,
+            freeMode: true,
+            freeModeMomentum : false,
+            setWrapperSize :true,
+            allowTouchMove: true,
+            slideToClickedSlide: true,
+            touchRatio: 0.2,
+            observer:true,
+            observeParents:true,
+        });
+        /*tab内容展示*/
+        var slideContent = new Swiper('.slide-content', {
+            loop: true,
+            loopedSlides: 3,
+            autoHeight: false,
+            controller: {
+                control: slideNavTabs,
+            },
+            on: {
+                slideChangeTransitionEnd: function () {
+                    mui('.slide-content .mui-scroll-wrapper').scroll({
+                        indicators: false
+                    });
+                }
+            },
+        });
+        slideNavTabs.controller.control = slideContent;
 //            slideContent.controller.control = slideNavTabs;
-      });
+    });
 </script>
 
 </body>
