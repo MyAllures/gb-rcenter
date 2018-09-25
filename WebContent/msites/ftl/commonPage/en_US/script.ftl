@@ -889,7 +889,7 @@
                     loginObj.getLoginPopup(function (logined) {
                         if(logined){
                             if(apiTypeId == "3" && apiId=="19"){
-                                window.open("https://mkt.ampinplayopt0matrix.com?lang=cs");
+                                window.open("https://mkt.fafauuweb.com?lang=cs");
                             }else{
                                 currentPage(apiId);
                             }
@@ -973,7 +973,7 @@
                 url = "https://hyxu36.uv178.com/whb/view.php?language=simplified";
                 break;
             case '${data.apiProviders["SB"].code}':
-                url = "https://mkt.ampinplayopt0matrix.com?lang=cs";
+                url = "https://mkt.fafauuweb.com?lang=cs";
                 break;
             case '${data.apiProviders["DWT"].code}':
                 url = "https://pocdesignother0.com";
