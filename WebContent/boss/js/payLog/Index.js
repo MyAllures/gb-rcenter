@@ -119,6 +119,29 @@ define(['common/BaseListPage', 'autocompleter'], function (BaseListPage) {
             $(event.currentTarget).unlock();
             this.query();
         },
+
+        /**
+         * 重置支付渠道排名表单
+         * @param event
+         */
+        resetSort:function (event) {
+            $("[name='search.siteId']").val('');
+            $("[name='search.OrderId']").val('')
+            $("[name='search.objectParams']").val('')
+            $("input[name='search.terminal'][value='']").prop("checked", true);
+            $("input[name='search.description']").siblings("button").find("span[prompt='prompt']").text("请选择");
+            $("input[name='search.description']").val('');
+            $("input[name='search.startTime']").val('');
+            $("input[name='search.endTime']").val('');
+            $("input[name='search.channelCode']").val('');
+            $("#terminal").prop('checked',false);
+            $("input[name='search.isNull']").siblings("button").find("span[prompt='prompt']").text("请选择");
+            $(event.currentTarget).unlock();
+            this.query();
+        },
+
+
+
         /**
          * 重新计算分页
          * @param e

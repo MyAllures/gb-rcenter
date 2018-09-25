@@ -21,7 +21,6 @@
 <!-- 主页面标题 -->
 <header class="mui-bar mui-bar-nav">
     <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-    <!--<a href="download.html" class="btn-download"></a>-->
     <img src="../../mobile-v3/images/logo.png" alt="logo" class="logo" />
     <!-- 登陆前 -->
     <div class="mui-pull-right login-before">
@@ -57,6 +56,10 @@
                     <div></div>
                 </div>
             </div>
+        </div>
+        <!--消息广播-->
+        <div class="text_broadcast">
+            1234567891011121314151617181920
         </div>
     </section>
     <!--公告-->
@@ -874,10 +877,7 @@
                 <span class="asset_num">0.00</span>
             </div>
         </div>
-
         <!--中间滚动部分-->
-        <!--<div class="mui-scroll-wrapper  mui-assets" >-->
-        <!--<div class="mui-scroll">-->
         <ul class="central_scroll">
             <li class="item_data">
                 <span>DS贵宾厅</span>
@@ -940,9 +940,6 @@
                 <span>0.00</span>
             </li>
         </ul>
-        <!--</div>-->
-        <!--</div>-->
-
         <!--底部按钮-->
         <div class="btn_group">
             <a  class="one_key_recycle">一键回收</a>
@@ -1124,7 +1121,6 @@
             $('.home-collect-dialog').toggle(300);
             $('body').toggleClass('hidden');
         });
-
 
         mui('.mui-scroll-wrapper').scroll({
             deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006

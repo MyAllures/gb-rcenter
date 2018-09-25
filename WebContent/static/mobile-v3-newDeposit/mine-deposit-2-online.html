@@ -50,6 +50,7 @@
                                     <div class="list_pay_item cur">
                                         <i class="icon-pay online-pay"></i>
                                         <div class="pay_nam">在线支付</div>
+                                        <b class="deposit_promo_tip cur_no_promo"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
@@ -63,30 +64,35 @@
                                     <div class="list_pay_item">
                                         <i class="icon-pay weichat-pay"></i>
                                         <div class="pay_nam">微信支付</div>
+                                        <b class="deposit_promo_tip cur_no_promo"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
                                     <div class="list_pay_item">
                                         <i class="icon-pay alipay"></i>
                                         <div class="pay_nam">支付宝支付</div>
+                                        <b class="deposit_promo_tip cur_no_promo"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
                                     <div class="list_pay_item">
                                         <i class="icon-pay qq-wallet"></i>
                                         <div class="pay_nam">QQ钱包</div>
+                                        <b class="deposit_promo_tip cur_no_promo"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
                                     <div class="list_pay_item">
                                         <i class="icon-pay jingdong-wallet"></i>
                                         <div class="pay_nam">京东钱包</div>
+                                        <b class="deposit_promo_tip cur_no_promo"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
                                     <div class="list_pay_item">
                                         <i class="icon-pay baidu-wallet"></i>
                                         <div class="pay_nam">百度钱包</div>
+                                        <b class="deposit_promo_tip cur_no_promo"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
@@ -94,36 +100,42 @@
                                         <i class="icon-pay bitcoin-pay"></i>
                                         <div class="pay_nam">比特币</div>
                                         <b class="deposit_promo_tip"></b>
+                                        <b class="deposit_promo_tip"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
                                     <div class="list_pay_item">
                                         <i class="icon-pay yima-pay"></i>
                                         <div class="pay_nam">一码付</div>
+                                        <b class="deposit_promo_tip cur_no_promo"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
                                     <div class="list_pay_item">
                                         <i class="icon-pay union-pay"></i>
                                         <div class="pay_nam">银联扫码</div>
+                                        <b class="deposit_promo_tip cur_no_promo"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
                                     <div class="list_pay_item">
                                         <i class="icon-pay kuaichong"></i>
                                         <div class="pay_nam">快充中心</div>
+                                        <b class="deposit_promo_tip cur_no_promo"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
                                     <div class="list_pay_item">
                                         <i class="icon-pay wangyin-dep"></i>
                                         <div class="pay_nam">柜台机</div>
+                                        <b class="deposit_promo_tip cur_no_promo"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
                                     <div class="list_pay_item">
                                         <i class="icon-pay yishou-pay"></i>
                                         <div class="pay_nam">易收付</div>
+                                        <b class="deposit_promo_tip cur_no_promo"></b>
                                     </div>
                                 </li>
                                 <li class="list_pay_item_w">
@@ -175,11 +187,11 @@
                             </div>
                             <!--提交-->
                             <div class="btn_wrap">
-                                <!--<a href="javascript:" class="mui-btn btn_submit mui-btn-block">提交</a>-->
+                                <a href="javascript:" class="mui-btn mui-btn-block btn_submit dialog1">提交</a>
                                 <!--QQ钱包付款页面-->
-                                <a href="online-pay-qq-wallet.html" class="mui-btn btn_submit mui-btn-block">提交</a>
+                                <a href="online-pay-qq-wallet.html" class="mui-btn mui-btn-block btn_submit dialog_qq_wallet">提交</a>
                                 <!--柜台付款页面-->
-                                <!--<a href="online-pay-counter.html" class="mui-btn btn_submit mui-btn-block">提交</a>-->
+                                <a href="online-pay-counter.html" class="mui-btn btn_submit mui-btn-block">提交</a>
                             </div>
                             <!--提示说明-->
                             <div class="deposit_help">
@@ -510,6 +522,40 @@
 <script src="../../mobile-v3/js/swiper.min.js"></script>
 <script>
     $(function () {
+        /*顶部导航tab*/
+        var slideNavTabs = new Swiper('.deposit-sorts', {
+            loop: true,      //无限滚动
+            loopedSlides:3,
+            slidesPerView:  3,
+            freeMode: true,
+            freeModeMomentum : false,
+            setWrapperSize :true,
+            allowTouchMove: true,
+            slideToClickedSlide: true,
+            touchRatio: 0.2,
+            observer:true,
+            observeParents:true,
+        });
+        /*tab内容展示*/
+        var slideContent = new Swiper('.slide-content', {
+            loop: true,
+            loopedSlides: 3,
+            autoHeight: false,
+            controller: {
+                control: slideNavTabs,
+            },
+            on: {
+                slideChangeTransitionEnd: function () {
+                    mui('.slide-content .mui-scroll-wrapper').scroll({
+                        indicators: false
+                    });
+                }
+            },
+        });
+        slideNavTabs.controller.control = slideContent;
+//            slideContent.controller.control = slideNavTabs;
+
+
         //关闭顶部优惠提示
         $(".close_icon").click(function () {
             $(".deposit_tips").fadeOut("slow");
@@ -575,43 +621,19 @@
             $(this).addClass("cur");
         });
 
+        /*选择金额 */
+        $(".conv_mone").on('click','.conv_mone_i',function () {
+           $(this).addClass('.choose_money');
+           var num = parseInt($(this).find("span").text());
+           var vals = parseInt($(".input_dp_num input").val()) || 0;
+           $(".input_dp_num input").val(vals+num);
+        });
+
         /*资金到账->金额大于0时可刷新*/
         $(".each_item.item_active").click(function () {
             alert('111')
-        })
+        });
 
-        /*顶部导航tab*/
-        var slideNavTabs = new Swiper('.deposit-sorts', {
-            loop: true,      //无限滚动
-            loopedSlides:3,
-            slidesPerView:  3,
-            freeMode: true,
-            freeModeMomentum : false,
-            setWrapperSize :true,
-            allowTouchMove: true,
-            slideToClickedSlide: true,
-            touchRatio: 0.2,
-            observer:true,
-            observeParents:true,
-        });
-        /*tab内容展示*/
-        var slideContent = new Swiper('.slide-content', {
-            loop: true,
-            loopedSlides: 3,
-            autoHeight: false,
-            controller: {
-                control: slideNavTabs,
-            },
-            on: {
-                slideChangeTransitionEnd: function () {
-                    mui('.slide-content .mui-scroll-wrapper').scroll({
-                        indicators: false
-                    });
-                }
-            },
-        });
-        slideNavTabs.controller.control = slideContent;
-//            slideContent.controller.control = slideNavTabs;
     });
 </script>
 
