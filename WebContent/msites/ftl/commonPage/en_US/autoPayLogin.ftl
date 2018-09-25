@@ -35,7 +35,9 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_lottery = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/lottery-game.html?apiId="+apiId;
+                                //配合彩票独立域名
+//                                window.location="/commonPage/gamePage/lottery-game.html?apiId="+apiId;
+                                window.location=result.defaultLink;
                             }else{
                                 /*游戏调转链接不支持https，所以不能嵌套在对应的-game.ftl里面*/
                                 window.location=result.defaultLink;
@@ -66,7 +68,12 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_lottery = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/lottery-game.html?apiId="+apiId;
+                                //配合彩票独立域名
+                                if(apiId=="22"){
+                                    window.location=result.defaultLink;
+                                }else{
+                                    window.location="/commonPage/gamePage/lottery-game.html?apiId="+apiId;
+                                }
                             }
                         }
                     } else {

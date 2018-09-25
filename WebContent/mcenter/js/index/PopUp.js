@@ -501,10 +501,12 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
         audioplayer: function (id, file, loop, callback) {
             var audioplayer = document.getElementById(id);
             if (audioplayer != null) {
+
                 if (!!window.ActiveXObject || "ActiveXObject" in window) {// IE
                     var embed = document.embedPlay;
                 } else {
                     setTimeout(function () {
+                        audioplayer.currentTime = 0;
                         audioplayer.play();
                     }, 1000);
 
@@ -530,7 +532,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     } else {
                         player.src = resRoot + '/' + file;
                     }
-                    //player.setAttribute('autostart', 'true');
+                    player.setAttribute('autostart', 'true');
                     if (loop) {
                         player.setAttribute('loop', 'infinite');
                     }
