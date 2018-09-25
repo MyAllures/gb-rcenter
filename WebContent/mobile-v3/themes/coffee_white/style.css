@@ -42,7 +42,9 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .mui-bar-tab { background: #c2c2c2; border-top: 1px solid #b3b3b3; }
 .mui-bar-tab .mui-tab-label { color: #666; }
 .mui-bar-tab .mui-active .mui-tab-label { color: #7b340d; }
-
+.mui-bar-tab .mui-active .mui-icon {/*图标选中时放大13% */
+    zoom: 113%;
+}
 /* mui-off-canvas-left */
 .mui-off-canvas-left { background: #444; }
 .mui-off-canvas-left .person-info { background: url(./images/off-canvas-sep.png) center bottom/100% 1px no-repeat; }
@@ -135,7 +137,7 @@ body.withdraw .account_tab .mui-segmented-control .mui-control-item { border-col
 body.withdraw .account_tab .mui-segmented-control .mui-active { background-color: #7b340d !important; color: #fff !important; }
 
 .mui-btn-blue, .mui-btn-primary, input[type=submit] { color: #fff; border: 1px solid #7b340d; background-color: #7b340d; }
-
+.nav .swiper-slide.swiper-slide-active::before {zoom: 118%;}
 .mui-bar-nav .mui-pull-left { color: #fff; }
 .mui-bar-nav .mui-pull-left:before { color: #fff; }
 
