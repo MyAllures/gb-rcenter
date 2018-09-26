@@ -189,7 +189,10 @@ define([], function () {
                 if (!!window.ActiveXObject || "ActiveXObject" in window) {// IE
                     var embed = document.embedPlay;
                 } else {
-                    audioplayer.play();
+                    setTimeout(function () {
+                        audioplayer.currentTime = 0;
+                        audioplayer.play();
+                    }, 1000);
                     if (callback != null && callback != undefined) {
                         //如何判断声音播放结束
                         //update by jerry

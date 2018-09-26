@@ -12,6 +12,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,Bootstr
                 _this.doCacheBtn($(this));
 
             });
+            $("._i18nBtn").on("click",function () {
+                _this.doI18nBtn($(this));
+
+            });
 
             $("._cacheSyBtn").on("click",function () {
                 _this.doCacheSyBtn($(this));
@@ -33,6 +37,19 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,Bootstr
             });
         },
 
+        doI18nBtn : function ($this) {
+            $this.attr('disabled', true);
+            var text = $this.text();
+            $this.text(text + '...');
+            $.ajax({
+                url: root + "/devTool/"+$this.attr("target")+".html?"+$this.attr("query"),
+                success: function (data) {
+                    alert(data == 'true' ? $this.text()+'成功！' : $this.text()+'失败，详情请查看服务器日志！');
+                    $this.attr('disabled', false);
+                    $this.text(text);
+                }
+            });
+        },
         doCacheBtn : function ($this) {
             $this.attr('disabled', true);
             var text = $this.text();
