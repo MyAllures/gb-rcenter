@@ -45,19 +45,15 @@
                         </label>
                         <input type="text" class="mui-input-clear" placeholder="请输入用户名（4-15位）">
                     </div>
-                    <div class="mui-input-row input_item">
-                        <label>
-                            <i class="strong_icon">*</i>
-                            密码
-                        </label>
-                        <input type="password" class="mui-input-password" placeholder="请输入6-20位字母数字或字符">
+                    <div class="mui-input-row input_item ">
+                        <label><i class="strong_icon">*</i>密码</label>
+                        <input class="show_pwd_way" type="password" placeholder="请输入6-20位字母数字或字符">
+                        <span class="pwd_icon not_view_icon"></span>
                     </div>
                     <div class="mui-input-row input_item">
-                        <label>
-                            <i class="strong_icon">*</i>
-                            确认密码
-                        </label>
-                        <input type="password" class="mui-input-password" placeholder="请再次输入密码">
+                        <label><i class="strong_icon">*</i>确认密码</label>
+                        <input class="confirm_pwd_way" type="password" placeholder="请再次输入密码">
+                        <span class="confirm_pwd_icon can_view_icon"></span>
                     </div>
                     <div class="mui-input-row input_item">
                         <label>
@@ -78,7 +74,7 @@
                     </div>
                     <div class="mui-input-row input_item">
                         <label>时区</label>
-                        <input type="text" class="mui-input-select choose_time_zone" readonly>
+                        <input type="text" class="mui-input-select choose_time_zone" readonly><!--mui-input-select-->
                         <span class="mui-icon mui-icon-arrowdown"></span>
                     </div>
                     <div class="mui-input-row input_item">
@@ -134,8 +130,7 @@
                         <input type="text" class="mui-input-clear" placeholder="请输入安全问题答案">
                     </div>
                     <div class="mui-input-row mui-checkbox mui-left tk">
-                        <!--<input name="checkbox1" value="Item 1" type="checkbox" checked class="agree_register_rules">-->
-                        <span class="mui-icon mui-icon-checkmarkempty agree_register_rules"></span>
+                        <span class="iconfont icon-gou5 agree_register_rules"></span>
                         <a>同意 <a href="javascript:void(0);" class="link">用户注册协议</a></a>
                     </div>
                     <div class="mui-button-row">
@@ -171,6 +166,33 @@
             picker.show();
             console.log('1111')
         });
+        $(".mui-btn.mui-poppicker-btn-cancel").on("tap",function () {
+             $(".mui-backdrop").css({"opacity":"0","transition":"opacity 0.3s"});
+             $(".mui-poppicker").css({"display":"none"});
+//             $(".mui-poppicker").hide(300);
+        });
+
+        //显示密码
+        $(".pwd_icon").on("tap",function () {
+            if($(".pwd_icon").hasClass("not_view_icon")){
+                $(".show_pwd_way").attr("type","text");
+                $(".pwd_icon").removeClass("not_view_icon").addClass("can_view_icon");
+            }else {
+                $(".show_pwd_way").attr("type","password");
+                $(".pwd_icon").removeClass("can_view_icon").addClass("not_view_icon");
+            }
+        });
+
+        //显示确认密码
+        $(".confirm_pwd_icon").on("tap",function () {
+            if($(".confirm_pwd_icon").hasClass("can_view_icon")){
+                $(".confirm_pwd_way").attr("type","password");
+                $(".confirm_pwd_icon").removeClass("can_view_icon").addClass("not_view_icon");
+            }else {
+                $(".confirm_pwd_way").attr("type","text");
+                $(".confirm_pwd_icon").removeClass("not_view_icon").addClass("can_view_icon");
+            }
+        });
 
         //选择语言
         $('.mui-input-select.choose_language').on('tap', function () {
@@ -188,7 +210,6 @@
             ]);
             picker.show();
             console.log('2222')
-
         });
 
         //选择货币
@@ -205,7 +226,6 @@
             ]);
             picker.show();
             console.log('3333')
-
         });
 
         //选择性别
@@ -217,7 +237,6 @@
             ]);
             picker.show();
             console.log('444')
-
         });
 
         //选择安全问题
@@ -230,7 +249,6 @@
             ]);
             picker.show();
             console.log('555')
-
         });
     });
 
