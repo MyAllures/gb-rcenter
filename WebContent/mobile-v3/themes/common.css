@@ -626,7 +626,8 @@ li {
     padding: 44px 0 0 0 !important; }
 
 .type-content .mui-control-content {
-    padding: 10px 30px; }
+    padding: 10px 15px 50px;
+}
 .type-content .mui-control-content .mui-input-group {
     background-color: transparent; }
 .type-content .mui-control-content .mui-input-group:before, .type-content .mui-control-content .mui-input-group:after {
@@ -697,39 +698,67 @@ li {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    position: relative; }
+    position: relative;
+    flex: 77;
+}
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex input {
     -webkit-box-flex: 1;
     -ms-flex: 1;
-    flex: 1; }
+    flex: 1;
+    margin: 4px 0 4px 4px!important;
+    height: 33px !important;
+    line-height:33px !important;
+    box-sizing: border-box;
+    padding: 10px 5px !important;
+    border:none !important;
+}
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex .mui-icon-clear {
     top: 5px;
     right: 120px; }
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex img {
-    width: 110px;
-    height: 35px;
-    margin: 5px; }
+    width: 90px;
+    height: 33px;
+    margin: 5px;
+    border-radius: 5px;
+}
 .type-content .mui-control-content .mui-input-group .mui-button-row {
     height: auto; }
 .type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block {
     font-size: 14px;
     padding: 10px 0; }
 .type-content .mui-control-content .mui-input-group .tk {
-    height: 45px; }
-.type-content .mui-control-content .mui-input-group .tk input[type=checkbox] {
-    left: 0;
-    top: 9px; }
-.type-content .mui-control-content .mui-input-group .tk input[type=checkbox]:before {
+    height: 45px;
+    margin-left:15px;
+}
+.type-content .mui-control-content .mui-input-group .tk .agree_register_rules {
+    /*left: 0;*/
+    /*top: 9px;*/
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    border-radius: 2px;
+    background-color: #1E68B8;
+    border: none;
+    color: #FFF;
+    font-size: 16px;
+    /*transform: scale(1.5);*/
+}
+/*.type-content .mui-control-content .mui-input-group .tk .agree_register_rules:before {
     font-size: 24px;
-    color: #1766bb; }
+    color: #1E68B8;
+    width: 15px!important;
+    height: 15px !important;
+}*/
 .type-content .mui-control-content .mui-input-group .tk a {
     color: #999;
-    float: left;
+    /*float: left;*/
     line-height: 45px;
-    margin-left: 30px; }
+    margin-left: 10px;
+}
 .type-content .mui-control-content .mui-input-group .tk a.link {
     text-decoration: underline;
-    color: #007aff;
+    color: #1F67B9;
     float: none;
     margin-left: 5px; }
 .type-content .mui-control-content .mui-input-group .icon-star {
