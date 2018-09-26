@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+    <!--<link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />-->
+    <style>
+        .bgc-url{
+            position: absolute;
+            top: -44px;
+            left:0;
+            width: 100%;
+            height: 300px;
+            background:url("../../mobile-v3/themes/images/bg_safety.png") no-repeat 0 0/100%;
+        }
+        .mui-bar{
+            background: none !important;
+            border: none;
+            box-shadow: none;
+        }
+        .list-xuan{
+            background-color: #F2F2F2;
+            border-top: 1px solid #D7D7D7;
+        }
+        .card-icon{
+            display: inline-block;
+        }
+        .card-icon>span{
+            display: inline-block;
+        }
+        .card-icon>span:first-child{
+            width: 54px;
+            height: 14px;
+            overflow: hidden;
+            background:url("../../mobile-v3/themes/images/pay-bank.png") no-repeat 0 -23px/100%;
+        }
+    </style>
+</head>
+
+<body class="mine-notice">
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"style="color: #fff;"></a>
+        <h1 class="mui-title"style="color: #fff;">安全中心</h1>
+    </header>
+    <div class="mui-content mui-scroll-wrapper"style="background-color: #fff;">
+        <div class="mui-scroll">
+            <div class="mui-row bgc-url">
+
+            </div>
+            <div class="mui-row"style="margin-top: 265px;">
+                <div class="mui-col-sm-6 mui-col-xs-12 list-xuan">
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">
+                            修改登录密码
+                            <span style="float: right;margin-right: 20px;color: #999999;">修改</span>
+                        </a>
+                    </li>
+                </div>
+                <div class="mui-col-sm-6 mui-col-xs-12 list-xuan">
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">
+                            修改安全密码
+                            <span style="float: right;margin-right: 20px;color: #999999;">设置</span>
+                        </a>
+                    </li>
+                </div>
+                <div class="mui-col-sm-6 mui-col-xs-12 list-xuan">
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">
+                            银行卡
+                            <div class="card-icon dis-no">
+                                <span></span>
+                                <span style="color: #1766BB;">*** 3077</span>
+                            </div>
+                            <div class="card-icon" style="color: #1766BB;">
+                                (未绑定银行卡)
+                            </div>
+                            <span style="float: right;margin-right: 20px;color: #999999;">设置</span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/common.js"></script>
+<script>
+    $(function () {
+    });
+</script>
+</body>
+
+</html>

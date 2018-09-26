@@ -5,6 +5,27 @@
 body {
     font-size: 13px; }
 
+
+/*字体图标  勾*/
+@font-face {font-family: "iconfont";
+    src: url('iconfont.eot?t=1531226256647'); /* IE9*/
+    src: url('iconfont.eot?t=1531226256647#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAToAAsAAAAABzQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFZW7kkCY21hcAAAAYAAAABeAAABhp2YBr5nbHlmAAAB4AAAARoAAAEgrWxrX2hlYWQAAAL8AAAALwAAADYR9NcWaGhlYQAAAywAAAAcAAAAJAfeA4RobXR4AAADSAAAAAwAAAAMC+kAAGxvY2EAAANUAAAACAAAAAgAdgCQbWF4cAAAA1wAAAAfAAAAIAESAF1uYW1lAAADfAAAAUUAAAJtPlT+fXBvc3QAAATEAAAAIQAAADJogu8/eJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2Bk/sE4gYGVgYOpk+kMAwNDP4RmfM1gxMjBwMDEwMrMgBUEpLmmMDgwVDyXYG7438AQw9zA0AAUZgTJAQAlOAyFeJzFkMENgDAMAy9t6QMxQEfgwUC8mKMbd4xiQnkwQS05VhxLiQIsQBQPMYFdGA9OueZ+ZHU/eSZLjUBtpXf1nyqiWXYNKplpsHmr/9i87qPTV6iDOrGVl4QbjZsL8wAAeJwVj7tOwmAcR/+/r/aGpZWv90KBUuHToCTWioMRFheNabwkJo4+gK4sDiRq4uDgMxiNm74APozRZ3Cs4snJ2Q/JRL+f0kwKyKYV2qA9OiKC0kfHZDESkQ9YH24iu75jSiIViZp2BtIu/I7ieNkw7/mKqlgw0cRmkg3FgAls5SO2g8yLgbAenfJug0uPqASieVcesCe4rbRhjdbL/bWxk7VtbWJwHnL+oCmyrDG2YJm49D1d1itK+SxbkTtrrbIWjFBEh+fVdp1f3OdXcdfXgekUdr1tvo5rUW3udeTZPFSXqloQVdNlB5PvxcA24t4XzWH/kW7ZC6mkzS8FhIrtFNJNUZ58FDAK4I2dFeXxrCh/CrwT/QHyNS7DAAB4nGNgZGBgAGIZzZ0P4vltvjJwszCAwPWskxMQ9P+HLAzMEkAuBwMTSBQAM+AKzAB4nGNgZGBgbvjfwBDDwgACQJKRARUwAwBHCQJsBAAAAAPpAAAEAAAAAAAAAAB2AJB4nGNgZGBgYGYIZGBlAAEmIOYCQgaG/2A+AwAQ9wFwAHicZY9NTsMwEIVf+gekEqqoYIfkBWIBKP0Rq25YVGr3XXTfpk6bKokjx63UA3AejsAJOALcgDvwSCebNpbH37x5Y08A3OAHHo7fLfeRPVwyO3INF7gXrlN/EG6QX4SbaONVuEX9TdjHM6bCbXRheYPXuGL2hHdhDx18CNdwjU/hOvUv4Qb5W7iJO/wKt9Dx6sI+5l5XuI1HL/bHVi+cXqnlQcWhySKTOb+CmV7vkoWt0uqca1vEJlODoF9JU51pW91T7NdD5yIVWZOqCas6SYzKrdnq0AUb5/JRrxeJHoQm5Vhj/rbGAo5xBYUlDowxQhhkiMro6DtVZvSvsUPCXntWPc3ndFsU1P9zhQEC9M9cU7qy0nk6T4E9XxtSdXQrbsuelDSRXs1JErJCXta2VELqATZlV44RelzRiT8oZ0j/AAlabsgAAAB4nGNgYoAALgbsgJmRiZGZkYWBsYIlPb/UlIEBAA3pAhkAAAA=') format('woff'),
+    url('iconfont.ttf?t=1531226256647') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('iconfont.svg?t=1531226256647#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gou5:before { content: "\e718"; }
+
+
 header.mui-bar-nav .logo {
     height: 28px;
     position: absolute;
@@ -1701,7 +1722,7 @@ body.deposit .c-bank-se > a {
     margin: 0; }
 body.deposit .gb-form-foot .submit {
     width: 100%;
-    padding: 10px 12px;
+    padding: 8px 12px;
     font-size: 13px; }
 body.deposit .gb-promo .gb-panel {
     background-color: #3e445c;
@@ -2813,20 +2834,38 @@ body.no-backdrop .mui-backdrop {
 
 .notice-list .i {
     border: 1px solid #e2e2e2;
-    background-color: #f2f2f2;
+    background-color: #fff;
     padding: 10px;
     position: relative; }
 
 .notice-list .i .gb-radio {
     position: absolute;
-    top: -1px;
-    left: 0px; }
+    top: 5px;
+    left: 4px;
+    background-color: #EFEFEF;
+    color:#EFEFEF;
+    width: 16px;
+    height: 16px;
+    line-height: 15px; }
+.notice-list .i .gb-radio-a{
+    background-color: #1E68B8;
+    color:#fff;
+}
+.notice-list .i .icon-new{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url(images/icon_hotnews.png);
+    background-size: 100% 100%;
+}
 
 .notice-list .i > .ct p {
-    line-height: 20px;
+    line-height: 24px;
     color: #333333;
-    text-indent: 2em;
-    margin-bottom: 5px; }
+    margin: 10px 10px;}
 
 .notice-list .i > .ct p.no-data {
     height: 100px;
@@ -2891,8 +2930,6 @@ body.no-backdrop .mui-backdrop {
     display: inline-block;
     width: 30px;
     height: 30px;
-    background: url(../images/radio.png);
-    background-size: 100% 100%;
     vertical-align: text-top;
     margin-right: 5px; }
 
@@ -3465,7 +3502,7 @@ body.no-backdrop .mui-backdrop {
 
 .gb-form-foot .submit {
     width: 100%;
-    padding: 10px 12px;
+    padding: 8px 12px;
     font-size: 13px; }
 
 /* 取款样式  */
@@ -5176,12 +5213,11 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
 .mine-notice {
     color: #000; }
 .mine-notice .mui-content {
-    background: #fff;
+    background: #EFEFEF;
     padding-bottom: 0 !important; }
 .mine-notice .gb-panel {
     background-color: #fff;
-    border-top: 1px solid #e6e6e6;
-    border-bottom: 1px solid #e6e6e6; }
+}
 .mine-notice .gb-headtabs {
     margin: 11px auto;
     width: 60%;
@@ -5202,10 +5238,10 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
 .mine-notice .gb-datafilter {
     padding: 10px;
     color: #333;
+    background-color:#EFEFEF ;
     font-size: 10px; }
 .mine-notice .gb-datafilter .input-drop {
     display: inline-block;
-    border: 1px solid #e2e2e2;
     border-radius: 2px;
     height: 25px;
     line-height: 23px;
@@ -5216,7 +5252,8 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
     position: relative; }
 .mine-notice .gb-datafilter .input-drop a {
     display: block;
-    line-height: 23px;
+    line-height: 25px;
+    background-color: #fff;
     color: #999;
     font-size: 12px; }
 .mine-notice .gb-datafilter .input-drop a .mui-icon {
@@ -5226,7 +5263,31 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
 .mine-notice .gb-datafilter .input-date {
     display: inline-block;
     position: relative;
-    width: 90px; }
+    width: 113px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+.err-news{
+    width: 100%;
+    height: 525px;
+}
+.err-new-c{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #fff;
+}
+.err-new-c>div{
+    width: 155px;
+    height: 143px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: red;
+}
 .mine-notice .gb-datafilter .input-date a {
     display: inline-block;
     width: 20px;
@@ -5238,15 +5299,16 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
     top: 0;
     left: 0; }
 .mine-notice .gb-datafilter .input-date input.date {
-    border: 1px solid #e2e2e2;
-    border-radius: 2px;
+    border-radius: 3px;
     height: 25px;
     line-height: 23px;
     color: #333;
+    background-color: #fff;
     font-size: 10px;
     width: 100%;
     text-align: center;
-    position: relative; }
+    position: relative;
+}
 .mine-notice .gb-datafilter .btn {
     padding: 2px 8px;
     background-color: #1766bb;
@@ -5256,27 +5318,26 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
     margin-right: 5px; }
 .mine-notice .gb-checkbox2 {
     display: inline-block;
-    width: 12px;
-    height: 12px;
-    background: url(../images/checkbox.png);
-    background-size: 100% 100%;
-    vertical-align: text-top;
-    margin-right: 5px; }
+    width: 17px;
+    height: 16px;
+    line-height: 14px;
+    border: 1px solid #ddd;
+    vertical-align: sub; }
 .mine-notice .gb-checkbox2.on {
     background-image: url(../images/checkbox-on.png); }
 .mine-notice .gb-radio {
     display: inline-block;
     width: 30px;
     height: 30px;
-    background: url(../images/radio.png);
-    background-size: 100% 100%;
     vertical-align: text-top;
     margin-right: 5px; }
 .mine-notice .gb-radio.on {
     background-image: url(../images/radio-on.png); }
 .mine-notice .notice-form {
     margin: 10px;
-    border: 2px solid #e2e2e2; }
+    border: 2px solid #e2e2e2;
+    background-color: #fff;
+    padding: 5px;}
 .mine-notice .notice-form .mui-input-group:before {
     display: none; }
 .mine-notice .notice-form .mui-input-group:after {
@@ -5286,10 +5347,10 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
 .mine-notice .notice-form .mui-input-group .mui-input-row:last-child:after {
     display: none; }
 .mine-notice .notice-form .mui-input-group textarea {
-    border: 1px solid #e2e2e2;
+    border: none;
     color: #999999;
+    padding: 5px;
     font-size: 12px;
-    padding: 5px 10px;
     height: 150px; }
 .mine-notice .mui-input-group .mui-input-row {
     height: auto; }
@@ -5312,7 +5373,7 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
     color: #999;
     display: inline-block;
     font-size: 12px;
-    margin-right: 15px; }
+    margin-right: 0; }
 .mine-notice .gb-select > a .mui-icon {
     color: #7a7674 !important;
     font-size: 18px;
@@ -5896,3 +5957,8 @@ body.mine-user .gb-select > a {
 .pj-icon-baiwu{background-position-x: -510px;}
 .pj-icon-hongwu{background-position-x: -540px;}
 .pj-icon-liu{background-position-x: -570px;}
+
+
+
+sup{    width: 9px;  height: 9px;  background-color: #FF0000;  display: inline-block;  border-radius: 50%;  left: -3px;}
+.dis-no{display: none!important;}
