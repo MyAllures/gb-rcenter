@@ -40,6 +40,7 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .mui-bar-tab { background: #c2c2c2; border-top: 1px solid #b3b3b3; }
 .mui-bar-tab .mui-tab-label { color: #666; }
 .mui-bar-tab .mui-active .mui-tab-label { color: #01bc81; }
+.mui-bar-tab .mui-active .mui-icon {/*图标选中时放大13% */zoom: 113%;}
 
 /* mui-off-canvas-left */
 .mui-off-canvas-left { background: #444; }
@@ -133,6 +134,8 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 .mui-bar-nav .mui-pull-left { color: #fff; }
 .mui-bar-nav .mui-pull-left:before { color: #fff; }
+
+.nav .swiper-slide.swiper-slide-active::before {zoom: 118%;}
 
 .mine-cash-record-body .gb-datafilter .btn-kx { background: #14805e; border-color: #14805e; }
 

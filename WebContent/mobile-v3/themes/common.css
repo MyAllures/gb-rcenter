@@ -148,31 +148,90 @@ li {
     top: 8px;
     left: 0;
     z-index: 2; }
+.banner-slide .text_broadcast {
+    position: absolute;
+    bottom: 30px;
+    left: -188px;
+    opacity: 1;
+    width: 188px;
+    height: 27px;
+    background: url("images/lantern_bg@2x.png");
+    background-size: 188px 27px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height:27px;
+    text-align: left;
+    padding: 0 8px;
+    -webkit-animation: show_hide 6s infinite linear;
+}
+@-webkit-keyframes show_hide {
+    0% {
+        left: -188px;
+        opacity: 1;
+    }
+    16.7% {
+        left: 0;
+        opacity:1;
+    }
+    33.3% {
+        left: 0;
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+        left: 0;
+    }
+    100% {
+        opacity:0;
+        left: -188px;
+    }
+}
 
-/* notice */
+/******************* notice ********************/
 .notice {
-    height: 28px;
-    line-height: 28px;
+    height: 41px;
+    line-height: 41px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    overflow: hidden; }
+    flex-direction:row;
+    align-items:center;
+    overflow: hidden;
+    background: #151515;
+}
 .notice .btn-title {
-    padding: 0px 6px;
+    padding: 0 6px;
     margin: 3px 10px;
-    font-size: 12px; }
+    font-size: 12px;
+    background: #168df6;
+    border: 1px solid #168df6;
+}
+.notice .msg_inform_icon {
+    display: inline-block;
+    width:18px;
+    height: 15px;
+    background: url("images/icon_news@2x.png") no-repeat;
+    background-size: 18px 15px;
+    margin: 0 17px;
+}
 .notice .notice-list {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
     width: 270px;
-    margin: 0; }
+    margin: 0;
+}
+.notice .notice-list a {
+    color: #1279d9 !important;
+}
 .notice .notice-list .marquee {
-    width: 100%;
-    overflow: hidden; }
+    width: 95%;
+    overflow: hidden;
+}
 .notice .notice-list .marquee a {
     font-size: 13px;
-    color: #333; }
+    color: #333;
+}
 
 .notice-slider {
     padding-bottom: 21px;
@@ -186,27 +245,33 @@ li {
     display: block;
     border-bottom: 1px dashed #666;
     margin-bottom: 10px;
-    padding-bottom: 10px; }
+    padding-bottom: 10px;
+}
 
 .notice-alert {
-    border-radius: 8px; }
+    border-radius: 8px;
+}
 .notice-alert.mui-popup-in {
-    transform: translate3d(-50%, 0, 0) scale(1);
-    top: 30px; }
+    transform: translate(-50%,-50%);
+}
 .notice-alert .mui-popup-inner {
     border-radius: 0;
-    padding: 15px 5px 15px 15px; }
+    padding: 15px;
+}
 .notice-alert .mui-popup-inner .mui-popup-text {
-    margin: 12px 0 0; }
+    margin: 12px 0 0;
+}
 .notice-alert .mui-popup-button {
     border-radius: 0 !important;
-    font-size: 15px; }
+    font-size: 15px;
+}
 .notice-alert .mui-popup-title {
     font-size: 15px;
     color: #333;
     height: 29px;
     margin: 0 -15px;
-    border-bottom: 1px solid #0003; }
+    border-bottom: 1px solid #0003;
+}
 
 /* nav */
 .nav {
@@ -575,14 +640,15 @@ li {
     float: none; }
 .type-content .mui-control-content .mui-input-group .mui-input-row label {
     padding: 0;
-    width: 100px;
+    /*width: 100px;*/
     white-space: nowrap;
-    display: block;
+    /*display: inline-block;*/
     font-size: 12px;
     color: #999;
     margin-bottom: 0;
     line-height: 16px;
-    height: 16px; }
+    height: 16px;
+}
 .type-content .mui-control-content .mui-input-group .mui-input-row input[type=text], .type-content .mui-control-content .mui-input-group .mui-input-row input[type=password] {
     border: 1px solid #ddd;
     width: 100%;
@@ -1326,12 +1392,12 @@ body.deposit .mine-form .form-row > .cont p .ck {
     display: inline-block;
     width: 15px;
     height: 15px;
-    background: url(../images/blue/checkbox.png);
+    background: url("../images/blue/checkbox.png");
     background-size: cover;
     vertical-align: middle;
     margin-right: 5px; }
 body.deposit .mine-form .form-row > .cont p .ck.active {
-    background-image: url(../images/blue/checkbox-on.png); }
+    background-image: url("../images/blue/checkbox-on.png"); }
 body.deposit .mine-form .form-row > .cont .range {
     display: inline-block;
     width: 50px;
@@ -2685,7 +2751,8 @@ body.no-backdrop .mui-backdrop {
     z-index: 10;
     position: relative;
     background: white;
-    padding: 10px; }
+    padding: 10px;
+}
 
 .notice-list > p {
     line-height: 22px;
@@ -5572,9 +5639,10 @@ body.mine-user .gb-select > a {
     margin-right: 3px;
     width: 20px;
     height: 20px;
-    background: url(images/star.png) center no-repeat/100%;
+    background: url("images/star.png") center no-repeat 0 0/100%;
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: middle;
+}
 .home-collect-dialog .star .my-collection {
 
 }

@@ -42,7 +42,9 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .mui-bar-tab { background: #c2c2c2; border-top: 1px solid #b3b3b3; }
 .mui-bar-tab .mui-tab-label { color: #666; }
 .mui-bar-tab .mui-active .mui-tab-label { color: #007aff; }
-
+.mui-bar-tab .mui-active .mui-icon {/*图标选中时放大13% */
+    zoom: 113%;
+}
 /* mui-off-canvas-left */
 .mui-off-canvas-left { background: #444; }
 .mui-off-canvas-left .person-info { background: url(./images/off-canvas-sep.png) center bottom/100% 1px no-repeat; }
@@ -127,6 +129,9 @@ body.withdraw .account_tab .mui-segmented-control .mui-active { background-color
 
 .mui-btn-blue, .mui-btn-primary, input[type=submit] { color: #fff; border: 1px solid #1b75d9; background-color: #1b75d9; }
 
+.nav .swiper-slide.swiper-slide-active::before {
+    zoom: 118%;
+}
 .mine-bet-record-body .gb-datafilter .btn-ss { background: #1b75d9; border-color: #1b75d9; }
 
 .mine-cash-record-body .gb-datafilter .btn-kx { background: #1b75d9; border-color: #1b75d9; }
