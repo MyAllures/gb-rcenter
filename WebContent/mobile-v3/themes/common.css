@@ -6,7 +6,7 @@ body {
     font-size: 13px; }
 
 
-/*字体图标  勾*/
+/****************************字体图标  √ *************************************/
 @font-face {font-family: "iconfont";
     src: url('iconfont.eot?t=1531226256647'); /* IE9*/
     src: url('iconfont.eot?t=1531226256647#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -14,7 +14,6 @@ body {
     url('iconfont.ttf?t=1531226256647') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
     url('iconfont.svg?t=1531226256647#iconfont') format('svg'); /* iOS 4.1- */
 }
-
 .iconfont {
     font-family:"iconfont" !important;
     font-size:16px;
@@ -22,8 +21,8 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 .icon-gou5:before { content: "\e718"; }
+
 
 
 header.mui-bar-nav .logo {
@@ -714,7 +713,8 @@ li {
     top: 26px;
     height: 35px;
     line-height: 35px;
-    position: absolute; }
+    position: absolute;
+}
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -739,7 +739,7 @@ li {
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex img {
     width: 90px;
     height: 33px;
-    margin: 5px;
+    margin: 5px 0 5px 7px;
     border-radius: 5px;
 }
 .type-content .mui-control-content .mui-input-group .mui-button-row {
@@ -752,8 +752,6 @@ li {
     margin-left:15px;
 }
 .type-content .mui-control-content .mui-input-group .tk .agree_register_rules {
-    /*left: 0;*/
-    /*top: 9px;*/
     width: 15px;
     height: 15px;
     line-height: 15px;
@@ -762,8 +760,7 @@ li {
     background-color: #1E68B8;
     border: none;
     color: #FFF;
-    font-size: 16px;
-    /*transform: scale(1.5);*/
+    font-size: 15px;
 }
 /*.type-content .mui-control-content .mui-input-group .tk .agree_register_rules:before {
     font-size: 24px;
@@ -4107,7 +4104,7 @@ body.invite .mine-table table tr.head.nobr td {
     padding: 12px 0;
     border-right: none; }
 
-/* 注册条款样式 */
+/**********************************注册条款样式*********************************/
 .register-rules-wrap {
     color: #999;
     padding: 10px; }
