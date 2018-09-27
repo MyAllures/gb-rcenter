@@ -97,6 +97,9 @@ define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
                 window.top.topPage.doAjax(e,opt);
             }
             return false;
+        },
+        closePrivilege: function (e, opt) {
+            window.top.topPage.closeDialog();
         }
 
     });

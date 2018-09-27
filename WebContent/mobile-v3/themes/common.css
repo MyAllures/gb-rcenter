@@ -4707,19 +4707,72 @@ body.change-loginpassword .gb-stressed p i.active {
     color: #aeaeae; }
 .mine-bet-detail .mine-form .mui-input-row {
     height: auto; }
-.mine-bet-detail .mine-form .panel {
-    margin: 0 32px;
-    border: 1px solid #e2e2e2;
-    background-color: #f2f2f2;
-    padding: 10px;
-    border-radius: 3px; }
-.mine-bet-detail .mine-form .panel p {
+.mine-bet-detail .mine-form .ClientLog {
+    width: 90%;
+    margin: 0 auto 10px auto;
+    background-color:#fff ;
+    padding: 0 10px;
+    border-radius: 5px; }
+.mine-bet-detail .mine-form .ClientLog:first-child{
+    margin-top: 10px;
+}
+.mine-bet-detail .mine-form .ClientLog span {
+    color: #333333; }
+.mine-bet-detail .mine-form .ClientLog span:first-child {
+    display: inline-block;
+    width: 74px;
+    margin-right: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-right: 1px solid #EFEFEF;
+    color: #999999;
+    font-size: 13px; }
+.mine-bet-detail .mine-form .ClientLog .plate-size {
+    width: 70%;
+    padding: 5px;
+    display: inline-block;
+    height: 70px;
+    margin: 3px 0 3px -15px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-size p{
+    height: 35px;
+    line-height: 35px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-size p:first-child{
+    border-bottom: 1px solid #E2E2E2;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon{
+    width: 70%;
+    padding: 5px;
+    display: inline-block;
+    margin: 3px 0 3px -15px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon .plate{
+    padding-bottom: 5px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon .plate>p{
+    height: 20px;
     line-height: 20px;
-    color: #333333;
-    font-size: 12px; }
-.mine-bet-detail .mine-form .panel p .text {
-    color: #999999; }
-
+    border: none;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon>div{
+    padding: 5px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon div div{
+    height: 20px;
+    line-height: 20px;
+    color:#999999 ;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon div ul{
+    height: 30px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon div ul li{
+    display: inline-block;
+    font-size: 27px;
+    height: 27px;
+    line-height: 27px;
+    margin-top: 5px;
+}
 /* cash-detail */
 body.cash-detail {
     color: #000; }
@@ -5865,6 +5918,9 @@ body.mine-user .gb-select > a {
 .gr-ft-w:before{content:"\e900";}
 .gr-ft-b:before{content:"\e901";color:#fa1e1e;}
 
+
+
+/************************色子字体图标************************/
 .gr-dice-1:before,.gr-di-1:before{content:"\e902";color:#fa1e1e;}
 .gr-dice-2:before,.gr-di-2:before{content:"\e903";}
 .gr-dice-3:before,.gr-di-3:before{content:"\e904";}
@@ -5911,6 +5967,9 @@ body.mine-user .gb-select > a {
 .gr-diamond-q:before,.gr-diamond-12:before,.gr-d-12:before{content:"\e92a";color:#fa1e1e;}
 .gr-diamond-k:before,.gr-diamond-13:before,.gr-d-13:before{content:"\e92b";color:#fa1e1e;}
 
+
+
+/***************************扑克牌字体图标*********************************/
 .gr-heart-a:before,.gr-heart-1:before,.gr-h-1:before{content:"\e92c";color:#fa1e1e;}
 .gr-heart-2:before,.gr-h-2:before{content:"\e92d";color:#fa1e1e;}
 .gr-heart-3:before,.gr-h-3:before{content:"\e92e";color:#fa1e1e;}
