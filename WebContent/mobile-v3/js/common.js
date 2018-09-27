@@ -100,12 +100,19 @@ $(function(){
 	});
 
 	// 选择器示例，展示用而已。根据业务逻辑自己定义
-	$(".mui-input-select").on("tap",function(){
-		 var picker = new mui.PopPicker();
-		 picker.setData([{value:'v1',text:'选项1'},{value:'v2',text:'选项2'},{value:'v3',text:'选项3'}]);
-		 picker.show(function (selectItems) {
-		 });
-	});
+	// $(".mui-input-select").on("tap",function(){
+	// 	 var picker = new mui.PopPicker();
+	// 	 picker.setData([
+	// 	     {value:'v1',text:'选项1'},
+     //         {value:'v2',text:'选项2'},
+     //         {value:'v3',text:'选项3'},
+     //         {value:'v4',text:'选项4'},
+     //         {value:'v5',text:'选项5'},
+     //         {value:'v6',text:'选项6'},
+     //     ]);
+	// 	 picker.show(function (selectItems) {
+	// 	 });
+	// });
 
 	//登录信息点击弹出余额信息
 	$("#login-info").on("click",function(){

@@ -1,104 +1,258 @@
 <!DOCTYPE html>
 <html>
 <head>
-      <meta charset="utf-8">
-      <title>Dawoo</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-status-bar-style" content="black">
-      <link rel="bookmark" href="../../mobile-v3/favicon.ico">
-      <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
-      <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/mui.picker.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/mui.dtpicker.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/loading.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.picker.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.dtpicker.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/loading.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
 </head>
 
 <body class="mui-app">
 <div class="app-fix-top"></div>
 <!-- 主页面标题 -->
 <header class="mui-bar mui-bar-nav">
-      <a class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left"></a>
-      <h1 class="mui-title">注册</h1>
+    <a class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left"></a>
+    <h1 class="mui-title">注册</h1>
 </header>
 <div class="mui-content mui-scroll-wrapper mui-content-without-footer-address login-content">
-      <div class="mui-scroll">
-            <!-- 主界面具体展示内容 -->
-            <!--<section class="type-header mui-segmented-control">
-                <a href="#login_content" class="mui-control-item mui-btn mui-active ">登录</a>
-                <a href="#register_content" class="mui-control-item mui-btn">注册</a>
-            </section>-->
-            <section class="type-content">
-                  <div id="register_content" class="mui-control-content mui-active register-part"><!--注册部分的内容-->
-                        <form class="mui-input-group">
-                              <div class="mui-input-row register_form">
-                                    <label>推荐码</label>
-                                    <input type="text" class="mui-input-clear" placeholder="">
-                              </div>
-                              <div class="mui-input-row">
-                                    <label class="mui-ellipsis">输入用户名<i class="icon-star"></i></label>
-                                    <input type="text" class="mui-input-clear" placeholder="输入8-20位字母数字组合">
-                              </div>
-                              <div class="mui-input-row">
-                                    <label>输入密码<i class="icon-star"></i></label>
-                                    <input type="password" class="mui-input-password" placeholder="输入8-20位字母数字组合">
-                              </div>
-                              <div class="mui-input-row">
-                                    <label>输入确认密码<i class="icon-star"></i></label>
-                                    <input type="password" class="mui-input-password" placeholder="输入8-20位字母数字组合">
-                              </div>
-                              <div class="mui-input-row">
-                                    <label>输入真实姓名<i class="icon-star"></i></label>
-                                    <input type="text" class="mui-input-clear" placeholder="输入与银行卡相同姓名">
-                              </div>
-                              <div class="mui-input-row">
-                                    <label>输入取款密码<i class="icon-star"></i></label>
-                                    <input type="password" class="mui-input-password" placeholder="输入6位数字密码">
-                              </div>
-                              <div class="mui-input-row">
-                                    <label>主语言</label>
-                                    <input type="text" class="mui-input-select" readonly placeholder="请选择语言">
-                                    <span class="mui-icon mui-icon-arrowdown"></span>
-                              </div>
-                              <div class="mui-input-row">
-                                    <label>安全问题</label>
-                                    <input type="text" class="mui-input-select" readonly placeholder="请选择问题">
-                                    <span class="mui-icon mui-icon-arrowdown"></span>
-                              </div>
-                              <div class="mui-input-row">
-                                    <label>请输入回答</label>
-                                    <input type="text" class="mui-input-clear" placeholder="请选择安全问题正确答案">
-                              </div>
-                              <div class="mui-input-row">
-                                    <label>请输入验证码</label>
-                                    <div class="mui-flex">
-                                          <input type="text" class="mui-input-clear" placeholder="请输入验证码">
-                                          <img src="../../mobile-v3/images/code.png"/>
-                                    </div>
-                              </div>
-                              <div class="mui-input-row mui-checkbox mui-left tk">
-                                    <a>我已满合法博彩年龄，同意各项 <a href="javascript:void(0);" class="link">开户条约</a></a>
-                                    <input name="checkbox1" value="Item 1" type="checkbox" checked>
-                              </div>
-                              <div class="mui-button-row">
-                                    <button type="button" class="mui-btn mui-btn-block btn-ok" >立即注册</button>
-                                    <button type="button" class="mui-btn mui-btn-block btn-cancel" >免费试玩</button>
-                              </div>
-                        </form>
-                  </div>
-            </section>
-      </div> <!--mui-scroll 闭合标签-->
+    <div class="mui-scroll">
+        <!-- 主界面具体展示内容 -->
+        <!--<section class="type-header mui-segmented-control">
+            <a href="#login_content" class="mui-control-item mui-btn mui-active ">登录</a>
+            <a href="#register_content" class="mui-control-item mui-btn">注册</a>
+        </section>-->
+        <section class="type-content">
+            <div id="register_content" class="mui-control-content mui-active register-part"><!--注册部分的内容-->
+                <form class="mui-input-group">
+                    <div class="mui-input-row input_item">
+                        <label>推荐码</label>
+                        <input type="text" class="mui-input-clear" >
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label class="mui-ellipsis">
+                            <i class="strong_icon">*</i>
+                            用户名
+                        </label>
+                        <input type="text" class="mui-input-clear" placeholder="请输入用户名（4-15位）">
+                    </div>
+                    <div class="mui-input-row input_item ">
+                        <label><i class="strong_icon">*</i>密码</label>
+                        <input class="show_pwd_way" type="password" placeholder="请输入6-20位字母数字或字符">
+                        <span class="pwd_icon not_view_icon"></span>
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label><i class="strong_icon">*</i>确认密码</label>
+                        <input class="confirm_pwd_way" type="password" placeholder="请再次输入密码">
+                        <span class="confirm_pwd_icon can_view_icon"></span>
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>
+                            <i class="strong_icon">*</i>
+                            手机号
+                        </label>
+                        <input type="number" class="mui-input-numbox" >
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>
+                            <i class="strong_icon">*</i>
+                            验证码
+                        </label>
+                        <div class="mui-flex">
+                            <input type="text" class="mui-input-clear">
+                            <img src="../../mobile-v3/images/code.png"/>
+                        </div>
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>时区</label>
+                        <input type="text" class="mui-input-select choose_time_zone" readonly><!--mui-input-select-->
+                        <span class="mui-icon mui-icon-arrowdown"></span>
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>真实姓名<i class=""></i></label>
+                        <input type="text" class="mui-input-clear" >
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>邮箱<i class=""></i></label>
+                        <input type="email" class="mui-input-clear">
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>QQ</label>
+                        <input type="number" class="mui-input-numbox">
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>
+                            <i class="strong_icon">*</i>
+                            安全密码
+                        </label>
+                        <input type="number" class="mui-input-numbox" placeholder="请输入6位数字">
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>主语言</label>
+                        <input type="text" class="mui-input-select choose_language" readonly>
+                        <span class="mui-icon mui-icon-arrowdown"></span>
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>主货币</label>
+                        <input type="text" class="mui-input-select choose_currency" readonly>
+                        <span class="mui-icon mui-icon-arrowdown"></span>
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>性别</label>
+                        <input type="text" class="mui-input-select choose_gender" readonly>
+                        <span class="mui-icon mui-icon-arrowdown"></span>
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>生日</label>
+                        <input type="text" class="mui-input-select" readonly>
+                        <span class="mui-icon mui-icon-arrowdown"></span>
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>微信</label>
+                        <input type="text" class="mui-input-clear" >
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>安全问题</label>
+                        <input type="text" class="mui-input-select choose_safety_qs" readonly>
+                        <span class="mui-icon mui-icon-arrowdown"></span>
+                    </div>
+                    <div class="mui-input-row input_item">
+                        <label>答案</label>
+                        <input type="text" class="mui-input-clear" placeholder="请输入安全问题答案">
+                    </div>
+                    <div class="mui-input-row mui-checkbox mui-left tk">
+                        <span class="iconfont icon-gou5 agree_register_rules"></span>
+                        <a>同意 <a href="javascript:void(0);" class="link">用户注册协议</a></a>
+                    </div>
+                    <div class="mui-button-row">
+                        <button type="button" class="mui-btn mui-btn-block btn-ok" >立即注册</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div> <!--mui-scroll 闭合标签-->
 </div>  <!--mui-content 闭合标签-->
-</body>
 
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/mui/mui.picker.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
 <script type="text/javascript">
+    $(function () {
+        //选择时区
+        $('.mui-input-select.choose_time_zone').on('tap', function () {
+            var picker = new mui.PopPicker();
+            picker.setData([
+                {value:'zone_0',text:'0时区'},
+                {value:'zone_1',text:'东一区'},
+                {value:'zone_2',text:'东二区'},
+                {value:'zone_3',text:'东三区'},
+                {value:'zone_4',text:'东四区'},
+                {value:'zone_5',text:'东五区'},
+                {value:'zone_6',text:'东六区'},
+                {value:'zone_7',text:'东七区'},
+                {value:'zone_8',text:'东八区'},
+                {value:'zone_9',text:'东九区'}
+            ]);
+            picker.show();
+            console.log('1111')
+        });
+        $(".mui-btn.mui-poppicker-btn-cancel").on("tap",function () {
+             $(".mui-backdrop").css({"opacity":"0","transition":"opacity 0.3s"});
+             $(".mui-poppicker").css({"display":"none"});
+//             $(".mui-poppicker").hide(300);
+        });
+
+        //显示密码
+        $(".pwd_icon").on("tap",function () {
+            if($(".pwd_icon").hasClass("not_view_icon")){
+                $(".show_pwd_way").attr("type","text");
+                $(".pwd_icon").removeClass("not_view_icon").addClass("can_view_icon");
+            }else {
+                $(".show_pwd_way").attr("type","password");
+                $(".pwd_icon").removeClass("can_view_icon").addClass("not_view_icon");
+            }
+        });
+
+        //显示确认密码
+        $(".confirm_pwd_icon").on("tap",function () {
+            if($(".confirm_pwd_icon").hasClass("can_view_icon")){
+                $(".confirm_pwd_way").attr("type","password");
+                $(".confirm_pwd_icon").removeClass("can_view_icon").addClass("not_view_icon");
+            }else {
+                $(".confirm_pwd_way").attr("type","text");
+                $(".confirm_pwd_icon").removeClass("not_view_icon").addClass("can_view_icon");
+            }
+        });
+
+        //选择语言
+        $('.mui-input-select.choose_language').on('tap', function () {
+            var picker = new mui.PopPicker();
+            picker.setData([
+                {value:'sim_ch',text:'简体中文'},
+                {value:'tra_ch',text:'繁体中文'},
+                {value:'eng',text:'英语'},
+                {value:'french',text:'法语'},
+                {value:'germany',text:'德语'},
+                {value:'spanish',text:'西班牙语'},
+                {value:'japanese',text:'日语'},
+                {value:'korean',text:'朝鲜语'},
+                {value:'russia',text:'俄语'}
+            ]);
+            picker.show();
+            console.log('2222')
+        });
+
+        //选择货币
+        $('.mui-input-select.choose_currency').on('tap', function () {
+            var picker = new mui.PopPicker();
+            picker.setData([
+                {value:'rmb',text:'人民币'},
+                {value:'dollar',text:'美元'},
+                {value:'euro',text:'欧元'},
+                {value:'pound',text:'英镑'},
+                {value:'yen',text:'日元'},
+                {value:'won',text:'韩元'},
+                {value:'php',text:'披索'}
+            ]);
+            picker.show();
+            console.log('3333')
+        });
+
+        //选择性别
+        $('.mui-input-select.choose_gender').on('tap', function () {
+            var picker = new mui.PopPicker();
+            picker.setData([
+                {value:'male',text:'男'},
+                {value:'female',text:'女'}
+            ]);
+            picker.show();
+            console.log('444')
+        });
+
+        //选择安全问题
+        $('.mui-input-select.choose_safety_qs').on('tap', function () {
+            var picker = new mui.PopPicker();
+            picker.setData([
+                {value:'question_1',text:'你父亲的名字'},
+                {value:'question_2',text:'你配偶的名字'},
+                {value:'question_3',text:'你中学的名字'}
+            ]);
+            picker.show();
+            console.log('555')
+        });
+    });
 
 </script>
+
+</body>
 </html>

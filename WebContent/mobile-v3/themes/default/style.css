@@ -213,13 +213,108 @@ header.mui-bar-nav .mui-action-back {
     color: #333;
 }
 
-/****************************** login and register page **************************/
+/****************************** 登录/注册 **************************/
 .type-header {
     border-bottom: 1px solid #fff;
 }
-
 .login-content {
     background: #f2f2f2;
+}
+.login-content .type-content .mui-input-row.input_item {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    position: relative;
+}
+/*.login-content .type-content .mui-input-row.input_item.hide_pwd, .login-content .type-content .mui-input-row.input_item.show_confirm_pwd {
+    display: flex;
+}
+.login-content .type-content .mui-input-row.input_item.show_pwd, .login-content .type-content .mui-input-row.input_item.hide_confirm_pwd {
+    display: none;
+}*/
+.login-content .type-content .mui-input-row.input_item label {
+    box-sizing: border-box;
+    color: #333;
+    font-size:14px;
+    height: 33px;
+    line-height:33px;
+    flex: 23;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items:center;
+}
+.login-content .type-content .mui-input-row.input_item label .strong_icon {
+    display: inline-block;
+    width: 7px;
+    height: 6px;
+    text-align: center;
+    line-height:6px;
+    margin-right:4px;
+    color: #ca091b;
+}
+.login-content .type-content .mui-input-row.input_item > input {
+    flex: 77;
+    margin: 4px 0 4px 7px !important;
+    height: 33px !important;
+    line-height:33px !important;
+    box-sizing: border-box;
+    padding: 10px 5px !important;
+    border:none !important;
+    background-color: #fff;
+    color: #333 !important;
+    font-size: 14px !important;
+}
+.pwd_icon,.confirm_pwd_icon{
+    position: absolute;
+    right: 10px;
+    width: 19px;
+    height: 19px;
+}
+.pwd_icon.not_view_icon, .confirm_pwd_icon.not_view_icon {
+    background: url("../images/icon_invisible@2x.png") no-repeat;
+    background-size: 19px 19px;
+}
+.pwd_icon.can_view_icon, .confirm_pwd_icon.can_view_icon {
+    background: url("../images/icon_visible@2x.png") no-repeat;
+    background-size: 19px 19px;
+}
+.type-content .mui-control-content .mui-input-group .mui-input-row .mui-icon-eye {
+    top: 2px !important;
+}
+.login-content .type-content .mui-input-row.input_item input::-webkit-input-placeholder {
+    color: #CCCCCC;
+    font-size:14px;
+}
+.type-content .mui-control-content .mui-input-group .mui-input-row .mui-icon-clear {
+    top: 3px !important;
+}
+.type-content .mui-control-content .mui-input-group .mui-input-row .mui-input-select ~ .mui-icon-arrowdown {
+    top: 4px !important;
+}
+.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block {
+    background-color: #2377D6;
+    border-radius: 5px;
+    border:0;
+    color: #FFF;
+    font-size: 15px;
+    height: 37px;
+    line-height:37px;
+    padding: 0;
+}
+.mui-poppicker {
+    /*display: none;*/
+}
+.mui-poppicker.mui-active *{
+    z-index: 1000;
+}
+.mui-poppicker.mui-active {
+    /*display: inherit;*/
+    /*position: absolute;*/
+    /*width:100%;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
 }
 
 .login {
@@ -253,7 +348,10 @@ a.audit_back_home {
     border: 1px solid #151515;
 }
 
-/********************稽查登录页***********************/
+
+
+
+/************************************稽查登录页***************************************/
 .login .login-form .btn-login.btn-login-audit {
     background: #7f0213;
 }
@@ -327,10 +425,10 @@ a.audit_back_home {
 .index-canvas-show .index-canvas-wrap {
     left: 0; }
 .login-before {
-    display:none;
+    /*display:none;*/
 }
 .login-info {
-    display: inline-block;
+    /*display: inline-block;*/
     height: 24px;
     padding-right: 10px;
     margin-top: 10px;
@@ -338,7 +436,7 @@ a.audit_back_home {
     float: right;
     position: relative;
     background: url(images/icon-open-offcanvas.png) no-repeat right center/5px;
-    /*display:none;*/
+    display:none;
 
 }
 .login-info .user_name, .login-info .money {
