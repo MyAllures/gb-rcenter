@@ -34,12 +34,12 @@
         <div class="user_name">冯大刚</div>
         <div class="money">￥0.00</div>
     </div>
-    <a href="javascript:;" class='mui-icon mui-icon-search mui-pull-right home-bar-search'></a>
+    <!--<a href="javascript:;" class='mui-icon mui-icon-search mui-pull-right home-bar-search'></a>-->
 </header>
 <div class="mui-content home-content">
     <!-- 主界面具体展示内容 -->
     <!--易记域名-->
-    <section class="yjym">访问域名：www.wwwwww.com</section>
+    <section class="yjym">访问域名：htobet.com</section>
     <!--轮播-->
     <section class="mui-slider banner-slide">
         <div class="banner-ads">更多精彩游戏，请下载客户端！<a href="#" class="btn-download">立即下载</a><div class="close-slide"></div></div>
@@ -48,15 +48,10 @@
             <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
             <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
         </div>
-        <!--轮播图加载时的样式-->
-        <div class="banner-loading">
-            <div class="loader api-loader">
-                <div class="loader-inner ball-pulse api-div">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
+        <div class="mui-slider-indicator">
+            <div class="mui-indicator mui-active"></div>
+            <div class="mui-indicator"></div>
+            <div class="mui-indicator"></div>
         </div>
         <!--消息广播-->
         <div class="text_broadcast">
@@ -68,14 +63,23 @@
         <i class="msg_inform_icon"></i>
         <div class="notice-list">
             <div class="marquee">
-                <a href="">111尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
-                <a href="">222尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
-                <a href="">333尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
-                <a href="">444尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
+                <a href="javascript:;">★★★★★★★★★111本公司的存款账号将会不定时更新，
+                    敬请各位玩家通过网站玩家中心存款频道查看最新的银行存款账号并进行存款。
+                    如入款至已过期账号网站将无法查收，恕不承担相应损失，感谢您的配合！祝您多多盈利！
+                </a>
+                <a href="javascript:;">★★★★★★★★★222本公司的存款账号将会不定时更新，
+                    敬请各位玩家通过网站玩家中心存款频道查看最新的银行存款账号并进行存款。
+                    如入款至已过期账号网站将无法查收，恕不承担相应损失，感谢您的配合！祝您多多盈利！
+                </a>
+                <a href="javascript:;">★★★★★★★★★333本公司的存款账号将会不定时更新，
+                    敬请各位玩家通过网站玩家中心存款频道查看最新的银行存款账号并进行存款。
+                    如入款至已过期账号网站将无法查收，恕不承担相应损失，感谢您的配合！祝您多多盈利！
+                </a>
             </div>
         </div>
     </section>
 
+    <!--中部导航tab-->
     <section class="nav">
         <div class="swiper-container nav-slide-indicators">
             <div class="swiper-wrapper">
@@ -108,9 +112,10 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide slide-live">
                 <ul class="mui-table-view mui-grid-view mui-grid-9 active">
-                    <div class="deficiency-nots">没有找到符合的游戏</div>
+
+                    <!--<div class="deficiency-nots">没有找到符合的游戏</div>-->
                     <!--api加载时的样式-->
-                    <div class="api-loading">
+                    <!--<div class="api-loading">
                         <div class="loader api-loader">
                             <div class="loader-inner ball-pulse api-div">
                                 <div></div>
@@ -118,7 +123,7 @@
                                 <div></div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                         <a href="#">
                             <span class="api-item api-icon-1-10"></span>  <!--根据class的不同来显示api图标-->
@@ -280,7 +285,9 @@
                     </div>
                     <div class="lottery-content"><!--彩票内容切换-->
                         <div  class="mui-control-content mui-active">
-                            <div class="deficiency-nots">没有找到符合的游戏</div>
+
+                            <!--<div class="deficiency-nots">没有找到符合的游戏</div>-->
+
                             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                                 <a href="#">
                                     <img src="../../mobile-v3/images/lottery/lt-AHfast3.png" alt="" class="lottery-img">
@@ -775,7 +782,7 @@
             </div>
         </div>
     </div>
-    <div class="copy-right">Copyright © 2004-2017 </div>
+    <!--<div class="copy-right">Copyright © 2004-2017 </div>-->
 </div>
 <!----------------------------------------------------footer-------------------------------------------------->
 <footer class="mui-bar mui-bar-tab">
@@ -935,17 +942,78 @@
     </div>
 </div>
 
+<!--公告弹窗-->
+<div class="notice_dialog">
+    <div class="notice_mask"></div>
+    <div class="notice_container">
+        <div class="notice_title">公告</div>
+        <div class="notice_body">
+            <div class="mui-slider">
+                <div class="mui-slider-group mui-slider-loop">
+                    <div class="mui-slider-item mui-slider-item-duplicate">
+                        <p>
+                            ★★★★★★★★★333 本公司的存款账号将会不定时更新，
+                            敬请各位玩家通过网站玩家中心存款频道查看最新的银行存款账号并进行存款。
+                            如入款至已过期账号网站将无法查收，恕不承担相应损失，感谢您的配合！祝您多多盈利！
+                        </p>
+                        <p class="notice_time">2018-09-11  14:53:49</p>
+                    </div>
+                    <div class="mui-slider-item">
+                        <p>
+                            ★★★★★★★★★111本公司的存款账号将会不定时更新，
+                        敬请各位玩家通过网站玩家中心存款频道查看最新的银行存款账号并进行存款。
+                        如入款至已过期账号网站将无法查收，恕不承担相应损失，感谢您的配合！祝您多多盈利！
+                        </p>
+                        <p class="notice_time">2018-09-11  14:53:49</p>
+                    </div>
+                    <div class="mui-slider-item">
+                        <p>
+                                ★★★★★★★★★222本公司的存款账号将会不定时更新，
+                            敬请各位玩家通过网站玩家中心存款频道查看最新的银行存款账号并进行存款。
+                            如入款至已过期账号网站将无法查收，恕不承担相应损失，感谢您的配合！祝您多多盈利！
+                        </p>
+                        <p class="notice_time">2018-09-11  14:53:49</p>
+                    </div>
+                    <div class="mui-slider-item">
+                        <p>
+                                ★★★★★★★★★333 本公司的存款账号将会不定时更新，
+                            敬请各位玩家通过网站玩家中心存款频道查看最新的银行存款账号并进行存款。
+                            如入款至已过期账号网站将无法查收，恕不承担相应损失，感谢您的配合！祝您多多盈利！
+                        </p>
+                        <p class="notice_time">2018-09-11  14:53:49</p>
+                    </div>
+                    <div class="mui-slider-item mui-slider-item-duplicate">
+                        <p>
+                            ★★★★★★★★★111本公司的存款账号将会不定时更新，
+                            敬请各位玩家通过网站玩家中心存款频道查看最新的银行存款账号并进行存款。
+                            如入款至已过期账号网站将无法查收，恕不承担相应损失，感谢您的配合！祝您多多盈利！
+                        </p>
+                        <p class="notice_time">2018-09-11  14:53:49</p>
+                    </div>
+                </div>
+                <div class="mui-slider-indicator">
+                    <div class="mui-indicator mui-active"></div>
+                    <div class="mui-indicator"></div>
+                    <div class="mui-indicator"></div>
+                </div>
+            </div>
+        </div>
+        <i class="notice_close_btn"></i>
+    </div>
+
+</div>
+
 <!--添加到桌面图标-->
-<div class="desk">
+<!--<div class="desk">
     <div class="mui-col-xs-2 logo"><img src="../../mobile-v3/images/app_icon_111.png"></div>
     <div class="mui-col-xs-8 tip">
         <span class="desk-text">点击下方<em></em>添加到主屏幕</span>
     </div>
     <div class="mui-col-xs-1 close"><i></i></div>
-</div>
+</div>-->
 
 <!--红包html开始  通过改变hongbao-wrap的class来改变红包样式，一共三种（hb_type_1,hb_type_2,hb_type_3）-->
-<div class="hongbao-slide-wrap hongbao-wrap" id="hongbao">
+<!--<div class="hongbao-slide-wrap hongbao-wrap" id="hongbao">
     <span class="mui-icon mui-icon-close icon-close"></span>
     <div class="mui-slider hongbao-slider">
         <div class="mui-slider-group">
@@ -972,7 +1040,7 @@
 <div id="hongbao_detail" class="hongbao_detail">
     <div class="hongbao_inner">
         <div class="icon-close"></div>
-        <div class="hongbao"><!--未能拆时加disabled类名-->
+        <div class="hongbao">&lt;!&ndash;未能拆时加disabled类名&ndash;&gt;
             <div class="icon-open"></div>
             <div class="hongbao-time-txt">下次拆红包开始时间为</div>
             <div class="hongbao-time">2017-11-11  11:11:11</div>
@@ -980,7 +1048,7 @@
             <div class="tip-msgs" id="tip-msgs">
                 你还有<span style="font-size: 18px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会
             </div>
-            <!--红包规则元素-->
+            &lt;!&ndash;红包规则元素&ndash;&gt;
             <div class="hongbao-rule">
                 <div class="txt">
                     <div class="nice-wrapper">
@@ -999,32 +1067,31 @@
                 </div>
                 <a href="javascript:" class="icon-close-rule"></a>
             </div>
-            <!--中奖时的提示-->
+            &lt;!&ndash;中奖时的提示&ndash;&gt;
             <div class="win-hongbao tips">
                 <div class="ttxt-1">恭喜您</div>
                 <div class="ttxt-2">获得20元</div>
             </div>
-            <!--未中奖时的提示-->
+            &lt;!&ndash;未中奖时的提示&ndash;&gt;
             <div class="lose-hongbao tips">
                 <div class="ttxt-1">很遗憾</div>
                 <div class="ttxt-2">还差一点就中奖了呦！</div>
             </div>
         </div>
         <div class="hongbao_extra"></div>
-        <!--拆开红包时的彩带和光环-->
+        &lt;!&ndash;拆开红包时的彩带和光环&ndash;&gt;
         <div class="caidai"></div>
         <div class="hongbao-light"></div>
-        <!--关闭红包继续抽奖按钮-->
+        &lt;!&ndash;关闭红包继续抽奖按钮&ndash;&gt;
         <a href="javascript:" id="btn-ok" class="btn-ok"></a>
     </div>
-</div>
+</div>-->
 <!--<div class="loading-wrap">
       <span class="loading-img loading-entirety"><img src="../../mobile-v3/images/oval.svg" alt></span>
 </div>-->
-<!--红包html结束-->
 
 <!--首页收藏弹框：-->
-<div class="home-collect-dialog">
+<!--<div class="home-collect-dialog">
     <div class="inputBox">
         <label  class='mui-icon mui-icon-search'></label>
         <input type="text" placeholder="搜索游戏"/>
@@ -1033,12 +1100,12 @@
         <i class='icon-star'></i>
         <span class="my-collection">我的收藏夹</span>
     </p>
-    <!--登陆前：-->
+    &lt;!&ndash;登陆前：&ndash;&gt;
     <div class="wraning">
         <p>您需要登录才可以收藏游戏哦~</p>
         <a href="../mobile-v3-newDeposit/login.html" class='mui-btn mui-btn-blue'>登录</a>
     </div>
-    <!--登陆后：-->
+    &lt;!&ndash;登陆后：&ndash;&gt;
     <div class="mui-scroll-wrapper collect-list" style='display:none;'>
         <div class="mui-scroll">
             <div class="item">
@@ -1093,7 +1160,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
@@ -1104,10 +1171,10 @@
 <script type="text/javascript">
     $(function(){
         //  首页收藏弹框:
-        $('.home-bar-search').click(function(){
+        /*$('.home-bar-search').click(function(){
             $('.home-collect-dialog').toggle(300);
             $('body').toggleClass('hidden');
-        });
+        });*/
 
         mui('.mui-scroll-wrapper').scroll({
             deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
@@ -1149,36 +1216,77 @@
             duration: 6000
         });
 
+        /*公告弹窗*/
+        mui(".notice .notice-list").on("tap","a",function(){
+            $(".notice_dialog").fadeIn(500);
+
+            var noticeA  = "";
+            $(".notice .notice-list .marquee a").each(function(){   //生成公告html和indicator
+                noticeA += "<a href='javascript:'>"+$(this).html()+"</a>";
+            });
+
+            /*var noticeHtml = $(
+                 '<div>' +
+                 '<div class="mui-slider notice-slider">' +
+                 '<div class="mui-slider-group">' +
+                 '<div class="mui-slider-item">' +
+                 '<div class="mui-scroll-wrapper">' +
+                 '<div class="mui-scroll">' +
+                 '<div class="content_wrapper">'+noticeA+'</div>' +
+                 '</div>' +
+                 '</div>' +
+                 '</div>' +
+                 '</div>' +
+                 '</div>' +
+                 '</div>'
+            );
+            var alertNotice = mui.alert(noticeHtml.html(),"公告","关闭");
+            $(alertNotice.element).addClass('notice-alert');// 定义弹窗的class,方便修改样式
+            $(".notice-slider").css({height:$(window).height()*0.35});*/
+            mui(".notice-slider .mui-scroll-wrapper").scroll();
+        });
+
+        $(".notice_close_btn").on("tap",function () {
+            $(".notice_dialog").fadeOut(1000);
+        });
+
+        mui.plusReady(function () {
+            var gallery = $(".notice_body .mui-slider");
+            gallery.slider({
+                interval: 5000
+            })
+        });
+
     });
 
     /*红包脚本*/
-    $(function(){
+    /*$(function(){
         $(function(){
-            /*展开右下角红包*/
+            /!*展开右下角红包*!/
             $("#hongbao").on("tap",function(){
                 $(this).addClass('hide_hongbao');
                 $("#hongbao_detail").fadeIn(1000);
             });
-            /*打开红包规则*/
+            /!*打开红包规则*!/
             $("#btn-rule").on('tap',function(){
                 $('.hongbao-rule').show();
-                /*自定义滚动条*/
+                /!*自定义滚动条*!/
                 $(".hongbao-rule .txt").niceScroll(".nice-wrapper", {
                     cursorwidth: "12px",
                     cursorcolor:"#c0111c",
                     cursorborder: "1px solid #d2aa48"
                 });
             });
-            /*关闭红包规则*/
+            /!*关闭红包规则*!/
             $(".icon-close-rule").on('tap',function(){
                 $(".hongbao-rule").hide();
             });
-            /*关闭红包*/
+            /!*关闭红包*!/
             $("#hongbao_detail .icon-close").on('click',function(){
                 $(this).parents('.hongbao_detail').fadeOut(1000);
                 $("#hongbao").removeClass('hide_hongbao');
             });
-            /*打开红包*/
+            /!*打开红包*!/
             $(".hongbao").not(".disabled").find(".icon-open").on('tap',function(){
                 var hongbao_win = false;//是否中奖变量
                 $(this).parents(".hongbao_inner").addClass('opened');
@@ -1201,7 +1309,7 @@
                 $(".tips").hide();
             });
         });
-    });
+    });*/
 </script>
 </body>
 </html>

@@ -35,7 +35,7 @@ body {
 .part-a {
       position: absolute;
 }
-.asset_info {
+/*.asset_info {
       height: 79px;
       position: relative;
       padding-bottom: 53px;
@@ -44,8 +44,8 @@ body {
       padding-right: 10px;
       border-bottom: 1px solid #ddd;
       background-color: #f3ecec;
-}
-.asset-num {
+}*/
+/*.asset-num {
       color: #1b75d9;
       font-size: 14px;
 }
@@ -56,11 +56,11 @@ body {
 .balance_num {
       color: #0bba87;
       font-size: 14px;
-}
-.function_nav {
-      color: #000;
-}
-.nav_item {
+}*/
+/*.function_nav {*/
+      /*color: #000;*/
+/*}*/
+/*.nav_item {
       height: 51px;
 }
 .charge_item {
@@ -68,7 +68,7 @@ body {
 }
 .dis-in {
       display: inline-block;
-}
+}*/
 .processing {
       display: block;
 }
