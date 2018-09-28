@@ -18,7 +18,12 @@ var BaseDeposit = function () {
         }
     };
     this.quickCheckMoney = function (obj, options) {
-        document.getElementById("result.rechargeAmount").value = options.mone;
+        var val = document.getElementById("result.rechargeAmount").value;
+        if(val.trim().length<1){
+            document.getElementById("result.rechargeAmount").value = options.mone;
+        }else {
+            document.getElementById("result.rechargeAmount").value = parseInt(val) + options.mone;
+        }
     };
 
     //当点击超出单笔存款金额范围的快选机金额时，给予提示
@@ -27,6 +32,14 @@ var BaseDeposit = function () {
         var maxMoney = $("input[name='maxMoney']").val();
         toast(window.top.message.deposit_auto['单笔存款金额为'] + minMoney + "~" + maxMoney);
     };
+
+    /*选择金额 */
+    $(".conv_mone").on('click','.conv_mone_i',function () {
+        $(this).addClass('.choose_money');
+        var num = parseInt($(this).find("span").text());
+        var vals = parseInt($(".input_dp_num input").val()) || 0;
+        $(".input_dp_num input").val(vals+num);
+    });
 
     //验证金额
     this.verificationAmount = function (rechargeAmount) {
