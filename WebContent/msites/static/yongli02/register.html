@@ -1,0 +1,589 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>会员注册 | 澳门永利娱乐城</title>
+    <meta name="keywords" content="澳门永利娱乐城">
+    <meta name="description" content="澳门永利娱乐城">
+    <link rel="bookmark" href="../../ftl/yongli02/images/favicon.png">
+    <link rel="shortcut Icon" href="../../ftl/yongli02/images/favicon.png" />
+    <link rel="stylesheet" href="../../ftl/commonPage/themes/gui-base.css">
+    <link rel="stylesheet" href="../../ftl/commonPage/themes/gui-skin-default.css">
+    <link rel="stylesheet" href="../../ftl/yongli02/themes/common.css">
+    <!--[if lt IE 9]>
+      <script src="../../ftl/commonPage/js/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <header>
+        <!--Static-bar-->
+        <section class="static-bar">
+            <div class="container">
+                <div class="row row-gutter-0">
+                    <div class="col-12-4 logo">
+                        <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="345" height="112" id="logo" align="middle">
+                            <param name="movie" value="../../ftl/yongli02/images/logo.swf" />
+                            <param name="wmode" value="transparent" />
+                            <param name="menu" value="false" />
+                            <!--[if !IE]>-->
+                            <object type="application/x-shockwave-flash" data="../../ftl/yongli02/images/logo.swf" width="345" height="112">
+                                <param name="movie" value="../../ftl/yongli02/images/logo.swf" />
+                                <param name="wmode" value="transparent" />
+                                <param name="menu" value="false" />
+                                <!--<![endif]-->
+                                <a href="index.html">
+                                    <img src="../../ftl/yongli02/images/logo.png" alt="LOGO"></a>
+                                <!--[if !IE]>-->
+                            </object>
+                            <!--<![endif]-->
+                        </object>
+                    </div>
+                    <div class="col-12-2 logo text-center"><img src="../../ftl/yongli02/images/slogo.png"></div>
+                    <div class="col-12-6">
+                        <div class="clearfix">
+                            <a href="javascript:void(0)" class="flags pull-right"><img src="../../ftl/yongli02/images/flags.png"></a>
+                            <div class="pull-right infos-wrap">
+                                <ul class="list-inline infos">
+                                    <li><a href="#">资讯端下载</a></li>
+                                    <li class="info-link1"><a href="#">手机投注</a></li>
+                                    <li><a href="#">线路检测</a></li>
+                                    <li><a href="#">加盟合作</a></li>
+                                    <li><a href="#">常见问题</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Members 登录前 -->
+                        <div class="members">
+                            <form action="#">
+                                <div class="member-row1">
+                                    <input type="text" class="form-control font-serif" placeholder="会员账户">
+                                    <div class="input-group scode">
+                                        <input type="text" class="form-control" maxlength="4" placeholder="验证码" onfocus="if(this.placeholder=='验证码')this.placeholder=''" onblur="if(this.placeholder =='') this.placeholder ='验证码'">
+                                        <span class="input-group-btn"><a class="btn btn-sm"><img src="../../ftl/yongli02/images/scode.jpg"></a></span>
+                                    </div>
+                                </div>
+                                <div class="member-row1">
+                                    <input type="password" class="form-control font-serif" placeholder="密码">
+                                    <button class="btn btn-login">登入</button>
+                                    <a href="#" class="fogot">忘记密码</a>
+                                </div>
+                                <div class="member-row3">
+                                    <a href="register.html" class="btn-register">免费开户<br>ACCOUNT</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="headfloat">
+            <div class="menu">
+                <div class="list w1000" id="menulist" style="width: 1150px;">
+                    <ul class="list-unstyled">
+                        <li class=""><a href="index.html">首页<span>HOME</span></a></li>
+                        <li class="subnav"><a href="live.html">真人视讯<span>LIVE</span></a></li>
+                        <li class="subnav"><a href="sports.html">体育赛事<span>SPORTS</span></a></li>
+                        <li class="subnav hot"><a href="casino.html">MG电子<span>MICROGAMING</span></a></li>
+                        <li class="hot"><a href="casino.html">PT电子<span>PLAYTECH</span></a></li>
+                        <li class="subnav hot nav-blink2"><a href="casino.html">电子游艺<span>CASINO</span></a></li>
+                        <li class="subnav hot nav-blink1"><a href="lottery.html">彩票游戏<span>LOTTERY</span></a></li>
+                        <li class="subnav"><a href="promo.html">优惠活动<span>PROMOTIONS</span></a></li>
+                        <li class=""><a href="promo.html">在线客服<span>SERVICE</span></a></li>
+                    </ul>
+                </div>
+                <div class="box" id="menubox" style="height:0px;opacity:0;overflow:hidden;">
+                    <div class="container">
+                        <!-- Live API -->
+                        <div class="row row-gutter-0 cont" style="display:none;">
+                            <div class="col-12-2">
+                                <div class="api-info p-t-0"><span class="rebate r02"></span></div>
+                                <div class="api-link"><a href="javascript:void(0);">视讯每日返水无上限</a></div>
+                            </div>
+                            <div class="col-12-10 api-list">
+                                <div class="row">
+                                    <div class="col-7-1">
+                                        <div class="api-info"><a href="#"><span class="api bb"></span></a> <a href="#">BBIN视讯</a></div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-7-1">
+                                        <div class="api-info"><a href="#"><span class="api ag"></span></a> <a href="#">AG视讯</a></div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-7-1">
+                                        <div class="api-info"><a href="#"><span class="api og"></span></a> <a href="#">OG视讯</a></div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-7-1">
+                                        <div class="api-info"><a href="#"><span class="api dw"></span></a> <a href="#">DW视讯</a></div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-7-1">
+                                        <div class="api-info"><a href="#"><span class="api mg"></span></a> <a href="#">MG视讯</a></div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-7-1">
+                                        <div class="api-info"><a href="#"><span class="api gd"></span></a> <a href="#">GD视讯</a></div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-7-1">
+                                        <div class="api-info"><a href="#"><span class="api ds"></span></a> <a href="#">DS视讯</a></div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sport API -->
+                        <div class="row row-gutter-0 cont" style="display:none;">
+                            <div class="col-12-2">
+                                <div class="api-info p-t-0"><span class="rebate r03"></span></div>
+                                <div class="api-link"><a href="javascript:void(0);">体育每日返水无上限</a></div>
+                            </div>
+                            <div class="col-12-10 api-list">
+                                <div class="row">
+                                    <div class="col-3-1">
+                                        <div class="row row-gutter-0">
+                                            <div class="col-3-1 api-info"><a href="#"><span class="api hg"></span></a></div>
+                                            <div class="col-3-2 api-summary">
+                                                <h5><a href="#">皇冠体育</a></h5><a href="#">提供足球、篮球等最完整、最准确、最即时的的体育赛事信息。</a></div>
+                                        </div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-3-1">
+                                        <div class="row row-gutter-0">
+                                            <div class="col-3-1 api-info"><a href="#"><span class="api im"></span></a></div>
+                                            <div class="col-3-2 api-summary">
+                                                <h5><a href="#">IM体育</a></h5><a href="#">每月提供超过10，000场各类赛事，是亚洲最大的体育平台供应商之一。</a></div>
+                                        </div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-3-1">
+                                        <div class="row row-gutter-0">
+                                            <div class="col-3-1 api-info"><a href="#"><span class="api bb"></span></a></div>
+                                            <div class="col-3-2 api-summary">
+                                                <h5><a href="#">BB体育</a></h5><a href="#">提供包含足球、棒球、篮球及橄榄球等世界主要体育专案。</a></div>
+                                        </div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mg API -->
+                        <div class="row row-gutter-0 cont" style="display:none;">
+                            <div class="col-12-2">
+                                <div class="api-info p-t-0"><span class="rebate r01"></span></div>
+                                <div class="api-link"><a href="javascript:void(0);">MG电子返水无上限</a></div>
+                            </div>
+                            <div class="col-12-10 api-list">
+                                <div class="row">
+                                    <div class="col-12-2">
+                                        <div class="api-info">
+                                            <a href="#" class="gameicon"><img src="../../ftl/yongli02/images/mg-icon01.png"></a>
+                                        </div>
+                                        <div class="api-link"><a href="#">抢劫银行</a></div>
+                                    </div>
+                                    <div class="col-12-2">
+                                        <div class="api-info">
+                                            <a href="#" class="gameicon"><img src="../../ftl/yongli02/images/mg-icon07.png"></a>
+                                        </div>
+                                        <div class="api-link"><a href="#">地府烈焰</a></div>
+                                    </div>
+                                    <div class="col-12-2">
+                                        <div class="api-info">
+                                            <a href="#" class="gameicon"><img src="../../ftl/yongli02/images/mg-icon03.png"></a>
+                                        </div>
+                                        <div class="api-link"><a href="#">不朽的爱情</a></div>
+                                    </div>
+                                    <div class="col-12-2">
+                                        <div class="api-info">
+                                            <a href="#" class="gameicon"><img src="../../ftl/yongli02/images/mg-icon04.png"></a>
+                                        </div>
+                                        <div class="api-link"><a href="#">狂欢节</a></div>
+                                    </div>
+                                    <div class="col-12-2">
+                                        <div class="api-info">
+                                            <a href="#" class="gameicon"><img src="../../ftl/yongli02/images/mg-icon05.png"></a>
+                                        </div>
+                                        <div class="api-link"><a href="#">丛林摇摆</a></div>
+                                    </div>
+                                    <div class="col-12-2">
+                                        <div class="api-info">
+                                            <a href="#" class="gameicon"><img src="../../ftl/yongli02/images/mg-icon06.png"></a>
+                                        </div>
+                                        <div class="api-link"><a href="#">招财鞭炮</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Casino API -->
+                        <div class="row row-gutter-0 cont" style="display:none;">
+                            <div class="col-12-2">
+                                <div class="api-info p-t-0"><span class="rebate r01"></span></div>
+                                <div class="api-link"><a href="javascript:void(0);">电子每日返水无上限</a></div>
+                            </div>
+                            <div class="col-12-10 api-list">
+                                <div class="row">
+                                    <div class="col-12-2">
+                                        <div class="api-info"><a href="#"><span class="api mg"></span></a> <a href="#">MG电子</a></div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-12-2">
+                                        <div class="api-info"><a href="#"><span class="api pt"></span></a> <a href="#">PT电子</a></div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-12-2">
+                                        <div class="api-info"><a href="#"><span class="api bb"></span></a> <a href="#">BB电子</a></div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-12-2">
+                                        <div class="api-info"><a href="#"><span class="api nyx"></span></a> NYX电子</div>
+                                        <div class="api-link">接入中,敬请期待</div>
+                                    </div>
+                                    <div class="col-12-2">
+                                        <div class="api-info"><a href="#"><span class="api ag"></span></a> AG电子</div>
+                                        <div class="api-link">接入中,敬请期待</div>
+                                    </div>
+                                    <div class="col-12-2">
+                                        <div class="api-info"><a href="#"><span class="api hb"></span></a> HABA电子</div>
+                                        <div class="api-link">接入中,敬请期待</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Lottery API -->
+                        <div class="row row-gutter-0 cont" style="display:none;">
+                            <div class="col-12-2">
+                                <div class="api-info p-t-0"><span class="rebate r04"></span></div>
+                                <div class="api-link"><a href="javascript:void(0);">彩票每日返水无上限</a></div>
+                            </div>
+                            <div class="col-12-10 api-list">
+                                <div class="row">
+                                    <div class="col-3-1">
+                                        <div class="row row-gutter-0">
+                                            <div class="col-3-1 api-info"><a href="#"><span class="api bb"></span></a></div>
+                                            <div class="col-3-2 api-summary">
+                                                <h5><a href="#">BB彩票</a></h5><a href="#">六合彩、时时彩、快乐彩等彩种最全的平台。</a></div>
+                                        </div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-3-1">
+                                        <div class="row row-gutter-0">
+                                            <div class="col-3-1 api-info"><a href="#"><span class="api kg"></span></a></div>
+                                            <div class="col-3-2 api-summary">
+                                                <h5><a href="#">KG彩票</a></h5><a href="#">北京、加拿大、澳洲等快乐彩玩法多样，惊喜连连。法模式，玩法赔率业界最高。</a></div>
+                                        </div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                    <div class="col-3-1">
+                                        <div class="row row-gutter-0">
+                                            <div class="col-3-1 api-info"><a href="#"><span class="api pg"></span></a></div>
+                                            <div class="col-3-2 api-summary">
+                                                <h5><a href="#">PG彩票</a></h5><a href="#">游戏接入中，敬请期待。</a></div>
+                                        </div>
+                                        <div class="api-link"><a href="#">进入游戏</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Promo -->
+                        <div class="row row-gutter-0 cont" style="display:none;">
+                            <div class="col-1-1 api-list">
+                                <div class="row row-gutter-0">
+                                    <div class="col-3-1">
+                                        <div class="promo-img">
+                                            <a href="#"><img src="../../ftl/yongli02/images/submenu-promo-01.png"></a>
+                                        </div>
+                                        <div class="api-link"><a href="#">立即参与</a></div>
+                                    </div>
+                                    <div class="col-3-1">
+                                        <div class="promo-img">
+                                            <a href="#"><img src="../../ftl/yongli02/images/submenu-promo-02.png"></a>
+                                        </div>
+                                        <div class="api-link"><a href="#">立即参与</a></div>
+                                    </div>
+                                    <div class="col-3-1">
+                                        <div class="promo-img">
+                                            <a href="#"><img src="../../ftl/yongli02/images/submenu-promo-03.png"></a>
+                                        </div>
+                                        <div class="api-link"><a href="#">立即参与</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!--Retister-->
+        <section class="register-info">
+            <div class="container">
+                <div class="row row-gutter-0 row-match">
+                    <div class="col-12-5">
+                        <div class="reason"><img src="../../ftl/yongli02/images/reg-left.png"></div>
+                    </div>
+                    <div class="col-12-7">
+                        <form action="" class="form-horizontal">
+                            <fieldset>
+                                <legend>欢迎加入澳门永利娱乐城</legend>
+                                <div class="register-notice">
+                                    <div class="notice-list">
+                                        <ul class="list-unstyled">
+                                            <li><a href="javascript:void(0)">MG电子游艺天天返水<span class="text-danger">1.8%</span>起无上限，全网独家！</a></li>
+                                            <li><a href="javascript:void(0)">独家支持【<span class="text-danger">微信支付</span>】“轻松一扫”<span class="text-danger">支付秒到账</span>！</a></li>
+                                            <li><a href="javascript:void(0)">尊享电子游艺<span class="text-danger">“游”惠十足</span>，火热进行中，豪礼享不停！</a></li>
+                                            <li><a href="javascript:void(0)">24小时提款<span class="text-warning">0审核</span>、<span class="text-cyan">0冻结</span>、<span class="text-danger">0手续费</span>不限提款次数，存取款0-3分钟火速到账！</a></li>
+                                            <li><a href="javascript:void(0)">1元即可存款，全面支持<span class="text-danger">支付宝</span>、<span class="text-gray">微信</span>、<span class="text-primary">银联</span>、<span class="text-warning">在线支付</span>全程担保</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-12-3 control-label">推荐ID</label>
+                                    <div class="col-12-6">
+                                        <input type="text" class="form-control" placeholder="请输入推荐ID号">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-12-3 control-label"><span class="text-danger">*</span> 用户名</label>
+                                    <div class="col-12-6">
+                                        <input type="text" class="form-control" placeholder="请输入4-20字符用户名">
+                                    </div>
+                                </div>
+                                <div class="form-group has-error">
+                                    <label for="inputPassword" class="col-12-3 control-label"><span class="text-danger">*</span> 密码</label>
+                                    <div class="col-12-6">
+                                        <input type="text" class="form-control" placeholder="请输入密码">
+                                        <div class="checkbox">
+                                            <span class="control-label"><span class="gui gui-exclamation-circle"></span> 密码必须为数字类型4-12位</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-12-3 control-label"><span class="text-danger">*</span> 确认密码</label>
+                                    <div class="col-12-6">
+                                        <input type="text" class="form-control" placeholder="请再次输入密码">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-12-3 control-label">性别</label>
+                                    <div class="col-12-6">
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> 男
+                                            </label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 女
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-12-3 control-label">主语言</label>
+                                    <div class="col-12-6">
+                                        <select class="form-control" id="select">
+                                            <option>中国大陆</option>
+                                            <option>中国香港</option>
+                                            <option>中国澳门</option>
+                                            <option>中国台北</option>
+                                            <option>新加坡</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-12-3 control-label">生日</label>
+                                    <div class="col-12-6 p-x-0">
+                                        <div class="col-12-4">
+                                            <select class="form-control" id="select">
+                                                <option>选择年份</option>
+                                                <option>1994</option>
+                                                <option>1993</option>
+                                                <option>1992</option>
+                                                <option>1991</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12-4">
+                                            <select class="form-control" id="select">
+                                                <option>选择月份</option>
+                                                <option>12</option>
+                                                <option>11</option>
+                                                <option>10</option>
+                                                <option>9</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12-4">
+                                            <select class="form-control" id="select">
+                                                <option>选择日期</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-12-3 control-label">安全密码</label>
+                                    <div class="col-12-6 p-x-0">
+                                        <div class="col-12-2">
+                                            <select class="form-control" id="select">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12-2">
+                                            <select class="form-control" id="select">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12-2">
+                                            <select class="form-control" id="select">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12-2">
+                                            <select class="form-control" id="select">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12-2">
+                                            <select class="form-control" id="select">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12-2">
+                                            <select class="form-control" id="select">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-12-3 control-label">验证码</label>
+                                    <div class="col-12-2">
+                                        <input type="text" class="form-control" placeholder="验证码">
+                                    </div>
+                                    <div class="col-12-2"><img src="../../ftl/parisian/images/scode.gif"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-12-3 control-label"></label>
+                                    <div class="col-12-6 protocol">
+                                        <label>
+                                            <input type="checkbox" checked=""> 同意会员协议</label>
+                                        <span class="co-blue">已拥有账号 <a href="javascript:void(0)">马上登录</a></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-12-3 control-label"></label>
+                                    <div class="col-12-3">
+                                        <button type="submit" class="btn btn-solid btn-submit">提交注册</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <!-- Footer-partner -->
+        <div class="footer-partner">
+            <div class="container">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a class="partner dw"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner bb"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner mg"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner pt"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner ag"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner og"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner hg"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner im"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner gd"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner nyx"><span></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Footer-slogo -->
+        <div class="footer-slogo">
+            <img src="../../ftl/yongli02/images/logo.png">
+        </div>
+        <!-- Footer-link -->
+        <div class="footer-links">
+            <div class="container">
+                <ul class="list-inline font-serif">
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="about.html">常见问题</a></li>
+                    <li><a href="about.html">存款帮助</a></li>
+                    <li><a href="about.html">转账帮助</a></li>
+                    <li><a href="about.html">取款帮助</a></li>
+                    <li><a href="#">在线客服</a></li>
+                    <li><a href="agent.html">代理中心</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Footer-copyright -->
+        <div class="footer-copyright">
+            <div class="container">
+                <p class="font-serif">本网站属于菲律宾卡格杨（Cagayan）授权和监管所有版权归<span class="text-blue">澳门永利娱乐城</span>所有，违者必究。</p>
+                <p class="font-serif">Copyright &copy; 2004-2016 WYNN MACAU ALL RIGHT Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../../ftl/commonPage/js/jquery/jquery-1.11.3.min.js"></script>
+    <script src="../../ftl/commonPage/js/gui-base.js"></script>
+    <script src="../../ftl/yongli02/js/menu.js"></script>
+    <script>
+    $(function() {
+        // 公告-左滚动
+        $('.notice-list>ul>li').css('display', 'inline-block');
+        $('.notice-list').Marquee({
+            isMarquee: true,
+            isEqual: false, // 元素等长
+            scrollDelay: 30, // 时长
+            direction: 'left'
+        });
+        // 文字闪烁
+        blink($(".nav-blink1"), "blink-yellow", 300);
+        blink($(".nav-blink2"), "blink-red", 350);
+        blink($(".info-link1"), "blink-red", 250);
+        blink($(".info-link2"), "blink-purple", 350);
+        // 赞助商logo动画
+        $('.footer-partner ul li a').hover(function() {
+            $('span', this).stop().animate({
+                'opacity': 1
+            }, 300)
+        }, function() {
+            $('span', this).stop().animate({
+                'opacity': 0
+            }, 300)
+        });
+    });
+    </script>
+</body>
+
+</html>
