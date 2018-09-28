@@ -227,12 +227,6 @@ header.mui-bar-nav .mui-action-back {
     align-items:center;
     position: relative;
 }
-/*.login-content .type-content .mui-input-row.input_item.hide_pwd, .login-content .type-content .mui-input-row.input_item.show_confirm_pwd {
-    display: flex;
-}
-.login-content .type-content .mui-input-row.input_item.show_pwd, .login-content .type-content .mui-input-row.input_item.hide_confirm_pwd {
-    display: none;
-}*/
 .login-content .type-content .mui-input-row.input_item label {
     box-sizing: border-box;
     color: #333;
@@ -249,10 +243,11 @@ header.mui-bar-nav .mui-action-back {
     display: inline-block;
     width: 7px;
     height: 6px;
-    text-align: center;
-    line-height:6px;
-    margin-right:4px;
-    color: #ca091b;
+    background: url("../images/icon_required@2x.png") no-repeat;
+    background-size: 7px 6px;
+    position: relative;
+    top: -1px;
+    right: 5px;
 }
 .login-content .type-content .mui-input-row.input_item > input {
     flex: 77;
@@ -280,6 +275,9 @@ header.mui-bar-nav .mui-action-back {
     background: url("../images/icon_visible@2x.png") no-repeat;
     background-size: 19px 19px;
 }
+.type-content .mui-control-content .mui-input-group .optional_content {
+    display: none;
+}
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-icon-eye {
     top: 2px !important;
 }
@@ -293,16 +291,7 @@ header.mui-bar-nav .mui-action-back {
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-input-select ~ .mui-icon-arrowdown {
     top: 4px !important;
 }
-.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block {
-    background-color: #2377D6;
-    border-radius: 5px;
-    border:0;
-    color: #FFF;
-    font-size: 15px;
-    height: 37px;
-    line-height:37px;
-    padding: 0;
-}
+
 .mui-poppicker {
     /*display: none;*/
 }

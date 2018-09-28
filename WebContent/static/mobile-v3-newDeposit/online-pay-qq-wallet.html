@@ -1,157 +1,157 @@
 <!DOCTYPE html>
 <html>
 <head>
-      <meta charset="utf-8">
-      <title>Dawoo</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-status-bar-style" content="black">
-      <link rel="bookmark" href="../../mobile-v3/favicon.ico">
-      <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
-      <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
 </head>
 
 <body class="online-pay-qq-wallet">
 <header class="mui-bar mui-bar-nav">
-      <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-      <h1 class="mui-title">QQ钱包付款</h1>
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">QQ钱包付款</h1>
 </header>
 
 <div class="mui-content mui-scroll-wrapper">
-      <div class="mui-scroll">
-            <div class="mui-row ">
-                  <div class="qq_account_info">
-                        <!--账号信息-->
-                        <div class="account_info_title">账号信息</div>
-                        <div class="qq_wallet_name">
-                              <div class="qq_wallet_txt">
-                                    <i class="mui-icon qq_wallet_icon"></i>
-                                    <span  class="qq_txt_style">QQ钱包</span>
-                              </div>
-                              <div class="user_nickname">
-                                    <span>账户的别名玩家自行设定</span>
-                                    <span class="nickname_copy">复制</span>
-                              </div>
+    <div class="mui-scroll">
+        <div class="mui-row ">
+            <div class="qq_account_info">
+                <!--账号信息-->
+                <div class="account_info_title">账号信息</div>
+                <div class="qq_wallet_name">
+                    <div class="qq_wallet_txt">
+                        <i class="mui-icon qq_wallet_icon"></i>
+                        <span  class="qq_txt_style">QQ钱包</span>
+                    </div>
+                    <div class="user_nickname">
+                        <span>账户的别名玩家自行设定</span>
+                        <span class="nickname_copy">复制</span>
+                    </div>
+                </div>
+                <!--复制账户名&昵称-->
+                <div class="qq_copy_box">
+                    <div class="copy_account">
+                        <div class="account_txt">
+                            <i>账户</i>
+                            <span>172601212</span>
                         </div>
-                        <!--复制账户名&昵称-->
-                        <div class="qq_copy_box">
-                              <div class="copy_account">
-                                    <div class="account_txt">
-                                          <i>账户</i>
-                                          <span>172601212</span>
-                                    </div>
-                                    <span class="qq_account_copy">复制</span>
-                              </div>
-                              <div class="copy_nickname">
-                                    <div class="nickname_txt">
-                                          <i>昵称</i>
-                                          <span>玩家姓名</span>
-                                    </div>
-                                    <span class="qq_nickname_copy">复制</span>
-                              </div>
+                        <span class="qq_account_copy">复制</span>
+                    </div>
+                    <div class="copy_nickname">
+                        <div class="nickname_txt">
+                            <i>昵称</i>
+                            <span>玩家姓名</span>
                         </div>
-                        <!--二维码-->
-                        <div class="qr_code_info">
-                              <div class="qr_code_txt">生成二维码</div>
-                              <div class="qr_code_img"></div>
-                              <div class="qr_code_btns">
-                                    <span class="save_to_phone">保存到手机</span>
-                                    <span class="use_qq_pay">启动QQ支付</span>
-                              </div>
-                        </div>
-                        <!--输入账号信息-->
-                        <div class="input_info">
-                              <div class="qq_account_num">
-                                    <span>您的QQ钱包帐号</span>
-                                    <input class="input_qq_account" type="number" placeholder="请填写QQ号码" autofocus>
-                              </div>
-                              <div class="order_last_num">
-                                    <span>订单号后五位</span>
-                                    <input class="input_order_num" type="number" placeholder="12345">
-                              </div>
-                        </div>
-                  </div>
-                  <!--提交-->
-                  <div class="btn_wrap">
-                        <!--<a href="javascript:" class="mui-btn btn_submit mui-btn-block">提交</a>-->
-                        <a href="online-pay-qq-wallet.html" class="mui-btn btn_submit mui-btn-block">提交</a>
-                  </div>
-                  <!--提示说明-->
-                  <div class="deposit_help">
-                        <p>温馨提示</p>
-                        <p>
-                              *为了提高对账速度及成功率，当前支付方式已开随机额度，请输入整数存款金额，将随机增加0.11~0.99元！
-                        </p>
-                        <p>*请保留好转账单据作为核对证明。</p>
-                        <p>
-                              *如出现充值失败或充值后未到账等情况，请联系在线客服获取帮助。
-                        </p>
-                  </div>
-
-                  <!--复制成功提示框-->
-                  <div class="copy_success">
-                        <i></i>
-                        <span>复制成功</span>
-                  </div>
+                        <span class="qq_nickname_copy">复制</span>
+                    </div>
+                </div>
+                <!--二维码-->
+                <div class="qr_code_info">
+                    <div class="qr_code_txt">生成二维码</div>
+                    <div class="qr_code_img"></div>
+                    <div class="qr_code_btns">
+                        <span class="save_to_phone">保存到手机</span>
+                        <span class="use_qq_pay">启动QQ支付</span>
+                    </div>
+                </div>
+                <!--输入账号信息-->
+                <div class="input_info">
+                    <div class="qq_account_num">
+                        <span>您的QQ钱包帐号</span>
+                        <input class="input_qq_account" type="number" placeholder="请填写QQ号码" autofocus>
+                    </div>
+                    <div class="order_last_num">
+                        <span>订单号后五位</span>
+                        <input class="input_order_num" type="number" placeholder="12345">
+                    </div>
+                </div>
+            </div>
+            <!--提交-->
+            <div class="btn_wrap">
+                <!--<a href="javascript:" class="mui-btn btn_submit mui-btn-block">提交</a>-->
+                <a href="online-pay-qq-wallet.html" class="mui-btn btn_submit mui-btn-block">提交</a>
+            </div>
+            <!--提示说明-->
+            <div class="deposit_help">
+                <p>温馨提示</p>
+                <p>
+                    *为了提高对账速度及成功率，当前支付方式已开随机额度，请输入整数存款金额，将随机增加0.11~0.99元！
+                </p>
+                <p>*请保留好转账单据作为核对证明。</p>
+                <p>
+                    *如出现充值失败或充值后未到账等情况，请联系在线客服获取帮助。
+                </p>
             </div>
 
-      </div>
+            <!--复制成功提示框-->
+            <div class="copy_success">
+                <i></i>
+                <span>复制成功</span>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <!-----------------------------------------------footer--------------------------------------------->
 <footer class="mui-bar mui-bar-tab">
-      <a class="mui-tab-item" href="../mobile-v3/index.html">
-            <span class="mui-icon icon-home"></span>
-            <span class="mui-tab-label">首页</span>
-      </a>
-      <a class="mui-tab-item mui-active" href="mine-deposit-2-online.html">
-            <span class="mui-icon icon-deposit"></span>
-            <span class="mui-tab-label">存款</span>
-      </a>
-      <a class="mui-tab-item" href="../mobile-v3/promo.html">
-            <span class="mui-icon icon-promo"></span>
-            <span class="mui-tab-label">优惠</span>
-      </a>
-      <a class="mui-tab-item"  href="">
-            <span class="mui-icon icon-service"></span>
-            <span class="mui-tab-label">客服</span>
-      </a>
-      <a class="mui-tab-item" href="../mobile-v3/mine_new.html">
-            <span class="mui-icon icon-mine"></span>
-            <span class="mui-tab-label">我的</span>
-      </a>
+    <a class="mui-tab-item" href="../mobile-v3/index.html">
+        <span class="mui-icon icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item mui-active" href="mine-deposit-2-online.html">
+        <span class="mui-icon icon-deposit"></span>
+        <span class="mui-tab-label">存款</span>
+    </a>
+    <a class="mui-tab-item" href="../mobile-v3/promo.html">
+        <span class="mui-icon icon-promo"></span>
+        <span class="mui-tab-label">优惠</span>
+    </a>
+    <a class="mui-tab-item"  href="">
+        <span class="mui-icon icon-service"></span>
+        <span class="mui-tab-label">客服</span>
+    </a>
+    <a class="mui-tab-item" href="../mobile-v3/mine_new.html">
+        <span class="mui-icon icon-mine"></span>
+        <span class="mui-tab-label">我的</span>
+    </a>
 </footer>
 
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
 <script>
-      $(function () {
-            /*弹出复制成功弹框,1秒后消失*/
-            $('.nickname_copy').click(function () {
-                  $('.copy_success').fadeIn(300); /*css("opacity","1")*/
-                  setTimeout(function () {
-                        $('.copy_success').fadeOut(200)
-                  },1000);
-            })
+    $(function () {
+        /*弹出复制成功弹框,1秒后消失*/
+        $('.nickname_copy').click(function () {
+            $('.copy_success').fadeIn(300); /*css("opacity","1")*/
+            setTimeout(function () {
+                $('.copy_success').fadeOut(200)
+            },1000);
+        });
 
-            $('.qq_account_copy').click(function () {
-                  $('.copy_success').fadeIn(300); /*css("opacity","1")*/
-                  setTimeout(function () {
-                        $('.copy_success').fadeOut(200)
-                  },1000);
-            })
+        $('.qq_account_copy').click(function () {
+            $('.copy_success').fadeIn(300); /*css("opacity","1")*/
+            setTimeout(function () {
+                $('.copy_success').fadeOut(200)
+            },1000);
+        });
 
-            $('.qq_nickname_copy').click(function () {
-                  $('.copy_success').fadeIn(300); /*css("opacity","1")*/
-                  setTimeout(function () {
-                        $('.copy_success').fadeOut(200)
-                  },1000);
-            })
-      });
+        $('.qq_nickname_copy').click(function () {
+            $('.copy_success').fadeIn(300); /*css("opacity","1")*/
+            setTimeout(function () {
+                $('.copy_success').fadeOut(200)
+            },1000);
+        });
+    });
 </script>
 </body>
 </html>

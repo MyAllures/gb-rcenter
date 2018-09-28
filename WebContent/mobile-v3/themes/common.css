@@ -595,6 +595,8 @@ li {
     margin: 5px; }
 
 /* login and register page */
+
+
 .type-header {
     padding: 15px 0;
     text-align: center;
@@ -647,6 +649,7 @@ li {
 
 .type-content .mui-control-content {
     padding: 10px 15px 50px;
+    position: relative;
 }
 .type-content .mui-control-content .mui-input-group {
     background-color: transparent; }
@@ -752,22 +755,21 @@ li {
     margin-left:15px;
 }
 .type-content .mui-control-content .mui-input-group .tk .agree_register_rules {
+    display: inline-block;
     width: 15px;
     height: 15px;
-    line-height: 15px;
-    text-align: center;
     border-radius: 2px;
-    background-color: #1E68B8;
     border: none;
-    color: #FFF;
-    font-size: 15px;
+    transform: translate(0,3px);
 }
-/*.type-content .mui-control-content .mui-input-group .tk .agree_register_rules:before {
-    font-size: 24px;
-    color: #1E68B8;
-    width: 15px!important;
-    height: 15px !important;
-}*/
+.agree_register_rules.is_choosen {
+    background: #1E68B8 url("../themes/images/selected@2x.png") no-repeat;
+    background-size: 15px 15px;
+}
+.agree_register_rules.not_choosen {
+    background: #D1CFCF;
+    background-size: 15px 15px;
+}
 .type-content .mui-control-content .mui-input-group .tk a {
     color: #999;
     /*float: left;*/
@@ -785,6 +787,57 @@ li {
     width: 12px;
     height: 12px;
     margin: 0 4px -1px; }
+.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.common_btn {
+    border-radius: 5px;
+    border:0;
+    color: #FFF;
+    font-size: 15px;
+    height: 37px;
+    line-height:37px;
+    padding: 0;
+    box-sizing: border-box;
+}
+.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.common_btn:disabled {
+    opacity: 1;
+}
+.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.common_btn.btn-ok {
+    background-color: #2377D6;
+}
+.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.common_btn.btn-not-ok {
+    background-color: #D1CFCF;
+}
+.type-content .mui-control-content .register_success, .type-content .mui-control-content .verify_code_wrong {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0,0,0,.5);
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+.type-content .mui-control-content .register_success .reg_tip_icon {
+     display: block;
+     width: 40px;
+     height: 37px;
+     background: url("../themes/images/icon_success@2x.png") no-repeat;
+     background-size: 40px 37px;
+     margin: 10px 0 6px 20px;
+ }
+.type-content .mui-control-content .verify_code_wrong i {
+    display: block;
+    width: 37px;
+    height: 37px;
+    background: url("../themes/images/icon_unsuccess@2x.png") no-repeat;
+    background-size: 37px 37px;
+    margin: 10px 0 6px 20px;
+}
+.type-content .mui-control-content .register_success .reg_tip_txt, .type-content .mui-control-content .verify_code_wrong span {
+    font-size: 13px;
+    color: #FFF;
+}
 
 .copy-right {
     font-size: 9px;
@@ -4261,7 +4314,7 @@ body.bankcard .gb-bankcard > .ct > p a.copy, body.bankcard .gb-bankcard > .ct > 
     line-height: 22px;
     margin-left: 5px; }
 
-/* 数字货币存款 */
+/******************************************数字货币存款**************************************/
 body.online-pay-sz .mui-content {
     background: #f2f2f2; }
 body.online-pay-sz .bank-selector {
@@ -4654,19 +4707,72 @@ body.change-loginpassword .gb-stressed p i.active {
     color: #aeaeae; }
 .mine-bet-detail .mine-form .mui-input-row {
     height: auto; }
-.mine-bet-detail .mine-form .panel {
-    margin: 0 32px;
-    border: 1px solid #e2e2e2;
-    background-color: #f2f2f2;
-    padding: 10px;
-    border-radius: 3px; }
-.mine-bet-detail .mine-form .panel p {
+.mine-bet-detail .mine-form .ClientLog {
+    width: 90%;
+    margin: 0 auto 10px auto;
+    background-color:#fff ;
+    padding: 0 10px;
+    border-radius: 5px; }
+.mine-bet-detail .mine-form .ClientLog:first-child{
+    margin-top: 10px;
+}
+.mine-bet-detail .mine-form .ClientLog span {
+    color: #333333; }
+.mine-bet-detail .mine-form .ClientLog span:first-child {
+    display: inline-block;
+    width: 74px;
+    margin-right: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-right: 1px solid #EFEFEF;
+    color: #999999;
+    font-size: 13px; }
+.mine-bet-detail .mine-form .ClientLog .plate-size {
+    width: 70%;
+    padding: 5px;
+    display: inline-block;
+    height: 70px;
+    margin: 3px 0 3px -15px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-size p{
+    height: 35px;
+    line-height: 35px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-size p:first-child{
+    border-bottom: 1px solid #E2E2E2;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon{
+    width: 70%;
+    padding: 5px;
+    display: inline-block;
+    margin: 3px 0 3px -15px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon .plate{
+    padding-bottom: 5px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon .plate>p{
+    height: 20px;
     line-height: 20px;
-    color: #333333;
-    font-size: 12px; }
-.mine-bet-detail .mine-form .panel p .text {
-    color: #999999; }
-
+    border: none;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon>div{
+    padding: 5px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon div div{
+    height: 20px;
+    line-height: 20px;
+    color:#999999 ;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon div ul{
+    height: 30px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon div ul li{
+    display: inline-block;
+    font-size: 27px;
+    height: 27px;
+    line-height: 27px;
+    margin-top: 5px;
+}
 /* cash-detail */
 body.cash-detail {
     color: #000; }
@@ -5812,6 +5918,9 @@ body.mine-user .gb-select > a {
 .gr-ft-w:before{content:"\e900";}
 .gr-ft-b:before{content:"\e901";color:#fa1e1e;}
 
+
+
+/************************色子字体图标************************/
 .gr-dice-1:before,.gr-di-1:before{content:"\e902";color:#fa1e1e;}
 .gr-dice-2:before,.gr-di-2:before{content:"\e903";}
 .gr-dice-3:before,.gr-di-3:before{content:"\e904";}
@@ -5858,6 +5967,9 @@ body.mine-user .gb-select > a {
 .gr-diamond-q:before,.gr-diamond-12:before,.gr-d-12:before{content:"\e92a";color:#fa1e1e;}
 .gr-diamond-k:before,.gr-diamond-13:before,.gr-d-13:before{content:"\e92b";color:#fa1e1e;}
 
+
+
+/***************************扑克牌字体图标*********************************/
 .gr-heart-a:before,.gr-heart-1:before,.gr-h-1:before{content:"\e92c";color:#fa1e1e;}
 .gr-heart-2:before,.gr-h-2:before{content:"\e92d";color:#fa1e1e;}
 .gr-heart-3:before,.gr-h-3:before{content:"\e92e";color:#fa1e1e;}
