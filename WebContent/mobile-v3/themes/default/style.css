@@ -2,978 +2,1054 @@
 /* color and special images style */
 /* default themes */
 body {
-      color: #fff;
-      background: #151515;
+    color: #fff;
+    background: #151515;
 }
 
 .mui-bar {
-      background-color: #151515;
-      box-shadow: none;
+    background-color: #151515;
+    box-shadow: none;
 }
 .mui-bar.audit_login_header {
-      background-color: #7f0213;
+    background-color: #7f0213;
 }
 
 header.mui-bar-nav a.mui-icon-bars {
-      color: #fff;
+    color: #fff;
 }
 
 header.mui-bar-nav .btn-login {
-      background-color: #1dc28e;
-      border: 1px solid #1dc28e;
+    background-color: #1dc28e;
+    border: 1px solid #1dc28e;
 }
 
 header.mui-bar-nav .btn-demo {
-      background-color: #1279d9;
-      border: 1px solid #1279d9;
+    background-color: #1279d9;
+    border: 1px solid #1279d9;
 }
 
 header.mui-bar-nav .btn-register {
-      background-color: #f0af01;
-      border: 1px solid #f0af01;
+    background-color: #f0af01;
+    border: 1px solid #f0af01;
 }
 
 header.mui-bar-nav .mui-action-back {
-      color: #fff;
+    color: #fff;
 }
 
 .yjym {
-      color: #fff;
-      background: #252525;
-      border-top: 1px solid #151515;
+    color: #fff;
+    background: #252525;
+    border-top: 1px solid #151515;
 }
 
 .mui-content {
-      background: #454545;
+    background: #454545;
 }
 
 .mui-content.home-content {
-      background: #151515;
+    background: #151515;
 }
 
 .mui-content.promo-record-content {
-      background: #f2f2f2;
+    background: #f2f2f2;
 }
 
 .mui-content.promo-content {
-      background: #fff;
-}
-
-
-/* notice */
-.notice {
-      background: #151515;
-}
-
-.notice .btn-title {
-      background: #168df6;
-      border: 1px solid #168df6;
-}
-
-.notice .notice-list a {
-      color: #fff !important;
+    background: #fff;
 }
 
 /* nav */
 .nav {
-      background: #151515 url(./images/nav-bg.png) 0 0/100% 60px repeat-x;
-      border-top: 0;
-      position: relative;
+    background: #151515 url(./images/nav-bg.png) 0 0/100% 60px repeat-x;
+    border-top: 0;
+    position: relative;
 }
 
 .nav:after {
-      content: '';
-      position: absolute;
-      height: 1px;
-      background: transparent;
-      bottom: 3px;
-      left: 0;
-      right: 0;
+    content: '';
+    position: absolute;
+    height: 1px;
+    background: transparent;
+    bottom: 3px;
+    left: 0;
+    right: 0;
 }
 
 .nav .swiper-slide {
-      color: #fff;
-      position: relative;
+    color: #fff;
+    position: relative;
 }
 
 .nav .swiper-slide.swiper-slide-active span {
-      color: #fff;
+    color: #fff;
 }
 
 .nav .swiper-slide.swiper-slide-active::before {
-      zoom: 118%;
+    zoom: 118%;
 }
 
 .nav .swiper-slide.swiper-slide-active:after {  /*遮罩层*/
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      margin-left: -37px;
-      z-index: 1;
-      width: 74px;
-      height: 70px;
-      background: url(images/nav-item-active-bg.png) center top/74px 65px no-repeat;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -37px;
+    z-index: 1;
+    width: 74px;
+    height: 70px;
+    background: url(images/nav-item-active-bg.png) center top/74px 65px no-repeat;
 }
 
 /* api-grid */
 .api-grid .mui-grid-view.mui-grid-9 {
-      padding: 0 5px;
-      border-top: 0;
-      border-left: 0;
-      background-color: #151515;
+    padding: 0 5px;
+    border-top: 0;
+    border-left: 0;
+    background-color: #151515;
 }
 
 .api-grid .api-item {
-      background: url(./images/api-bg.png) no-repeat center/70px;
+    background: url(./images/api-bg.png) no-repeat center/70px;
 }
 
 .api-grid .api-item:after {
-      background: url(images/api-bg-shadow.png) no-repeat 0 0/100%;
+    background: url(images/api-bg-shadow.png) no-repeat 0 0/100%;
 }
 
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell a {
-      background: #252525;
+    background: #252525;
 }
 
 .api-grid ul[data-list="lottery"] .lottery-nav {
-      color: #333;
-      border-bottom: 1px solid #fff;
+    color: #333;
+    border-bottom: 1px solid #fff;
 }
 
 .api-grid ul[data-list="lottery"] .lottery-nav ul {
-      background: transparent;
+    background: transparent;
 }
 
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item {
-      color: #fff;
-      border-bottom: 1px solid transparent;
+    color: #fff;
+    border-bottom: 1px solid transparent;
 }
 
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.mui-active {
-      border-bottom: 1px solid #168df6;
+    border-bottom: 1px solid #168df6;
 }
 
 /* mui-bar-footer */
 .mui-bar-tab {
-      background: #252525;
-      border-top: 1px solid #393939;
+    background: #252525;
+    border-top: 1px solid #393939;
 }
 
 .mui-bar-tab .mui-tab-label {
-      color: #666;
+    color: #666;
 }
 
 .mui-bar-tab .mui-active .mui-tab-label {
-      color: #007aff;
+    color: #007aff;
 }
 
 .mui-bar-tab .mui-active .mui-icon {/*图标选中时放大13% */
-      zoom: 113%;
+    zoom: 113%;
 }
 
 /* mui-off-canvas-left */
 .mui-off-canvas-left {
-      background: #444;
+    background: #444;
 }
 
 .mui-off-canvas-left .person-info {
-      background: url(./images/off-canvas-sep.png) center bottom/100% 1px no-repeat;
+    background: url(./images/off-canvas-sep.png) center bottom/100% 1px no-repeat;
 }
 
 .mui-off-canvas-left .person-info .un-login p {
-      color: #fff;
+    color: #fff;
 }
 
 .mui-off-canvas-left .person-info .un-login .btn-login {
-      background: #eda527;
-      border: 1px solid #eda527;
+    background: #eda527;
+    border: 1px solid #eda527;
 }
 
 .mui-off-canvas-left .person-info .login p {
-      color: #fff;
+    color: #fff;
 }
 
 .mui-off-canvas-left .person-info .btn-person {
-      background: #31955e;
-      border: 1px solid #31955e;
+    background: #31955e;
+    border: 1px solid #31955e;
 }
 
 .mui-off-canvas-left .side-nav li {
-      border-left: 3px solid transparent;
-      background: transparent;
+    border-left: 3px solid transparent;
+    background: transparent;
 }
 
 .mui-off-canvas-left .side-nav li.active {
-      border-left: 3px solid #445dc2;
-      background: #333;
+    border-left: 3px solid #445dc2;
+    background: #333;
 }
 
 .mui-off-canvas-left .side-nav li a {
-      color: #fff;
+    color: #fff;
 }
 
 .mui-off-canvas-left .btn-logout {
-      background: #eda527;
-      border: 1px solid #eda527;
+    background: #eda527;
+    border: 1px solid #eda527;
 }
 
 /* lang-menu */
 .lang-menu {
-      background: #333;
+    background: #333;
 }
 
 /* page promo */
 .promo .p-t-slide-content {
-      color: #333;
+    color: #333;
 }
 
-/* login and register page */
+/****************************** 登录/注册 **************************/
 .type-header {
-      border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+.login-content {
+    background: #f2f2f2;
+}
+.login-content .type-content .mui-input-row.input_item {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    position: relative;
+}
+.login-content .type-content .mui-input-row.input_item label {
+    box-sizing: border-box;
+    color: #333;
+    font-size:14px;
+    height: 33px;
+    line-height:33px;
+    flex: 23;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items:center;
+}
+.login-content .type-content .mui-input-row.input_item label .strong_icon {
+    display: inline-block;
+    width: 7px;
+    height: 6px;
+    background: url("../images/icon_required@2x.png") no-repeat;
+    background-size: 7px 6px;
+    position: relative;
+    top: -1px;
+    right: 5px;
+}
+.login-content .type-content .mui-input-row.input_item > input {
+    flex: 77;
+    margin: 4px 0 4px 7px !important;
+    height: 33px !important;
+    line-height:33px !important;
+    box-sizing: border-box;
+    padding: 10px 5px !important;
+    border:none !important;
+    background-color: #fff;
+    color: #333 !important;
+    font-size: 14px !important;
+}
+.pwd_icon,.confirm_pwd_icon{
+    position: absolute;
+    right: 10px;
+    width: 19px;
+    height: 19px;
+}
+.pwd_icon.not_view_icon, .confirm_pwd_icon.not_view_icon {
+    background: url("../images/icon_invisible@2x.png") no-repeat;
+    background-size: 19px 19px;
+}
+.pwd_icon.can_view_icon, .confirm_pwd_icon.can_view_icon {
+    background: url("../images/icon_visible@2x.png") no-repeat;
+    background-size: 19px 19px;
+}
+.type-content .mui-control-content .mui-input-group .optional_content {
+    display: none;
+}
+.type-content .mui-control-content .mui-input-group .mui-input-row .mui-icon-eye {
+    top: 2px !important;
+}
+.login-content .type-content .mui-input-row.input_item input::-webkit-input-placeholder {
+    color: #CCCCCC;
+    font-size:14px;
+}
+.type-content .mui-control-content .mui-input-group .mui-input-row .mui-icon-clear {
+    top: 3px !important;
+}
+.type-content .mui-control-content .mui-input-group .mui-input-row .mui-input-select ~ .mui-icon-arrowdown {
+    top: 4px !important;
 }
 
-.login-content {
-      background: #f2f2f2;
+.mui-poppicker {
+    /*display: none;*/
+}
+.mui-poppicker.mui-active *{
+    z-index: 1000;
+}
+.mui-poppicker.mui-active {
+    /*display: inherit;*/
+    /*position: absolute;*/
+    /*width:100%;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
 }
 
 .login {
-      color: wheat;
+    color: wheat;
 }
 a.audit_back_home {
-      color: #FFFFFF ;
+    color: #FFFFFF ;
 }
 .login .user-img {
-      background: url(../../images/login-user.png) center no-repeat/100px, linear-gradient(#151515, #151515);
-      width: 100px;
-      height: 100px;
-      border-radius: 100%;
-      box-shadow: 3px 5px 15px 6px rgba(21, 21, 21, 0.25);
-      margin: 50px auto;
+    background: url(../../images/login-user.png) center no-repeat 0 0/100px, linear-gradient(#151515, #151515);
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    box-shadow: 3px 5px 15px 6px rgba(21, 21, 21, 0.25);
+    margin: 50px auto;
 }
 .login .login-form a.btn {
-      display: block;
-      text-align: center;
-      height: 40px;
-      line-height: 40px;
-      border-radius: 2px;
+    display: block;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 2px;
 }
 .login .login-form .btn-login {
-      background: #151515;
-      color: #fff;
-      margin-bottom: 15px;
+    background: #151515;
+    color: #fff;
+    margin-bottom: 15px;
 }
 .login .login-form .btn-regist {
-      color: #151515;
-      border: 1px solid #151515;
+    color: #151515;
+    border: 1px solid #151515;
 }
 
-/********************稽查登录页***********************/
+
+
+
+/************************************稽查登录页***************************************/
 .login .login-form .btn-login.btn-login-audit {
-      background: #7f0213;
+    background: #7f0213;
 }
 .login .user-img.user-img-audit {
-      background: url(../../images/login-user.png) center no-repeat/100px, linear-gradient(#7f0213, #7f0213);
+    background: url(../../images/login-user.png) center no-repeat /100px, linear-gradient(#7f0213, #7f0213);
 }
 .login .login-form .btn-regist.btn-register-audit {
-      color: #7f0213;
-      border: 1px solid #7f0213;
+    color: #7f0213;
+    border: 1px solid #7f0213;
 }
 .top-tip-text {
-      padding-left: 20px;
+    padding-left: 20px;
 }
 .mui-input-row label.true-name {
-      padding: 5px 15px;
+    padding: 5px 15px;
 }
 .mui-input-row label.open-bank-info {
-      padding: 5px 15px;
+    padding: 5px 15px;
 }
 
 /****************** mine page *********************/
 .mine-content {
-      background: #efefef;
+    background: #efefef;
 }
 
 .mine-content .user-info-wrap {
-      background: #151515;
+    background: #151515;
 }
 
 .mine-content .user-info-wrap .gb-userinfo {
-      background: #fff;
+    background: #fff;
 }
 
 .mui-bar-mine {
-      -webkit-box-shadow: none !important;
-      box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 
 /********************* index-login-info ************************/
 .index-canvas-wrap {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      z-index: 9999;
-      left: -100%;
-      -webkit-transition: all 0.5s  ease-in-out;
-      transition: all 0.5s  ease-in-out; }
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 9999;
+    left: -100%;
+    -webkit-transition: all 0.5s  ease-in-out;
+    transition: all 0.5s  ease-in-out; }
 .index-canvas-wrap aside {
-      visibility: visible; }
+    visibility: visible; }
 .index-canvas-wrap .mui-icon-closeempty {
-      position: absolute;
-      margin-left: -40px;
-      left: 60%;
-      background: #444;
-      color: #fff;
-      width: 40px;
-      height: 40px;
-      text-align: center;
-      line-height: 40px;
-      font-size: 40px; }
+    position: absolute;
+    margin-left: -40px;
+    left: 60%;
+    background: #444;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 40px; }
 .index-canvas-show, .index-canvas-show body {
-      height: 100%; }
+    height: 100%; }
 .index-canvas-show body {
-      overflow: hidden;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0; }
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; }
 .index-canvas-show .index-canvas-wrap {
-      left: 0; }
+    left: 0; }
 .login-before {
-      display:none;
+    /*display:none;*/
 }
 .login-info {
-      display: inline-block;
-      height: 24px;
-      padding-right: 10px;
-      margin-top: 10px;
-      min-width: 40px;
-      float: right;
-      position: relative;
-      background: url(images/icon-open-offcanvas.png) no-repeat right center/5px;
+    /*display: inline-block;*/
+    height: 24px;
+    padding-right: 10px;
+    margin-top: 10px;
+    min-width: 40px;
+    float: right;
+    position: relative;
+    background: url(images/icon-open-offcanvas.png) no-repeat right center/5px;
+    display:none;
+
 }
 .login-info .user_name, .login-info .money {
-      font-size: 9px;
-      text-align: right;
-      line-height: 13px;
-      transform: scale(0.85);
+    font-size: 9px;
+    text-align: right;
+    line-height: 13px;
+    transform: scale(0.85);
 }
 .login-info .money {
-      padding-left: 10px;
-      height: 14px;
-      line-height: 14px; }
+    padding-left: 10px;
+    height: 14px;
+    line-height: 14px; }
 .login-info .mui-scroll-wrapper.mui-assets {
-      top: 68px;
-      height: 230px;
-      left: 20px; }
+    top: 68px;
+    height: 230px;
+    left: 20px; }
 
 
 /* nots deficiency */
 .deficiency-nots {
-      background: #454545;
-      text-align: center;
-      padding: 15px 10px;
-      margin: 5px;
-      border-radius: 6px;
-      word-break: break-word;
-      font-size: 14px;
+    background: #454545;
+    text-align: center;
+    padding: 15px 10px;
+    margin: 5px;
+    border-radius: 6px;
+    word-break: break-all;
+    font-size: 14px;
 }
 
 /* loading */
 .loading-wrap {
-      background: #fff;
+    background: #fff;
 }
 
 .loading-wrap:after {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 2002;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2002;
 }
 
 .loading-wrap .loading-img {
-      position: absolute;
-      z-index: 2003;
-      left: 50%;
-      top: 50%;
-      text-align: center;
-      -webkit-transform: translate3d(-50%, -50%, 0) scale(1);
-      transform: translate3d(-50%, -50%, 0) scale(1);
+    position: absolute;
+    z-index: 2003;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    -webkit-transform: translate3d(-50%, -50%, 0) scale(1);
+    transform: translate3d(-50%, -50%, 0) scale(1);
 }
 
 .loading-wrap .loading-img img {
-      vertical-align: middle;
+    vertical-align: middle;
 }
 
 .loading-wrap .loading-entirety {
-      background: rgba(255, 255, 255, 0.95);
-      width: 64px;
-      height: 64px;
-      line-height: 63px;
-      border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    width: 64px;
+    height: 64px;
+    line-height: 63px;
+    border-radius: 12px;
 }
 
 .loading-wrap .loading-entirety img {
-      width: 48px;
+    width: 48px;
 }
 
 /*************************index-login-info************************/
 .login-info .money {
-      background: url(images/icon-wallet.png) no-repeat 0 2px/10px;
+    background: url(images/icon-wallet.png) no-repeat 0 2px/10px;
+}
+.user_money_info {
+    padding-top:45px;
 }
 .money-shadow {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      /*right: 0;*/
-      /*bottom: 0;*/
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 1000;
-      display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: none;
 }
 .ex {
-      box-sizing: border-box;
-      width:  230px;
-      height: 468px;
-      border: none;
-      display: flex;
-      flex-direction:  column;
-      box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
-      position: absolute;
-      top: 45px;
-      right: -240px;
-      -webkit-transition: all 0.3s;
-      transition: all 0.3s;
-      z-index: 1001;
+    box-sizing: border-box;
+    width:  230px;
+    height: 468px;
+    border: none;
+    display: flex;
+    flex-direction:  column;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: -468px;
+    right: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.5s;
+    z-index: 1001;
 }
 .ex.open {
-      right: 0;
+    top: 45px;
+    transition: all 0.8s;
 }
 .total_asset,.wallet {
-      box-sizing: border-box;
-      display: flex;
-      flex-direction:  row;
-      justify-content:  space-between;
-      align-items:  center;
-      padding: 0 13px ;
-      border-bottom:  1px solid #888888;
-      background-color:  #515151;
-      height: 26px;
-      line-height: 26px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction:  row;
+    justify-content:  space-between;
+    align-items:  center;
+    padding: 0 13px ;
+    border-bottom:  1px solid #888888;
+    background-color:  #515151;
+    height: 26px;
+    line-height: 26px;
 }
 .asset_txt {
-      font-family: "PingFangSC-Regular";
-      color: #eeeeee;
-      font-size: 12px;
-      transform: scale(0.9);
-      height: 26px;
-      line-height: 26px;
+    font-family: "PingFangSC-Regular";
+    color: #eeeeee;
+    font-size: 12px;
+    transform: scale(0.9);
+    height: 26px;
+    line-height: 26px;
 }
 .asset_num {
-      color: #FFC000;
-      font-family: "PingFangSC-Regular";
-      height: 26px;
-      line-height: 26px;
-      font-size: 12px;
-      transform: scale(0.9);
+    color: #FFC000;
+    font-family: "PingFangSC-Regular";
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    transform: scale(0.9);
 }
 .central_scroll {
-      box-sizing: border-box;
-      background-color:  #343434;
-      padding: 0 12px;
-      font-family: "PingFangSC-Regular";
-      color: #999;
-      height: 320px;
-      overflow: scroll;
+    box-sizing: border-box;
+    background-color:  #343434;
+    padding: 0 12px;
+    font-family: "PingFangSC-Regular";
+    color: #999;
+    height: 320px;
+    overflow: scroll;
 }
 .item_data {
-      box-sizing: border-box;
-      height: 26px;
-      display: flex;
-      flex-direction:  row;
-      justify-content:  space-between;
-      align-items:  center;
-      border-top: 1px solid #3E3E3E;
+    box-sizing: border-box;
+    height: 26px;
+    display: flex;
+    flex-direction:  row;
+    justify-content:  space-between;
+    align-items:  center;
+    border-top: 1px solid #3E3E3E;
 }
 .item_data span {
-      font-size:  12px;
-      transform: scale(0.85);
+    font-size:  12px;
+    transform: scale(0.85);
 }
 .item_data .maintaining {
-      color: #805628;
+    color: #805628;
 }
 .item_data:first-child {
-      border-top:  none;
+    border-top:  none;
 }
 .btn_group {
-      box-sizing: border-box;
-      background: #343434;
-      display: flex;
-      flex-direction:  column;
-      justify-content:  space-around;
-      align-items:  center;
-      font-size:  15px;
-      color:  #FFFFFF;
-      flex: 1;
-      padding-bottom:  6px;
+    box-sizing: border-box;
+    background: #343434;
+    display: flex;
+    flex-direction:  column;
+    justify-content:  space-around;
+    align-items:  center;
+    font-size:  15px;
+    color:  #FFFFFF;
+    flex: 1;
+    padding-bottom:  6px;
 }
 .one_key_recycle {
-      width: 206px;
-      height: 37px;
-      line-height:  37px;
-      text-align: center;
-      border-radius: 5px;
-      background: #2377D6;
-      color: #fff;
+    width: 206px;
+    height: 37px;
+    line-height:  37px;
+    text-align: center;
+    border-radius: 5px;
+    background: #2377D6;
+    color: #fff;
 }
 .saving_money {
-      width: 206px;
-      height: 37px;
-      line-height:  37px;
-      text-align: center;
-      border-radius: 5px;
-      background: #28BD95;
-      color: #fff;
+    width: 206px;
+    height: 37px;
+    line-height:  37px;
+    text-align: center;
+    border-radius: 5px;
+    background: #28BD95;
+    color: #fff;
 }
 
 /***************************QQ钱包付款**************************/
 .online-pay-qq-wallet .mui-content {
-      background-color: #EFEFEF;
+    background-color: #EFEFEF;
 }
 .online-pay-qq-wallet  .qq_account_info {
-      background-color: #fff;
+    background-color: #fff;
 }
 .online-pay-qq-wallet .account_info_title {
-      font-size: 14px;
-      color: #333;
-      padding: 10px 24px;
-      position: relative;
+    font-size: 14px;
+    color: #333;
+    padding: 10px 24px;
+    position: relative;
 }
 .online-pay-qq-wallet .account_info_title:before {
-      content: '';
-      width: 3px;
-      height: 17px;
-      background: #1766bb;
-      position: absolute;
-      left: 11px;
-      top: 11px;
+    content: '';
+    width: 3px;
+    height: 17px;
+    background: #1766bb;
+    position: absolute;
+    left: 11px;
+    top: 11px;
 }
 .qq_wallet_name {
-      width: 90%;
-      margin: 7px auto 0;
-      text-align: center;
+    width: 90%;
+    margin: 7px auto 0;
+    text-align: center;
 }
 .qq_wallet_txt {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 13px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 13px;
 }
 .qq_wallet_txt .qq_wallet_icon {
-      display: inline-block;
-      width: 38px;
-      height: 38px;
-      background-image: url("../../themes/images/pay-icon.png");
-      background-repeat:  no-repeat;
-      background-size: 38px;
-      background-position-x: center;
-      background-position-y: -152px;
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    background-image: url("../../themes/images/pay-icon.png");
+    background-repeat:  no-repeat;
+    background-size: 38px;
+    background-position-x: center;
+    background-position-y: -152px;
 }
 .qq_wallet_txt .qq_txt_style {
-      color: #333;
-      font-size: 14px;
-      margin-left: 10px;
+    color: #333;
+    font-size: 14px;
+    margin-left: 10px;
 }
 .user_nickname {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 13px;
-      color: #333;
-      font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 13px;
+    color: #333;
+    font-size: 16px;
 }
 .user_nickname .nickname_copy {
-      display: inline-block;
-      width: 50px;
-      height: 19px;
-      line-height: 19px;
-      text-align: center;
-      background-color: #F6FAFF;
-      color: #1F67B9;
-      border-radius: 10px;
-      margin-left: 5px;
-      font-size: 14px;
+    display: inline-block;
+    width: 50px;
+    height: 19px;
+    line-height: 19px;
+    text-align: center;
+    background-color: #F6FAFF;
+    color: #1F67B9;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-size: 14px;
 }
 .qq_copy_box {
-      margin: 17px 29px 10px;
-      background-color: #F7F7F7;
-      padding: 0 13px;
-      border-radius: 3px;
+    margin: 17px 29px 10px;
+    background-color: #F7F7F7;
+    padding: 0 13px;
+    border-radius: 3px;
 }
 .copy_account, .copy_nickname {
-      box-sizing: border-box;
-      height: 37px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+    box-sizing: border-box;
+    height: 37px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 .copy_account {
-      border-bottom: 1px solid #E6E6E6;
+    border-bottom: 1px solid #E6E6E6;
 }
 .account_txt i, .nickname_txt i  {
-      font-style: normal;
-      font-size: 14px;
-      color: #999;
+    font-style: normal;
+    font-size: 14px;
+    color: #999;
 }
 .account_txt span, .nickname_txt span {
-      font-size: 14px;
-      color: #333;
-      margin-left: 5px;
+    font-size: 14px;
+    color: #333;
+    margin-left: 5px;
 }
 .qq_account_copy, .qq_nickname_copy {
-      display: inline-block;
-      width: 50px;
-      height: 19px;
-      line-height: 19px;
-      text-align: center;
-      background-color: #ffffff;
-      color: #999;
-      border-radius: 10px;
-      font-size: 14px;
+    display: inline-block;
+    width: 50px;
+    height: 19px;
+    line-height: 19px;
+    text-align: center;
+    background-color: #ffffff;
+    color: #999;
+    border-radius: 10px;
+    font-size: 14px;
 }
 .qr_code_info {
-      margin: 0 29px;
-      background-color: #F7F7F7;
-      padding: 0 14px 16px;
-      border-radius: 3px;
+    margin: 0 29px;
+    background-color: #F7F7F7;
+    padding: 0 14px 16px;
+    border-radius: 3px;
 }
 .qr_code_txt {
-      font-size: 16px;
-      color: #333;
-      text-align: center;
-      padding: 14px 0;
-      border-bottom: 1px solid #CCCCCC;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #CCCCCC;
 }
 .qr_code_img {
-      box-sizing: border-box;
-      width: 100px;
-      height: 100px;
-      padding: 5px;
-      margin: 12px auto 15px;
-      background: #fff url("../../images/qcode.png") no-repeat;
-      background-size: contain;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    margin: 12px auto 15px;
+    background: #fff url("../../images/qcode.png") no-repeat;
+    background-size: contain;
 }
 .qr_code_btns {
-      box-sizing: border-box;
-      height: 15px;
-      display: flex;
-      justify-content: row;
-      justify-content: center;
-      align-items: center;
-      font-size: 14px;
+    box-sizing: border-box;
+    height: 15px;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
 }
 .save_to_phone {
-      height: 15px;
-      line-height: 15px;
-      color: #1F67B9;
-      border-right: 1px solid #CCCCCC;
-      padding-right: 11px;
+    height: 15px;
+    line-height: 15px;
+    color: #1F67B9;
+    border-right: 1px solid #CCCCCC;
+    padding-right: 11px;
 }
 .use_qq_pay {
-      height: 15px;
-      line-height: 15px;
-      color: #0EC392;
-      padding-left: 11px;
+    height: 15px;
+    line-height: 15px;
+    color: #0EC392;
+    padding-left: 11px;
 }
 .qq_account_num, .order_last_num {
-      height: 51px;
-      padding: 0 15px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+    height: 51px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 .qq_account_num {
-      border-bottom: 1px solid #F2F2F2;
+    border-bottom: 1px solid #F2F2F2;
 }
 .qq_account_num span, .order_last_num span {
-      font-size: 14px;
-      color: #999;
-      flex: 1;
+    font-size: 14px;
+    color: #999;
+    flex: 1;
 }
 .input_qq_account, .input_order_num   {
-      text-align: right;
-      flex: 1;
-      border: none !important;
-      outline: none;
-      margin-bottom: 0 !important;
-      padding: 8px 10px !important;
-      color: #333 !important;
+    text-align: right;
+    flex: 1;
+    border: none !important;
+    outline: none;
+    margin-bottom: 0 !important;
+    padding: 8px 10px !important;
+    color: #333 !important;
 }
 .input_qq_account::-webkit-input-placeholder  {
-      color: #CCCCCC;
-      font-size: 14px;
+    color: #CCCCCC;
+    font-size: 14px;
 }
 .input_order_num::-webkit-input-placeholder  {
-      color: #333;
-      font-size: 14px;
+    color: #333;
+    font-size: 14px;
 }
 .online-pay-qq-wallet .btn_wrap {
-      padding: 20px 14px;
-      background-color: #EFEFEF;
+    padding: 20px 14px;
+    background-color: #EFEFEF;
 }
 .online-pay-qq-wallet .btn_wrap .btn_submit {
-      height: 40px;
-      line-height: 40px;
-      padding: 0;
-      text-align: center;
-      font-size: 14px;
-      color: #fff;
-      background: #1C75DB;
-      border: none;
-      border-radius: 5px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    background: #1C75DB;
+    border: none;
+    border-radius: 5px;
 }
 .online-pay-qq-wallet .deposit_help {
-      background-color: #EFEFEF;
-      padding: 0 20px 40px;
-      font-size: 12px;
-      color: #666; }
+    background-color: #EFEFEF;
+    padding: 0 20px 40px;
+    font-size: 12px;
+    color: #666; }
 .online-pay-qq-wallet .deposit_help p {
-      margin-bottom: 0; }
+    margin-bottom: 0; }
 .online-pay-qq-wallet .copy_success {
-      position: absolute;
-      top: 34%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
-      background-color: rgba(0,0,0,.5);
-      text-align: center;
-      border-radius: 5px;
-      display: none;
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0,0,0,.5);
+    text-align: center;
+    border-radius: 5px;
+    display: none;
 }
 .online-pay-qq-wallet .copy_success i {
-      display: block;
-      margin: 10px 0 6px 20px;
-      width: 40px;
-      height: 37px;
-      background: url("../../themes/images/icon_copy_success@3x.png") no-repeat;
-      background-size: 40px 37px;
+    display: block;
+    margin: 10px 0 6px 20px;
+    width: 40px;
+    height: 37px;
+    background: url("../../themes/images/icon_copy_success@3x.png") no-repeat;
+    background-size: 40px 37px;
 }
 .online-pay-qq-wallet .copy_success span {
-      color: #EEE;
-      font-size: 13px;
+    color: #EEE;
+    font-size: 13px;
 }
 
 /*****************************柜台付款****************************/
 .online-pay-counter .mui-content {
-        background-color: #EFEFEF;
-  }
+    background-color: #EFEFEF;
+}
 .online-pay-counter  .counter_account_info {
-      background-color: #fff;
+    background-color: #fff;
 }
 .online-pay-counter .account_info_title {
-      font-size: 14px;
-      color: #333;
-      padding: 10px 24px;
-      position: relative;
+    font-size: 14px;
+    color: #333;
+    padding: 10px 24px;
+    position: relative;
 }
 .online-pay-counter .account_info_title:before {
-      content: '';
-      width: 3px;
-      height: 17px;
-      background: #1766bb;
-      position: absolute;
-      left: 11px;
-      top: 11px;
+    content: '';
+    width: 3px;
+    height: 17px;
+    background: #1766bb;
+    position: absolute;
+    left: 11px;
+    top: 11px;
 }
 .bank_name {
-      width: 90%;
-      margin: 7px auto 0;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 13px;
+    width: 90%;
+    margin: 7px auto 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 13px;
 }
 .bank_counter_icon {
-      display: inline-block;
-      width: 38px;
-      height: 38px;
-      background-image: url("../../themes/images/bank@3x.png");
-      background-repeat:  no-repeat;
-      background-size: 38px 38px;
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    background-image: url("../../themes/images/bank@3x.png");
+    background-repeat:  no-repeat;
+    background-size: 38px 38px;
 }
 .counter_txt_style {
-      color: #333;
-      font-size: 14px;
-      margin-left: 9px;
+    color: #333;
+    font-size: 14px;
+    margin-left: 9px;
 }
 .bank_card_resume {
-      color: #999;
-      font-size: 14px;
+    color: #999;
+    font-size: 14px;
 }
 .bank_copy_box {
-      margin: 17px 29px 10px;
-      background-color: #F7F7F7;
-      padding: 0 13px;
-      border-radius: 3px;
+    margin: 17px 29px 10px;
+    background-color: #F7F7F7;
+    padding: 0 13px;
+    border-radius: 3px;
 }
 .account_code_info, .copy_account_name, .copy_bank_name {
-      box-sizing: border-box;
-      height: 37px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #E6E6E6;
+    box-sizing: border-box;
+    height: 37px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E6E6E6;
 }
 .copy_account_name {
-      border-bottom: 1px solid #E6E6E6;
+    border-bottom: 1px solid #E6E6E6;
 }
 .copy_bank_name {
-      border-bottom: none;
+    border-bottom: none;
 }
 .account_code_info i {
-      font-style: normal;
-      color: #1F67B9;
-      font-size: 14px;
+    font-style: normal;
+    color: #1F67B9;
+    font-size: 14px;
 }
 .account_code_icon {
-      width: 23px;
-      height: 19px;
-      background: url("../../themes/images/icon_contact@3x.png") no-repeat;
-      background-size: 23px 19px;
-      position:relative;
-      right: 14px;
+    width: 23px;
+    height: 19px;
+    background: url("../../themes/images/icon_contact@3x.png") no-repeat;
+    background-size: 23px 19px;
+    position:relative;
+    right: 14px;
 }
 .copy_account_name .account_txt i, .copy_bank_name .bank_name_txt i  {
-      font-style: normal;
-      font-size: 14px;
-      color: #999;
+    font-style: normal;
+    font-size: 14px;
+    color: #999;
 }
 .copy_account_name .account_txt span, .copy_bank_name .bank_name_txt span {
-      font-size: 14px;
-      color: #333;
-      margin-left: 5px;
+    font-size: 14px;
+    color: #333;
+    margin-left: 5px;
 }
 .account_name_copy, .bank_name_copy {
-      display: inline-block;
-      width: 50px;
-      height: 19px;
-      line-height: 19px;
-      text-align: center;
-      background-color: #ffffff;
-      color: #999;
-      border-radius: 10px;
-      font-size: 14px;
+    display: inline-block;
+    width: 50px;
+    height: 19px;
+    line-height: 19px;
+    text-align: center;
+    background-color: #ffffff;
+    color: #999;
+    border-radius: 10px;
+    font-size: 14px;
 }
 .deposit_info {
-      margin-top: 20px;
+    margin-top: 20px;
 }
 .deposit_way, .deposit_person, .deposit_location {
-      height: 51px;
-      padding: 0 15px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid #F2F2F2;
-      color: #333;
+    height: 51px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #F2F2F2;
+    color: #333;
 }
 .deposit_way span, .deposit_person span, .deposit_location span {
-      font-size: 14px;
-      color: #999;
-      flex: 1;
+    font-size: 14px;
+    color: #999;
+    flex: 1;
 }
 
 .input_deposit_person, .input_deposit_place   {
-      text-align: right;
-      flex: 1;
-      border: none !important;
-      outline: none;
-      margin-bottom: 0 !important;
-      padding: 8px 10px !important;
-      color: #333;
-      font-size: 14px;
+    text-align: right;
+    flex: 1;
+    border: none !important;
+    outline: none;
+    margin-bottom: 0 !important;
+    padding: 8px 10px !important;
+    color: #333;
+    font-size: 14px;
 }
 .input_deposit_way {
-      font-style: normal;
-      color: #333;
-      text-align: right;
-      flex: 1;
-      border: none ;
-      outline: none;
-      margin-bottom: 0 ;
-      padding: 8px 5px ;
+    font-style: normal;
+    color: #333;
+    text-align: right;
+    flex: 1;
+    border: none ;
+    outline: none;
+    margin-bottom: 0 ;
+    padding: 8px 5px ;
 }
 .input_deposit_person::-webkit-input-placeholder  {
-      color: #CCC;
-      font-size: 14px;
+    color: #CCC;
+    font-size: 14px;
 }
 .input_deposit_place::-webkit-input-placeholder  {
-      color: #333;
-      font-size: 14px;
+    color: #333;
+    font-size: 14px;
 }
 
 .online-pay-counter .btn_wrap {
-      padding: 20px 14px;
-      background-color: #EFEFEF;
+    padding: 20px 14px;
+    background-color: #EFEFEF;
 }
 .online-pay-counter .btn_wrap .btn_submit {
-      height: 40px;
-      line-height: 40px;
-      padding: 0;
-      text-align: center;
-      font-size: 14px;
-      color: #fff;
-      background: #1C75DB;
-      border: none;
-      border-radius: 5px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    background: #1C75DB;
+    border: none;
+    border-radius: 5px;
 }
 .online-pay-counter .deposit_help {
-      background-color: #EFEFEF;
-      padding: 0 20px 40px;
-      font-size: 12px;
-      color: #666; }
+    background-color: #EFEFEF;
+    padding: 0 20px 40px;
+    font-size: 12px;
+    color: #666; }
 .online-pay-counter .deposit_help p {
-      margin-bottom: 0; }
+    margin-bottom: 0; }
 
 .online-pay-counter .copy_success {
-      position: absolute;
-      top: 34%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
-      background-color: rgba(0,0,0,.5);
-      text-align: center;
-      border-radius: 5px;
-      display: none;
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0,0,0,.5);
+    text-align: center;
+    border-radius: 5px;
+    display: none;
 }
 .online-pay-counter .copy_success i {
-      display: block;
-      margin: 10px 0 6px 20px;
-      width: 40px;
-      height: 37px;
-      background: url("../../themes/images/icon_copy_success@3x.png") no-repeat;
-      background-size: 40px 37px;
+    display: block;
+    margin: 10px 0 6px 20px;
+    width: 40px;
+    height: 37px;
+    background: url("../../themes/images/icon_copy_success@3x.png") no-repeat;
+    background-size: 40px 37px;
 }
 .online-pay-counter .copy_success span {
-      color: #EEE;
-      font-size: 13px;
+    color: #EEE;
+    font-size: 13px;
 }
 
 
@@ -981,207 +1057,207 @@ a.audit_back_home {
 
 /* 修补样式 */
 .ball-pulse.api-div div {
-      background-color: #fff !important;
+    background-color: #fff !important;
 }
 
 .casino-game-type .g-t-slide-indicators {
-      border-bottom: 1px solid #393939;
+    border-bottom: 1px solid #393939;
 }
 
 .casino-game-type .g-t-slide-indicators .swiper-slide-active {
-      color: #0088fe;
-      border-bottom: 1px solid #0088fe;
+    color: #0088fe;
+    border-bottom: 1px solid #0088fe;
 
 }
 
 .loader.api-loader {
-      background: #151515;
+    background: #151515;
 }
 
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell {
-      background: #151515;
+    background: #151515;
 }
 
 .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
-      color: #fff;
+    color: #fff;
 }
 
 .copy-right {
-      border-top: 1px solid #333;
+    border-top: 1px solid #333;
 }
 
 .mui-title {
-      color: #fff;
+    color: #fff;
 }
 
 .mui-bar .mui-icon-back {
-      color: #fff;
+    color: #fff;
 }
 
 .mui-content-casino-list .casino-list a p {
-      color: #fff;
+    color: #fff;
 }
 
 .casino-list-bar {
-      border-bottom: 1px solid #393939;
+    border-bottom: 1px solid #393939;
 }
 
 .mui-content-casino-list .casino-list .img-wrap {
-      background: #151515;
+    background: #151515;
 }
 
 .api-grid .api-item:before {
-      background-image: url(./images/api-sprite-black.png);
+    background-image: url(./images/api-sprite-black.png);
 }
 
 .api-grid .api-item:after {
-      content: '';
-      position: absolute;
-      width: 56px;
-      height: 59px;
-      top: 1px;
-      left: 1px;
-      z-index: 2;
-      -webkit-transform: rotateZ(0);
-      transform: rotateZ(0);
-      border-radius: 0;
+    content: '';
+    position: absolute;
+    width: 56px;
+    height: 59px;
+    top: 1px;
+    left: 1px;
+    z-index: 2;
+    -webkit-transform: rotateZ(0);
+    transform: rotateZ(0);
+    border-radius: 0;
 }
 
 .nav .swiper-slide.item-live:before {
-      background: url(images/icon-live.png) no-repeat center 5px/22px !important;
+    background: url(images/icon-live.png) no-repeat center 5px/22px !important;
 }
 
 .nav .swiper-slide.item-casino:before {
-      background: url(images/icon-casino.png) no-repeat center 4px/22px !important;
+    background: url(images/icon-casino.png) no-repeat center 4px/22px !important;
 }
 
 .content-casino-transfer .game-description p {
-      color: #fff;
+    color: #fff;
 }
 
 .content-casino-transfer .game-item .game-detail h1 {
-      color: #fff;
+    color: #fff;
 }
 
 .content-casino-transfer .game-item .game-detail .g-money {
-      color: #fff;
+    color: #fff;
 }
 
 body.withdraw .gb-form-foot .submit {
-      border: 1px solid #151515;
-      background-color: #151515 !important;
+    border: 1px solid #151515;
+    background-color: #151515 !important;
 }
 
 body.withdraw .account_tab .mui-segmented-control {
-      border: 1px solid #151515;
+    border: 1px solid #151515;
 }
 
 body.withdraw .account_tab .mui-segmented-control .mui-control-item {
-      border-color: #151515 !important;
-      border-left: 1px solid #151515 !important;
-      color: #151515;
+    border-color: #151515 !important;
+    border-left: 1px solid #151515 !important;
+    color: #151515;
 }
 
 body.withdraw .account_tab .mui-segmented-control .mui-active {
-      background-color: #151515 !important;
-      color: #fff !important;
+    background-color: #151515 !important;
+    color: #fff !important;
 }
 
 .mui-btn-blue, .mui-btn-primary, input[type=submit] {
-      color: #fff;
-      border: 1px solid #151515;
-      background-color: #151515;
+    color: #fff;
+    border: 1px solid #151515;
+    background-color: #151515;
 }
 
 .mine-bet-record-body .gb-datafilter .btn-ss {
-      background: #151515;
-      border-color: #151515;
+    background: #151515;
+    border-color: #151515;
 }
 
 .mine-cash-record-body .gb-datafilter .btn-kx {
-      background: #151515;
-      border-color: #151515;
+    background: #151515;
+    border-color: #151515;
 }
 
 .promo-detail-content .gb-imgs > .ct ul li > .ct h5 span {
-      background-color: #151515;
+    background-color: #151515;
 }
 
 body.exchange-account .gb-headtabs .mui-segmented-control {
-      border-color: #151515;
+    border-color: #151515;
 }
 
 body.exchange-account .gb-headtabs .mui-segmented-control .mui-control-item {
-      border-color: #151515;
-      border-left: #151515;
+    border-color: #151515;
+    border-left: #151515;
 }
 
 body.exchange-account .gb-headtabs .mui-segmented-control .mui-active {
-      background: #151515 !important;
+    background: #151515 !important;
 }
 
 body.mine-notice .gb-headtabs .mui-segmented-control {
-      border-color: #151515;
+    border-color: #151515;
 }
 
 body.mine-notice .gb-headtabs .mui-segmented-control .mui-control-item {
-      border-color: #151515;
+    border-color: #151515;
 }
 
 body.mine-notice .gb-headtabs .mui-segmented-control .mui-active {
-      background: #151515 !important;
+    background: #151515 !important;
 }
 
 body.mine-notice .gb-datafilter .btn {
-      background-color: #151515;
-      border-color: #151515;
+    background-color: #151515;
+    border-color: #151515;
 }
 
 body.mine-notice .gb-noticetabs .mui-segmented-control .mui-control-item.mui-active {
-      background-color: #151515;
+    background-color: #151515;
 }
 
 .pro-btn .next-btn {
-      background: #151515;
+    background: #151515;
 }
 
 .pro-window h3 {
-      color: #151515;
+    color: #151515;
 }
 
 body.exchange-bitcoin .tit {
-      background-color: #151515;
+    background-color: #151515;
 }
 
 body.exchange-wechat .tit {
-      background-color: #151515;
+    background-color: #151515;
 }
 
 .promo-apply-content .promo_status .btn_cust_serv {
-      background: #151515;
-      border-color: #151515;
+    background: #151515;
+    border-color: #151515;
 }
 
 .btn-wrap .btn-blo {
-      background: #151515;
-      border-color: #151515;
+    background: #151515;
+    border-color: #151515;
 }
 
 .cod-btn-wrap .mui-btn {
-      background: #151515;
-      border-color: #151515;
+    background: #151515;
+    border-color: #151515;
 }
 
 .bit-wallet .bit_bind_wrap .btn_wrap .btn_bind {
-      background: #151515;
-      border-color: #151515;
-      color: #fff;
+    background: #151515;
+    border-color: #151515;
+    color: #fff;
 }
 
 .promo-apply-content.promo-apply3-content .btn_apply {
-      background: #151515;
-      border-color: #151515;
-      color: #fff;
+    background: #151515;
+    border-color: #151515;
+    color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

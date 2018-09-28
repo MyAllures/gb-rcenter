@@ -44,7 +44,9 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .mui-bar-tab { background: #252525; border-top: 1px solid #252525; }
 .mui-bar-tab .mui-tab-label { color: #666; }
 .mui-bar-tab .mui-active .mui-tab-label { color: #007aff; }
-
+.mui-bar-tab .mui-active .mui-icon {/*图标选中时放大13% */
+    zoom: 113%;
+}
 /* mui-off-canvas-left */
 .mui-off-canvas-left { background: #444; }
 .mui-off-canvas-left .person-info { background: url(./images/off-canvas-sep.png) center bottom/100% 1px no-repeat; }
@@ -185,7 +187,9 @@ body.mine-notice .gb-datafilter .btn { background-color: #e2be63; border-color: 
 body.mine-notice .gb-noticetabs .mui-segmented-control .mui-control-item.mui-active { background-color: #e2be63; }
 
 .mui-bar.mui-bar-blue { background: #f0af01 !important; }
-
+.nav .swiper-slide.swiper-slide-active::before {
+    zoom: 118%;
+}
 .deposit_2 .btn_wrap .btn_submit { color: #333; border: 1px solid #ccc; background-color: #fff; }
 
 /*# sourceMappingURL=style.css.map */

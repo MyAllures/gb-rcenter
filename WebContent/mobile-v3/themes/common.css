@@ -5,6 +5,26 @@
 body {
     font-size: 13px; }
 
+
+/****************************字体图标  √ *************************************/
+@font-face {font-family: "iconfont";
+    src: url('iconfont.eot?t=1531226256647'); /* IE9*/
+    src: url('iconfont.eot?t=1531226256647#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAToAAsAAAAABzQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFZW7kkCY21hcAAAAYAAAABeAAABhp2YBr5nbHlmAAAB4AAAARoAAAEgrWxrX2hlYWQAAAL8AAAALwAAADYR9NcWaGhlYQAAAywAAAAcAAAAJAfeA4RobXR4AAADSAAAAAwAAAAMC+kAAGxvY2EAAANUAAAACAAAAAgAdgCQbWF4cAAAA1wAAAAfAAAAIAESAF1uYW1lAAADfAAAAUUAAAJtPlT+fXBvc3QAAATEAAAAIQAAADJogu8/eJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2Bk/sE4gYGVgYOpk+kMAwNDP4RmfM1gxMjBwMDEwMrMgBUEpLmmMDgwVDyXYG7438AQw9zA0AAUZgTJAQAlOAyFeJzFkMENgDAMAy9t6QMxQEfgwUC8mKMbd4xiQnkwQS05VhxLiQIsQBQPMYFdGA9OueZ+ZHU/eSZLjUBtpXf1nyqiWXYNKplpsHmr/9i87qPTV6iDOrGVl4QbjZsL8wAAeJwVj7tOwmAcR/+/r/aGpZWv90KBUuHToCTWioMRFheNabwkJo4+gK4sDiRq4uDgMxiNm74APozRZ3Cs4snJ2Q/JRL+f0kwKyKYV2qA9OiKC0kfHZDESkQ9YH24iu75jSiIViZp2BtIu/I7ieNkw7/mKqlgw0cRmkg3FgAls5SO2g8yLgbAenfJug0uPqASieVcesCe4rbRhjdbL/bWxk7VtbWJwHnL+oCmyrDG2YJm49D1d1itK+SxbkTtrrbIWjFBEh+fVdp1f3OdXcdfXgekUdr1tvo5rUW3udeTZPFSXqloQVdNlB5PvxcA24t4XzWH/kW7ZC6mkzS8FhIrtFNJNUZ58FDAK4I2dFeXxrCh/CrwT/QHyNS7DAAB4nGNgZGBgAGIZzZ0P4vltvjJwszCAwPWskxMQ9P+HLAzMEkAuBwMTSBQAM+AKzAB4nGNgZGBgbvjfwBDDwgACQJKRARUwAwBHCQJsBAAAAAPpAAAEAAAAAAAAAAB2AJB4nGNgZGBgYGYIZGBlAAEmIOYCQgaG/2A+AwAQ9wFwAHicZY9NTsMwEIVf+gekEqqoYIfkBWIBKP0Rq25YVGr3XXTfpk6bKokjx63UA3AejsAJOALcgDvwSCebNpbH37x5Y08A3OAHHo7fLfeRPVwyO3INF7gXrlN/EG6QX4SbaONVuEX9TdjHM6bCbXRheYPXuGL2hHdhDx18CNdwjU/hOvUv4Qb5W7iJO/wKt9Dx6sI+5l5XuI1HL/bHVi+cXqnlQcWhySKTOb+CmV7vkoWt0uqca1vEJlODoF9JU51pW91T7NdD5yIVWZOqCas6SYzKrdnq0AUb5/JRrxeJHoQm5Vhj/rbGAo5xBYUlDowxQhhkiMro6DtVZvSvsUPCXntWPc3ndFsU1P9zhQEC9M9cU7qy0nk6T4E9XxtSdXQrbsuelDSRXs1JErJCXta2VELqATZlV44RelzRiT8oZ0j/AAlabsgAAAB4nGNgYoAALgbsgJmRiZGZkYWBsYIlPb/UlIEBAA3pAhkAAAA=') format('woff'),
+    url('iconfont.ttf?t=1531226256647') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('iconfont.svg?t=1531226256647#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-gou5:before { content: "\e718"; }
+
+
+
 header.mui-bar-nav .logo {
     height: 28px;
     position: absolute;
@@ -148,31 +168,90 @@ li {
     top: 8px;
     left: 0;
     z-index: 2; }
+.banner-slide .text_broadcast {
+    position: absolute;
+    bottom: 30px;
+    left: -188px;
+    opacity: 1;
+    width: 188px;
+    height: 27px;
+    background: url("images/lantern_bg@2x.png");
+    background-size: 188px 27px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height:27px;
+    text-align: left;
+    padding: 0 8px;
+    -webkit-animation: show_hide 6s infinite linear;
+}
+@-webkit-keyframes show_hide {
+    0% {
+        left: -188px;
+        opacity: 1;
+    }
+    16.7% {
+        left: 0;
+        opacity:1;
+    }
+    33.3% {
+        left: 0;
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+        left: 0;
+    }
+    100% {
+        opacity:0;
+        left: -188px;
+    }
+}
 
-/* notice */
+/******************* notice ********************/
 .notice {
-    height: 28px;
-    line-height: 28px;
+    height: 41px;
+    line-height: 41px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    overflow: hidden; }
+    flex-direction:row;
+    align-items:center;
+    overflow: hidden;
+    background: #151515;
+}
 .notice .btn-title {
-    padding: 0px 6px;
+    padding: 0 6px;
     margin: 3px 10px;
-    font-size: 12px; }
+    font-size: 12px;
+    background: #168df6;
+    border: 1px solid #168df6;
+}
+.notice .msg_inform_icon {
+    display: inline-block;
+    width:18px;
+    height: 15px;
+    background: url("images/icon_news@2x.png") no-repeat;
+    background-size: 18px 15px;
+    margin: 0 17px;
+}
 .notice .notice-list {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
     width: 270px;
-    margin: 0; }
+    margin: 0;
+}
+.notice .notice-list a {
+    color: #1279d9 !important;
+}
 .notice .notice-list .marquee {
-    width: 100%;
-    overflow: hidden; }
+    width: 95%;
+    overflow: hidden;
+}
 .notice .notice-list .marquee a {
     font-size: 13px;
-    color: #333; }
+    color: #333;
+}
 
 .notice-slider {
     padding-bottom: 21px;
@@ -186,27 +265,33 @@ li {
     display: block;
     border-bottom: 1px dashed #666;
     margin-bottom: 10px;
-    padding-bottom: 10px; }
+    padding-bottom: 10px;
+}
 
 .notice-alert {
-    border-radius: 8px; }
+    border-radius: 8px;
+}
 .notice-alert.mui-popup-in {
-    transform: translate3d(-50%, 0, 0) scale(1);
-    top: 30px; }
+    transform: translate(-50%,-50%);
+}
 .notice-alert .mui-popup-inner {
     border-radius: 0;
-    padding: 15px 5px 15px 15px; }
+    padding: 15px;
+}
 .notice-alert .mui-popup-inner .mui-popup-text {
-    margin: 12px 0 0; }
+    margin: 12px 0 0;
+}
 .notice-alert .mui-popup-button {
     border-radius: 0 !important;
-    font-size: 15px; }
+    font-size: 15px;
+}
 .notice-alert .mui-popup-title {
     font-size: 15px;
     color: #333;
     height: 29px;
     margin: 0 -15px;
-    border-bottom: 1px solid #0003; }
+    border-bottom: 1px solid #0003;
+}
 
 /* nav */
 .nav {
@@ -510,6 +595,8 @@ li {
     margin: 5px; }
 
 /* login and register page */
+
+
 .type-header {
     padding: 15px 0;
     text-align: center;
@@ -561,7 +648,9 @@ li {
     padding: 44px 0 0 0 !important; }
 
 .type-content .mui-control-content {
-    padding: 10px 30px; }
+    padding: 10px 15px 50px;
+    position: relative;
+}
 .type-content .mui-control-content .mui-input-group {
     background-color: transparent; }
 .type-content .mui-control-content .mui-input-group:before, .type-content .mui-control-content .mui-input-group:after {
@@ -575,14 +664,15 @@ li {
     float: none; }
 .type-content .mui-control-content .mui-input-group .mui-input-row label {
     padding: 0;
-    width: 100px;
+    /*width: 100px;*/
     white-space: nowrap;
-    display: block;
+    /*display: inline-block;*/
     font-size: 12px;
     color: #999;
     margin-bottom: 0;
     line-height: 16px;
-    height: 16px; }
+    height: 16px;
+}
 .type-content .mui-control-content .mui-input-group .mui-input-row input[type=text], .type-content .mui-control-content .mui-input-group .mui-input-row input[type=password] {
     border: 1px solid #ddd;
     width: 100%;
@@ -626,44 +716,69 @@ li {
     top: 26px;
     height: 35px;
     line-height: 35px;
-    position: absolute; }
+    position: absolute;
+}
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    position: relative; }
+    position: relative;
+    flex: 77;
+}
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex input {
     -webkit-box-flex: 1;
     -ms-flex: 1;
-    flex: 1; }
+    flex: 1;
+    margin: 4px 0 4px 4px!important;
+    height: 33px !important;
+    line-height:33px !important;
+    box-sizing: border-box;
+    padding: 10px 5px !important;
+    border:none !important;
+}
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex .mui-icon-clear {
     top: 5px;
     right: 120px; }
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex img {
-    width: 110px;
-    height: 35px;
-    margin: 5px; }
+    width: 90px;
+    height: 33px;
+    margin: 5px 0 5px 7px;
+    border-radius: 5px;
+}
 .type-content .mui-control-content .mui-input-group .mui-button-row {
     height: auto; }
 .type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block {
     font-size: 14px;
     padding: 10px 0; }
 .type-content .mui-control-content .mui-input-group .tk {
-    height: 45px; }
-.type-content .mui-control-content .mui-input-group .tk input[type=checkbox] {
-    left: 0;
-    top: 9px; }
-.type-content .mui-control-content .mui-input-group .tk input[type=checkbox]:before {
-    font-size: 24px;
-    color: #1766bb; }
+    height: 45px;
+    margin-left:15px;
+}
+.type-content .mui-control-content .mui-input-group .tk .agree_register_rules {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    border: none;
+    transform: translate(0,3px);
+}
+.agree_register_rules.is_choosen {
+    background: #1E68B8 url("../themes/images/selected@2x.png") no-repeat;
+    background-size: 15px 15px;
+}
+.agree_register_rules.not_choosen {
+    background: #D1CFCF;
+    background-size: 15px 15px;
+}
 .type-content .mui-control-content .mui-input-group .tk a {
     color: #999;
-    float: left;
+    /*float: left;*/
     line-height: 45px;
-    margin-left: 30px; }
+    margin-left: 10px;
+}
 .type-content .mui-control-content .mui-input-group .tk a.link {
     text-decoration: underline;
-    color: #007aff;
+    color: #1F67B9;
     float: none;
     margin-left: 5px; }
 .type-content .mui-control-content .mui-input-group .icon-star {
@@ -672,6 +787,57 @@ li {
     width: 12px;
     height: 12px;
     margin: 0 4px -1px; }
+.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.common_btn {
+    border-radius: 5px;
+    border:0;
+    color: #FFF;
+    font-size: 15px;
+    height: 37px;
+    line-height:37px;
+    padding: 0;
+    box-sizing: border-box;
+}
+.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.common_btn:disabled {
+    opacity: 1;
+}
+.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.common_btn.btn-ok {
+    background-color: #2377D6;
+}
+.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.common_btn.btn-not-ok {
+    background-color: #D1CFCF;
+}
+.type-content .mui-control-content .register_success, .type-content .mui-control-content .verify_code_wrong {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0,0,0,.5);
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+.type-content .mui-control-content .register_success .reg_tip_icon {
+     display: block;
+     width: 40px;
+     height: 37px;
+     background: url("../themes/images/icon_success@2x.png") no-repeat;
+     background-size: 40px 37px;
+     margin: 10px 0 6px 20px;
+ }
+.type-content .mui-control-content .verify_code_wrong i {
+    display: block;
+    width: 37px;
+    height: 37px;
+    background: url("../themes/images/icon_unsuccess@2x.png") no-repeat;
+    background-size: 37px 37px;
+    margin: 10px 0 6px 20px;
+}
+.type-content .mui-control-content .register_success .reg_tip_txt, .type-content .mui-control-content .verify_code_wrong span {
+    font-size: 13px;
+    color: #FFF;
+}
 
 .copy-right {
     font-size: 9px;
@@ -1326,12 +1492,12 @@ body.deposit .mine-form .form-row > .cont p .ck {
     display: inline-block;
     width: 15px;
     height: 15px;
-    background: url(../images/blue/checkbox.png);
+    background: url("../images/blue/checkbox.png");
     background-size: cover;
     vertical-align: middle;
     margin-right: 5px; }
 body.deposit .mine-form .form-row > .cont p .ck.active {
-    background-image: url(../images/blue/checkbox-on.png); }
+    background-image: url("../images/blue/checkbox-on.png"); }
 body.deposit .mine-form .form-row > .cont .range {
     display: inline-block;
     width: 50px;
@@ -1606,7 +1772,7 @@ body.deposit .c-bank-se > a {
     margin: 0; }
 body.deposit .gb-form-foot .submit {
     width: 100%;
-    padding: 10px 12px;
+    padding: 8px 12px;
     font-size: 13px; }
 body.deposit .gb-promo .gb-panel {
     background-color: #3e445c;
@@ -2685,7 +2851,8 @@ body.no-backdrop .mui-backdrop {
     z-index: 10;
     position: relative;
     background: white;
-    padding: 10px; }
+    padding: 10px;
+}
 
 .notice-list > p {
     line-height: 22px;
@@ -2717,20 +2884,38 @@ body.no-backdrop .mui-backdrop {
 
 .notice-list .i {
     border: 1px solid #e2e2e2;
-    background-color: #f2f2f2;
+    background-color: #fff;
     padding: 10px;
     position: relative; }
 
 .notice-list .i .gb-radio {
     position: absolute;
-    top: -1px;
-    left: 0px; }
+    top: 5px;
+    left: 4px;
+    background-color: #EFEFEF;
+    color:#EFEFEF;
+    width: 16px;
+    height: 16px;
+    line-height: 15px; }
+.notice-list .i .gb-radio-a{
+    background-color: #1E68B8;
+    color:#fff;
+}
+.notice-list .i .icon-new{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url(images/icon_hotnews.png);
+    background-size: 100% 100%;
+}
 
 .notice-list .i > .ct p {
-    line-height: 20px;
+    line-height: 24px;
     color: #333333;
-    text-indent: 2em;
-    margin-bottom: 5px; }
+    margin: 10px 10px;}
 
 .notice-list .i > .ct p.no-data {
     height: 100px;
@@ -2795,8 +2980,6 @@ body.no-backdrop .mui-backdrop {
     display: inline-block;
     width: 30px;
     height: 30px;
-    background: url(../images/radio.png);
-    background-size: 100% 100%;
     vertical-align: text-top;
     margin-right: 5px; }
 
@@ -3369,7 +3552,7 @@ body.no-backdrop .mui-backdrop {
 
 .gb-form-foot .submit {
     width: 100%;
-    padding: 10px 12px;
+    padding: 8px 12px;
     font-size: 13px; }
 
 /* 取款样式  */
@@ -3974,7 +4157,7 @@ body.invite .mine-table table tr.head.nobr td {
     padding: 12px 0;
     border-right: none; }
 
-/* 注册条款样式 */
+/**********************************注册条款样式*********************************/
 .register-rules-wrap {
     color: #999;
     padding: 10px; }
@@ -4131,7 +4314,7 @@ body.bankcard .gb-bankcard > .ct > p a.copy, body.bankcard .gb-bankcard > .ct > 
     line-height: 22px;
     margin-left: 5px; }
 
-/* 数字货币存款 */
+/******************************************数字货币存款**************************************/
 body.online-pay-sz .mui-content {
     background: #f2f2f2; }
 body.online-pay-sz .bank-selector {
@@ -4524,19 +4707,72 @@ body.change-loginpassword .gb-stressed p i.active {
     color: #aeaeae; }
 .mine-bet-detail .mine-form .mui-input-row {
     height: auto; }
-.mine-bet-detail .mine-form .panel {
-    margin: 0 32px;
-    border: 1px solid #e2e2e2;
-    background-color: #f2f2f2;
-    padding: 10px;
-    border-radius: 3px; }
-.mine-bet-detail .mine-form .panel p {
+.mine-bet-detail .mine-form .ClientLog {
+    width: 90%;
+    margin: 0 auto 10px auto;
+    background-color:#fff ;
+    padding: 0 10px;
+    border-radius: 5px; }
+.mine-bet-detail .mine-form .ClientLog:first-child{
+    margin-top: 10px;
+}
+.mine-bet-detail .mine-form .ClientLog span {
+    color: #333333; }
+.mine-bet-detail .mine-form .ClientLog span:first-child {
+    display: inline-block;
+    width: 74px;
+    margin-right: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-right: 1px solid #EFEFEF;
+    color: #999999;
+    font-size: 13px; }
+.mine-bet-detail .mine-form .ClientLog .plate-size {
+    width: 70%;
+    padding: 5px;
+    display: inline-block;
+    height: 70px;
+    margin: 3px 0 3px -15px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-size p{
+    height: 35px;
+    line-height: 35px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-size p:first-child{
+    border-bottom: 1px solid #E2E2E2;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon{
+    width: 70%;
+    padding: 5px;
+    display: inline-block;
+    margin: 3px 0 3px -15px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon .plate{
+    padding-bottom: 5px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon .plate>p{
+    height: 20px;
     line-height: 20px;
-    color: #333333;
-    font-size: 12px; }
-.mine-bet-detail .mine-form .panel p .text {
-    color: #999999; }
-
+    border: none;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon>div{
+    padding: 5px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon div div{
+    height: 20px;
+    line-height: 20px;
+    color:#999999 ;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon div ul{
+    height: 30px;
+}
+.mine-bet-detail .mine-form .ClientLog .plate-icon div ul li{
+    display: inline-block;
+    font-size: 27px;
+    height: 27px;
+    line-height: 27px;
+    margin-top: 5px;
+}
 /* cash-detail */
 body.cash-detail {
     color: #000; }
@@ -5080,12 +5316,11 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
 .mine-notice {
     color: #000; }
 .mine-notice .mui-content {
-    background: #fff;
+    background: #EFEFEF;
     padding-bottom: 0 !important; }
 .mine-notice .gb-panel {
     background-color: #fff;
-    border-top: 1px solid #e6e6e6;
-    border-bottom: 1px solid #e6e6e6; }
+}
 .mine-notice .gb-headtabs {
     margin: 11px auto;
     width: 60%;
@@ -5106,10 +5341,10 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
 .mine-notice .gb-datafilter {
     padding: 10px;
     color: #333;
+    background-color:#EFEFEF ;
     font-size: 10px; }
 .mine-notice .gb-datafilter .input-drop {
     display: inline-block;
-    border: 1px solid #e2e2e2;
     border-radius: 2px;
     height: 25px;
     line-height: 23px;
@@ -5120,7 +5355,8 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
     position: relative; }
 .mine-notice .gb-datafilter .input-drop a {
     display: block;
-    line-height: 23px;
+    line-height: 25px;
+    background-color: #fff;
     color: #999;
     font-size: 12px; }
 .mine-notice .gb-datafilter .input-drop a .mui-icon {
@@ -5130,7 +5366,31 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
 .mine-notice .gb-datafilter .input-date {
     display: inline-block;
     position: relative;
-    width: 90px; }
+    width: 113px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+.err-news{
+    width: 100%;
+    height: 525px;
+}
+.err-new-c{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #fff;
+}
+.err-new-c>div{
+    width: 155px;
+    height: 143px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: red;
+}
 .mine-notice .gb-datafilter .input-date a {
     display: inline-block;
     width: 20px;
@@ -5142,15 +5402,16 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
     top: 0;
     left: 0; }
 .mine-notice .gb-datafilter .input-date input.date {
-    border: 1px solid #e2e2e2;
-    border-radius: 2px;
+    border-radius: 3px;
     height: 25px;
     line-height: 23px;
     color: #333;
+    background-color: #fff;
     font-size: 10px;
     width: 100%;
     text-align: center;
-    position: relative; }
+    position: relative;
+}
 .mine-notice .gb-datafilter .btn {
     padding: 2px 8px;
     background-color: #1766bb;
@@ -5160,27 +5421,26 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
     margin-right: 5px; }
 .mine-notice .gb-checkbox2 {
     display: inline-block;
-    width: 12px;
-    height: 12px;
-    background: url(../images/checkbox.png);
-    background-size: 100% 100%;
-    vertical-align: text-top;
-    margin-right: 5px; }
+    width: 17px;
+    height: 16px;
+    line-height: 14px;
+    border: 1px solid #ddd;
+    vertical-align: sub; }
 .mine-notice .gb-checkbox2.on {
     background-image: url(../images/checkbox-on.png); }
 .mine-notice .gb-radio {
     display: inline-block;
     width: 30px;
     height: 30px;
-    background: url(../images/radio.png);
-    background-size: 100% 100%;
     vertical-align: text-top;
     margin-right: 5px; }
 .mine-notice .gb-radio.on {
     background-image: url(../images/radio-on.png); }
 .mine-notice .notice-form {
     margin: 10px;
-    border: 2px solid #e2e2e2; }
+    border: 2px solid #e2e2e2;
+    background-color: #fff;
+    padding: 5px;}
 .mine-notice .notice-form .mui-input-group:before {
     display: none; }
 .mine-notice .notice-form .mui-input-group:after {
@@ -5190,10 +5450,10 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
 .mine-notice .notice-form .mui-input-group .mui-input-row:last-child:after {
     display: none; }
 .mine-notice .notice-form .mui-input-group textarea {
-    border: 1px solid #e2e2e2;
+    border: none;
     color: #999999;
+    padding: 5px;
     font-size: 12px;
-    padding: 5px 10px;
     height: 150px; }
 .mine-notice .mui-input-group .mui-input-row {
     height: auto; }
@@ -5216,7 +5476,7 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea {
     color: #999;
     display: inline-block;
     font-size: 12px;
-    margin-right: 15px; }
+    margin-right: 0; }
 .mine-notice .gb-select > a .mui-icon {
     color: #7a7674 !important;
     font-size: 18px;
@@ -5572,9 +5832,10 @@ body.mine-user .gb-select > a {
     margin-right: 3px;
     width: 20px;
     height: 20px;
-    background: url(images/star.png) center no-repeat/100%;
+    background: url("images/star.png") center no-repeat 0 0/100%;
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: middle;
+}
 .home-collect-dialog .star .my-collection {
 
 }
@@ -5657,6 +5918,9 @@ body.mine-user .gb-select > a {
 .gr-ft-w:before{content:"\e900";}
 .gr-ft-b:before{content:"\e901";color:#fa1e1e;}
 
+
+
+/************************色子字体图标************************/
 .gr-dice-1:before,.gr-di-1:before{content:"\e902";color:#fa1e1e;}
 .gr-dice-2:before,.gr-di-2:before{content:"\e903";}
 .gr-dice-3:before,.gr-di-3:before{content:"\e904";}
@@ -5703,6 +5967,9 @@ body.mine-user .gb-select > a {
 .gr-diamond-q:before,.gr-diamond-12:before,.gr-d-12:before{content:"\e92a";color:#fa1e1e;}
 .gr-diamond-k:before,.gr-diamond-13:before,.gr-d-13:before{content:"\e92b";color:#fa1e1e;}
 
+
+
+/***************************扑克牌字体图标*********************************/
 .gr-heart-a:before,.gr-heart-1:before,.gr-h-1:before{content:"\e92c";color:#fa1e1e;}
 .gr-heart-2:before,.gr-h-2:before{content:"\e92d";color:#fa1e1e;}
 .gr-heart-3:before,.gr-h-3:before{content:"\e92e";color:#fa1e1e;}
@@ -5799,3 +6066,8 @@ body.mine-user .gb-select > a {
 .pj-icon-baiwu{background-position-x: -510px;}
 .pj-icon-hongwu{background-position-x: -540px;}
 .pj-icon-liu{background-position-x: -570px;}
+
+
+
+sup{    width: 9px;  height: 9px;  background-color: #FF0000;  display: inline-block;  border-radius: 50%;  left: -3px;}
+.dis-no{display: none!important;}

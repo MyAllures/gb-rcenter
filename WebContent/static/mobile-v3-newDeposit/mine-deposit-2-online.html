@@ -24,7 +24,7 @@
         <div class="swiper-container  deposit-sorts">
             <div class="swiper-wrapper">
                 <a class="swiper-slide mui-btn btn-promo-sort"><span>存款</span></a>
-                <a class="swiper-slide mui-btn btn-promo-sort"><span>资金转账</span></a>
+                <a class="swiper-slide mui-btn btn-promo-sort"><span>资金</span></a>
                 <a class="swiper-slide mui-btn btn-promo-sort"><span>提现</span></a>
             </div>
         </div>
@@ -207,7 +207,7 @@
                         </div>
                     </div>
                 </div>
-                <!--资金转账-->
+                <!--资金-->
                 <div class="swiper-slide">
                     <div class="asset_transfer_page">
                         <div class="total_asset_info">
@@ -578,7 +578,7 @@
         });*/
 
         //选择银行
-        $('#selectBank').on('tap', function () {
+        $('.input_dp_bank').on('tap', function () {
             var picker = new mui.PopPicker();
             picker.setData([
                 {value:'gsyh',text:'中国工商银行'},

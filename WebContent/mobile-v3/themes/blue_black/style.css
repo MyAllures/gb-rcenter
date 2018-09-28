@@ -17,7 +17,9 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .mui-content.home-content { background: #151515; }
 .mui-content.promo-record-content { background: #f2f2f2; }
 .mui-content.promo-content { background: #fff; }
-
+.mui-bar-tab .mui-active .mui-icon {/*图标选中时放大13% */
+    zoom: 113%;
+}
 /* notice */
 .notice { background: #151515; }
 .notice .btn-title { background: #1766bb; border: 1px solid #1766bb; }
@@ -154,7 +156,9 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .load-body .mui-progressbar.mui-progressbar-infinite:before { background: #1b75d9; }
 
 .mui-btn-blue, .mui-btn-primary, input[type=submit] { color: #fff; border: 1px solid #1766bb; background-color: #1766bb; }
-
+.nav .swiper-slide.swiper-slide-active::before {
+    zoom: 118%;
+}
 .mine-bet-record-body .gb-datafilter .btn-ss { background: #1766bb; border-color: #1766bb; }
 
 .mine-cash-record-body .gb-datafilter .btn-kx { background: #1766bb; border-color: #1766bb; }

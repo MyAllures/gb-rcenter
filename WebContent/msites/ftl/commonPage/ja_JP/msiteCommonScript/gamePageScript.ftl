@@ -301,12 +301,22 @@
                                 return;
                             }
                             if (apiTypeId == "2" || apiTypeId == "5") {
-                                if (window.localStorage) {
+                                /*if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
                                 layer.close(layer.index);
                                 document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
-                                $("html").addClass("game-detail-open");
+                                $("html").addClass("game-detail-open");*/
+                                if (window.localStorage) {
+                                    localStorage.re_url_casino = result.defaultLink;
+                                }
+                                layer.close(layer.index);
+                                if (apiId != "49") {
+                                    document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                                    $("html").addClass("game-detail-open");
+                                } else {
+                                    window.open(result.defaultLink);
+                                }
                             }else if(apiTypeId == "3"){
                                 if (window.localStorage) {
                                     localStorage.re_url_sport = result.defaultLink;
@@ -851,12 +861,22 @@
                                 return;
                             }
                             if (apiTypeId == "2" || apiTypeId == "5") {
-                                if (window.localStorage) {
+                               /* if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
                                 layer.close(layer.index);
                                 document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
-                                $("html").addClass("game-detail-open");
+                                $("html").addClass("game-detail-open");*/
+                                if (window.localStorage) {
+                                    localStorage.re_url_casino = result.defaultLink;
+                                }
+                                layer.close(layer.index);
+                                if (apiId != "49") {
+                                    document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                                    $("html").addClass("game-detail-open");
+                                } else {
+                                    window.open(result.defaultLink);
+                                }
                             }else if(apiTypeId == "3"){
                                 if (window.localStorage) {
                                     localStorage.re_url_sport = result.defaultLink;
