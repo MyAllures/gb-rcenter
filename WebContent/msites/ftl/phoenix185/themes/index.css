@@ -1,0 +1,62 @@
+html { height: 100%; }
+
+body { height: 100%; background: #281a3b url(images/bg.jpg) no-repeat center top; font-family: "Meiryo","MS UI Gothic","Microsoft YaHei",sans-serif; }
+
+.particles { position: fixed; z-index: 1; top: 0; left: 0; bottom: 0; right: 0; }
+
+.content { z-index: 2; position: relative; height: 100%; overflow: hidden; }
+.content .container { width: 1200px; position: relative; }
+.content .title { margin-top: 250px; margin-left: 82px; }
+.content .notice { margin-top: 326px; width: 580px; height: 140px; background: url(images/notice-bg.png); position: relative; }
+.content .notice .bd { padding: 26px 40px 0; text-align: center; color: #b70002; font-size: 20px; line-height: 30px; height: 114px; overflow: hidden; }
+.content .notice .next, .content .notice .prev { width: 14px; height: 12px; background: url(images/notice-arrow.png); position: absolute; right: 34px; cursor: pointer; z-index: 4; }
+.content .notice .next { top: 85px; background-position: center bottom; }
+.content .notice .prev { top: 42px; }
+.content .count-down-day { width: 418px; height: 260px; position: absolute; top: 343px; left: 50px; text-align: center; }
+.content .count-down-day .day { width: 180px; height: 260px; display: inline-block; }
+.content .count-down-day .day[data-time="0"] { background: url(images/d0.png); }
+.content .count-down-day .day[data-time="1"] { background: url(images/d1.png); }
+.content .count-down-day .day[data-time="2"] { background: url(images/d2.png); }
+.content .count-down-day .day[data-time="3"] { background: url(images/d3.png); }
+.content .count-down-day .day[data-time="4"] { background: url(images/d4.png); }
+.content .count-down-day .day[data-time="5"] { background: url(images/d5.png); }
+.content .count-down-day .day[data-time="6"] { background: url(images/d6.png); }
+.content .count-down-day .day[data-time="7"] { background: url(images/d7.png); }
+.content .count-down-day .day[data-time="8"] { background: url(images/d8.png); }
+.content .count-down-day .day[data-time="9"] { background: url(images/d9.png); }
+.content .count-down-day .time { width: 28px; height: 50px; position: absolute; top: 34px; -webkit-transition: all 0.3s linear; transition: all 0.3s linear; z-index: 4; }
+.content .count-down-day .time.h10 { right: -50px; }
+.content .count-down-day .time.h1 { right: -89px; margin: 0; }
+.content .count-down-day .time.m10 { right: -130px; }
+.content .count-down-day .time.m1 { right: -167px; }
+.content .count-down-day .time.s10 { right: -208px; }
+.content .count-down-day .time.s1 { right: -246px; }
+.content .count-down-day .time[data-time="0"] { background: url(images/t0.png); }
+.content .count-down-day .time[data-time="1"] { background: url(images/t1.png); }
+.content .count-down-day .time[data-time="2"] { background: url(images/t2.png); }
+.content .count-down-day .time[data-time="3"] { background: url(images/t3.png); }
+.content .count-down-day .time[data-time="4"] { background: url(images/t4.png); }
+.content .count-down-day .time[data-time="5"] { background: url(images/t5.png); }
+.content .count-down-day .time[data-time="6"] { background: url(images/t6.png); }
+.content .count-down-day .time[data-time="7"] { background: url(images/t7.png); }
+.content .count-down-day .time[data-time="8"] { background: url(images/t8.png); }
+.content .count-down-day .time[data-time="9"] { background: url(images/t9.png); }
+.content .count-down-day .txt-day { font-size: 41px; color: #fff; display: inline-block; vertical-align: 28px; }
+.content .girl { width: 917px; height: 835px; background: url(images/girl.png); position: absolute; top: 115px; right: -122px; }
+.content .girl .diaozhui { width: 55px; height: 188px; background: url(images/diaozhui.png); position: absolute; top: 470px; left: 352px; -webkit-transform: rotateZ(0deg); transform: rotateZ(0deg); -webkit-transform-origin: 20px top; transform-origin: 20px top; -webkit-animation: move 1s infinite alternate ease-in-out; animation: move 1s infinite alternate ease-in-out; }
+.content .copyright { background: url(images/copyright-bg.png); height: 44px; line-height: 44px; font-size: 14px; color: #fff; text-align: center; position: fixed; z-index: 1; bottom: 0; left: 0; right: 0; }
+
+@-webkit-keyframes move { from { -webkit-transform: rotateZ(20deg); transform: rotateZ(20deg); }
+  to { -webkit-transform: rotateZ(-20deg); transform: rotateZ(-20deg); } }
+
+@keyframes move { from { -webkit-transform: rotateZ(20deg); transform: rotateZ(20deg); }
+  to { -webkit-transform: rotateZ(-20deg); transform: rotateZ(-20deg); } }
+/*预热页视频*/
+.video_wrap{
+  width: 592px;    background: url(images/video-bg.png) no-repeat center top;
+  height: 383px;
+  position: absolute;
+  top: 512px;
+  right: 0;
+}
+.video_wrap .video{        padding: 30px 25px 0;text-align: center;}

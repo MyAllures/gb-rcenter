@@ -1,0 +1,1220 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>首页 | 澳门永利娱乐城</title>
+    <meta name="keywords" content="澳门永利娱乐城">
+    <meta name="description" content="澳门永利娱乐城">
+    <link rel="bookmark" href="../../ftl/yongli02/images/favicon.png">
+    <link rel="shortcut Icon" href="../../ftl/yongli02/images/favicon.png" />
+    <link rel="stylesheet" href="../../ftl/commonPage/themes/gui-base.css">
+    <link rel="stylesheet" href="../../ftl/commonPage/themes/gui-skin-default.css">
+    <link rel="stylesheet" href="../../ftl/yongli02/themes/common.css">
+    <!--[if lt IE 9]>
+      <script src="../../ftl/commonPage/js/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <header>
+        <!--Static-bar-->
+        <section class="static-bar">
+            <div class="container">
+                <div class="row row-gutter-0">
+                    <div class="col-12-4 logo">
+                        <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="382" height="98" id="logo" align="middle">
+                            <param name="movie" value="../../ftl/yongli02/images/logo.swf" />
+                            <param name="wmode" value="transparent" />
+                            <param name="menu" value="false" />
+                            <!--[if !IE]>-->
+                            <object type="application/x-shockwave-flash" data="../../ftl/yongli02/images/logo.swf" width="382" height="98">
+                                <param name="movie" value="../../ftl/yongli02/images/logo.swf" />
+                                <param name="wmode" value="transparent" />
+                                <param name="menu" value="false" />
+                                <!--<![endif]-->
+                                <a href="index.html">
+                                    <img src="../../ftl/yongli02/images/logo.png" alt="LOGO"></a>
+                                <!--[if !IE]>-->
+                            </object>
+                            <!--<![endif]-->
+                        </object>
+                    </div>
+                    <div class="col-12-2 logo text-center"><img src="../../ftl/yongli02/images/slogo.png"></div>
+                    <div class="col-12-6">
+                        <div class="clearfix">
+                            <a href="javascript:void(0)" class="flags pull-right"><img src="../../ftl/yongli02/images/flags.png"></a>
+                            <div class="pull-right infos-wrap">
+                                <ul class="list-inline infos">
+                                    <li><a href="#">资讯端下载</a></li>
+                                    <li class="info-link1"><a href="#">手机投注</a></li>
+                                    <li><a href="#">线路检测</a></li>
+                                    <li><a href="#">加盟合作</a></li>
+                                    <li><a href="#">常见问题</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Members 登录前 -->
+                        <div class="members">
+                            <form action="#">
+                                <div class="member-row1">
+                                    <input type="text" class="form-control font-serif" placeholder="会员账户">
+                                    <div class="input-group scode">
+                                        <input type="text" class="form-control" maxlength="4" placeholder="验证码" onfocus="if(this.placeholder=='验证码')this.placeholder=''" onblur="if(this.placeholder =='') this.placeholder ='验证码'">
+                                        <span class="input-group-btn"><a class="btn btn-sm"><img src="../../ftl/yongli02/images/scode.jpg"></a></span>
+                                    </div>
+                                </div>
+                                <div class="member-row1">
+                                    <input type="password" class="form-control font-serif" placeholder="密码">
+                                    <button class="btn btn-login">登入</button>
+                                    <a href="#" class="fogot">忘记密码</a>
+                                </div>
+                                <div class="member-row3">
+                                    <a href="register.html" class="btn-register">免费开户<br>ACCOUNT</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="headfloat">
+            <div class="menu">
+                <div class="list w1000" id="menulist" style="width: 1150px;">
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index.html">首页<span>HOME</span></a></li>
+                        <li class="subnav" rel="sub-live"><a href="live.html">真人视讯<span>LIVE</span></a></li>
+                        <li class="subnav" rel="sub-sports"><a href="sports.html">体育赛事<span>SPORTS</span></a></li>
+                        <li class="subnav hot" rel="sub-mg"><a href="casino.html">MG电子<span>MICROGAMING</span></a></li>
+                        <li class="hot"><a href="casino.html">PT电子<span>PLAYTECH</span></a></li>
+                        <li class="subnav hot nav-blink2" rel="sub-casino"><a href="casino.html">电子游艺<span>CASINO</span></a></li>
+                        <li class="subnav hot nav-blink1" rel="sub-lottery"><a href="lottery.html">彩票游戏<span>LOTTERY</span></a></li>
+                        <li class="subnav"><a href="promo.html">优惠活动<span>PROMOTIONS</span></a></li>
+                        <li class=""><a href="promo.html">在线客服<span>SERVICE</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- navbar-sub -->
+            <nav class="navbar-sub">
+                <div class="sub-content" id="sub-casino" rel="sub-casino" style="display:none;">
+                    <div class="container">
+                        <div class="row row-gutter-0">
+                            <div class="col-7-1">
+                                <dl class="sub-box rebate">
+                                    <dt><span class="num-num" num="3"></span><i class="num-dot"></i><span class="num-num" num="0"></span><i class="num-pre"></i></dt>
+                                    <dd>
+                                        <p>天天返水,最高可达</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-7-6">
+                                <div class="api-games">
+                                    <ul class="list-table">
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始MG电子游戏"><span class="apiicon mg shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">MG电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始PT电子游戏"><span class="apiicon pt shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">PT电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始BB电子游戏"><span class="apiicon bb shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">BB电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始AG电子游戏"><span class="apiicon ag shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">AG电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始HABA电子游戏"><span class="apiicon hb shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">HABA电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始Betsoft电子游戏"><span class="apiicon bsg shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">Betsoft电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                    <ul class="list-table">
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始SG电子游戏"><span class="apiicon sg shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">SG电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始SG电子游戏"><span class="apiicon png shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">PNG电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始DT电子游戏"><span class="apiicon dt shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">DT电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始GG捕鱼游戏"><span class="apiicon gg shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">GG捕鱼</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始GNS电子游戏"><span class="apiicon gns shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">GNS电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始PRG电子游戏"><span class="apiicon prg shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">PRG电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始MW电子游戏"><span class="apiicon mw shake shake-little"></span></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">MW电子</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-content" id="sub-live" rel="sub-live" style="display:none;">
+                    <div class="container">
+                        <div class="row row-gutter-0">
+                            <div class="col-7-1">
+                                <dl class="sub-box rebate">
+                                    <dt><span class="num-num" num="1"></span><i class="num-dot"></i><span class="num-num" num="2"></span><i class="num-pre"></i></dt>
+                                    <dd>
+                                        <p>天天返水,最高可达</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-7-6">
+                                <div class="api-games">
+                                    <ul class="list-table">
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始AG真人视讯"><span class="apiicon ag shake shake-little"></span><i>AG真人视讯</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始BB真人视讯"><span class="apiicon bb shake shake-little"></span><i>BB真人视讯</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始OG真人视讯"><span class="apiicon og shake shake-little"></span><i>OG真人视讯</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <!-- <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始DW真人视讯"><span class="apiicon dw shake shake-little"></span><i>DW真人视讯</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li> -->
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始GD真人视讯"><span class="apiicon gd shake shake-little"></span><i>GD真人视讯</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始MG真人视讯"><span class="apiicon sa shake shake-little"></span><i>SA真人视讯</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始DS真人视讯"><span class="apiicon ebet shake shake-little"></span><i>EBET真人视讯</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始DS真人视讯"><span class="apiicon ds shake shake-little"></span><i>DS真人视讯</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始OPUS真人视讯"><span class="apiicon opus-l shake shake-little"></span><i>OPUS真人视讯</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始SUN真人视讯"><span class="apiicon shenbo shake shake-little"></span><i>SUN真人视讯</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-content" id="sub-mg" rel="sub-mg" style="display:none;">
+                    <div class="container">
+                        <div class="row row-gutter-0">
+                            <div class="col-7-1">
+                                <dl class="sub-box rebate">
+                                    <dt><span class="num-num" num="3"></span><i class="num-dot"></i><span class="num-num" num="0"></span><i class="num-pre"></i></dt>
+                                    <dd>
+                                        <p>天天返水,最高可达</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-7-6">
+                                <div class="api-games">
+                                    <ul class="list-table">
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始"><span class="apiicon mg-01 shake shake-little"></span><i>抢劫银行</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始"><span class="apiicon mg-02 shake shake-little"></span><i>地府烈焰</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始"><span class="apiicon mg-03 shake shake-little"></span><i>不朽的爱情</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始"><span class="apiicon mg-04 shake shake-little"></span><i>狂欢节</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始"><span class="apiicon mg-05 shake shake-little"></span><i>丛林摇摆</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始"><span class="apiicon mg-06 shake shake-little"></span><i>招财鞭炮</i></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">立即游戏</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-content" id="sub-sports" rel="sub-sports" style="display:none;">
+                    <div class="container">
+                        <div class="row row-gutter-0">
+                            <div class="col-7-1">
+                                <dl class="sub-box rebate">
+                                    <dt><span class="num-num" num="1"></span><i class="num-dot"></i><span class="num-num" num="2"></span><i class="num-pre"></i></dt>
+                                    <dd>
+                                        <p>天天返水,最高可达</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-7-6">
+                                <div class="api-games">
+                                    <ul class="list-table">
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始皇冠体育投注"><span class="apiicon hg shake shake-little"></span><p><i>皇冠体育</i>提供足球、篮球等最完整、最准确、最即时的的体育赛事信息。</p></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">皇冠体育</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始IM体育投注"><span class="apiicon im shake shake-little"></span><p><i>IM体育</i>每月提供超过10，000场各类赛事，是亚洲最大的体育平台供应商之一。</p></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">IM体育</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始沙巴体育投注"><span class="apiicon sb shake shake-little"></span><p><i>沙巴体育</i>多元化滚球玩法，快速投注完美结合，亚洲最受欢迎的线上体育专家。</p></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">沙巴体育</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <!-- <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始BB体育投注"><span class="apiicon bb shake shake-little"></span><p><i>BB体育</i>提供包含足球、棒球、篮球及橄榄球等世界主要体育专案。</p></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">BB体育</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li> -->
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始OPUS体育投注"><span class="apiicon opus-s shake shake-little"></span><p><i>OPUS体育</i>行内领先的体育投注赔率，最佳赔付</p></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">OPUS体育</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-content" id="sub-lottery" rel="sub-lottery" style="display:none;">
+                    <div class="container">
+                        <div class="row row-gutter-0">
+                            <div class="col-7-1">
+                                <dl class="sub-box rebate">
+                                    <dt><span class="num-num" num="1"></span><i class="num-dot"></i><span class="num-num" num="0"></span><i class="num-pre"></i></dt>
+                                    <dd>
+                                        <p>天天返水,最高可达</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-7-6">
+                                <div class="api-games">
+                                    <ul class="list-table">
+                                        <!-- <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始传奇彩票投注"><span class="apiicon chq shake shake-little"></span><p><i>传奇彩票</i>全网最好的时时彩平台，全新1950奖金模式，支持玩家自主调整返水。</p></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">传奇彩票</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li> -->
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始KG彩票投注"><span class="apiicon kg shake shake-little"></span><p><i>KG彩票</i>北京、加拿大、澳洲等快乐彩玩法多样，惊喜连连。法模式，玩法赔率业界最高。</p></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">KG彩票</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始BB彩票投注"><span class="apiicon bb shake shake-little"></span><p><i>BB彩票</i>六合彩、时时彩、快乐彩等彩种最全的平台。</p></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">BB彩票</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="sub-box api-item">
+                                                <dt><a href="page-game.html" title="点击立即开始龙头彩票投注"><span class="apiicon pl shake shake-little"></span><p><i>一指通彩票</i>一指通彩票六合彩，时时彩，PK10主流游戏完美体验</p></a></dt>
+                                                <dd>
+                                                    <p><a href="page-game.html" class="enter-link">一指通彩票</a></p>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!--Index-slide-->
+        <section class="index-slide">
+            <div class="slide">
+                <div class="slide-inner">
+                    <ul>
+                        <li style="background: url(../../ftl/yongli02/images/index-ban-01.jpg) 50% 0px no-repeat;">
+                            <a href="javascript:void(0);"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Index-casino -->
+        <section class="index-casino">
+            <div class="container">
+                <div class="notice index-notic">
+                    <div class="container">
+                        <div class="title"><span class="gui gui-notification_fill"></span> 最新公告</div>
+                        <div class="notice-list">
+                            <ul class="list-unstyled">
+                                <li><a href="javascript:void(0)" id="notice-content">手机版全面支持：【MG、PT、AG、BB】电子游艺、【AG、BB】视讯、体育投注、彩票游戏。公司入款、在线取款全面开启，随时随地尽享欢乐博彩，快来体验吧！</a></li>
+                                <li><a href="javascript:void(0)" id="notice-content">【喜讯】恭喜会员：zl***135在美东时间2016/07/09 08:02:25“MG电子”中的“招财鞭炮”游戏中获得幸运奖金 ￥86937元！幸运大奖人人都有机会，快快进入“电子游艺”进行游戏，也许您就成为下一个幸运儿哦！</a></li>
+                                <li><a href="javascript:void(0)" id="notice-content">【温馨提示】澳门永利娱乐场（美东时间:2016-07-25)天天返水最高3.0%无上限，已发放完毕，请注意查收！返水只需全额投注即可取款！挑战更高返水、更多优惠敬请关注澳门永利娱乐场！</a></li>
+                                <li><a href="javascript:void(0)" id="notice-content">【喜讯】美东时间7月13日幸运彩金名单：lw****,xal*****,rw****,xfd****,yq****,sq****,tt***,ib****,qsa****,rz****,hh****,敬请登录查收， 达到一倍流水即可申请出款。幸运彩金没有门槛限制、不设上限金额、随机派发！如此给力，快快告诉您的好友加入澳门威尼斯人娱乐场，尽情享乐吧！</a></li>
+                                <li><a href="javascript:void(0)" id="notice-content">【维护公告】您好，目前EG平台官方进行系统维护，期间将暂停娱乐，维护完成时间暂未确定，请您先选择公司其他游戏进行娱乐，造成不便敬请谅解，谢谢！</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="lottery-list ng-scope txtMarquee-top" ng-controller="WinnerListCtrl">
+                    <span class="title">电子奖金彩池</span>
+                    <span class="list">大奖客户名单</span>
+                    <span>客户ID</span><span>金额</span><span>游戏名称</span>
+                    <div class="bd">
+                        <div class="tempWrap">
+                            <ul class="infoList" style="height: 312px; position: relative; padding: 0px; margin: 0px; top: -25px;">
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide cycle-sentinel" style="position: static; top: 0px; left: 0px; z-index: 100; opacity: 1; display: block; visibility: hidden;">
+                                    <span title="w6***4973" class="ng-binding" style="visibility: hidden;">w6***4973</span><span title="7,732" class="ng-binding" style="visibility: hidden;">7,732</span><span title="超级7" class="ng-binding" style="visibility: hidden;">超级7</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 83; display: block;">
+                                    <span title="ro***hji" class="ng-binding">ro***hji</span><span title="9,416" class="ng-binding">9,416</span><span title="火焰山" class="ng-binding">火焰山</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 82; display: block;">
+                                    <span title="su***ui5" class="ng-binding">su***ui5</span><span title="16,276" class="ng-binding">16,276</span><span title="星际大战" class="ng-binding">星际大战</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 81; display: block;">
+                                    <span title="he***jun888" class="ng-binding">he***jun888</span><span title="14,961" class="ng-binding">14,961</span><span title="疯狂水果盘" class="ng-binding">疯狂水果盘</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 80; display: block;">
+                                    <span title="he***8-Jun" class="ng-binding">he***8-Jun</span><span title="15,919" class="ng-binding">15,919</span><span title="法海斗白蛇" class="ng-binding">法海斗白蛇</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 79; display: block;">
+                                    <span title="yh***gt" class="ng-binding">yh***gt</span><span title="12,745" class="ng-binding">12,745</span><span title="凯萨帝国" class="ng-binding">凯萨帝国</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 78; display: block;">
+                                    <span title="41***5" class="ng-binding">41***5</span><span title="16,218" class="ng-binding">16,218</span><span title="狂欢节" class="ng-binding">狂欢节</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 77; display: block;">
+                                    <span title="wz***88" class="ng-binding">wz***88</span><span title="10,384" class="ng-binding">10,384</span><span title="国际足球" class="ng-binding">国际足球</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 76; display: block;">
+                                    <span title="ji***n123" class="ng-binding">ji***n123</span><span title="14,026" class="ng-binding">14,026</span><span title="暗器之王" class="ng-binding">暗器之王</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 81; display: block;">
+                                    <span title="he***jun888" class="ng-binding">he***jun888</span><span title="14,961" class="ng-binding">14,961</span><span title="疯狂水果盘" class="ng-binding">疯狂水果盘</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 80; display: block;">
+                                    <span title="he***8-Jun" class="ng-binding">he***8-Jun</span><span title="15,919" class="ng-binding">15,919</span><span title="法海斗白蛇" class="ng-binding">法海斗白蛇</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 79; display: block;">
+                                    <span title="yh***gt" class="ng-binding">yh***gt</span><span title="12,745" class="ng-binding">12,745</span><span title="凯萨帝国" class="ng-binding">凯萨帝国</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 78; display: block;">
+                                    <span title="41***5" class="ng-binding">41***5</span><span title="16,218" class="ng-binding">16,218</span><span title="狂欢节" class="ng-binding">狂欢节</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 77; display: block;">
+                                    <span title="wz***88" class="ng-binding">wz***88</span><span title="10,384" class="ng-binding">10,384</span><span title="国际足球" class="ng-binding">国际足球</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 76; display: block;">
+                                    <span title="ji***n123" class="ng-binding">ji***n123</span><span title="14,026" class="ng-binding">14,026</span><span title="暗器之王" class="ng-binding">暗器之王</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 75; display: block;">
+                                    <span title="88***14" class="ng-binding">88***14</span><span title="11,360" class="ng-binding">11,360</span><span title="法海斗白蛇" class="ng-binding">法海斗白蛇</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 74; display: block;">
+                                    <span title="yt***86664" class="ng-binding">yt***86664</span><span title="8,122" class="ng-binding">8,122</span><span title="三国拉霸" class="ng-binding">三国拉霸</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 73; display: block;">
+                                    <span title="88***14" class="ng-binding">88***14</span><span title="11,360" class="ng-binding">11,360</span><span title="法海斗白蛇" class="ng-binding">法海斗白蛇</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 72; display: block;">
+                                    <span title="z3***3f" class="ng-binding">z3***3f</span><span title="7,915" class="ng-binding">7,915</span><span title="金钱追逐" class="ng-binding">金钱追逐</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 1; display: block;">
+                                    <span title="he***jun888" class="ng-binding">he***jun888</span><span title="14,961" class="ng-binding">14,961</span><span title="疯狂水果盘" class="ng-binding">疯狂水果盘</span>
+                                </li>
+                                <li ng-repeat="item in winnerList track by $index" class="ng-scope cycle-slide" style="position: static; top: 0px; left: 0px; z-index: 0; display: block;">
+                                    <span title="g1***2" class="ng-binding">g1***2</span><span title="8,443" class="ng-binding">8,443</span><span title="恶龙传说" class="ng-binding">恶龙传说</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="game-list ng-scope" ng-controller="LobbiesCtrl">
+                    <li game-box="mg" ng-click="toMGFlash()">MG 电子游艺
+                        <a class="partner mg"></a><span>MG 累积大奖</span><span class="money">CNY <span super-jackpot="">6,978,021.81</span> 元</span>
+                    </li>
+                    <li game-box="pt" ng-click="toPT2Game()">PT 电子游艺
+                        <a class="partner pt"></a><span>PT 累积大奖</span><span class="money">CNY <span super-jackpot="">6,912,216.08</span> 元</span>
+                    </li>
+                    <li game-box="bb" ng-click="toBbGame()">BBIN 电子游艺
+                        <a class="partner bbin"></a><span>BBIN 累积大奖</span><span class="money">CNY <span super-jackpot="">99,969.52</span> 元</span>
+                    </li>
+                    <li game-box="ag" ng-click="toAGGame()">AG 电子游艺
+                        <a class="partner ag"></a><span>AG 累积大奖</span><span class="money">CNY <span super-jackpot="">6,557,999.03</span> 元</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="home-info"><img src="../../ftl/yongli02/images/info.jpg"></div>
+        </section>
+        <!--Index-live-->
+        <section class="index-live">
+            <div class="container">
+                <div class="picScroll-left">
+                    <div class="bd">
+                        <ul class="picList list-unstyled">
+                            <li>
+                                <a href="javascript:void(0)" class="pic" target="_blank">
+                                    <img src="../../ftl/yongli02/images/index-live-list-01.png" />
+                                    <span>AG百乐厅</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="pic" target="_blank">
+                                    <img src="../../ftl/yongli02/images/index-live-list-02.png" />
+                                    <span>OG如意厅</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="pic" target="_blank">
+                                    <img src="../../ftl/yongli02/images/index-live-list-03.png" />
+                                    <span>MG沙龙厅</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="pic" target="_blank">
+                                    <img src="../../ftl/yongli02/images/index-live-list-04.png" />
+                                    <span>BBIN富贵厅</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="pic" target="_blank">
+                                    <img src="../../ftl/yongli02/images/index-live-list-05.png" />
+                                    <span>DW现场厅</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="pic" target="_blank">
+                                    <img src="../../ftl/yongli02/images/index-live-list-06.png" />
+                                    <span>DS女优厅</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="pic" target="_blank">
+                                    <img src="../../ftl/yongli02/images/index-live-list-07.png" />
+                                    <span>GD旗舰厅</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="pic" target="_blank">
+                                    <img src="../../ftl/yongli02/images/index-live-list-01.png" />
+                                    <span>AG百乐厅</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="prev gui gui-chevron-left"></span> <span class="next gui gui-chevron-right"></span>
+                </div>
+            </div>
+        </section>
+        <!-- Index-searvice -->
+        <section class="searvice">
+        </section>
+        <section class="content01">
+            <div class="innerbox wrapper">
+                <ul id="game-select">
+                    <li class="select01 game-active">MG电子<span>MICRO GAMING</span></li>
+                    <li class="select02">PT电子<span>PT GAMING</span></li>
+                    <li class="select03">BBIN电子<span>BBIN GAMING</span></li>
+                    <li class="select04">AG电子<span>AG GAMING</span></li>
+                    <li class="select06">NYX电子<span>NYX GAMING</span></li>
+                    <li class="select05">HABA电子<span>HABA GAMING</span></li>
+                </ul>
+                <ul class="game-view game-mg" style="display: block;">
+                    <li><img class="game-img" src="../public/casino/mg-01.jpg">
+                        <p>银行破坏专家</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-02.jpg">
+                        <p>打破大银行</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-03.jpg">
+                        <p>抢劫银行</p><a href="/Lobby/Game">进入游戏</a></li>·
+                    <li><img class="game-img" src="../public/casino/mg-04.jpg">
+                        <p>心跳时刻</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-05.jpg">
+                        <p>扭曲马戏团</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-06.jpg">
+                        <p>招财鞭炮</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-07.jpg">
+                        <p>雷神索尔II</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-08.jpg">
+                        <p>星光之吻</p><a href="/Lobby/Game">进入游戏</a></li>
+                </ul>
+                <ul class="game-view game-pt">
+                    <li><img class="game-img" src="../public/casino/pt-01.jpg">
+                        <p>银行破坏专家</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/pt-02.jpg">
+                        <p>打破大银行</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/pt-03.jpg">
+                        <p>抢劫银行</p><a href="/Lobby/Game">进入游戏</a></li>·
+                    <li><img class="game-img" src="../public/casino/pt-04.jpg">
+                        <p>心跳时刻</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/pt-05.jpg">
+                        <p>扭曲马戏团</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/pt-06.jpg">
+                        <p>招财鞭炮</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/pt-07.jpg">
+                        <p>雷神索尔II</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/pt-08.jpg">
+                        <p>星光之吻</p><a href="/Lobby/Game">进入游戏</a></li>
+                </ul>
+                <ul class="game-view game-bbin">
+                    <li><img class="game-img" src="../public/casino/mg-01.jpg">
+                        <p>银行破坏专家</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-02.jpg">
+                        <p>打破大银行</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-03.jpg">
+                        <p>抢劫银行</p><a href="/Lobby/Game">进入游戏</a></li>·
+                    <li><img class="game-img" src="../public/casino/mg-04.jpg">
+                        <p>心跳时刻</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-05.jpg">
+                        <p>扭曲马戏团</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-06.jpg">
+                        <p>招财鞭炮</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-07.jpg">
+                        <p>雷神索尔II</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-08.jpg">
+                        <p>星光之吻</p><a href="/Lobby/Game">进入游戏</a></li>
+                </ul>
+                <ul class="game-view game-ag">
+                    <li><img class="game-img" src="../public/casino/mg-01.jpg">
+                        <p>银行破坏专家</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-02.jpg">
+                        <p>打破大银行</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-03.jpg">
+                        <p>抢劫银行</p><a href="/Lobby/Game">进入游戏</a></li>·
+                    <li><img class="game-img" src="../public/casino/mg-04.jpg">
+                        <p>心跳时刻</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-05.jpg">
+                        <p>扭曲马戏团</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-06.jpg">
+                        <p>招财鞭炮</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-07.jpg">
+                        <p>雷神索尔II</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-08.jpg">
+                        <p>星光之吻</p><a href="/Lobby/Game">进入游戏</a></li>
+                </ul>
+                <ul class="game-view game-nyx">
+                    <li><img class="game-img" src="../public/casino/mg-01.jpg">
+                        <p>银行破坏专家</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-02.jpg">
+                        <p>打破大银行</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-03.jpg">
+                        <p>抢劫银行</p><a href="/Lobby/Game">进入游戏</a></li>·
+                    <li><img class="game-img" src="../public/casino/mg-04.jpg">
+                        <p>心跳时刻</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-05.jpg">
+                        <p>扭曲马戏团</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-06.jpg">
+                        <p>招财鞭炮</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-07.jpg">
+                        <p>雷神索尔II</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-08.jpg">
+                        <p>星光之吻</p><a href="/Lobby/Game">进入游戏</a></li>
+                </ul>
+                <ul class="game-view game-haba">
+                    <li><img class="game-img" src="../public/casino/mg-01.jpg">
+                        <p>银行破坏专家</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-02.jpg">
+                        <p>打破大银行</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-03.jpg">
+                        <p>抢劫银行</p><a href="/Lobby/Game">进入游戏</a></li>·
+                    <li><img class="game-img" src="../public/casino/mg-04.jpg">
+                        <p>心跳时刻</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-05.jpg">
+                        <p>扭曲马戏团</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-06.jpg">
+                        <p>招财鞭炮</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-07.jpg">
+                        <p>雷神索尔II</p><a href="/Lobby/Game">进入游戏</a></li>
+                    <li><img class="game-img" src="../public/casino/mg-08.jpg">
+                        <p>星光之吻</p><a href="/Lobby/Game">进入游戏</a></li>
+                </ul>
+            </div>
+        </section>
+        <!-- Index-show -->
+        <section class="index-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-1-1">
+                        <div class="index-show-api">
+                            <div class="h4">奢华博彩之旅 尽在澳门永利</div>
+                            <p>● ENTERTAINMENT NEVER ENDS ●</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-gutter-0">
+                    <div class="col-3-1">
+                        <div class="show-api-item">
+                            <a href="#"><img src="../../ftl/yongli02/images/show-api-live.png"><span class="title">真人娱乐</span></a>
+                            <div class="summary">汇聚全球顶级真人娱乐平台,女优咪牌.</div>
+                        </div>
+                    </div>
+                    <div class="col-3-1">
+                        <div class="show-api-item active">
+                            <a href="#"><img src="../../ftl/yongli02/images/show-api-casino.png"><span class="title">电子游艺</span></a>
+                            <div class="summary">PT,MG,BB,NYX多平台,数千种老虎机游戏.</div>
+                        </div>
+                    </div>
+                    <div class="col-3-1">
+                        <div class="show-api-item">
+                            <a href="#"><img src="../../ftl/yongli02/images/show-api-sports.png"><span class="title">体育赛事</span></a>
+                            <div class="summary">覆盖世界各地赛事,每周1000场滚球赛事.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1-1">
+                        <div class="index-show-api">
+                            <div class="h4">热门平台</div>
+                            <p>● HOT API ●</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-gutter-xs m-b-lg">
+                    <div class="col-12-2">
+                        <div class="show-api-logo">
+                            <a class="partner bb"><span></span></a>
+                        </div>
+                        <div class="show-api-title">BBIN</div>
+                    </div>
+                    <div class="col-12-2">
+                        <div class="show-api-logo">
+                            <a class="partner mg"><span></span></a>
+                        </div>
+                        <div class="show-api-title">MG</div>
+                    </div>
+                    <div class="col-12-2">
+                        <div class="show-api-logo">
+                            <a class="partner ag"><span></span></a>
+                        </div>
+                        <div class="show-api-title">AG</div>
+                    </div>
+                    <div class="col-12-2">
+                        <div class="show-api-logo">
+                            <a class="partner pt"><span></span></a>
+                        </div>
+                        <div class="show-api-title">PT</div>
+                    </div>
+                    <div class="col-12-2">
+                        <div class="show-api-logo">
+                            <a class="partner og"><span></span></a>
+                        </div>
+                        <div class="show-api-title">OG</div>
+                    </div>
+                    <div class="col-12-2">
+                        <div class="show-api-logo">
+                            <a class="partner nyx"><span></span></a>
+                        </div>
+                        <div class="show-api-title">NYX</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Index-info1 -->
+        <section class="index-main" style="background-color: #272727;">
+            <div class="container">
+                <div class="row row-gutter-lg">
+                    <div class="col-5-2"><img src="../../ftl/yongli02/images/index-info-ill-01.png"></div>
+                    <div class="col-5-3">
+                        <div class="index-info-box">
+                            <div>
+                                <a href="about.html"><img src="../../ftl/yongli02/images/index-info1-title-commingSoon.png"></a>
+                            </div>
+                            <a href="about.html">
+                                <p>手机投注平台面向全网玩家，提供近万款电子游艺、老虎机、百家乐以及彩票游戏、体育投注，线上存款及线上取款，一键操作， 运用3D即时运算创造真实场景结合立体影像，完整规划的跨系统娱乐平台，整合同步账号和资料传输，达到随时随地不间断娱乐 的享受概念。</p>
+                            </a>
+                            <p><img src="../../ftl/yongli02/images/index-info-mobile.png"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Index-info2 -->
+        <section class="index-main">
+            <div class="container">
+                <div class="row row-gutter-lg">
+                    <div class="col-5-3">
+                        <div class="index-info-box">
+                            <div>
+                                <a href="#"><img src="../../ftl/yongli02/images/index-info2-title.png"></a>
+                            </div>
+                            <a href="about.html">
+                                <p>澳门永利注册于菲律宾马尼拉，持有菲律宾政府卡格扬经济特区 First Cagayan leisure and Resort Corporation颁发的体育竞猜与线上娱乐执照，接受菲律宾政府和卡格扬经济特区CEZA授权和监管，我们一切娱乐营业行为皆遵从菲律宾政府线上娱乐条约。在竞争日益激烈的线上娱乐市场中，我们不断地求新求变，寻找最新的创意，秉持最好的服务。向客户提供高品质的服务、先进的产品、丰富的娱乐体验，是我们澳门永利永恒的宗旨。</p>
+                                <p>我们向您承诺：以诚信为本。作为国际专业的网上娱乐游戏运营商，我们承诺，为每一位客户提供最安全、最公平的娱乐游戏，以及全方位的服务。</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-5-2"><img src="../../ftl/yongli02/images/index-info-ill-02.png"></div>
+                </div>
+                <div class="row">
+                    <div class="col-5-1">
+                        <div class="index-info-circle">
+                            <h3>3<span>秒</span></h3>
+                            <div class="info">存款到账</div>
+                        </div>
+                    </div>
+                    <div class="col-5-1">
+                        <div class="index-info-circle">
+                            <h3>5<span>秒</span></h3>
+                            <div class="info">取款到账</div>
+                        </div>
+                    </div>
+                    <div class="col-5-1">
+                        <div class="index-info-circle">
+                            <h3>100<span>家</span></h3>
+                            <div class="info">合作银行</div>
+                        </div>
+                    </div>
+                    <div class="col-5-2">
+                        <div class="index-info-summary">
+                            <h4>最近24小时数据</h4>
+                            <div class="row">
+                                <div class="col-5-2">活路用户数</div>
+                                <div class="col-5-3">
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 70%">118797人</div>
+                                    </div>
+                                </div>
+                                <div class="col-5-2">累计注单量</div>
+                                <div class="col-5-3">
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 80%">17302294注</div>
+                                    </div>
+                                </div>
+                                <div class="col-5-2">累计存提款</div>
+                                <div class="col-5-3">
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 90%">4002笔/小时</div>
+                                    </div>
+                                </div>
+                                <div class="col-5-2">累计派彩量</div>
+                                <div class="col-5-3">
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 99%">￥48175477元</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Index-contact -->
+        <section class="index-main" style="background-color: #272727;">
+            <div class="container">
+                <div class="row row-gutter-0">
+                    <div class="col-4-1">
+                        <div class="index-contact"><span class="gui gui-internet-explorer"></span>易记网址：<strong>www.xxx.com</strong></div>
+                    </div>
+                    <div class="col-4-1">
+                        <div class="index-contact"><span class="gui gui-phone"></span>热线：<strong>+63 99999999</strong></div>
+                    </div>
+                    <div class="col-4-1">
+                        <div class="index-contact"><span class="gui gui-envelope"></span>永利专员QQ：<strong>99999999</strong></div>
+                    </div>
+                    <div class="col-4-1">
+                        <div class="index-contact"><span class="gui gui-headphones"></span><strong>7×24</strong>小时在线客服</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <!-- Footer-partner -->
+        <div class="footer-partner">
+            <div class="container">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a class="partner bdo" href="http://www.bdo888.com" target="_blank"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner bb"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner ag"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner mg"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner pt"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner sb"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner og"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner gd"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner bsg"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner opus"><span></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Footer-slogo -->
+        <div class="footer-slogo">
+            <img src="../../ftl/yongli02/images/logo.png">
+        </div>
+        <!-- Footer-link -->
+        <div class="footer-links">
+            <div class="container">
+                <ul class="list-inline font-serif">
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="about.html">常见问题</a></li>
+                    <li><a href="about.html">存款帮助</a></li>
+                    <li><a href="about.html">转账帮助</a></li>
+                    <li><a href="about.html">取款帮助</a></li>
+                    <li><a href="#">在线客服</a></li>
+                    <li><a href="agent.html">代理中心</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Footer-copyright -->
+        <div class="footer-copyright">
+            <div class="container">
+                <p class="font-serif">本网站属于菲律宾卡格杨（Cagayan）授权和监管所有版权归<span class="text-blue">澳门永利娱乐城</span>所有，违者必究。</p>
+                <p class="font-serif">Copyright &copy; 2004-2016 WYNN MACAU ALL RIGHT Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <aside>
+        <ul class="aside-float list-unstyled" style="top: 150px; left: 20px;">
+            <li style="height: 94px; background-image:url(../../ftl/yongli02/images/float/left-01.png);"></li>
+            <li style="height: 136px; background-image:url(../../ftl/yongli02/images/float/left-02.png);">
+                <li style="height: 29px; background-image:url(../../ftl/yongli02/images/float/left-close.png);"></li>
+        </ul>
+    </aside>
+    <aside>
+        <ul class="aside-float aside-right list-unstyled" style="top: 150px; right: 50px;">
+            <li style="height: 202px; background-image:url(../../ftl/yongli02/images/float/right_01_top.png);"></li>
+            <li style="height: 35px; background-image:url(../../ftl/yongli02/images/float/right_02.png);"></li>
+            <li style="height: 35px; background-image:url(../../ftl/yongli02/images/float/right_03.png);"></li>
+            <li style="height: 35px; background-image:url(../../ftl/yongli02/images/float/right_04.png);"></li>
+            <li style="height:29px;background-image:url(../../ftl/yongli02/images/float/right-close.png);"></li>
+        </ul>
+    </aside>
+    <script src="../../ftl/commonPage/js/jquery/jquery-1.11.3.min.js"></script>
+    <script src="../../ftl/commonPage/js/gui-base.js"></script>
+    <script src="../../ftl/yongli02/js/menu.js"></script>
+    <script>
+    $("#game-select>li").mouseover(function() {
+        $(this).addClass("game-active");
+        $(this).siblings().removeClass("game-active");
+    });
+
+    $(".select01").mouseover(function() {
+        $(".game-mg").show();
+        $(".game-mg").siblings().not("#game-select").hide();
+    });
+    $(".select02").mouseover(function() {
+        $(".game-pt").show();
+        $(".game-pt").siblings().not("#game-select").hide();
+    });
+    $(".select03").mouseover(function() {
+        $(".game-bbin").show();
+        $(".game-bbin").siblings().not("#game-select").hide();
+    });
+    $(".select04").mouseover(function() {
+        $(".game-ag").show();
+        $(".game-ag").siblings().not("#game-select").hide();
+    });
+    $(".select05").mouseover(function() {
+        $(".game-nyx").show();
+        $(".game-nyx").siblings().not("#game-select").hide();
+    });
+    $(".select06").mouseover(function() {
+        $(".game-haba").show();
+        $(".game-haba").siblings().not("#game-select").hide();
+    });
+    $(function() {
+        // 公告-左滚动
+        $('.notice-list>ul>li').css('display', 'inline-block');
+        $('.notice-list').Marquee({
+            isMarquee: true,
+            isEqual: false, // 元素等长
+            scrollDelay: 30, // 时长
+            direction: 'left'
+        });
+        // 文字闪烁
+        textBlink($(".nav-blink1"), "yellow", "#d4b979", 300);
+        textBlink($(".info-link1"), "red", "#b29d8e", 250);
+        // 赞助商logo动画
+        $('.footer-partner ul li a').hover(function() {
+            $('span', this).stop().animate({
+                'opacity': 1
+            }, 300);
+            $(this).stop().animate({
+                "backgroundPositionY": "40px"
+            });
+            $(".hontu-wrap").css("z-index", "0");
+        }, function() {
+            $('span', this).stop().animate({
+                'opacity': 0
+            }, 300);
+            $(this).stop().animate({
+                "backgroundPositionY": 0
+            });
+            $(".hontu-wrap").css("z-index", "-1");
+        });
+        //通栏下拉导航
+        var mega = {};
+        $('[rel]').hover(function() {
+            var _rel = $(this).attr('rel');
+            clearTimeout(mega[_rel + '_timer']);
+            mega[_rel + '_timer'] = setTimeout(function() {
+                $('[rel]').each(function() {
+                    $(this)[_rel == $(this).attr('rel') ? 'addClass' : 'removeClass']('active');
+                });
+                $('#' + _rel).stop(true, true).slideDown("300");
+            }, 150);
+        }, function() {
+            var _rel = $(this).attr('rel');
+            clearTimeout(mega[_rel + '_timer']);
+            mega[_rel + '_timer'] = setTimeout(function() {
+                $('[rel]').removeClass('active');
+                $('#' + _rel).stop(true, true).slideUp(300);
+            }, 150);
+        });
+        //鼠标滑入切换文字
+        var orgi;
+        $(".api-item").mouseenter(function() {
+            orgi = $(this).find(".enter-link").text();
+            $(this).find(".enter-link").text("开始游戏");
+        }).mouseleave(function() {
+            $(this).find(".enter-link").text(orgi);
+        })
+    });
+    // 轮播图前进、后退滑入显示动画
+    jQuery(".slide").hover(function() {
+        jQuery(this).find(".prev,.next").stop(true, true).fadeTo("show", 0.5)
+    }, function() {
+        jQuery(this).find(".prev,.next").fadeOut()
+    });
+    jQuery(".slide").slide({
+        titCell: ".slide-indicators ul",
+        mainCell: ".slide-inner ul",
+        effect: "fold",
+        autoPlay: true,
+        interTime: 2500,
+        autoPage: true,
+        trigger: "click",
+        // 切换图片时，才加载图片
+        startFun: function(i) {
+            var curLi = jQuery(".slide .slide-inner li").eq(i);
+            if (!!curLi.attr("data-src")) {
+                curLi.css("background-image", curLi.attr("data-src")).removeAttr("data-src")
+            }
+        }
+    });
+    var ary = location.href.split("&amp;");
+    // 轮播图前进、后退滑入显示动画
+    jQuery(".picScroll-left").hover(function() {
+        jQuery(this).find(".prev,.next").stop(true, true).fadeTo("show", 0.5)
+    }, function() {
+        jQuery(this).find(".prev,.next").fadeOut()
+    });
+    jQuery(".picScroll-left").slide({
+        mainCell: ".bd ul",
+        autoPage: true,
+        effect: "left",
+        autoPlay: true,
+        vis: 4
+    });
+    jQuery(".txtMarquee-top").slide({
+        mainCell: ".bd ul",
+        autoPlay: true,
+        effect: "topMarquee",
+        vis: 8,
+        interTime: 50,
+        trigger: "click"
+    });
+    </script>
+</body>
+
+</html>

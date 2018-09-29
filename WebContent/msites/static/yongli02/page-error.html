@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>关于我们 | 澳门永利娱乐城</title>
+    <meta name="keywords" content="澳门永利娱乐城">
+    <meta name="description" content="澳门永利娱乐城">
+    <link rel="bookmark" href="../../ftl/yongli02/images/favicon.png">
+    <link rel="shortcut Icon" href="../../ftl/yongli02/images/favicon.png" />
+    <link rel="stylesheet" href="../../ftl/commonPage/themes/gui-base.css">
+    <link rel="stylesheet" href="../../ftl/commonPage/themes/gui-skin-default.css">
+    <link rel="stylesheet" href="../../ftl/yongli02/themes/common.css">
+    <!--[if lt IE 9]>
+      <script src="../../ftl/commonPage/js/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <header class="top" style="height:40px;">
+        <!--Static-bar-->
+        <section class="static-bar" style="height: 36px;">
+            <div class="container">
+                <div class="row row-gutter-0">
+                    <div class="col-12-4 logo">
+                        <a href="index.html">
+                                    <img src="../../ftl/yongli02/images/logo-s.png" alt="LOGO"></a>
+                        </object>
+                    </div>
+                    <div class="col-12-2 logo text-center"></div>
+                    <div class="col-12-6">
+                        <div class="clearfix">
+                            <a href="javascript:void(0)" class="flags pull-right"><img src="../../ftl/yongli02/images/flags.png"></a>
+                            <div class="pull-right infos-wrap">
+                                <ul class="list-inline infos">
+                                    <li><a href="#">资讯端下载</a></li>
+                                    <li class="info-link1"><a href="#">手机投注</a></li>
+                                    <li><a href="#">线路检测</a></li>
+                                    <li><a href="#">加盟合作</a></li>
+                                    <li><a href="#">常见问题</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section class="main code" style="height: 600px; background: #191919;">
+            错误404 CODE页面放这里
+        </section>
+    </main>
+    <footer>
+        <!-- Footer-partner -->
+        <div class="footer-partner">
+            <div class="container">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a class="partner dw"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner bb"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner mg"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner pt"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner ag"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner og"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner hg"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner im"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner gd"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner nyx"><span></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Footer-slogo -->
+        <div class="footer-slogo">
+            <img src="../../ftl/yongli02/images/logo.png">
+        </div>
+        <!-- Footer-link -->
+        <div class="footer-links">
+            <div class="container">
+                <ul class="list-inline font-serif">
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="about.html">常见问题</a></li>
+                    <li><a href="about.html">存款帮助</a></li>
+                    <li><a href="about.html">转账帮助</a></li>
+                    <li><a href="about.html">取款帮助</a></li>
+                    <li><a href="#">在线客服</a></li>
+                    <li><a href="agent.html">代理中心</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Footer-copyright -->
+        <div class="footer-copyright">
+            <div class="container">
+                <p class="font-serif">本网站属于菲律宾卡格杨（Cagayan）授权和监管所有版权归<span class="text-blue">澳门永利娱乐城</span>所有，违者必究。</p>
+                <p class="font-serif">Copyright &copy; 2004-2016 WYNN MACAU ALL RIGHT Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../../ftl/commonPage/js/jquery/jquery-1.11.3.min.js"></script>
+    <script src="../../ftl/commonPage/js/gui-base.js"></script>
+    <script>
+    // 轮播图前进、后退滑入显示动画
+    jQuery(".slide").hover(function() {
+        jQuery(this).find(".prev,.next").stop(true, true).fadeTo("show", 0.5)
+    }, function() {
+        jQuery(this).find(".prev,.next").fadeOut()
+    });
+    jQuery(".slide").slide({
+        titCell: ".slide-indicators ul",
+        mainCell: ".slide-inner ul",
+        effect: "fold",
+        autoPlay: true,
+        interTime: 2500,
+        autoPage: true,
+        trigger: "click",
+        // 切换图片时，才加载图片
+        startFun: function(i) {
+            var curLi = jQuery(".slide .slide-inner li").eq(i);
+            if (!!curLi.attr("data-src")) {
+                curLi.css("background-image", curLi.attr("data-src")).removeAttr("data-src")
+            }
+        }
+    });
+
+    $(function() {
+        // 文字闪烁
+        blink($(".nav-blink"), "blink-yellow", 300);
+        blink($(".info-link1"), "blink-yellow", 250);
+        blink($(".info-link2"), "blink-green", 300);
+        blink($(".info-link3"), "blink-cyan", 350);
+        // 赞助商logo动画
+        $('.footer-partner ul li a').hover(function() {
+            $('span', this).stop().animate({
+                'opacity': 1
+            }, 300)
+        }, function() {
+            $('span', this).stop().animate({
+                'opacity': 0
+            }, 300)
+        });
+    });
+    </script>
+</body>
+
+</html>

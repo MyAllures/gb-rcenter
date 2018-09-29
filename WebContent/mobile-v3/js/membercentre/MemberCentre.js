@@ -28,31 +28,31 @@ function userInfo() {
                 }
                 //钱包余额
                 if (data.walletBalance != null && data.walletBalance != 0) {
-                    $("._purse-balance>span").text(currency + data.walletBalance.toFixed(2));
+                    $("._purse-balance>span").text(currency + data.walletBalance.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
                 } else {
                     $("._purse-balance>span").text(currency + "0.00");
                 }
                 //总资产
                 if (data.totalAssets != null && data.totalAssets != 0) {
-                    $("._total-assets>span").text(currency + data.totalAssets.toFixed(2));
+                    $("._total-assets>span").text(currency + data.totalAssets.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
                 } else {
                     $("._total-assets>span").text(currency + "0.00");
                 }
                 //正在处理中取款金额
                 if (data.withdrawAmount != null && data.withdrawAmount != 0) {
-                    $("._withdraw-amount").text(window.top.message.my_auto['处理中']+ currency + data.withdrawAmount);
+                    $("._withdraw-amount").text(window.top.message.my_auto['处理中']+ data.withdrawAmount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
                 } else {
                     $("._withdraw-amount").text("");
                 }
                 //计算近7日收益（优惠金额）
                 if (data.preferentialAmount != null && data.preferentialAmount != 0) {
-                    $(".preferentialAmount").text(window.top.message.my_auto['近7日收益']+ currency + data.preferentialAmount);
+                    $(".preferentialAmount").text(window.top.message.my_auto['近7日收益']+ data.preferentialAmount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
                 } else {
                     $(".preferentialAmount").text(window.top.message.my_auto['查看所参与的优惠纪录']);
                 }
                 //推荐好友,昨日收益
                 if (data.recomdAmount != null && data.recomdAmount != 0) {
-                    $(".recomdAmount").text(window.top.message.my_auto['昨日收益']+ currency + data.recomdAmount);
+                    $(".recomdAmount").text(window.top.message.my_auto['昨日收益']+ data.recomdAmount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
                 } else {
                     $(".recomdAmount").text(window.top.message.my_auto['查看分享奖励']);
                 }
@@ -73,7 +73,7 @@ function userInfo() {
                 }
                 //正在处理中转账金额,额度转换
                 if (data.transferAmount != null && data.transferAmount != 0) {
-                    $("#transferAmount").html(window.top.message.my_auto['处理中'] + currency + data.transferAmount);
+                    $("#transferAmount").html(window.top.message.my_auto['处理中'] + data.transferAmount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
                 } else {
                     $("#transferAmount").html(window.top.message.my_auto['查看所有资金来往记录']);
                 }
