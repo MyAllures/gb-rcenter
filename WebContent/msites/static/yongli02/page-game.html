@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>代理 | 澳门永利娱乐城</title>
+    <meta name="keywords" content="澳门永利娱乐城">
+    <meta name="description" content="澳门永利娱乐城">
+    <link rel="bookmark" href="../../ftl/yongli02/images/favicon.png">
+    <link rel="shortcut Icon" href="../../ftl/yongli02/images/favicon.png" />
+    <link rel="stylesheet" href="../../ftl/commonPage/themes/gui-base.css">
+    <link rel="stylesheet" href="../../ftl/commonPage/themes/gui-skin-default.css">
+    <link rel="stylesheet" href="../../ftl/yongli02/themes/common.css">
+    <!--[if lt IE 9]>
+      <script src="../../ftl/commonPage/js/html5.js"></script>
+    <![endif]-->
+</head>
+<style>
+    .CasinoGameOverlay{position:fixed;display:block;left:0;top:36px;z-index:999;width:100%;height:100%;background-repeat:no-repeat;cursor:progress;background-position:center top;background-size:100% auto;background-color:#000;}
+    .GameBody{position:relative;display:block;left:auto;margin:0 auto;min-height:150px;padding:0 5%;z-index:1;}
+    .GameContainer{position:relative;display:block;border:0;margin:0 auto;background: #000;z-index:1;}
+    .GameContainer .GameTips{position:absolute;left:-130px; bottom:0; min-width:120px;min-height:180px;height:auto; color: #eee; background: #333; text-align: center; }
+    .GameContainer #box_playGameDemo_iframe{border:4px solid rgba(0,0,0,0.6);border-radius:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;height:100%;margin:0;min-height:150px;width:100%;background:#111;}
+    .GameContainer .ExtraGame{position:absolute;width:30px;margin-top:0;margin-right:2px;right:-40px;top:0;}
+    .gameIconsInner{width:30px;height:30px;cursor:pointer;border:1px transparent;box-sizing:border-box;border-radius:0;margin:0 3px 10px;}
+    .gameIconsInner.gameClose{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_cross.png") right 0 no-repeat;height:30px;vertical-align:middle;outline:0;border:1px transparent;box-sizing:border-box;}
+    .gameIconsInner.gameClose:hover{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_cross.png") right -30px no-repeat;}
+    .gameIconsInner.gameClose.active{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_cross.png") right -60px no-repeat;}
+    .gameIconsInner.gameFavorite{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_favorite.png") right 0 no-repeat;height:30px;vertical-align:middle;border:1px transparent;box-sizing:border-box;}
+    .gameIconsInner.gameFavorite:hover{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_favorite.png") right -30px no-repeat;}
+    .gameIconsInner.gameFavorite.active{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_favorite.png") right -60px no-repeat;}
+    .gameIconsInner.gameFullScreen{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_expand.png") right 0 no-repeat;height:30px;vertical-align:middle;border:1px transparent;box-sizing:border-box;}
+    .gameIconsInner.gameFullScreen:hover{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_expand.png") right -30px no-repeat;}
+    .gameIconsInner.gameFullScreen.active{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_expand.png") right -60px no-repeat;}
+    .gameIconsInner.gameClock{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_clock.png") right 0 no-repeat;height:30px;vertical-align:middle;border:1px transparent;box-sizing:border-box;}
+    .gameIconsInner.gameClock:hover{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_clock.png") right -30px no-repeat;}
+    .gameIconsInner.gameClock.active{background:url("../../ftl/xpj/commonPage/themes/images/icons_sprite_clock.png") right -60px no-repeat;}
+    </style>
+<body>
+    <header class="top">
+        <!--Static-bar-->
+        <section class="static-bar">
+            <div class="container">
+                <div class="row row-gutter-0">
+                    <div class="col-12-4 logo">
+                        <a href="index.html">
+                                    <img src="../../ftl/yongli02/images/logo-s.png" alt="LOGO"></a>
+                    </div>
+                    <div class="col-12-6">
+                        
+                        <!-- Members 登录后 -->
+                        <div class="members">
+                            <div class="logged p-game">
+                                <ul class="list-inline logged-link">
+                                    <li class="text">帐号：YLB888599</li>
+                                    <li>
+                                        <div class="btn-group show-on-hover">
+                                            <a class="static-btn" data-toggle="dropdown">余额 <span class="text-blue">2,505.84</span> RMB <span class="caret"></span></a>
+                                            <ul class="dropdown-menu members-dropdown">
+                                                <li><a href="#"><span class="pull-right gui gui-eye-slash"></span>隐藏余额</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"><span class="pull-right gui gui-refresh"></span>刷新余额</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">IM体育：<strong class="gui gui-spinner gui-pulse"></strong> </a></li>
+                                                <li><a href="#">AG余额：<strong class="text-danger">12,242,505.84</strong> RMB<span class="icon-back-m "></span></a></li>
+                                                <li><a href="#">GD余额：<strong class="text-danger">3,505.84</strong> RMB</a></li>
+                                                <li><a href="#">GD余额：<strong class="text-danger">4,505.84</strong> RMB</a></li>
+                                                <li><a href="#">GD余额：<strong class="text-danger">5,505.84</strong> RMB</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"><span class="pull-right gui gui-share-square"></span>退出登录</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li><a href="#">会员中心</a></li>
+                                    <li><a href="#">线上存款</a></li>
+                                    <li><a href="#">线上取款</a></li>
+                                    <li><a href="#">额度转换</a></li>
+                                    <li><a href="#">未读讯息<span class="label label-warning">13</span></a></li>
+                                    <li><a href="#">退出</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+    <main>        
+        <!-- Casino Game Overlay -->
+        <div class="CasinoGameOverlay" style="background-image:url(../../ftl/xpj/themes/images/mg-bg.jpg)">
+            <div class="GameBody">
+                <!--GameContainer-->
+                <div class="GameContainer" data-width="4" data-height="3">
+                    <iframe id="box_playGameDemo_iframe" scrolling="no" frameborder="0" allowtransparency="true" src="casino-game-playGo.htm"> </iframe>
+                    <div class="ExtraGame">
+                        <button class="gameIconsInner gameClose" title="返回"></button>
+                        <button class="gameIconsInner gameFavorite active" title="收藏遊戲"></button>
+                        <button class="gameIconsInner gameFullScreen" title="全屏顯示"></button>
+                        <button class="gameIconsInner gameClock" title="當前時間"></button>
+                    </div>
+                </div>
+                <!--GameContainer End-->
+            </div>
+        </div>
+    </main>
+    <script src="../../ftl/commonPage/js/jquery/jquery-1.11.3.min.js"></script>
+    <script src="../../ftl/commonPage/js/gui-base.js"></script>
+    <script>
+    function dropdownOpen() {
+        var $dropdownLi = $('.dropdown');
+        $dropdownLi.mouseover(function() {
+            $(this).addClass('open');
+        }).mouseout(function() {
+            $(this).removeClass('open');
+        });
+    }
+    // PlayGameDemo iframe
+    $(document).ready(function() {
+        var widthSet = parseInt($(".GameContainer").data("width")) / parseInt($(".GameContainer").data("height"))
+        $("#box_playGameDemo_iframe").css("height", ($(window).height() - $(".static-bar").height()) + "px");
+        $("#box_playGameDemo_iframe").css("width", ($(window).height() - $(".static-bar").height()) * widthSet + "px");
+        $(".GameContainer").css("height", ($(window).height() - $(".static-bar").height()) + "px");
+        $(".GameContainer").css("width", ($(window).height() - $(".static-bar").height()) * widthSet + "px");
+        $(window).bind('resize', function(e) {
+            $("#box_playGameDemo_iframe").css("height", ($(window).height() - $(".static-bar").height()) + "px");
+            $("#box_playGameDemo_iframe").css("width", ($(window).height() - $(".static-bar").height()) * widthSet + "px");
+            $(".GameContainer").css("height", ($(window).height() - $(".static-bar").height()) + "px");
+            $(".GameContainer").css("width", ($(window).height() - $(".static-bar").height()) * widthSet + "px");
+        });
+    });
+    </script>
+</body>
+
+</html>

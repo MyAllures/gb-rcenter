@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>游戏详细——太阳城娱乐城</title>
+    <meta name="keywords" content="太阳城娱乐城">
+    <meta name="description" content="太阳城娱乐城">
+    <link rel="bookmark" href="../../ftl/sunCity143/images/favicon.png">
+    <link rel="shortcut Icon" href="../../ftl/sunCity143/images/favicon.png">
+    <link rel="stylesheet" href="../../ftl/commonPage/themes/gui-base.css">
+    <link rel="stylesheet" href="../../ftl/commonPage/themes/gui-skin-default.css">
+    <link rel="stylesheet" href="../../ftl/sunCity143/themes/common.css">
+    <!--[if lt IE 9]>
+    <script src="../../ftl/commonPage/js/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="game-page">
+    <header>
+        <!-- Static-bar -->
+        <section class="static-bar">
+            <div class="container">
+                <div class="static-box logo-box pull-left">
+                    <a href="index.html"><img src="../../ftl/sunCity143/images/logo.png"></a>
+                    <img style="display: inline-block;" src="../../ftl/sunCity143/images/slogo.png" title="非凡想象，引发无限可能！" alt="非凡想象，引发无限可能！">
+                </div>
+                <div class="static-box pull-right">
+                    <!-- Login -->
+                    <!-- Panel -->
+                    <div class="header-panel">
+                        <a href="#" class="text-money">allen</a>
+                        <a href="#">玩家中心</a>
+                        <a href="#">消息 <span class="label label-info">10</span></a>
+                        <a href="#">存款</a>
+                        <a href="#">投注记录</a>
+                        <a href="#">额度转换</a>
+                        <div class="btn-group dropdown show-on-hover">
+                            <a href="javascript:void(0);" class="static-btn" data-toggle="dropdown">余额 <span class="text-money">2,505.84</span> RMB <span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right members-dropdown">
+                                <li><a href="#"><span class="pull-right gui gui-eye-slash"></span>隐藏余额</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><span class="pull-right gui gui-refresh"></span>刷新余额</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">沙巴：<span class="gui gui-spinner gui-pulse"></span> </a></li>
+                                <li><a href="#">AG余额：<span class="text-money">2,505.84</span> RMB<span class="icon-back-m "></span></a></li>
+                                <li><a href="#">GD余额：<span class="text-money">3,505.84</span> RMB</a></li>
+                                <li><a href="#">GD余额：<span class="text-money">4,505.84</span> RMB</a></li>
+                                <li><a href="#">GD余额：<span class="text-money">5,505.84</span> RMB</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><span class="pull-right gui gui-share-square"></span>退出登录</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <!-- <div class="GameBody">
+            <div class="GameContainer" data-width="4" data-height="3">
+                <iframe id="box_playGameDemo_iframe" scrolling="no" frameborder="0" allowtransparency="true" src="http://www.baidu.com"></iframe>
+            </div>
+        </div> -->
+        <!--Loading-->
+        <div class="loading vertical-align text-center">
+            <div class="vertical-align-middle">
+                <p><span class="gui gui-2x gui-spinner gui-pulse"></span></p>
+                <p class="loadlogo"><img src="../../ftl/sunCity143/images/logo.png"> 正在为您跳转<span class="apiName">AG电子</span></p>
+            </div>
+        </div>
+    </main>
+    <script src="../../ftl/commonPage/js/jquery/jquery-1.11.3.min.js"></script>
+    <script src="../../ftl/commonPage/js/gui-base.js"></script>
+    <script>
+    // Game iframe
+    $(document).ready(function() {
+        var widthSet = parseInt($(".GameContainer").data("width")) / parseInt($(".GameContainer").data("height"))
+        $("#box_playGameDemo_iframe").css("height", ($(window).height() - $("header").height()) + "px");
+        $("#box_playGameDemo_iframe").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
+        $(".GameContainer").css("height", ($(window).height() - $("header").height()) + "px");
+        $(".GameContainer").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
+        $(window).bind('resize', function(e) {
+            $("#box_playGameDemo_iframe").css("height", ($(window).height() - $("header").height()) + "px");
+            $("#box_playGameDemo_iframe").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
+            $(".GameContainer").css("height", ($(window).height() - $("header").height()) + "px");
+            $(".GameContainer").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
+        });
+    });
+    </script>
+</body>
+
+</html>
