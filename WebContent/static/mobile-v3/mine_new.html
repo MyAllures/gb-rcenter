@@ -1,205 +1,206 @@
 <!DOCTYPE html>
 <html>
 <head>
-      <meta charset="utf-8">
-      <title>Dawoo</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-status-bar-style" content="black">
-      <link rel="bookmark" href="../../mobile-v3/favicon.ico">
-      <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
-      <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
-      <link rel="stylesheet" href="../../mobile-v3/themes/default/style1.css" />
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style1.css" />
 </head>
 
-<body>
-<!-- 主页面标题 -->
-<header class="mui-bar mui-bar-nav mui-bar-mine top_nav" >
-      <a class="mui-icon  mui-icon-contact mui-pull-left"></a>
-      <h1 class="mui-title">我的</h1>
-      <a href="javascript:;" class="mui-icon mui-icon-gear mui-pull-right mine_settings">
-      </a>
-</header>
+<body class="mine_page">
 
-<main class="mui-content part-r" >
-      <!-- 主界面具体展示内容 -->
-      <!--用户信息显示区域-->
-      <div class="mui-row user_icon">
-            <img src="../../mobile-v3/images/my_ico_12.png" class="mui-col-xs-12 imgHight" alt="">
-      </div>
-      <div class="mui-row user_info" >
-            <div class=" mui-col-xs-6  user_account_info" >
-                  <img src="../../mobile-v3/images/my_ico_14.png" class="head-portrait" alt="">
-                  <div class="login-name leftStyle">
-                        <span class="">十字路口555</span>
-                        <p class="mt10">上次登录时间</p>
-                        <small>2018年5月5号</small>
-                  </div>
-                  <div class="dis-no login-name">
-                        <a href="#" class="part-a">登录 / 注册</a>
-                  </div>
+<div class="mui-scroll-wrapper">
+    <div class="mui-scroll">
+        <div class="user_info_part">
+            <header class="mui-bar mui-bar-nav mui-bar-mine" >
+                <a class="msg_notice"><sup></sup></a>
+                <h1 class="mui-title">我的</h1>
+                <a href="javascript:;" class="mine_settings"></a>
+            </header>
+            <div class="user_portrait_part">
+                <i></i>
+                <span>KARRYROY</span>
+                <b>上次登录时间：2018-09-08 09:56:13</b>
             </div>
-            <div  class=" mui-col-xs-6  asset_info">
-                  <ul class="bor-radius part-a" >
-                        <li class="total-asset " >
-                              <small>总资产/</small>
-                              <span class="asset-num" >￥3,000.00</span>
-                        </li>
-                        <li class="wallet_balance ">
-                              <span class="balance_num"  >￥3,000.00</span>
-                              <small>钱包余额/</small>
-                        </li>
-                  </ul>
-            </div>
-      </div>
-      <!--图标导航区域-->
-      <ui class="mui-row  function_nav" >
-            <li class="mui-col-xs-6 mt10  mui-text-center  nav_item" >
-                  <a href="mine-deposit.html">
-                        <img src="../../mobile-v3/images/my_ico_1.png" class="dis-in" alt="">
-                        <div class="dis-in charge_item  mui-text-left">
-                              <div>充值</div>
-                              <small></small>
-                        </div>
-                  </a>
-            </li>
-            <li class="mui-col-xs-6 mt10 mui-text-center  nav_item" >
-                  <a href="mine-withdraw.html">
-                        <img src="../../mobile-v3/images/my_ico_2.png" class="dis-in" alt="">
-                        <div class="dis-in  charge_item mui-text-left">
-                              <div>提现</div>
-                              <small class="processing">处理中￥200.00</small>
-                        </div>
-                  </a>
-            </li>
-            <li class="mui-col-xs-6 mt10 mui-text-left border-bottom">
-                  <a href="mine-bet-record.html" class="bet_record" >
-                        <img src="../../mobile-v3/images/my_ico_3.png" class="dis-in" alt="">
-                        <div class="dis-in " >
-                              <div>投注记录</div>
-                              <small class="processing">查看所参与的游戏记录</small>
-                        </div>
-                  </a>
-            </li>
-            <li class="mui-col-xs-6 mt10 mui-text-left  border-bottom">
-                  <a href="../mobile-v3-newDeposit/mine-deposit-2-online.html" class="amount_transfer">
-                        <img src="../../mobile-v3/images/my_ico_4.png" class="dis-in" alt="">
-                        <div class="dis-in " >
-                              <div>资金账户</div>
-                              <small class="processing">进行资金回收和转入</small>
-                        </div>
-                  </a>
-            </li>
-            <li class="mui-col-xs-6 mui-text-left border-bottom">
-                  <a href="mine-cash-record.html" class="money_record ">
-                        <img src="../../mobile-v3/images/my_ico_5.png" class="dis-in" alt="">
-                        <div class="dis-in ">
-                              <div>资金记录</div>
-                              <small class="processing">查看所有资金来往记录</small>
-                        </div>
-                  </a>
-            </li>
-            <li class="mui-col-xs-6 mui-text-left border-bottom">
-                  <a href="#" class="account_security"> <!--?-->
-                        <img src="../../mobile-v3/images/my_ico_7.png" class="dis-in" alt="">
-                        <div class="dis-in ">
-                              <div>
-                                    <span>账户安全</span>
-                                    <span class="mui-badge mui-badge-danger">低</span>
-                              </div>
-                              <small class="processing">保护您的账户安全</small>
-                        </div>
-                  </a>
-            </li>
-            <li class="mui-col-xs-6 mb10 mui-text-left">
-                  <a href="mine-promo-records.html" class="promo_record">
-                        <img src="../../mobile-v3/images/my_ico_6.png" class="dis-in" alt="">
-                        <div  class="dis-in ">
-                              <div>优惠记录</div>
-                              <small class="processing">查看所参与的优惠纪录</small>
-                        </div>
-                  </a>
-            </li>
-            <li class="mui-col-xs-6 mb10 mui-text-left ">
-                  <a href="mine-notice-game.html" class="msg_center"><!--?-->
-                        <img src="../../mobile-v3/images/my_ico_8.png" class="dis-in" alt="">
-                        <div class="dis-in ">
-                              <div>消息中心</div>
-                              <small class="processing">查看历史消息内容</small>
-                        </div>
-                  </a>
-            </li>
-            <li class="mui-col-xs-6 mui-text-left border-bottom">
-                  <a href="mine-invite.html" class="share_to_friend">
-                        <img src="../../mobile-v3/images/my_ico_10.png" class="dis-in" alt="">
-                        <div class="dis-in ">
-                              <div>分享朋友</div>
-                              <small class="processing">查看历史消息内容</small>
-                        </div>
-                  </a>
-            </li>
-            <li class="mui-col-xs-6 mui-text-left border-bottom">
-                  <a href="promo-apply.html"class="send_apply"><!--?-->
-                        <img src="../../mobile-v3/images/my_ico_9.png" class="dis-in" alt="">
-                        <div class="dis-in ">
-                              <div>发送申请</div>
-                              <small class="processing">发送优惠申请优惠</small>
-                        </div>
-                  </a>
-            </li>
-            <li class="mui-col-xs-6 mui-text-left ">
-                  <a href="#"class="check_more">
-                        <img src="../../mobile-v3/images/my_ico_11.png" class="dis-in"style="" alt="">
-                        <div class="dis-in">
-                              <div>查看更多</div>
-                              <small class="processing">建议反馈</small>
-                        </div>
-                  </a>
-            </li>
-            <li class="mui-col-xs-6 mui-text-left  blank_item">
-                  <div class="dis-in ">
-                        <div></div>
-                        <small class="processing"></small>
-                  </div>
-            </li>
-      </ui>
-</main>
+        </div>
+        <div class="content_container">
+            <ul class="mui-content function_nav" >
+                <!--总资产 & 钱包余额-->
+                <li class="mui-row user_asset_info">
+                    <div class="mui-col-xs-6 total_asset">
+                        <i>￥3,000.00</i>
+                        <span>总资产/</span>
+                    </div>
+                    <div class="mui-col-xs-6 wallet_balance">
+                        <i>￥3,000.00</i>
+                        <span>钱包余额/</span>
+                    </div>
+                </li>
+                <!--充值 & 提现-->
+                <li class="mui-row charge_withdraw">
+                    <a href="../mobile-v3-newDeposit/mine-deposit-2-online.html" class="mui-col-xs-6 charge_item">
+                        <i></i>
+                        <span>充值</span>
+                    </a>
+                    <a href="../mobile-v3-newDeposit/mine-deposit-2-online.html" class="mui-col-xs-6 withdraw_item">
+                        <i></i>
+                        <span>提现</span>
+                    </a>
+                </li>
+                <!--投注记录 & 资金账户-->
+                <li class="mui-row func_nav_item sep_top">
+                    <a href="mine-bet-record.html" class="mui-col-xs-6 func_nav_label" >
+                        <i class="bet_record_icon"></i>
+                        <span class="func_nav_name">
+                        <span>投注记录</span>
+                        <small>查看所参与的游戏记录</small>
+                    </span>
+                    </a>
+                    <a href="../mobile-v3-newDeposit/mine-deposit-2-online.html" class="mui-col-xs-6 func_nav_label">
+                        <i class="asset_account_icon"></i>
+                        <span class="func_nav_name" >
+                        <span>资金账户</span>
+                        <small>进行资金回收和转入</small>
+                    </span>
+                    </a>
+                </li>
+                <!--资金记录 & 安全中心-->
+                <li class="mui-row func_nav_item">
+                    <a href="mine-cash-record.html" class="mui-col-xs-6 func_nav_label">
+                        <i class="money_record_icon"></i>
+                        <span class="func_nav_name">
+                        <span>资金记录</span>
+                        <small>查看所有资金来往记录</small>
+                    </span>
+                    </a>
+                    <a href="#" class="mui-col-xs-6 func_nav_label">
+                        <i class="security_center_icon"></i>
+                        <span class="func_nav_name">
+                        <span>安全中心</span>
+                        <small>保护您的账户安全</small>
+                    </span>
+                    </a>
+                </li>
+                <!--优惠记录 & 消息中心-->
+                <li class="mui-row func_nav_item sep_btm three_items">
+                    <a href="mine-promo-records.html" class="mui-col-xs-6 func_nav_label">
+                        <i class="promo_record_icon"></i>
+                        <span class="func_nav_name ">
+                        <span>优惠记录</span>
+                        <small>查看所参与的优惠纪录</small>
+                    </span>
+                    </a>
+                    <a href="mine-notice-game.html" class="mui-col-xs-6 func_nav_label">
+                        <i class="msg_center_icon"></i>
+                        <span class="func_nav_name">
+                        <span>消息中心</span>
+                        <small>查看历史消息内容</small>
+                    </span>
+                    </a>
+                </li>
+                <!--我的收藏 & 申请优惠-->
+                <li class="mui-row func_nav_item sep_top">
+                    <a href="mine-invite.html" class="mui-col-xs-6 func_nav_label">
+                        <i class="my_save_icon"></i>
+                        <span class="func_nav_name ">
+                        <span>我的收藏</span>
+                        <small>查看历史消息内容</small>
+                    </span>
+                    </a>
+                    <a href="promo-apply.html" class="mui-col-xs-6 func_nav_label">
+                        <i class="send_apply_icon"></i>
+                        <span class="func_nav_name">
+                        <span>申请优惠</span>
+                        <small class="processing">发送优惠申请优惠</small>
+                    </span>
+                    </a>
+                </li>
+                <!--分享朋友 & 查看更多-->
+                <li class="mui-row func_nav_item sep_btm">
+                    <a href="mine-invite.html" class="mui-col-xs-6 func_nav_label">
+                        <i class="share_to_friend_icon"></i>
+                        <span class="func_nav_name">
+                        <span>分享朋友</span>
+                        <small>查看历史消息内容</small>
+                    </span>
+                    </a>
+                    <a href="#" class="mui-col-xs-6 func_nav_label">
+                        <i class="check_more_icon"></i>
+                        <span class="func_nav_name">
+                        <span>查看更多</span>
+                        <small>建议反馈</small>
+                    </span>
+                    </a>
+                </li>
+                <!--清理缓存-->
+                <li class="mui-row func_nav_item last_item">
+                    <a href="#" class="mui-col-xs-12 func_nav_label">
+                        <i class="clear_cache_icon"></i>
+                        <span class="func_nav_name">
+                        <span>清理缓存 <i>(35M)</i></span>
+                        <small>点一下就能更流畅</small>
+                    </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <!--footer-->
 <footer class="mui-bar mui-bar-tab">
-      <a class="mui-tab-item" href="index.html">
-            <span class="mui-icon icon-home"></span>
-            <span class="mui-tab-label">首页</span>
-      </a>
-      <a class="mui-tab-item" href="../mobile-v3-newDeposit/mine-deposit-2-online.html">
-            <span class="mui-icon icon-deposit"></span>
-            <span class="mui-tab-label">存款</span>
-      </a>
-      <a class="mui-tab-item" href="promo.html">
-            <span class="mui-icon icon-promo"></span>
-            <span class="mui-tab-label">优惠</span>
-      </a>
-      <a class="mui-tab-item" href="">
-            <span class="mui-icon icon-service"></span>
-            <span class="mui-tab-label">客服</span>
-      </a>
-      <a class="mui-tab-item mui-active" href="mine_new.html">
-            <span class="mui-icon icon-mine"></span>
-            <span class="mui-tab-label">我的</span>
-      </a>
+    <a class="mui-tab-item" href="index.html">
+        <span class="mui-icon icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item" href="../mobile-v3-newDeposit/mine-deposit-2-online.html">
+        <span class="mui-icon icon-deposit"></span>
+        <span class="mui-tab-label">存款</span>
+    </a>
+    <a class="mui-tab-item" href="promo.html">
+        <span class="mui-icon icon-promo"></span>
+        <span class="mui-tab-label">优惠</span>
+    </a>
+    <a class="mui-tab-item" href="">
+        <span class="mui-icon icon-service"></span>
+        <span class="mui-tab-label">客服</span>
+    </a>
+    <a class="mui-tab-item mui-active" href="mine_new.html">
+        <span class="mui-icon icon-mine"></span>
+        <span class="mui-tab-label">我的</span>
+    </a>
 </footer>
 
 <!--语言弹窗-->
 <ul class="lang-menu">
-      <li class="current zh-CN"><a href="">中文</a></li><!--当前语言版本加current-->
-      <li class="en-US"><a href="">English</a></li>
-      <li class="ja-JP"><a href="">日文</a></li>
+    <li class="current zh-CN"><a href="">中文</a></li><!--当前语言版本加current-->
+    <li class="en-US"><a href="">English</a></li>
+    <li class="ja-JP"><a href="">日文</a></li>
 </ul>
 
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
+<script>
+    $(function () {
+        mui(".mine_page .mui-scroll-wrapper").scroll({
+            scrollY: true,
+            scrollX: false,
+            startX: 0,
+            startY: 0,
+            indicators: false,
+            deceleration: 0.0006,
+            bounce: true
+        });
+    });
+</script>
 </body>
 </html>

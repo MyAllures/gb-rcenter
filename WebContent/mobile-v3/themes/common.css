@@ -137,7 +137,8 @@ li {
 
 /* banner-slide */
 .banner-slide {
-    position: relative; }
+    position: relative;
+}
 .banner-slide .banner-ads {
     font-size: 12px;
     color: #fff;
@@ -149,7 +150,8 @@ li {
     right: 0;
     z-index: 10;
     height: 40px;
-    line-height: 40px; }
+    line-height: 40px;
+}
 .banner-slide .banner-ads .btn-download {
     border: 1px solid #fff;
     border-radius: 3px;
@@ -207,7 +209,162 @@ li {
     }
 }
 
-/******************* notice ********************/
+/****************************************** 首页 ***********************************/
+.mui-content.home-content {
+    background: #151515;
+    position: relative;
+}
+.login-before {
+    display:none;
+}
+.login-info {
+    display: inline-block;
+    height: 24px;
+    padding-right: 10px;
+    margin-top: 10px;
+    min-width: 40px;
+    float: right;
+    position: relative;
+    background: url("../themes/default/images/icon-open-offcanvas.png") no-repeat right center/5px;
+    /*display:none;*/
+}
+.login-info .user_name, .login-info .money {
+    font-size: 9px;
+    text-align: right;
+    line-height: 13px;
+    transform: scale(0.85);
+}
+.login-info .money {
+    padding-left: 10px;
+    height: 14px;
+    line-height: 14px;
+    background: url("../themes/default/images/icon-wallet.png") no-repeat 0 2px/10px;
+}
+.user_money_info {
+    padding-top:45px;
+}
+.user_money_info .money-shadow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: none;
+}
+.user_money_info .ex {
+    box-sizing: border-box;
+    width:  230px;
+    height: 468px;
+    border: none;
+    display: flex;
+    flex-direction:  column;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: -468px;
+    right: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.5s;
+    z-index: 1001;
+}
+.ex.open {
+    top: 45px;
+    transition: all 0.8s;
+}
+.user_money_info .total_asset,.wallet {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction:  row;
+    justify-content:  space-between;
+    align-items:  center;
+    padding: 0 13px ;
+    border-bottom:  1px solid #888888;
+    background-color:  #515151;
+    height: 26px;
+    line-height: 26px;
+}
+.user_money_info .asset_txt {
+    font-family: "PingFangSC-Regular";
+    color: #eeeeee;
+    font-size: 12px;
+    transform: scale(0.9);
+    height: 26px;
+    line-height: 26px;
+}
+.user_money_info .asset_num {
+    color: #FFC000;
+    font-family: "PingFangSC-Regular";
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    transform: scale(0.9);
+}
+.user_money_info .central_scroll {
+    box-sizing: border-box;
+    background-color:  #343434;
+    padding: 0 12px;
+    font-family: "PingFangSC-Regular";
+    color: #999;
+    height: 320px;
+    overflow: scroll;
+}
+.user_money_info .item_data {
+    box-sizing: border-box;
+    height: 26px;
+    display: flex;
+    flex-direction:  row;
+    justify-content:  space-between;
+    align-items:  center;
+    border-top: 1px solid #3E3E3E;
+}
+.user_money_info .item_data span {
+    font-size:  12px;
+    transform: scale(0.85);
+}
+.user_money_info .item_data .maintaining {
+    color: #805628;
+}
+.user_money_info .item_data:first-child {
+    border-top:  none;
+}
+.user_money_info .btn_group {
+    box-sizing: border-box;
+    background: #343434;
+    display: flex;
+    flex-direction:  column;
+    justify-content:  space-around;
+    align-items:  center;
+    font-size:  15px;
+    color:  #FFFFFF;
+    flex: 1;
+    padding-bottom:  6px;
+}
+.user_money_info .one_key_recycle {
+    width: 206px;
+    height: 37px;
+    line-height:  37px;
+    text-align: center;
+    border-radius: 5px;
+    background: #2377D6;
+    color: #fff;
+}
+.user_money_info .saving_money {
+    width: 206px;
+    height: 37px;
+    line-height:  37px;
+    text-align: center;
+    border-radius: 5px;
+    background: #28BD95;
+    color: #fff;
+}
+.login-info .mui-scroll-wrapper.mui-assets {
+    top: 68px;
+    height: 230px;
+    left: 20px; }
+
+
+/******************************** 通告 *********************************************/
 .notice {
     height: 41px;
     line-height: 41px;
@@ -252,48 +409,139 @@ li {
     font-size: 13px;
     color: #333;
 }
-
 .notice-slider {
     padding-bottom: 21px;
-    height: 375px !important; }
-.notice-slider .mui-slider-group {
-    height: 100%; }
-.notice-slider .mui-slider-item a {
-    line-height: 18px !important;
-    font-size: 13px;
-    color: #666;
-    display: block;
-    border-bottom: 1px dashed #666;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    /*height: 375px !important; */
 }
-
+.notice-slider .mui-slider-group {
+    height: 100%;
+}
+.notice-slider .mui-slider-item a {
+    display: block;
+    text-align: left;
+    line-height: 22px !important;
+    font-size: 13px;
+    color: #333;
+    padding: 29px 25px;
+    border-bottom: 1px dashed #666;
+    /*margin-bottom: 10px;*/
+    /*padding-bottom: 10px;*/
+}
 .notice-alert {
     border-radius: 8px;
+}
+.notice-alert.mui-popup {
+    width: 274px;
 }
 .notice-alert.mui-popup-in {
     transform: translate(-50%,-50%);
 }
 .notice-alert .mui-popup-inner {
     border-radius: 0;
-    padding: 15px;
+    padding: 0 !important;
 }
 .notice-alert .mui-popup-inner .mui-popup-text {
     margin: 12px 0 0;
+}
+.notice-alert .mui-popup-inner .mui-popup-text .content_wrapper {
+
 }
 .notice-alert .mui-popup-button {
     border-radius: 0 !important;
     font-size: 15px;
 }
 .notice-alert .mui-popup-title {
-    font-size: 15px;
+    font-size: 18px;
     color: #333;
-    height: 29px;
-    margin: 0 -15px;
-    border-bottom: 1px solid #0003;
+    height: 49px;
+    line-height:49px;
+    text-align: center;
+    background-color: #EFEFEF;
 }
 
-/* nav */
+/******************* 公告 *******************/
+.notice_dialog {
+    display: none;
+}
+.notice_dialog .notice_mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, .5);
+    z-index: 1000;
+}
+.notice_dialog .notice_container {
+    z-index: 1001;
+    position: absolute;
+    width: 274px;
+    height: 316px;
+    background-color: #EFEFEF;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.notice_dialog .notice_container .notice_title {
+    width: 100%;
+    height: 49px;
+    line-height:49px;
+    text-align: center;
+    color: #333;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+.notice_dialog .notice_container .notice_body {
+    box-sizing: border-box;
+    height: 253px;
+    padding: 25px 25px 15px;
+    background-color: #fff;
+    color: #333;
+    font-size: 13px;
+    position: relative;
+}
+.notice_dialog .notice_container .notice_body .mui-slider {
+    width: 100%;
+    height: 100%;
+}
+.notice_dialog .notice_container .notice_body .mui-slider .mui-slider-group {
+    width: 100%;
+    height: 100%;
+}
+.notice_dialog .notice_container .notice_body .mui-slider .mui-slider-indicator {
+    bottom: -6px;
+}
+.notice_dialog .notice_container .notice_body .mui-slider .mui-slider-indicator .mui-indicator {
+    background: #CCC;
+    box-shadow: none;
+}
+.notice_dialog .notice_container .notice_body .mui-slider .mui-slider-indicator .mui-active.mui-indicator {
+    background: #4B86C6;
+}
+.notice_dialog .notice_container .notice_body .notice_time{
+    box-sizing: border-box;
+    height: 18px;
+    line-height:18px;
+    text-align: right;
+    margin-top:15px;
+    color: #CCC;
+    font-size: 11px;
+}
+
+.notice_dialog .notice_close_btn {
+    position: absolute;
+    top: 108%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 49px;
+    height: 49px;
+    margin: 15px auto;
+    background: url("../themes/images/close@3x.png") no-repeat;
+    background-size: 49px 49px;
+}
+/**************************************** nav *************************************************/
 .nav {
     height: 66px;
     display: block;
@@ -594,9 +842,7 @@ li {
     background-size: 18px auto !important;
     margin: 5px; }
 
-/* login and register page */
-
-
+/*************************************** 登录/注册 **************************************************/
 .type-header {
     padding: 15px 0;
     text-align: center;
@@ -620,10 +866,8 @@ li {
     border-bottom-left-radius: 0; }
 .type-header .mui-btn.mui-active {
     background: #1766bb; }
-
 .mui-bar.mui-bar-blue {
     background-image: none; }
-
 .login-wrap, .register-wrap {
     position: fixed;
     height: 0;
@@ -637,16 +881,13 @@ li {
     position: relative; }
 .login-wrap .mui-icon-arrowleft, .login-wrap .mui-title, .register-wrap .mui-icon-arrowleft, .register-wrap .mui-title {
     color: #fff; }
-
 .login-wrap .login-icon {
     background: url(./images/login-icon.png) 0 0/100%;
     width: 132.5px;
     height: 132.5px;
     margin: 17.5px auto 27px; }
-
 .mui-content-without-footer-address {
     padding: 44px 0 0 0 !important; }
-
 .type-content .mui-control-content {
     padding: 10px 15px 50px;
     position: relative;
@@ -838,7 +1079,6 @@ li {
     font-size: 13px;
     color: #FFF;
 }
-
 .copy-right {
     font-size: 9px;
     color: #999;
@@ -848,18 +1088,18 @@ li {
     padding: 10px 0 0;
     margin-top: 10px; }
 
-/* 关于我们，注册条款 */
+/*********************************** 关于我们，注册条款 ****************************/
 [data-list="terms"], [data-list="about"] {
     padding: 0 5px; }
 
-/* 线上样式修复  */
+/********************************** 线上样式修复  *********************************************/
 #transactionType {
     width: 141px;
     text-align: center; }
 #transactionType .mui-table-view-cell:after {
     right: 15px; }
 
-/* 资金记录样式  */
+/*********************************** 资金记录样式  **************************************/
 .mine-cash-record-body {
     background: #fff;
     font-size: 12px;
@@ -1808,7 +2048,7 @@ body.deposit .gb-select > a {
 
 
 
-/***************************存款页面****************************/
+/*************************************************  存款页面  **************************************************/
 .deposit_2 {
     overflow-x: hidden;
     background: #f2f2f2;
@@ -2011,7 +2251,6 @@ body.deposit .gb-select > a {
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_5000 {
     background-image: url(images/chip_black@3x.png);
 }
-
 .deposit_2 .pay_mone .bank_list {
     overflow: hidden;
     padding: 0 10px;
@@ -2410,7 +2649,435 @@ body.deposit .gb-select > a {
     bottom: 62%;
     left: 44%; }
 
-/*********存款-> 资金转账页面 ************/
+/***************************QQ钱包付款**************************/
+.online-pay-qq-wallet .mui-content {
+    background-color: #EFEFEF;
+}
+.online-pay-qq-wallet  .qq_account_info {
+    background-color: #fff;
+}
+.online-pay-qq-wallet .account_info_title {
+    font-size: 14px;
+    color: #333;
+    padding: 10px 24px;
+    position: relative;
+}
+.online-pay-qq-wallet .account_info_title:before {
+    content: '';
+    width: 3px;
+    height: 17px;
+    background: #1766bb;
+    position: absolute;
+    left: 11px;
+    top: 11px;
+}
+.qq_wallet_name {
+    width: 90%;
+    margin: 7px auto 0;
+    text-align: center;
+}
+.qq_wallet_txt {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 13px;
+}
+.qq_wallet_txt .qq_wallet_icon {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    background: url("./images/pay-icon.png") no-repeat;
+    background-size: 38px;
+    background-position-x: center;
+    background-position-y: -152px;
+}
+.qq_wallet_txt .qq_txt_style {
+    color: #333;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.user_nickname {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 13px;
+    color: #333;
+    font-size: 16px;
+}
+.user_nickname .nickname_copy {
+    display: inline-block;
+    width: 50px;
+    height: 19px;
+    line-height: 19px;
+    text-align: center;
+    background-color: #F6FAFF;
+    color: #1F67B9;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-size: 14px;
+}
+.qq_copy_box {
+    margin: 17px 29px 10px;
+    background-color: #F7F7F7;
+    padding: 0 13px;
+    border-radius: 3px;
+}
+.copy_account, .copy_nickname {
+    box-sizing: border-box;
+    height: 37px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.copy_account {
+    border-bottom: 1px solid #E6E6E6;
+}
+.account_txt i, .nickname_txt i  {
+    font-style: normal;
+    font-size: 14px;
+    color: #999;
+}
+.account_txt span, .nickname_txt span {
+    font-size: 14px;
+    color: #333;
+    margin-left: 5px;
+}
+.qq_account_copy, .qq_nickname_copy {
+    display: inline-block;
+    width: 50px;
+    height: 19px;
+    line-height: 19px;
+    text-align: center;
+    background-color: #ffffff;
+    color: #999;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.qr_code_info {
+    margin: 0 29px;
+    background-color: #F7F7F7;
+    padding: 0 14px 16px;
+    border-radius: 3px;
+}
+.qr_code_txt {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #CCCCCC;
+}
+.qr_code_img {
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    margin: 12px auto 15px;
+    background: #fff url("../images/qcode.png") no-repeat;
+    background-size: contain;
+}
+.qr_code_btns {
+    box-sizing: border-box;
+    height: 15px;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+.save_to_phone {
+    height: 15px;
+    line-height: 15px;
+    color: #1F67B9;
+    border-right: 1px solid #CCCCCC;
+    padding-right: 11px;
+}
+.use_qq_pay {
+    height: 15px;
+    line-height: 15px;
+    color: #0EC392;
+    padding-left: 11px;
+}
+.qq_account_num, .order_last_num {
+    height: 51px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.qq_account_num {
+    border-bottom: 1px solid #F2F2F2;
+}
+.qq_account_num span, .order_last_num span {
+    font-size: 14px;
+    color: #999;
+    flex: 1;
+}
+.input_qq_account, .input_order_num   {
+    text-align: right;
+    flex: 1;
+    border: none !important;
+    outline: none;
+    margin-bottom: 0 !important;
+    padding: 8px 10px !important;
+    color: #333 !important;
+}
+.input_qq_account::-webkit-input-placeholder  {
+    color: #CCCCCC;
+    font-size: 14px;
+}
+.input_order_num::-webkit-input-placeholder  {
+    color: #333;
+    font-size: 14px;
+}
+.online-pay-qq-wallet .btn_wrap {
+    padding: 20px 14px;
+    background-color: #EFEFEF;
+}
+.online-pay-qq-wallet .btn_wrap .btn_submit {
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    background: #1C75DB;
+    border: none;
+    border-radius: 5px;
+}
+.online-pay-qq-wallet .deposit_help {
+    background-color: #EFEFEF;
+    padding: 0 20px 40px;
+    font-size: 12px;
+    color: #666; }
+.online-pay-qq-wallet .deposit_help p {
+    margin-bottom: 0; }
+.online-pay-qq-wallet .copy_success {
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0,0,0,.5);
+    text-align: center;
+    border-radius: 5px;
+    display: none;
+}
+.online-pay-qq-wallet .copy_success i {
+    display: block;
+    margin: 10px 0 6px 20px;
+    width: 40px;
+    height: 37px;
+    background: url("../../themes/images/icon_copy_success@3x.png") no-repeat;
+    background-size: 40px 37px;
+}
+.online-pay-qq-wallet .copy_success span {
+    color: #EEE;
+    font-size: 13px;
+}
+
+/*****************************柜台付款****************************/
+
+.online-pay-counter .mui-content {
+    background-color: #EFEFEF;
+}
+.online-pay-counter  .counter_account_info {
+    background-color: #fff;
+}
+.online-pay-counter .account_info_title {
+    font-size: 14px;
+    color: #333;
+    padding: 10px 24px;
+    position: relative;
+}
+.online-pay-counter .account_info_title:before {
+    content: '';
+    width: 3px;
+    height: 17px;
+    background: #1766bb;
+    position: absolute;
+    left: 11px;
+    top: 11px;
+}
+.bank_name {
+    width: 90%;
+    margin: 7px auto 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 13px;
+}
+.bank_counter_icon {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    background-image: url("./images/bank@3x.png");
+    background-repeat:  no-repeat;
+    background-size: 38px 38px;
+}
+.counter_txt_style {
+    color: #333;
+    font-size: 14px;
+    margin-left: 9px;
+}
+.bank_card_resume {
+    color: #999;
+    font-size: 14px;
+}
+.bank_copy_box {
+    margin: 17px 29px 10px;
+    background-color: #F7F7F7;
+    padding: 0 13px;
+    border-radius: 3px;
+}
+.account_code_info, .copy_account_name, .copy_bank_name {
+    box-sizing: border-box;
+    height: 37px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E6E6E6;
+}
+.copy_account_name {
+    border-bottom: 1px solid #E6E6E6;
+}
+.copy_bank_name {
+    border-bottom: none;
+}
+.account_code_info i {
+    font-style: normal;
+    color: #1F67B9;
+    font-size: 14px;
+}
+.account_code_icon {
+    width: 23px;
+    height: 19px;
+    background: url("./images/icon_contact@3x.png") no-repeat;
+    background-size: 23px 19px;
+    position:relative;
+    right: 14px;
+}
+.copy_account_name .account_txt i, .copy_bank_name .bank_name_txt i  {
+    font-style: normal;
+    font-size: 14px;
+    color: #999;
+}
+.copy_account_name .account_txt span, .copy_bank_name .bank_name_txt span {
+    font-size: 14px;
+    color: #333;
+    margin-left: 5px;
+}
+.account_name_copy, .bank_name_copy {
+    display: inline-block;
+    width: 50px;
+    height: 19px;
+    line-height: 19px;
+    text-align: center;
+    background-color: #ffffff;
+    color: #999;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.deposit_info {
+    margin-top: 20px;
+}
+.deposit_way, .deposit_person, .deposit_location {
+    height: 51px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #F2F2F2;
+    color: #333;
+}
+.deposit_way span, .deposit_person span, .deposit_location span {
+    font-size: 14px;
+    color: #999;
+    flex: 1;
+}
+.input_deposit_person, .input_deposit_place   {
+    text-align: right;
+    flex: 1;
+    border: none !important;
+    outline: none;
+    margin-bottom: 0 !important;
+    padding: 8px 10px !important;
+    color: #333;
+    font-size: 14px;
+}
+.input_deposit_way {
+    font-style: normal;
+    color: #333;
+    text-align: right;
+    flex: 1;
+    border: none ;
+    outline: none;
+    margin-bottom: 0 ;
+    padding: 8px 5px ;
+}
+.input_deposit_person::-webkit-input-placeholder  {
+    color: #CCC;
+    font-size: 14px;
+}
+.input_deposit_place::-webkit-input-placeholder  {
+    color: #333;
+    font-size: 14px;
+}
+.online-pay-counter .btn_wrap {
+    padding: 20px 14px;
+    background-color: #EFEFEF;
+}
+.online-pay-counter .btn_wrap .btn_submit {
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    background: #1C75DB;
+    border: none;
+    border-radius: 5px;
+}
+.online-pay-counter .deposit_help {
+    background-color: #EFEFEF;
+    padding: 0 20px 40px;
+    font-size: 12px;
+    color: #666; }
+.online-pay-counter .deposit_help p {
+    margin-bottom: 0; }
+.online-pay-counter .copy_success {
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0,0,0,.5);
+    text-align: center;
+    border-radius: 5px;
+    display: none;
+}
+.online-pay-counter .copy_success i {
+    display: block;
+    margin: 10px 0 6px 20px;
+    width: 40px;
+    height: 37px;
+    background: url("../../themes/images/icon_copy_success@3x.png") no-repeat;
+    background-size: 40px 37px;
+}
+.online-pay-counter .copy_success span {
+    color: #EEE;
+    font-size: 13px;
+}
+
+/****************************************存款-> 资金转账页面 ************************************/
 .asset_transfer_page {
     background-color: #F6FAFF;
     position: absolute;
@@ -2575,7 +3242,8 @@ body.deposit .gb-select > a {
 .asset_transfer_page .btn_groups_refresh {
     background-color: #0EC392;
 }
-/****************存款->提现页面*************/
+
+/******************************************* 存款->提现页面 ************************************/
 .withdraw_money_page {
     background-color: #EFEFEF;
     position: absolute;
@@ -2658,10 +3326,258 @@ body.deposit .gb-select > a {
 
 
 
+/**************************************** 我的 *******************************************/
+.mine_page .user_info_part {
+    height: 193px;
+    background: url("../images/my_bg@3x.png") no-repeat;
+    background-size: 100% 193px;
+}
+.mine_page .user_info_part .mui-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+}
+.mine_page .user_info_part .msg_notice {
+    display: inline-block;
+    width: 19px;
+    height: 15px;
+    background: url("../images/icon_mail@3x.png") no-repeat;
+    background-size: 19px 15px;
+    position: relative;
+}
+.mine_page .user_info_part .msg_notice sup {
+    position: absolute;
+    transform: translate(19px,3px);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #FF0000;
+}
+.mine_page .user_info_part .mine_settings {
+    padding: 1px !important;
+    margin: 7px !important;
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background: url("../images/icon_site@3x.png") no-repeat;
+    background-size: 19px 19px;
+}
+.mine_page .user_info_part .mui-bar{
+    background-color: transparent;
+}
+.mine_page .user_info_part .user_portrait_part {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+    transform: translate(0,70%);
+}
+.mine_page .user_info_part .user_portrait_part i {
+    display: inline-block;
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    background: url("../images/icon_visitor@3x.png") no-repeat;
+    background-size: 53px 53px;
+ }
+.mine_page .user_info_part .user_portrait_part span {
+    color: #333;
+    font-size: 14px;
+}
+.mine_page .user_info_part .user_portrait_part b {
+    font-style: normal;
+    color: #666;
+    font-size: 12px;
+    zoom: 0.85;
+}
+.mine_page .content_container {
+    position: relative;
+    height: 600px;
+}
+.mine_page .function_nav {
+    width: 100%;
+    padding: 0 15px;
+    position: fixed;
+    top:168px;
+    z-index: 100;
+    background-color: transparent;
+    overflow: scroll;
+}
+.mine_page .user_asset_info {
+    height: 50px;
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 11px 0;
+    margin-bottom:10px;
+}
+.mine_page .user_asset_info .total_asset, .mine_page .user_asset_info .wallet_balance {
+    flex:1;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.mine_page .user_asset_info .total_asset {
+    border-right: 1px solid #F2F4F3;
+}
+.mine_page .user_asset_info .total_asset i,.mine_page .user_asset_info .wallet_balance i {
+    font-style: normal;
+    color: #2BA6FE;
+    font-size: 15px;
+}
+.mine_page .user_asset_info .total_asset span,.mine_page .user_asset_info .wallet_balance span {
+    color: #333;
+    font-size: 12px;
+}
+.mine_page .charge_withdraw {
+    height: 50px;
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 11px 0;
+    margin-bottom:10px;
+}
+.mine_page .charge_withdraw .charge_item,.mine_page .charge_withdraw .withdraw_item {
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+}
+.mine_page .charge_withdraw .charge_item {
+    border-right:1px solid #F2F4F3;
+}
+.mine_page .charge_withdraw .charge_item i,.mine_page .charge_withdraw .withdraw_item i {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    margin-right:12px;
+}
+.mine_page .charge_withdraw .charge_item i {
+    background: url("../images/my_ico_1.png") no-repeat;
+    background-size: 36px 36px;
+}
+.mine_page .charge_withdraw .withdraw_item i {
+    background: url("../images/my_ico_2.png") no-repeat;
+    background-size: 36px 36px;
+}
+.mine_page .charge_withdraw .charge_item span,.mine_page .charge_withdraw .withdraw_item span {
+    font-size: 14px;
+    color: #333;
+}
+.mine_page .func_nav_item {
+    height: 65px;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    background-color: #fff;
+    padding: 11px 0;
+}
+.mine_page .func_nav_item.sep_top {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px solid #F2F4F3;
+}
+.mine_page .func_nav_item.sep_btm {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom:10px;
+}
+.mine_page .func_nav_item.last_item {
+    border-radius: 5px;
+ }
+.mine_page .func_nav_item.sep_btm.three_items {
+    border-top:1px solid #F2F4F3;
+}
+.mine_page .func_nav_item .func_nav_label {
+    flex:1;
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 10px;
+}
+.mine_page .func_nav_item .func_nav_label i {
+    width: 33px;
+    height: 31px;
+    margin-right: 8px;
+}
+.mine_page .func_nav_item .func_nav_label i.bet_record_icon {
+    background: url("../images/my_ico_3.png") no-repeat;
+    background-size: 33px 31px;
+}
+.mine_page .func_nav_item .func_nav_label i.asset_account_icon {
+    background: url("../images/icon_account@2x.png") no-repeat;
+    background-size: 29px 27px;
+}
+.mine_page .func_nav_item .func_nav_label i.money_record_icon {
+    background: url("../images/my_ico_5.png") no-repeat;
+    background-size: 33px 31px;
+}
+.mine_page .func_nav_item .func_nav_label i.security_center_icon {
+    background: url("../images/my_ico_7.png") no-repeat;
+    background-size: 33px 31px;
+}
+.mine_page .func_nav_item .func_nav_label i.promo_record_icon {
+    background: url("../images/my_ico_6.png") no-repeat;
+    background-size: 33px 31px;
+}
+.mine_page .func_nav_item .func_nav_label i.msg_center_icon {
+    background: url("../images/my_ico_8.png") no-repeat;
+    background-size: 33px 31px;
+}
+.mine_page .func_nav_item .func_nav_label i.send_apply_icon {
+    background: url("../images/my_ico_9.png") no-repeat;
+    background-size: 33px 31px;
+}
+.mine_page .func_nav_item .func_nav_label i.my_save_icon {
+    background: url("../images/icon_favourite@3x.png") no-repeat;
+    background-size: 29px 27px;
+}
+.mine_page .func_nav_item .func_nav_label i.share_to_friend_icon {
+    background: url("../images/my_ico_10.png") no-repeat;
+    background-size: 33px 31px;
+}
+.mine_page .func_nav_item .func_nav_label i.check_more_icon {
+    background: url("../images/my_ico_11.png") no-repeat;
+    background-size: 33px 31px;
+}
+.mine_page .func_nav_item .func_nav_label i.clear_cache_icon {
+    background: url("../images/clean@3x.png") no-repeat center;
+    background-size: 27px 25px;
+}
+.mine_page .func_nav_item .func_nav_label .func_nav_name {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: flex-start;
+}
+.mine_page .func_nav_item .func_nav_label .func_nav_name span {
+    font-size: 14px;
+    color: #333;
+}
+.mine_page .func_nav_item .func_nav_label .func_nav_name span i {
+    color: #D90004;
+    font-style: normal;
+}
+.mine_page .func_nav_item .func_nav_label .func_nav_name small {
+    display: inline-block;
+    font-size: 12px;
+    color: #999;
+    zoom: 0.9;
+}
 
 
-
-/*弹窗*/
+    /*弹窗*/
 .masker {
     position: fixed;
     z-index: 999;
@@ -3576,7 +4492,7 @@ body.withdraw .account_tab .mui-segmented-control .mui-control-item {
 body.withdraw .account_tab .mui-segmented-control .mui-control-item:first-child {
     border-left-width: 0; }
 body.withdraw .pay-bank.bitcoin {
-    background: url(./images/bit_pay.png) no-repeat 4px 5px/26px;
+    background: url("../themes/images/bit_pay.png") no-repeat 4px 5px/26px;
     height: 40px;
     width: 40px; }
 body.withdraw .gb-bindcard-box.bit-pay .mui-input-row label {
@@ -4028,10 +4944,17 @@ html.new-invite .mui-popup.act-popup .mui-popup-inner .mui-popup-title {
 html.new-invite .mui-popup.act-popup .mui-popup-inner .mui-popup-title + .mui-popup-text {
     margin: 0; }
 html.new-invite .mui-popup.act-popup .mui-popup-buttons {
-    height: 73px;
-    padding-top: 23px; }
+    width: 49px;
+    height: 49px;
+    background: url("../themes/images/close@3x.png") no-repeat;
+    background-size: 49px 49px;
+    /*height: 73px;*/
+    /*padding-top: 23px;*/
+    margin-top:15px;
+}
 html.new-invite .mui-popup.act-popup .mui-popup-buttons .mui-popup-button {
-    display: none; }
+    display: none;
+}
 html.new-invite .mui-popup.act-popup .btn-close {
     font-size: 0;
     width: 50px;
@@ -4114,7 +5037,8 @@ body.invite .invite-cont .cont .link p {
     color: #333333;
     font-size: 12px;
     margin-bottom: 0;
-    word-break: break-word; }
+    word-break: break-word;
+}
 body.invite .invite-cont .cont > p .btn {
     padding: 4px 50px; }
 body.invite .invite-cont .cont .tabl {
@@ -4285,7 +5209,8 @@ body.bankcard .gb-bankcard > .hd p i {
     background-size: cover;
     vertical-align: text-top; }
 body.bankcard .gb-bankcard > .hd p i.card1 {
-    background-image: url(./images/bank-type1.png); }
+    background-image: url(../themes/default/images/bank-type1.png);
+}
 body.bankcard .gb-bankcard > .ct {
     padding: 10px 7px 15px; }
 body.bankcard .gb-bankcard > .ct > p {
