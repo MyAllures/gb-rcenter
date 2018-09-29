@@ -26,6 +26,11 @@ var BaseDeposit = function () {
         }
     };
 
+    //关闭存款顶部优惠提示
+    $(".close_icon").click(function () {
+        $(".deposit_tips").fadeOut("slow");
+    });
+
     //当点击超出单笔存款金额范围的快选机金额时，给予提示
     this.invalidMoney = function (obj, options) {
         var minMoney = $("input[name='minMoney']").val();
