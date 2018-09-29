@@ -3332,6 +3332,37 @@ body.deposit .gb-select > a {
     background: url("../images/my_bg@3x.png") no-repeat;
     background-size: 100% 193px;
 }
+.mine_page .user_info_part .mui-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+}
+.mine_page .user_info_part .msg_notice {
+    display: inline-block;
+    width: 19px;
+    height: 15px;
+    background: url("../images/icon_mail@3x.png") no-repeat;
+    background-size: 19px 15px;
+    position: relative;
+}
+.mine_page .user_info_part .msg_notice sup {
+    position: absolute;
+    transform: translate(19px,3px);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #FF0000;
+}
+.mine_page .user_info_part .mine_settings {
+    padding: 1px !important;
+    margin: 7px !important;
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background: url("../images/icon_site@3x.png") no-repeat;
+    background-size: 19px 19px;
+}
 .mine_page .user_info_part .mui-bar{
     background-color: transparent;
 }
@@ -3347,8 +3378,8 @@ body.deposit .gb-select > a {
     width: 53px;
     height: 53px;
     border-radius: 50%;
-    background: linear-gradient(#D7D7D7,#FFFFFF);
-    /*background-image: url("../");*/
+    background: url("../images/icon_visitor@3x.png") no-repeat;
+    background-size: 53px 53px;
  }
 .mine_page .user_info_part .user_portrait_part span {
     color: #333;
