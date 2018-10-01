@@ -14,11 +14,11 @@ function userInfo() {
 
                 //登录时间
                 if (data.loginTime){
-                    $("._user-login-time .mt10").html(window.top.message.my_auto['上次登录时间']);
-                    $("._user-login-time small").html(data.loginTime.substring(0,10));
+                    // $("._user-login-time .mt10").html(window.top.message.my_auto['上次登录时间']);
+                    $("._user-login-time b").html(window.top.message.my_auto['上次登录时间']+data.loginTime.substring(0,10));
                 }else{
-                    $("._user-login-time .mt10").html(window.top.message.my_auto['本次登录时间']);
-                    $("._user-login-time small").html(data.lastLoginTime.substring(0,10));
+                    // $("._user-login-time .mt10").html(window.top.message.my_auto['本次登录时间']);
+                    $("._user-login-time b").html(window.top.message.my_auto['本次登录时间']+data.lastLoginTime.substring(0,10));
                 }
                 if (data.username) {
                     $(".login-name span").text(data.username);
@@ -28,15 +28,15 @@ function userInfo() {
                 }
                 //钱包余额
                 if (data.walletBalance != null && data.walletBalance != 0) {
-                    $("._purse-balance>span").text(currency + data.walletBalance.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+                    $(".wallet_balance>i").text(currency + data.walletBalance.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
                 } else {
-                    $("._purse-balance>span").text(currency + "0.00");
+                    $(".wallet_balance>i").text(currency + "0.00");
                 }
                 //总资产
                 if (data.totalAssets != null && data.totalAssets != 0) {
-                    $("._total-assets>span").text(currency + data.totalAssets.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+                    $(".total_asset>i").text(currency + data.totalAssets.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
                 } else {
-                    $("._total-assets>span").text(currency + "0.00");
+                    $(".total_asset>i").text(currency + "0.00");
                 }
                 //正在处理中取款金额
                 if (data.withdrawAmount != null && data.withdrawAmount != 0) {
@@ -90,6 +90,17 @@ $(function () {
         /*禁用侧滑手势指定样式*/
         disabledHandSlip: ['.mui-off-canvas-left']
     };
+    $(function () {
+        mui(".mine_page .mui-scroll-wrapper").scroll({
+            scrollY: true,
+            scrollX: false,
+            startX: 0,
+            startY: 0,
+            indicators: false,
+            deceleration: 0.0006,
+            bounce: true
+        });
+    });
     muiInit(options);
     userInfo();
 });
