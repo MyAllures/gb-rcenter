@@ -509,7 +509,17 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          * 播放提示音
          */
         play: function (file) {
-            if (!this.isLoadSwf) {
+            var player = document.createElement('audio');
+            $(player).addClass("hide");
+            var mp3 = document.createElement('source');
+            mp3.src = resRoot + '/' + file;
+            mp3.type = 'audio/mpeg';
+            player.appendChild(mp3);
+            player.play();
+
+
+
+            /*if (!this.isLoadSwf) {
                 var sounds = {};
                 var params = {wmode: "transparent"};
                 var attributes = {};
@@ -523,7 +533,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 }
                 sound.SetVariable("f", file);
                 sound.GotoFrame(1);
-            }
+            }*/
         },
         /** 获取我的投注记录 */
         getMyOrders: function () {
