@@ -511,8 +511,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         play: function (file) {
             var player = document.createElement('audio');
             $(player).addClass("hide");
+            $("#gameContent").append(player);
             var mp3 = document.createElement('source');
-            mp3.src = resRoot + '/' + file;
+            mp3.src = file;
             mp3.type = 'audio/mpeg';
             player.appendChild(mp3);
             player.play();
