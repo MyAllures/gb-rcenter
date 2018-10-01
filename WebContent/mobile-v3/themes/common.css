@@ -3699,6 +3699,106 @@ body.deposit .gb-select > a {
     margin: 0;
 }
 
+/************************** 查看更多->日常疑问 ********************************/
+.daily_qs_page .mui-content{
+    background: #EFEFEF;
+    padding-bottom: 0;
+}
+.daily_qs_page .check_more_container .content_item_title {
+    height: 33px;
+    background-color: #FFF;
+    color: #333;
+    font-size: 15px;
+    text-align: left;
+    line-height: 33px;
+    padding-left:15px;
+    margin: 0;
+}
+.daily_qs_page .check_more_container .content_item_title:before {
+    content: '';
+    display:inline-block;
+    width: 3px;
+    height: 17px;
+    background-color: #1766BB;
+    margin-right:10px;
+    position: relative;
+    top: 3px;
+}
+.daily_qs_page .check_more_container .detailed_qs_box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    padding: 0 15px;
+}
+.daily_qs_page .check_more_container .detailed_qs_box .question_box_item {
+    background-color: #fff;
+    padding: 9px;
+    margin-top: 6px;
+    width: 49%;
+}
+.daily_qs_page .check_more_container .detailed_qs_box .question_box_item .each_item_title {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    color: #1766BB;
+    /*height: 22px;*/
+}
+.daily_qs_page .check_more_container .detailed_qs_box .question_box_item .each_item_title span {
+    display: inline-block;
+    font-size: 12px;
+    transform-origin-x: 0;
+    transform: scale(0.9);
+}
+.daily_qs_page .check_more_container .detailed_qs_box .question_box_item .each_item_title i {
+    display: inline-block;
+    width: 6px;
+    height: 11px;
+    background: url("../themes/images/button_arrow@2x.png") no-repeat;
+    background-size: 6px 11px;
+}
+.daily_qs_page .check_more_container .detailed_qs_box .question_box_item p {
+    color: #999;
+    width: 125%;
+    font-size: 12px;
+    transform-origin-x: 0;
+    transform: scale(0.75);
+    margin-bottom: 0;
+    letter-spacing: .6px;
+    position: relative;
+    left: -21px;
+    line-height: 18px;
+}
+
+/************************** 查看更多->银行卡绑定 ********************************/
+.bind_bank_card_page .mui-content{
+    background: #EFEFEF;
+    padding-bottom: 0;
+}
+.bind_bank_card_page .check_more_container a {
+    background: #FFF;
+    color: #1766BB;
+    font-size: 15px;
+}
+.bind_bank_card_page .check_more_container a i {
+    display: inline-block;
+    width: 6px;
+    height: 11px;
+    background: url("../themes/images/button_arrow@2x.png") no-repeat;
+    background-size: 6px 11px;
+    transform: translate(0,50%) rotate(-90deg);
+    transition: all 0.5s linear;
+}
+.mui-navigate-right:after, .mui-push-left:after, .mui-push-right:after {
+    color: #1766BB;
+    font-size: 18px !important;
+}
+
+
+
+
 
 
 
@@ -4627,7 +4727,8 @@ body.withdraw .gb-bindcard-box.bit-pay .mine-form .mui-input-row > label small {
     white-space: normal;
     right: 15px;
     line-height: 10px;
-    font-size: 10px; }
+    font-size: 10px;
+}
 body.withdraw .gb-bindcard-box.bit-pay .bit-address {
     border: 1px solid #e2e2e2;
     width: 100%;
@@ -5162,7 +5263,7 @@ body.invite .invite-cont .cont .link p {
     color: #333333;
     font-size: 12px;
     margin-bottom: 0;
-    word-break: break-word;
+    word-break: break-all;
 }
 body.invite .invite-cont .cont > p .btn {
     padding: 4px 50px; }
@@ -5334,7 +5435,7 @@ body.bankcard .gb-bankcard > .hd p i {
     background-size: cover;
     vertical-align: text-top; }
 body.bankcard .gb-bankcard > .hd p i.card1 {
-    background-image: url(../themes/default/images/bank-type1.png);
+    background-image: url(../images/bank-type1.png);
 }
 body.bankcard .gb-bankcard > .ct {
     padding: 10px 7px 15px; }
