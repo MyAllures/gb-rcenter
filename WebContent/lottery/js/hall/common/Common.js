@@ -513,11 +513,14 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 var sounds = {};
                 var params = {wmode: "transparent"};
                 var attributes = {};
-                swfobject.embedSWF(resRoot + "/js/plugin/swfobject/sound.swf", "soundContainer", "1", "1", "9.0.0", resRoot + "/js/plugin/swfobject/expressInstall.swf", sounds, params, attributes);
+                swfobject.embedSWF((resLocalRoot|resRoot) + "/js/plugin/swfobject/sound.swf", "soundContainer", "1", "1", "9.0.0", resRoot + "/js/plugin/swfobject/expressInstall.swf", sounds, params, attributes);
                 this.isLoadSwf = true;
             }
             var sound = swfobject.getObjectById('soundContainer');
             if (sound) {
+                if(resLocalRoot){
+                    file.replace(resRoot,resLocalRoot);
+                }
                 sound.SetVariable("f", file);
                 sound.GotoFrame(1);
             }

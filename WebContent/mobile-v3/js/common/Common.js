@@ -610,7 +610,12 @@ function goToLastPage() {
     if (isNative) {
         nativeGoBackPage();
     } else {
-        mui.back();
+        //如果是外链过来，则跳转到首页
+        if (document.referrer === '' || document.referrer.indexOf(document.domain) === -1) {
+            goToHomePageOnly();
+        } else {
+            mui.back();
+        }
     }
 }
 
