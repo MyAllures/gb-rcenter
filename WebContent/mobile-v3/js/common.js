@@ -16,23 +16,23 @@ $(function(){
 	});
 
 
-	/*侧滑菜单脚本*/
-	$(".mui-bar").on("tap",".mui-action-menu",function(){
-		$("html").toggleClass("index-canvas-show");
-		mui('.index-canvas-wrap .mui-scroll-wrapper').scroll();
-	});
-
-      /*关闭侧滑菜单*/
-	$(".mui-inner-wrap").on("tap",function(event){
-		if(mui('.mui-off-canvas-wrap').offCanvas().isShown('left')){
-			mui('.mui-off-canvas-wrap').offCanvas().close();
-		}		
-	});
+	// /*侧滑菜单脚本*/
+	// $(".mui-bar").on("tap",".mui-action-menu",function(){
+	// 	$("html").toggleClass("index-canvas-show");
+	// 	mui('.index-canvas-wrap .mui-scroll-wrapper').scroll();
+	// });
+	//
+    //   /*关闭侧滑菜单*/
+	// $(".mui-inner-wrap").on("tap",function(event){
+	// 	if(mui('.mui-off-canvas-wrap').offCanvas().isShown('left')){
+	// 		mui('.mui-off-canvas-wrap').offCanvas().close();
+	// 	}
+	// });
 
 	/*打开侧滑菜单*/
-	$(".mui-bar").on("tap",".mui-action-menu",function(){
-		mui('.mui-off-canvas-wrap').offCanvas().show();
-	});
+	// $(".mui-bar").on("tap",".mui-action-menu",function(){
+	// 	mui('.mui-off-canvas-wrap').offCanvas().show();
+	// });
 
 	/* 关闭浮窗广告 */
 	mui(".ads-slider").on("tap",".close-ads",function(){
