@@ -257,10 +257,30 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
             /**
              * 渠道：公司入款/线上支付全选按钮，显示或者隐藏具体渠道
              */
-            $(this.formSelector).on("change", "input[name^='result.isDeposit']", function () {
+            $(this.formSelector).on("change", "input[name^='isDeposit']", function () {
                 var sta = $(this).is(':checked');
                 //父节点的父节点的父节点下的渠道的div显示或者隐藏
                 $(this).parent().parent().parent().find(".div_bank").css("display", sta?"none":"block");
+            });
+
+            /**
+             * 点击具体渠道，重写渠道值result.deposit*Bank
+             */
+            $(this.formSelector).on("change", "input[class$='_item']", function () {
+                //遍历父节点的同级节点下的所有checkbox的值
+                var bank_dev = $(this).parent().parent();
+
+                var result_deposit_bank_value = '';
+                bank_dev.find("input[type='checkbox']").each(function (item, obj) {
+                    //选中就获取值
+                    if (!$(this).prop("disabled")) {
+                        if (obj.checked) {
+                            result_deposit_bank_value = result_deposit_bank_value + $(this).val() + ',';
+                        }
+                    }
+                });
+                //选择框的父节点的父节点内的第一个元素为
+                bank_dev.find("input[type='hidden']").val(result_deposit_bank_value);
             });
         },
 
@@ -289,23 +309,23 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
 
                 //公司入款渠道
                 var is_all_company_value = false;
-                var is_all_company = $(bank_div).find("input[name='result.isDepositCompanyAll']");
+                var is_all_company = $(bank_div).find("input[name^='isDepositCompanyAll']");
                 if (!is_all_company.prop("disabled")) {
                     if (is_all_company.checked) {
                         is_all_company_value = true;
                     }
                 }
-                var company_value = $(bank_div).find("input[name='result.depositCompanyBank']").val();
+                var company_value = $(bank_div).find("input[name^='depositCompanyBank']").val();
 
                 //线上支付渠道
                 var is_all_online_value = false;
-                var is_all_online = $(bank_div).find("input[name='result.isDepositOnlineAll']");
+                var is_all_online = $(bank_div).find("input[name^='isDepositOnlineAll']");
                 if (!is_all_online.prop("disabled")) {
                     if (is_all_online.checked) {
                         is_all_online_value = true;
                     }
                 }
-                var online_value = $(bank_div).find("input[name='result.depositOnlineBank']").val();
+                var online_value = $(bank_div).find("input[name^='depositOnlineBank']").val();
                 if (!is_all_company_value && company_value == '' && !is_all_online_value && online_value==''){
                     window.top.topPage.showErrorMessage('请选择存款渠道');
                     return;
