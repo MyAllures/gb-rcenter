@@ -22,7 +22,7 @@ var BaseDeposit = function () {
         if(val.trim().length<1){
             document.getElementById("result.rechargeAmount").value = options.mone;
         }else {
-            document.getElementById("result.rechargeAmount").value = parseInt(val) + options.mone;
+            document.getElementById("result.rechargeAmount").value = parseFloat(val) + options.mone;
         }
     };
 
