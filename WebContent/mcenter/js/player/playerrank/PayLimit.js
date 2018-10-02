@@ -305,7 +305,38 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                 return;
             }
             //渠道不能为空
-            if(isFee){
+            if(isFee || isReturn){
+                //收取或者返还渠道的div
+                var bank_div = "";
+                if (isFee){
+                    bank_div = ".fee_bank_div";
+                }else if (isReturn){
+                    bank_div = ".return_bank_div";
+                }
+
+                //公司入款渠道
+                var is_all_company_value = false;
+                var is_all_company = $(bank_div).find("input[name='result.isDepositCompanyAll']");
+                if (!is_all_company.prop("disabled")) {
+                    if (is_all_company.checked) {
+                        is_all_company_value = true;
+                    }
+                }
+                var company_value = $(bank_div).find("input[name='result.depositCompanyBank']").val();
+
+                //线上支付渠道
+                var is_all_online_value = false;
+                var is_all_online = $(bank_div).find("input[name='result.isDepositOnlineAll']");
+                if (!is_all_online.prop("disabled")) {
+                    if (is_all_online.checked) {
+                        is_all_online_value = true;
+                    }
+                }
+                var online_value = $(bank_div).find("input[name='result.depositOnlineBank']").val();
+                if (!is_all_company_value && company_value == '' && !is_all_online_value && online_value==''){
+                    window.top.topPage.showErrorMessage('请选择存款渠道');
+                    return;
+                }
 
             }
 
@@ -332,8 +363,8 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
          * 跳转到列表页
          */
         saveCallbak:function(){
-            // $("#tot").attr('href','/vPlayerRankStatistics/list.html');
-            // $("#tot").click();
+            $("#tot").attr('href','/vPlayerRankStatistics/list.html');
+            $("#tot").click();
         },
         /**
          * 跳转到提现限制页面
