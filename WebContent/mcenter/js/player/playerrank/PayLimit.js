@@ -1,3 +1,9 @@
+/**
+ * 本js文件结构：
+ *     init:<初始化按钮，输入框，选择框>
+ *     bindEvent:绑定事件校验<输入框事件，切换收取返还选项卡,收取/返还选框事件,>
+ *     myValidateForm:提交表单校验
+ */
 define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], function(BaseEditPage,BootstrapDialog,Bootstrapswitch) {
     var _this;
     return BaseEditPage.extend({
@@ -60,10 +66,11 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                 $(".fee_txt").attr("disabled",true);
             }
             //渠道初始化
-            if(isFee){
-                _this.resetBankDiv("isFee");
-            }else if(isReturnFee){
-                _this.resetBankDiv("isReturnFee");
+            if(!isFee){
+                $('.fee_bank_div').find('input').attr("disabled",true);
+            }
+            if(!isReturnFee){
+                $('.return_bank_div').find('input').attr("disabled",true);
             }
         },
         /**
@@ -153,7 +160,7 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                 $("#isReturnFee").val(returnState?true:'');
             });
 
-            //复选框
+            //收取/返还复选框
             //switch
             this.unInitSwitch($("[name='my-checkbox']"))
                 .bootstrapSwitch()
@@ -188,8 +195,6 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                                         $(".fee"+val).attr("disabled",false);
                                     }
                                 }
-                                //重置渠道
-                                _this.resetBankDiv(isFee);
                             }else{
                                 if(isFee=='isFee'){
                                     //$("#box_return").attr("checked",true);
@@ -249,45 +254,13 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                 placement: 'top'
             });
 
-
             /**
              * 渠道：公司入款/线上支付全选按钮，显示或者隐藏具体渠道
              */
             $(this.formSelector).on("change", "input[name^='result.isDeposit']", function () {
                 var sta = $(this).is(':checked');
-                var checkAllName = $(this).attr("name");
-                var hide_dev = '';
-                if (checkAllName.indexOf("Company") > 0) {
-                    hide_dev = "div_company_bank";
-                } else if (checkAllName.indexOf("Online") > 0) {
-                    hide_dev = 'div_online_bank';
-                }
-                if (sta) {
-                    // $("#div_company_bank").addClass('hide');
-                    $("#" + hide_dev).css("display", "none");
-                } else {
-                    // $("#div_company_bank").removeClass('hide');
-                    $("#" + hide_dev).css("display", "block");
-                }
-            });
-            /**
-             * 点击具体渠道，重写渠道值result.deposit*Bank
-             */
-            $(this.formSelector).on("change", "input[class$='_item']", function () {
-                //遍历父节点的同级节点下的所有checkbox的值
-                var bank_dev = $(this).parent().parent();
-
-                var result_deposit_bank_value = '';
-                bank_dev.find("input[type='checkbox']").each(function (item, obj) {
-                    //选中就获取值
-                    if (!$(this).prop("disabled")) {
-                        if (obj.checked) {
-                            result_deposit_bank_value = result_deposit_bank_value + $(this).val() + ',';
-                        }
-                    }
-                });
-                //选择框的父节点的父节点内的第一个元素为
-                bank_dev.find("input[type='hidden']").val(result_deposit_bank_value);
+                //父节点的父节点的父节点下的渠道的div显示或者隐藏
+                $(this).parent().parent().parent().find(".div_bank").css("display", sta?"none":"block");
             });
         },
 
@@ -373,18 +346,6 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
             var rankId = $("#rankId").val();
             $("#tot").attr('href','/playerRank/withdrawLimit.html?search.id='+rankId);
             $("#tot").click();
-        },
-        /**
-         * 渠道初始化，把jsp中组装完成的渠道信息，放入到页面对应的div中。
-         * 由于渠道要根据其他层级的选择来确定哪些是可以勾选的，哪些不可以勾选，所有当操作这点击了开启按钮后，要重置渠道的勾选，重置就把div重新加载；不能像其他的input一样只要启用或者禁用就可以了
-         */
-        resetBankDiv:function(feeOrReturn){
-            var template_bank_div = $(".template_bank_div").html();
-            if (feeOrReturn == 'isFee'){
-                $(".fee_bank_div").html(template_bank_div);
-            }else if (feeOrReturn == 'isReturnFee'){
-                $(".return_bank_div").html(template_bank_div);
-            }
         },
 
 
