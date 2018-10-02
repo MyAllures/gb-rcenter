@@ -29,24 +29,24 @@ function closeLeftMenu() {
  * 点击右侧玩家信息展示玩家api金额
  */
 function userAssert(obj, options) {
-    if ($("#login-info .money-shadow").is(":hidden")) {
-        $("#login-info .money-shadow").show();
+    if ($("#_login_info_data .money-shadow").is(":hidden")) {
+        $("#_login_info_data .money-shadow").show();
     } else {
-        $("#login-info .money-shadow").hide();
+        $("#_login_info_data .money-shadow").hide();
     }
-    if ($(obj).find(".ex").attr("class") === "ex") {
+    // if ($(obj).find(".ex").attr("class") === "ex") {
+    if ($($(obj).parents()).find(".ex").attr("class") === "ex") {
         if (sessionStorage.getItem("isAutoPay") === "true") {//是否免转
             $("#recovery").removeClass("mui-hidden");
         } else {
             $("#refresh").removeClass("mui-hidden");
         }
     }
-    var $siteApi = $('table#api-balance tbody tr');
+    var $siteApi = $('ul#api-balance li');
     if (!$siteApi || $siteApi.length <= 0) {
         getSiteApi();
     }
-
-    $(obj).find(".ex").toggleClass("open");
+    $($(obj).parents()).find(".ex").toggleClass("open");
 }
 /**
  * 获取头部用户信息
@@ -58,8 +58,9 @@ function headInfo() {
             if (data.isLogin == false) {
                 $("#notLogin").show();
                 $("div.login").hide();
+                $("div.login-info").hide();
                 $("div.un-login").show();
-                $("#login-info").addClass("mui-hidden");
+                $("#name_money").addClass("mui-hidden");
                 isLogin = false;
                 sessionStorage.setItem("isLogin", isLogin);
                 $(".side-nav .btn-logout").hide();
@@ -69,10 +70,11 @@ function headInfo() {
                 //左侧菜单用户信息显示
                 $("div.login p").text(data.name);
                 $("div.login").show();
+                $("div.login-info").show();
                 $("div.un-login").hide();
                 $(".money").text(data.currencySign + data.totalAssert);
                 //右上角显示用户信息
-                $("#login-info").removeClass("mui-hidden");
+                $("#name_money").removeClass("mui-hidden");
                 isLogin = true;
                 sessionStorage.setItem("isLogin", isLogin);
                 sessionStorage.setItem("isAutoPay", data.isAutoPay);
@@ -86,10 +88,15 @@ function headInfo() {
  * 打开左侧菜单
  */
 function leftMenu(obj) {
-    $("html").toggleClass("index-canvas-show");
-    $(obj).unlock();
+    // $("html").toggleClass("index-canvas-show");
+    // $(obj).unlock();
+    if($("html")[0].className === 'index-canvas-show'){
+        $("html").addClass("index-canvas-show");
+    }else{
+        $("html").toggleClass("index-canvas-show");
+        $(obj).unlock();
+    }
 }
-
 /**
  * 请求右侧信息
  * */
@@ -105,13 +112,13 @@ function getSiteApi() {
                 $('.bar-asset').html(d.currSign + d.playerAssets);
                 var apis = d.apis;
                 for (var i = 0; i < apis.length; i++) {
-                    var html = '<tr><td>' + apis[i].apiName + '</td>';
+                    var html = '<li class="item_data"><span>' + apis[i].apiName + '</span>';
                     if (apis[i].status == 'maintain') {
-                        html += '<td class="_money" id="_api_' + apis[i].apiId + '"><span class="text-red" style="font-size: 10px;">' + window.top.message.common_auto["游戏维护中"] + '</span></td></tr>';
+                        html += '<span id="_api_' + apis[i].apiId + '"><span class="text-red" style="font-size: 10px;">' + window.top.message.common_auto["游戏维护中"] + '</span></span></li>';
                     } else {
-                        html += '<td class="_money" id="_api_' + apis[i].apiId + '">' + d.currSign + '' + apis[i].balance + '</td></tr>';
+                        html += '<span id="_api_' + apis[i].apiId + '">' + d.currSign + '' + apis[i].balance + '</span></li>';
                     }
-                    $('table#api-balance').append(html);
+                    $('ul#api-balance').append(html);
                 }
             } else {
                 isLogin = false;
