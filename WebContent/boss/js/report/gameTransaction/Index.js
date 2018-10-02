@@ -574,6 +574,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $("input[name='search.endEffectiveTradeAmount']").val("");
             $("input[name='search.beginProfitAmount']").val("");
             $("input[name='search.endProfitAmount']").val("");
+            $("input[name='search.siteId']").val("");
 
             $("#apitypeList").val("");
             $("input[name=chooseGameText]").val("");
